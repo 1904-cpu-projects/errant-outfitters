@@ -2,8 +2,8 @@ const path = require("path");
 
 module.exports = {
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'main.js',
+    path: path.join(__dirname, "public"),
+    filename: "main.js"
   },
   module: {
     rules: [
