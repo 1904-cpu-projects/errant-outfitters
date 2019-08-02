@@ -28,6 +28,4 @@ const Product = db.define('product', {
   }
 });
 //EXPORT
-module.exports = {
-  Product
-};
+module.exports = Product;

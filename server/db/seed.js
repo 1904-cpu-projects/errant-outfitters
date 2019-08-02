@@ -1,23 +1,22 @@
-const db = require('./db');
-const { Cart, Guest, Product, Transaction, User } = require('./index')
+const { db, Cart, Guest, Product, Transaction, User } = require('./index');
 
-syncAndSeed = async() => {
-  await db.sync({force:true})
+const syncAndSeed = async() => {
+  await db.sync({force:true});
   await cartSeed.map((item) => {
-    Cart.create(item)
-  })
+    Cart.create(item);
+  });
   await guestSeed.map((item) => {
-    Guest.create(item)
-  })
+    Guest.create(item);
+  });
   await productSeed.map((item) => {
-    Product.create(item)
-  })
+    Product.create(item);
+  });
   await transactionSeed.map((item) => {
-    Transaction.create(item)
-  })
+    Transaction.create(item);
+  });
   await userSeed.map((item) => {
-    User.create(item)
-  })
+    User.create(item);
+  });
 };
 //SEEDS
 const cartSeed = [];
@@ -40,8 +39,11 @@ const seed = {
   productSeed,
   userSeed,
 };
+
+syncAndSeed();
+
 //EXPORT
-module.export = {
+module.exports = {
   syncAndSeed,
   seed
 }

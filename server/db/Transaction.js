@@ -1,7 +1,5 @@
 const db = require('./db');
-const Product = require('./Product');
-const User = require('./User');
-const Guest = require('./Guest');
+const Sequelize = require('sequelize');
 //MODEL
 const Transaction = db.define('transaction', {
   id: {
@@ -17,10 +15,8 @@ const Transaction = db.define('transaction', {
   }
 });
 //ASSOCIATION
-Transaction.hasOne(Product);
-Transaction.hasOne(User);
-Transaction.hasOne(Guest);
+//Transaction.hasOne(Product);
+//Transaction.hasOne(User);
+//Transaction.hasOne(Guest);
 //EXPORT
-module.exports = {
-  Transaction
-}
+module.exports = Transaction;

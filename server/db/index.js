@@ -6,19 +6,19 @@ const Guest = require('./Guest');
 const Product = require('./Product');
 const Transaction = require('./Transaction');
 const User = require('./User');
-const model = {
+
+//ASSOCIATIONS
+Transaction.hasOne(Product);
+Transaction.hasOne(User);
+Transaction.hasOne(Guest);
+Cart.hasOne(Product);
+
+//EXPORT
+module.exports = {
+  db,
   Cart,
   Guest,
   Product,
   Transaction,
   User,
 };
-//SEED DATA
-const {syncAndSeed, seed} = require('./seed')
-//EXPORT
-module.export = {
-  db,
-  model,
-  seed,
-  syncAndSeed,
-}

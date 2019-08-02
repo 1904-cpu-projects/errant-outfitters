@@ -1,4 +1,5 @@
 const db = require('./db');
+const Sequelize = require('sequelize');
 //MODEL
 const Guest = db.define('guest', {
 	//id? or sessionId?
@@ -9,6 +10,4 @@ const Guest = db.define('guest', {
 	}
 });
 //EXPORT
-module.exports = {
-  Guest
-}
+module.exports = Guest;

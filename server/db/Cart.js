@@ -1,9 +1,10 @@
 const db = require('./db');
+const Sequelize = require('sequelize');
 const Product = require('./Product');
 //MODEL
 const Cart = db.define('cart', {
-	id: {
-  	autoincrement: true,
+  id: {
+    autoincrement: true,
     primaryKey: true,
     type: Sequelize.INTEGER
   },
@@ -15,8 +16,6 @@ const Cart = db.define('cart', {
   }
 });
 //ASSOCIATION
-Cart.hasOne(Product);
+
 //EXPORT
-module.exports = {
-  Cart
-};
+module.exports = Cart;
