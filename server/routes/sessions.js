@@ -1,7 +1,8 @@
 const router = require("express").Router();
-// const { model } = require("../db/models");
-// const User = model.User;
-//get the logged in user
+const { model } = require("../db/models");
+const User = model.User;
+
+// get the logged in user
 router.get("/login", async (req, res, next) => {
   try {
     res.send(
