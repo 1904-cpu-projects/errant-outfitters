@@ -19,7 +19,13 @@ const syncAndSeed = async() => {
   });
 };
 //SEEDS
-const cartSeed = [];
+const cartSeed = [
+  {memberStatus:'member', quantity:2},
+  {memberStatus:'member', quantity:1},
+  {memberStatus:'member', quantity:4},
+  {memberStatus:'member', quantity:100},
+  {memberStatus:'guest', quantity:2},
+];
 const guestSeed = [];
 const productSeed = [
   {cost:20, description:'The armored kilt is made of a thick cloth skirt with bars of steel hanging down from the waist and a ring of horizontal steel plates just above the hem. An armored kilt can be worn separately as light armor, or it can be added to other suits of light or medium armor.', image:'./public/img/products/armored-kilt.jpg', inStock:true, name:'Armored Kilt', stock:12},
@@ -28,16 +34,25 @@ const productSeed = [
   {cost:1, description:'Sometimes called a leine, this belted tunic has thick cords woven through it that cover vital areas. A reinforced tunic’s armor bonus is increased by 2 against attack rolls made to confirm critical hits against the wearer.', image:'./public/img/products/Tunic.jpg', inStock:false, name:'Reinforced Tunic', stock:0},
   {cost:15, description:'Lamellar is a type of armor in which small plates of various types of materials are strung together in parallel rows using fine cord. Lamellar plates can be constructed from lacquered leather, horn, or even stone, though suits of iron and steel are the most common. Lamellar armor can be crafted into various shapes, including partial pieces such as breastplates, greaves, or even entire coats. The properties of specific suits and pieces of lamellar armor are determined by their material. This armor consists of a light breastplate and shoulder guards made from lacquered leather plates bound together and fitted over a silk shirt.', image:'./public/img/products/lamellar-cuirass.jpeg', inStock:true, name:'Lamellar Cuirass', stock:3}
 ];
-const transactionSeed = [];
+ const transactionSeed = [
+  {quantity:1, totalCost: 1},
+  {quantity:1, totalCost: 1},
+  {quantity:1, totalCost: 1},
+  {quantity:1, totalCost: 1}
+ ];
 const userSeed = [
-  {name:'Thome'},
-  {name:'Schuyler'},
-  {name:'Nick'},
-  {name:'Same', class:'mage'}
+  {name:'Name1', email:'na@na.com', class:'warrior'},
+  {name:'Name2', email:'na1@na.com', class:'mage'},
+  {name:'Name3', email:'na2@na.com', class:'rouge'},
+  {name:'Name4', email:'na3@na.com', class:'warrior'},
+  {name:'Name5', email:'na4@na.com', class:'warrior'},
 ];
 const seed = {
+  cartSeed,
+  guestSeed,
   productSeed,
-  userSeed,
+  transactionSeed,
+  userSeed
 };
 
 syncAndSeed();

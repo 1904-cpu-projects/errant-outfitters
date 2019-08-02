@@ -1,11 +1,11 @@
 //DB
 const db = require('./db');
 //MODELS
-const Cart = require('./Cart');
-const Guest = require('./Guest');
-const Product = require('./Product');
-const Transaction = require('./Transaction');
-const User = require('./User');
+const Cart = require('./models/Cart');
+const Guest = require('./models/Guest');
+const Product = require('./models/Product');
+const Transaction = require('./models/Transaction');
+const User = require('./models/User');
 
 //ASSOCIATIONS
 Transaction.hasOne(Product);
