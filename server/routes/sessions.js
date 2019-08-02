@@ -1,12 +1,11 @@
 const router = require("express").Router();
-const { model } = require("../db/models");
-const User = model.User;
+const User = require("../db/index.js");
 
 // get the logged in user
 router.get("/login", async (req, res, next) => {
   try {
     res.send(
-      await URLSearchParams.findOne({
+      await User.findOne({
         where: {
           id: req.session.userId
         }

@@ -38,4 +38,4 @@ app.use("/api/sessions", require("./routes/sessions"));
 app.use("/api/products", require("./routes/products"));
 app.use("/api/users", require("./routes/users"));
 
-app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+app.listen(PORT, () => console.log(`Dragons spotted over on port ${PORT}`));
