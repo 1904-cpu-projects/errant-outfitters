@@ -4,14 +4,19 @@ const db = require('./db');
 const Cart = require('./models/Cart');
 const Guest = require('./models/Guest');
 const Product = require('./models/Product');
+const Review = require('./models/Review');
 const Transaction = require('./models/Transaction');
 const User = require('./models/User');
 
 //ASSOCIATIONS
-Transaction.hasOne(Product);
-Transaction.hasOne(User);
-Transaction.hasOne(Guest);
-Cart.hasOne(Product);
+Guest.hasMany(Transaction);
+Guest.hasMany(Cart);
+Product.hasMany(Review);
+Product.hasMany(Transaction);
+Product.hasMany(Cart);
+User.hasMany(Review);
+User.hasMany(Transaction);
+User.hasMany(Cart);
 
 //EXPORT
 module.exports = {
@@ -19,6 +24,7 @@ module.exports = {
   Cart,
   Guest,
   Product,
+  Review,
   Transaction,
   User,
 };

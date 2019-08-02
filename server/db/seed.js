@@ -1,4 +1,4 @@
-const { db, Cart, Guest, Product, Transaction, User } = require('./index');
+const { db, Cart, Guest, Product, Review, Transaction, User } = require('./index');
 
 const syncAndSeed = async() => {
   await db.sync({force:true});
@@ -11,6 +11,9 @@ const syncAndSeed = async() => {
   await productSeed.map((item) => {
     Product.create(item);
   });
+  await reviewSeed.map((item) => {
+    Review.create(item);
+  })
   await transactionSeed.map((item) => {
     Transaction.create(item);
   });
@@ -34,7 +37,8 @@ const productSeed = [
   {cost:1, description:'Sometimes called a leine, this belted tunic has thick cords woven through it that cover vital areas. A reinforced tunic’s armor bonus is increased by 2 against attack rolls made to confirm critical hits against the wearer.', image:'./public/img/products/Tunic.jpg', inStock:false, name:'Reinforced Tunic', stock:0},
   {cost:15, description:'Lamellar is a type of armor in which small plates of various types of materials are strung together in parallel rows using fine cord. Lamellar plates can be constructed from lacquered leather, horn, or even stone, though suits of iron and steel are the most common. Lamellar armor can be crafted into various shapes, including partial pieces such as breastplates, greaves, or even entire coats. The properties of specific suits and pieces of lamellar armor are determined by their material. This armor consists of a light breastplate and shoulder guards made from lacquered leather plates bound together and fitted over a silk shirt.', image:'./public/img/products/lamellar-cuirass.jpeg', inStock:true, name:'Lamellar Cuirass', stock:3}
 ];
- const transactionSeed = [
+const reviewSeed = [{body:'is this enough characters to accept?'}]
+const transactionSeed = [
   {quantity:1, totalCost: 1},
   {quantity:1, totalCost: 1},
   {quantity:1, totalCost: 1},
@@ -51,6 +55,7 @@ const seed = {
   cartSeed,
   guestSeed,
   productSeed,
+  reviewSeed,
   transactionSeed,
   userSeed
 };

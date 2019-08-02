@@ -12,11 +12,12 @@ const Product = db.define('product', {
     type: Sequelize.TEXT
   },
   image: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: './public/img/products/default.jpeg'
   },
   id: {
-  	defaultValue: Sequelize.UUIDV4,
-  	primaryKey: true,
+  defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
     type: Sequelize.UUID
   },
   inStock: {
