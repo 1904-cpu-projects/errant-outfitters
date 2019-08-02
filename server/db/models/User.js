@@ -2,13 +2,20 @@ const db = require('../db');
 const Sequelize = require('sequelize');
 //MODEL
 const User = db.define('user', {
-	id: {
-		defaultValue: Sequelize.UUIDV4,
-  	primaryKey: true,
+  id: {
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
     type: Sequelize.UUID
-	},
-	name: {
-		type: Sequelize.STRING
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  firstName: {
+    type: Sequelize.STRING
+  },
+  lastName: {
+    type: Sequelize.STRING
   },
   email: {
     type: Sequelize.STRING,
