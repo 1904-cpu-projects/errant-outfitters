@@ -5,6 +5,9 @@ const Product = db.define('product', {
   cost: {
     type: Sequelize.FLOAT
   },
+  catagory: {
+    type: Sequelize.ENUM('armor', 'weapon', 'potion'),
+  },
   description: {
     type: Sequelize.TEXT
   },

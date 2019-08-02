@@ -11,7 +11,11 @@ const User = db.define('user', {
 		type: Sequelize.STRING
   },
   email: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    unique: true,
+    validate: {
+      isEmail: true
+    }
   },
   class: {
     type: Sequelize.ENUM('warrior', 'mage', 'rouge')
