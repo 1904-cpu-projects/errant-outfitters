@@ -5,7 +5,6 @@ module.exports = {
     path: path.join(__dirname, "public"),
     filename: "main.js"
   },
-
   module: {
     rules: [
       {

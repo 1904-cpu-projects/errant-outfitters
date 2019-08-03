@@ -16,8 +16,7 @@ router.get("/:id", async (req, res, next) => {
         id: req.params.id
       }
     });
-    console.log("single user", singleUser);
-    res.status(singleUser).send(singleUser);
+    res.status(200).send(singleUser);
   } catch (e) {
     next(e);
   }
@@ -36,7 +35,7 @@ router.put("/:id", async (req, res, next) => {
   try {
     const updateUser = await User.findByPk(req.params.id);
     updateUser.update({ ...req.body });
-    res.send(updateUser);
+    res.status(204).send(updateUser);
   } catch (err) {
     next(err);
   }
@@ -49,7 +48,7 @@ router.delete("/:id", async (req, res, next) => {
         id: req.params.id
       }
     });
-    res.sendStatus(204);
+    res.status(404).send("user removed");
   } catch (err) {
     next(err);
   }
