@@ -1,0 +1,22 @@
+.mainview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: solid black 1px;
+    border-radius: 15px;
+}
+
+.products-list {
+    width: 200px;
+    height: 75vh;
+    border: solid black 1px;
+    border-radius: 10px;
+}
+
+/* height should be removed eventually */
+.landing-body {
+    flex-grow: 1;
+    height: 75vh;
+    border: solid black 1px;
+    border-radius: 10px;
+}

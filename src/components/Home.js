@@ -1,7 +1,13 @@
 import React from "react";
 
-export function Home (){
+import Products from "./Products";
+import MainView from "./MainView";
+
+export function Home () {
   return (
-    <hr/>
+    <div className='mainview'>
+      <Products />
+      <MainView />
+    </div>
   );
 }

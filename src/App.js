@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import { Home } from './components/Home';
+import Header from './components/Header';
 
 /* I think its reasonable to make this thing be the main provider of redux store
  * And also the thing that routes to other places
@@ -11,10 +12,10 @@ import { Home } from './components/Home';
  */
 
 class App extends React.Component {
-  // gotta see that HR!
   render() {
     return (
       <Provider store={store}>
+	<Header />
 	<Router>
           <Route exact path='/' component={Home}/>
 	</Router>
