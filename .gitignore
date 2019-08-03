@@ -1,4 +1,4 @@
 node_modules/
-./public/main.js
-./public/main.js.map
+/public/main.js
+/public/main.js.map
 .env
