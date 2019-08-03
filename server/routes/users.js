@@ -1,11 +1,25 @@
 const router = require("express").Router();
-const User = require("../db/index.js");
+const { User } = require("../db/index");
 
 router.get("/", async (req, res, next) => {
   try {
-    res.status(200).send(await User.findAll());
-  } catch (err) {
-    next(err);
+    res.send(await User.findAll());
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const singleUser = await User.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+    console.log("single user", singleUser);
+    res.status(singleUser).send(singleUser);
+  } catch (e) {
+    next(e);
   }
 });
 
