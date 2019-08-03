@@ -1,11 +1,24 @@
 const router = require("express").Router();
-const User = require("../db/index.js");
+const { User } = require("../db/index");
 
 router.get("/", async (req, res, next) => {
   try {
-    res.status(200).send(await User.findAll());
-  } catch (err) {
-    next(err);
+    res.send(await User.findAll());
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const singleUser = await User.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+    res.status(200).send(singleUser);
+  } catch (e) {
+    next(e);
   }
 });
 
@@ -22,7 +35,7 @@ router.put("/:id", async (req, res, next) => {
   try {
     const updateUser = await User.findByPk(req.params.id);
     updateUser.update({ ...req.body });
-    res.send(updateUser);
+    res.status(204).send(updateUser);
   } catch (err) {
     next(err);
   }
@@ -35,7 +48,7 @@ router.delete("/:id", async (req, res, next) => {
         id: req.params.id
       }
     });
-    res.sendStatus(204);
+    res.status(404).send("user removed");
   } catch (err) {
     next(err);
   }
