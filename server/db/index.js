@@ -9,14 +9,14 @@ const Transaction = require("./models/Transaction");
 const User = require("./models/User");
 
 //ASSOCIATIONS
-// Guest.hasMany(Transaction);
-// Guest.hasMany(Cart);
-// Product.hasMany(Review);
-// Product.hasMany(Transaction);
-// Product.hasMany(Cart);
-// User.hasMany(Review);
-// User.hasMany(Transaction);
-// User.hasMany(Cart);
+Guest.hasMany(Transaction);
+Guest.hasMany(Cart);
+Product.hasMany(Review);
+Product.hasMany(Transaction);
+Product.hasMany(Cart);
+User.hasMany(Review);
+User.hasMany(Transaction);
+User.hasMany(Cart);
 
 //EXPORT
 module.exports = {
