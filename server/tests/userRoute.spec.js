@@ -1,9 +1,9 @@
 const request = require("supertest");
 const app = require("../server");
-const { syncAndSeed } = require("../db/seed");
-beforeAll(async () => {
-  await syncAndSeed();
-});
+// const { syncAndSeed } = require("../db/seed");
+// beforeAll(async () => {
+//   await syncAndSeed();
+// });
 
 describe("GET Users", () => {
   it("returns a full list of current members", async done => {
