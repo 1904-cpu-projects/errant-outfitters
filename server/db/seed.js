@@ -108,7 +108,7 @@ const seed = {
   userSeed
 };
 
-syncAndSeed();
+// syncAndSeed();
 
 //EXPORT
 module.exports = {

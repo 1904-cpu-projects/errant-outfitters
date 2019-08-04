@@ -2,3 +2,4 @@ node_modules/
 /public/main.js
 /public/main.js.map
 .env
+.DS_Store

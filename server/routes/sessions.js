@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../db/index.js");
+const { User } = require("../db/index.js");
 
 // get the logged in user
 router.get("/login", async (req, res, next) => {
