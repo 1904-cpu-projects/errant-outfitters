@@ -1,7 +1,9 @@
 import React from "react";
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+
 import store from './store';
+import { getProducts } from './storeReducers/productsReducer';
 
 import { Home } from './components/Home';
 import Header from './components/Header';
@@ -12,6 +14,18 @@ import Header from './components/Header';
  */
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true
+    };
+  }
+
+  async componentDidMount() {
+    await getProducts();
+    this.setState({ loading: false });
+  }
+  
   render() {
     return (
       <Provider store={store}>
