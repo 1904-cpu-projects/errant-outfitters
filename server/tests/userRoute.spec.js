@@ -77,13 +77,14 @@ describe("/GET /api/products", () => {
   });
 });
 describe("/POST", () => {
-  it("Adds a product to the products list", async () => {
+  it("Adds a product to the products list", async done => {
     const response = await request(app)
       .post("/api/products")
       .send({ name: "Potion" });
     expect(response.status).toEqual(201);
     expect(response.body.id).not.toBe(undefined);
     expect(response.body.name).toBe("Potion");
+    done();
   });
 });
 describe("PUT and DELETE /api/products/:id", () => {
@@ -96,11 +97,12 @@ describe("PUT and DELETE /api/products/:id", () => {
     });
   });
 
-  it("put a product by `id`", async () => {
+  it("put a product by `id`", async done => {
     const changeProduct = await request(app)
       .put(`/api/products/${item.id}`)
       .send({ name: "Staff" });
     expect(changeProduct.status).toEqual(200);
+    done();
   });
 
   it("DELETE a product from the products list", async done => {
