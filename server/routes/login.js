@@ -12,7 +12,10 @@ router.post('/login', async (req, res, next) => {
     const user = await User.findOne({where: {email: req.body.email}});
     if(user && User.verifyPassword(user, req.body.password)) {
       req.session.userId = user.id;
-      res.status(202).send({ role: user.isAdmin ? 'admin' : 'user' });
+      res.status(202).send({ isAdmin: user.isAdmin,
+			     id: user.id,
+			     firstName: user.firstName,
+			     lastName: user.LastName});
     }
     else {
       // User password bad
@@ -48,7 +51,10 @@ router.get('/checkLoggedIn', async (req, res, next) => {
   if(req.session.userId) {
     try {
       const user = await User.findByPk(req.session.userId);
-      res.status(202).send({role: user.role, id: user.id});
+      res.status(202).send({ isAdmin: user.isAdmin,
+			     id: user.id,
+			     firstName: user.firstName,
+			     lastName: user.LastName});
     }
     catch(e) {
       res.status(404).send();
