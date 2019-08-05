@@ -93,11 +93,11 @@ const transactionSeed = [
   { quantity: 1, totalCost: 1 }
 ];
 const userSeed = [
-  { name: "Name1", email: "na@na.com", class: "warrior" },
-  { name: "Name2", email: "na1@na.com", class: "mage" },
-  { name: "Name3", email: "na2@na.com", class: "rouge" },
-  { name: "Name4", email: "na3@na.com", class: "warrior" },
-  { name: "Name5", email: "na4@na.com", class: "warrior" }
+  { name: "Name1", email: "na@na.com", class: "warrior", password: "w1" },
+  { name: "Name2", email: "na1@na.com", class: "mage", password: "m1" },
+  { name: "Name3", email: "na2@na.com", class: "rouge", password: "r1" },
+  { name: "Name4", email: "na3@na.com", class: "warrior", password: "w2" },
+  { name: "Name5", email: "na4@na.com", class: "warrior", password: "w3" }
 ];
 const seed = {
   cartSeed,
