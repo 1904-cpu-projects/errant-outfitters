@@ -29,7 +29,7 @@ export const checkSessionLogin = async () => {
 };
 
 const init = {
-  userId: '',
+  userId: 'guest',
   isAdmin: false
 };
 
