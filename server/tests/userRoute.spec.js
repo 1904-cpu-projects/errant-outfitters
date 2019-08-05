@@ -1,10 +1,7 @@
 const request = require("supertest");
 const app = require("../server");
-// const { syncAndSeed } = require("../db/seed");
-// beforeAll(async () => {
-//   await syncAndSeed();
-// });
-
+const { User, Product } = require("../db/index");
+//improve tests so they dont leave artifacts in the DB
 describe("GET Users", () => {
   it("returns a full list of current members", async done => {
     const response = await request(app).get("/api/users");
@@ -15,7 +12,7 @@ describe("GET Users", () => {
 });
 
 describe("POST new user", () => {
-  it("Adds a new user to the User table", async () => {
+  it("Adds a new user to the User table", async done => {
     const response = await request(app)
       .post("/api/users")
       .send({
@@ -27,35 +24,45 @@ describe("POST new user", () => {
     expect(response.body.id).not.toBe(undefined);
     expect(response.body.firstName).toBe("Preston");
     expect(response.body.email).toBe("Valiant@acme.com");
+    done();
   });
 });
 
 describe("PUT a change to a user", () => {
-  it("changes a property of a single user on the user table", async () => {
-    const getProducts = await request(app).get("/api/users");
-
-    const changeUser = await request(app)
-      .put(`/api/users/${getProducts.body[getProducts.body.length - 1].id}`)
+  let preston;
+  beforeAll(async () => {
+    preston = await User.findOne({
+      where: {
+        firstName: "Preston"
+      }
+    });
+  });
+  it("changes a property of a single user on the user table", async done => {
+    const changePreston = await request(app)
+      .put(`/api/users/${preston.id}`)
       .send({ lastName: "the Brave" });
-
-    const modifiedUser = await request(app).get(
-      `/api/users/${getProducts.body[getProducts.body.length - 1].id}`
-    );
-
-    expect(changeUser.status).toEqual(204);
-    expect(modifiedUser.body.lastName).toBe("the Brave");
+    const improvedPreston = await request(app).get(`/api/users/${preston.id}`);
+    expect(changePreston.status).toEqual(204);
+    expect(improvedPreston.body.lastName).toBe("the Brave");
+    done();
   });
 });
 
 describe("DELETE a user", () => {
-  it("Removes a user from the User table", async () => {
-    const getPreDelete = await request(app).get("/api/users");
-    const removedItem = await request(app).delete(
-      `/api/users/${getPreDelete.body[0].id}`
-    );
-    const getPostDelete = await request(app).get("/api/users");
+  let preston;
+  beforeAll(async () => {
+    preston = await User.findOne({
+      where: {
+        firstName: "Preston"
+      }
+    });
+  });
+  it("Removes a user from the User table", async done => {
+    const removedItem = await request(app).delete(`/api/users/${preston.id}`);
+    const wherePreston = await request(app).get(`/api/users/${preston.id}`);
     expect(removedItem.status).toEqual(404);
-    expect(getPreDelete.body.length).not.toEqual(getPostDelete.body.length);
+    expect(wherePreston.body.firstName).toEqual(undefined);
+    done();
   });
 });
 
@@ -70,34 +77,39 @@ describe("/GET /api/products", () => {
   });
 });
 describe("/POST", () => {
-  it("Adds a product to the products list", async () => {
+  it("Adds a product to the products list", async done => {
     const response = await request(app)
       .post("/api/products")
       .send({ name: "Potion" });
     expect(response.status).toEqual(201);
     expect(response.body.id).not.toBe(undefined);
     expect(response.body.name).toBe("Potion");
+    done();
   });
 });
-describe("PUT /api/products/:id", () => {
-  it("put a product by `id`", async () => {
-    const getProducts = await request(app).get("/api/products");
+describe("PUT and DELETE /api/products/:id", () => {
+  let item;
+  beforeAll(async () => {
+    item = await Product.findOne({
+      where: {
+        name: "Potion"
+      }
+    });
+  });
 
+  it("put a product by `id`", async done => {
     const changeProduct = await request(app)
-      .put(`/api/products/${getProducts.body[getProducts.body.length - 1].id}`)
+      .put(`/api/products/${item.id}`)
       .send({ name: "Staff" });
-
     expect(changeProduct.status).toEqual(200);
+    done();
   });
-});
-describe("DELETE a product", () => {
-  it("DELETE a product from the products list", async () => {
-    const getPreDelete = await request(app).get("/api/products");
-    const removedItem = await request(app).delete(
-      `/api/products/${getPreDelete.body[0].id}`
-    );
+
+  it("DELETE a product from the products list", async done => {
+    const removedItem = await request(app).delete(`/api/products/${item.id}`);
+    const noStaff = await request(app).get(`/api/products/${item.id}`);
     expect(removedItem.status).toEqual(204);
-    const getPostDelete = await request(app).get("/api/products");
-    expect(getPreDelete.body.length).not.toEqual(getPostDelete.body.length);
+    expect(noStaff.body.name).toEqual(undefined);
+    done();
   });
 });
