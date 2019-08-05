@@ -1,9 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
 
-export default function Products () {
-  return (
+
+class _Products extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+  render() {
+    return (
     <div className='products-list'>
-      Just a stub for all the products and junk
+      To display list of SingleProduct components as tiles
     </div>
-  );
+    );
+  }
 }
+
