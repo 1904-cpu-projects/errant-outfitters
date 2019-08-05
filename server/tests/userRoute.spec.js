@@ -1,7 +1,7 @@
 const request = require("supertest");
 const app = require("../server");
 const { User, Product } = require("../db/index");
-
+//improve tests so they dont leave artifacts in the DB
 describe("GET Users", () => {
   it("returns a full list of current members", async done => {
     const response = await request(app).get("/api/users");
