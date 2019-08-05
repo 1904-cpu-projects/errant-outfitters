@@ -38,6 +38,7 @@ app.use("/api/sessions", require("./routes/sessions"));
 //Main routes
 app.use("/api/users", require("./routes/users"));
 app.use("/api/products", require("./routes/products"));
+app.use("/api/reviews", require("./routes/reviews"));
 
 app.listen(port, () => console.log(`Dragons spotted over on port ${port}`));
 module.exports = app;

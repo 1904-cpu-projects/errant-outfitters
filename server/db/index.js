@@ -14,9 +14,10 @@ Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
 Product.hasMany(Cart);
-Review.belongsTo(User);
+Review.belongsTo(Product);
 User.hasMany(Transaction);
 User.hasMany(Cart);
+User.hasMany(Review);
 
 //EXPORT
 module.exports = {
