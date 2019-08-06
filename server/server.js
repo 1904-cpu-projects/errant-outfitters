@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
-
 const path = require("path");
-const port = process.env.PORT || 3000;
 
 //Main route middleware
 app.use(express.json());
@@ -38,7 +36,7 @@ app.use("/api/sessions", require("./routes/sessions"));
 //Main routes
 app.use("/api/users", require("./routes/users"));
 app.use("/api/products", require("./routes/products"));
+app.use("/api/reviews", require("./routes/reviews"));
 app.use("/api/login", require("./routes/login"));
 
-app.listen(port, () => console.log(`Dragons spotted over on port ${port}`));
 module.exports = app;
