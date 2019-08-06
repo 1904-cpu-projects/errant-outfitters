@@ -61,7 +61,7 @@ const productSeed = [
     cost: 3,
     description:
       "More than simple clothing, padded armor combines heavy, quilted cloth and layers of densely packed stuffing to create a cheap and basic protection. It is typically worn by those not intending to face lethal combat or those who wish their maneuverability to be impacted as little as possible.",
-    image: "./img/products/Light-Armour",
+    image: "./img/products/Light-Armor.png",
     inStock: true,
     name: "Light Armor",
     stock: 14
@@ -70,7 +70,7 @@ const productSeed = [
     cost: 1,
     description:
       "Sometimes called a leine, this belted tunic has thick cords woven through it that cover vital areas. A reinforced tunic’s armor bonus is increased by 2 against attack rolls made to confirm critical hits against the wearer.",
-    image: "./img/products/Tunic",
+    image: "./img/products/Tunic.jpg",
     inStock: false,
     name: "Reinforced Tunic",
     stock: 0
@@ -79,7 +79,7 @@ const productSeed = [
     cost: 15,
     description:
       "Lamellar is a type of armor in which small plates of various types of materials are strung together in parallel rows using fine cord. Lamellar plates can be constructed from lacquered leather, horn, or even stone, though suits of iron and steel are the most common. Lamellar armor can be crafted into various shapes, including partial pieces such as breastplates, greaves, or even entire coats. The properties of specific suits and pieces of lamellar armor are determined by their material. This armor consists of a light breastplate and shoulder guards made from lacquered leather plates bound together and fitted over a silk shirt.",
-    image: "./img/products/lamellar-cuirass",
+    image: "./img/products/lamellar-cuirass.jfif",
     inStock: true,
     name: "Lamellar Cuirass",
     stock: 3

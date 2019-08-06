@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { SingleProduct } from "./SingleProduct";
-import MainView from "./MainView";
+import MainView from "./MenuBar";
 
 
 function Products( {products} ) {
@@ -11,9 +11,7 @@ function Products( {products} ) {
   });
   return (
   <div className='products-list'>
-    <div>
       {tileProducts}
-    </div>
   </div>
   );
 }
