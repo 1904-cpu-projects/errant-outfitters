@@ -1,9 +1,9 @@
-const db = require('../db');
-const Sequelize = require('sequelize');
+const db = require("../db");
+const Sequelize = require("sequelize");
 
-const { hashPassword } = require('../../utils/commonUtils');
+const { hashPassword } = require("../../utils/commonUtils");
 //MODEL
-const User = db.define('user', {
+const User = db.define("user", {
   id: {
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
@@ -27,20 +27,20 @@ const User = db.define('user', {
       isEmail: true
     }
   },
+  class: {
+    type: Sequelize.ENUM("warrior", "mage", "rouge")
+  },
   password: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-  class: {
-    type: Sequelize.ENUM('warrior', 'mage', 'rouge')
   }
 });
 
 User.beforeCreate((userInstance, optionsObject) => {
-    userInstance.password = hashPassword(userInstance.password);
+  userInstance.password = hashPassword(userInstance.password);
 });
 
-User.verifyPassword = function (user, password) {
+User.verifyPassword = function(user, password) {
   return user.password === hashPassword(password) ? true : false;
 };
 

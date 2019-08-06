@@ -21,7 +21,8 @@ describe("POST new user", () => {
       .send({
         firstName: "Preston",
         lastName: "the Valiant",
-        email: "Valiant@acme.com"
+        email: "Valiant@acme.com",
+        password: "test"
       });
     expect(response.status).toEqual(201);
     expect(response.body.id).not.toBe(undefined);

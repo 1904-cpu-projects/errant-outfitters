@@ -116,19 +116,22 @@ const userSeed = [
     firstName: "Larry",
     lastName: "Stooge",
     password: "test",
-    class: "mage"
+    class: "mage",
+    email: "larry@acme.com"
   },
   {
     firstName: "Curly",
     lastName: "Stooge",
     password: "test",
-    class: "rouge"
+    class: "rouge",
+    email: "rouge@acme.com"
   },
   {
     firstName: "Betty",
     lastName: "Boop",
     password: "test",
-    class: "warrior"
+    class: "warrior",
+    email: "boop@acme.com"
   }
 ];
 const seed = {
