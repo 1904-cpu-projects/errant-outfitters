@@ -1,7 +1,10 @@
 const request = require("supertest");
 const app = require("../server");
-const { User, Product } = require("../db/index");
+const { User, Product, db } = require("../db/index");
 //improve tests so they dont leave artifacts in the DB
+
+beforeAll(() => db.sync());
+
 describe("GET Users", () => {
   it("returns a full list of current members", async done => {
     const response = await request(app).get("/api/users");
@@ -139,6 +142,7 @@ describe("GET and POST review routes", () => {
   });
 });
 
+afterAll(() => db.sync());
 // describe("Delete and PUT review routes", () => {
 //   let betty;
 //   beforeAll(async () => {
