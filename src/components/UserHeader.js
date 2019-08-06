@@ -1,9 +1,10 @@
 import React from "react";
 
-export function UserHeader({userName = 'guest'}) {
+export function UserHeader({ userName = "guest" }) {
   return (
     <div>
-      Hello, {userName}
+      Hello, {userName} <br />
+      <a href="/#/CreateUserForm">Create User</a>
     </div>
   );
 }
