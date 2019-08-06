@@ -16,10 +16,7 @@ const Review = db.define("review", {
   },
   body: {
     type: Sequelize.TEXT,
-    allowNull: false,
-    validate: {
-      len: [10, 500]
-    }
+    allowNull: false
   }
 });
 //EXPORT
