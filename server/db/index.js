@@ -13,18 +13,11 @@ Guest.hasMany(Transaction);
 //Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
-<<<<<<< HEAD
 //Product.hasMany(Cart);
 User.hasMany(Review);
 User.hasMany(Transaction);
-//User.hasMany(Cart);
-=======
-Product.hasMany(Cart);
 Review.belongsTo(Product);
 User.hasMany(Transaction);
-User.hasMany(Cart);
-User.hasMany(Review);
->>>>>>> dev
 
 //EXPORT
 module.exports = {

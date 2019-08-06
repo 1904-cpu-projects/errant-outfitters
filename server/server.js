@@ -42,12 +42,9 @@ app.use("/api/sessions", require("./routes/sessions"));
 
 //Main routes
 app.use("/api/products", require("./routes/products"));
-<<<<<<< HEAD
 app.use("/api/cart", require("./routes/cart"));
 app.use("/api/users", require("./routes/users"));
-=======
 app.use("/api/reviews", require("./routes/reviews"));
->>>>>>> dev
 app.use("/api/login", require("./routes/login"));
 
 module.exports = app;
