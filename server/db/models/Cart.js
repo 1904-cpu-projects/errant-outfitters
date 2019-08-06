@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 const Cart = db.define('cart', {
   productId: {
     type: Sequelize.STRING,
-    allowNull: false
+//    allowNull: false
   },
   memberStatus: {
     type: Sequelize.ENUM('guest', 'user')

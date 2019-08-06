@@ -31,10 +31,10 @@ const syncAndSeed = async () => {
 };
 //SEEDS
 const cartSeed = [
-  { memberStatus: "member", quantity: 2 },
-  { memberStatus: "member", quantity: 1 },
-  { memberStatus: "member", quantity: 4 },
-  { memberStatus: "member", quantity: 100 },
+  { memberStatus: "user", quantity: 2 },
+  { memberStatus: "user", quantity: 1 },
+  { memberStatus: "user", quantity: 4 },
+  { memberStatus: "user", quantity: 100 },
   { memberStatus: "guest", quantity: 2 }
 ];
 const guestSeed = [];
