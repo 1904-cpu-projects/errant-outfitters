@@ -17,7 +17,7 @@ export const listReviews = () => async dispatch => {
   }
 };
 
-export const singleReview = id => async dispatch => {
+export const singleReviewThunk = id => async dispatch => {
   try {
     const response = await axios.get(`/api/reviews/${id}`);
     dispatch({ type: FETCH_SINGLE_REVIEW, payload: response.data });
