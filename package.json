@@ -8,7 +8,7 @@
     "webpack": "webpack",
     "webpack:dev": "npm run webpack -- --watch --mode=development",
     "start:dev": "npm run webpack:dev & nodemon server/index.js --ignore public --ignore src",
-    "test": "node server/db/seed.js & jest --detectOpenHandles",
+    "test": "node server/db/seed.js & jest",
     "test:watch": "jest --watchAll"
   },
   "repository": {
