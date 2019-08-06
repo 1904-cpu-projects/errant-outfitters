@@ -32,10 +32,6 @@ export class CreateUserForm extends React.Component {
     this.setState({ users });
     history.push("/");
   }
-  async componentDidMount() {
-    const response = await axios.get("/api/users");
-    this.setState({ users: response.data });
-  }
   render() {
     return (
       <div>
@@ -54,28 +50,42 @@ export class CreateUserForm extends React.Component {
             name="lastName"
             value={this.state.lastName}
           />
+          <label htmlFor="class">Choose a Class: </label>
+          <input
+            type="text"
+            onChange={this.onHandle}
+            name="class"
+            placeholder="warrior, mage, or rouge"
+            value={this.state.class}
+          />
           <label htmlFor="email">Email: </label>
           <input
             type="text"
             onChange={this.onHandle}
             name="email"
+            placeholder="Example format: class@errant.com"
             value={this.state.email}
-          />
-          <label htmlFor="class">Class (warrior, mage, rogue): </label>
-          <input
-            type="text"
-            onChange={this.onHandle}
-            name="class"
-            value={this.state.class}
           />
           <label htmlFor="password">Password: </label>
           <input
-            type="text"
+            type="password"
             onChange={this.onHandle}
             name="password"
             value={this.state.password}
           />
-          <button>Create User</button>
+          <button
+            disabled={
+              !this.state.firstName ||
+              !this.state.lastName ||
+              !this.state.email ||
+              !this.state.class ||
+              !this.state.password
+                ? true
+                : false
+            }
+          >
+            Create User
+          </button>
         </form>
       </div>
     );
