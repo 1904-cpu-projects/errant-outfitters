@@ -1,0 +1,21 @@
+.CreateUserForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-top: 10px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+/*
+button {
+  height: 20px;
+  margin-top: 5px;
+} 
+*/
