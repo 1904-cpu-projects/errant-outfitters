@@ -1,13 +1,22 @@
-const db = require('../db');
-const Sequelize = require('sequelize');
-//MODEL
-const Review = db.define('review', {
+const db = require("../db");
+const Sequelize = require("sequelize");
+
+const Review = db.define("review", {
+  id: {
+    primaryKey: true,
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4
+  },
+  title: {
+    type: Sequelize.STRING(200),
+    allowNull: false
+  },
+  author: {
+    type: Sequelize.STRING
+  },
   body: {
     type: Sequelize.TEXT,
-    allowNull: false,
-    validate: {
-      len: [10,250]
-    }
+    allowNull: false
   }
 });
 //EXPORT

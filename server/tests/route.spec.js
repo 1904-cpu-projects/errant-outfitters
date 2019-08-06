@@ -1,7 +1,10 @@
 const request = require("supertest");
 const app = require("../server");
-const { User, Product } = require("../db/index");
+const { User, Product, db } = require("../db/index");
 //improve tests so they dont leave artifacts in the DB
+
+beforeAll(() => db.sync());
+
 describe("GET Users", () => {
   it("returns a full list of current members", async done => {
     const response = await request(app).get("/api/users");
@@ -18,7 +21,8 @@ describe("POST new user", () => {
       .send({
         firstName: "Preston",
         lastName: "the Valiant",
-        email: "Valiant@acme.com"
+        email: "Valiant@acme.com",
+        password: "test"
       });
     expect(response.status).toEqual(201);
     expect(response.body.id).not.toBe(undefined);
@@ -113,3 +117,48 @@ describe("PUT and DELETE /api/products/:id", () => {
     done();
   });
 });
+
+/*-----------review tests----------------*/
+
+describe("GET and POST review routes", () => {
+  it("gets all the current reviews", async done => {
+    const response = await request(app).get("/api/reviews");
+    expect(response.status).toEqual(200);
+    expect(response.body.length).toBeGreaterThan(1);
+    done();
+  });
+
+  it("can post a new review", async done => {
+    const response = await request(app)
+      .post("/api/reviews")
+      .send({
+        title: "Cras non efficitur ipsum",
+        author: "Betty",
+        body:
+          "Donec magna ex, iaculis ut augue sed, aliquet aliquam tellus. Mauris dolor lectus, venenatis non ultrices ut, cursus non diam. "
+      });
+    expect(response.status).toEqual(201);
+    expect(response.body.title).toBe("Cras non efficitur ipsum");
+    done();
+  });
+});
+
+afterAll(() => db.sync());
+// describe("Delete and PUT review routes", () => {
+//   let betty;
+//   beforeAll(async () => {
+//     betty = await User.findOne({
+//       where: {
+//         firstName: "Betty"
+//       }
+//     });
+//   });
+
+//   it("changes the title of Betty's article", async done => {
+//     const response = await request(app)
+//       .put(`/api/reviews/${betty.id}`)
+//       .send({ title: "Where's Preston?" });
+//     expect(response.status).toEqual(201);
+//     done();
+//   });
+// });

@@ -85,7 +85,26 @@ const productSeed = [
     stock: 3
   }
 ];
-const reviewSeed = [{ body: "is this enough characters to accept?" }];
+const reviewSeed = [
+  {
+    title: "Cras non efficitur ipsum",
+    author: "Moe",
+    body:
+      "Donec magna ex, iaculis ut augue sed, aliquet aliquam tellus. Mauris dolor lectus, venenatis non ultrices ut, cursus non diam. Proin sagittis, ligula a mollis mollis, ipsum felis consectetur libero, nec pharetra odio arcu eu mauris. Pellentesque mi nibh, interdum non porttitor sit amet, hendrerit in nisl."
+  },
+  {
+    title: "Duis tempor porttitor metus",
+    author: "Larry",
+    body:
+      "Aenean quis purus augue. Duis massa ipsum, ultrices vitae augue eget, tristique ultrices turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus varius nisl orci, sit amet vehicula nulla porta nec. Nunc commodo varius nibh. Sed id ornare purus. Etiam eros urna, gravida sed orci vel, efficitur suscipit turpis. Nulla nec sapien placerat, imperdiet eros a, malesuada augue."
+  },
+  {
+    title: "Aenean quis purus augue",
+    author: "Curly",
+    body:
+      "Sed nec pharetra sem. Duis bibendum quis est ut blandit. Suspendisse dignissim, elit ut sodales imperdiet, ligula orci finibus odio, in consequat magna enim facilisis ante. Suspendisse tempor nunc odio, quis consectetur eros tincidunt quis. Proin sollicitudin sapien eget eros commodo, id aliquam erat blandit. Aenean molestie diam quam, vel volutpat metus lacinia a. Nunc id pretium tortor. Ut nec neque facilisis, laoreet lectus sed, pretium lorem. "
+  }
+];
 const transactionSeed = [
   { quantity: 1, totalCost: 1 },
   { quantity: 1, totalCost: 1 },
@@ -93,11 +112,27 @@ const transactionSeed = [
   { quantity: 1, totalCost: 1 }
 ];
 const userSeed = [
-  { name: "Name1", email: "na@na.com", class: "warrior", password: "w1" },
-  { name: "Name2", email: "na1@na.com", class: "mage", password: "m1" },
-  { name: "Name3", email: "na2@na.com", class: "rouge", password: "r1" },
-  { name: "Name4", email: "na3@na.com", class: "warrior", password: "w2" },
-  { name: "Name5", email: "na4@na.com", class: "warrior", password: "w3" }
+  {
+    firstName: "Larry",
+    lastName: "Stooge",
+    password: "test",
+    class: "mage",
+    email: "larry@acme.com"
+  },
+  {
+    firstName: "Curly",
+    lastName: "Stooge",
+    password: "test",
+    class: "rouge",
+    email: "rouge@acme.com"
+  },
+  {
+    firstName: "Betty",
+    lastName: "Boop",
+    password: "test",
+    class: "warrior",
+    email: "boop@acme.com"
+  }
 ];
 const seed = {
   cartSeed,
