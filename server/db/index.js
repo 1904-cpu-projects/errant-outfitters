@@ -10,13 +10,13 @@ const User = require("./models/User");
 
 //ASSOCIATIONS
 Guest.hasMany(Transaction);
-Guest.hasMany(Cart);
+//Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
-Product.hasMany(Cart);
+//Product.hasMany(Cart);
 User.hasMany(Review);
 User.hasMany(Transaction);
-User.hasMany(Cart);
+//User.hasMany(Cart);
 
 //EXPORT
 module.exports = {

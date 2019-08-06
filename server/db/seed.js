@@ -31,11 +31,11 @@ const syncAndSeed = async () => {
 };
 //SEEDS
 const cartSeed = [
-  { memberStatus: "member", quantity: 2 },
-  { memberStatus: "member", quantity: 1 },
-  { memberStatus: "member", quantity: 4 },
-  { memberStatus: "member", quantity: 100 },
-  { memberStatus: "guest", quantity: 2 }
+  { memberStatus: "user", quantity: 2, productId: "paoigfh" },
+  { memberStatus: "user", quantity: 1, productId: "apsodh" },
+  { memberStatus: "user", quantity: 4, productId: "aipsgnbj" },
+  { memberStatus: "user", quantity: 100, productId: "bijns" },
+  { memberStatus: "user", quantity: 2, productId: "apdoifn" }
 ];
 const guestSeed = [];
 const productSeed = [
