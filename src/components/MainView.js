@@ -10,7 +10,7 @@ function MainView({ products }) {
 				   {p.name} : {p.description}
 				 </li>
 			       ); });
-  
+
   if(products.length === 0) return null;
   return (
     <div className='landing-body'>
