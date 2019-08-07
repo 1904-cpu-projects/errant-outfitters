@@ -2,8 +2,7 @@ language: node_js
 node_js:
   - "12"
 branches:
-  only:
-    - "master"
+  - "dev & master"
 install:
   - npm ci
 script:
