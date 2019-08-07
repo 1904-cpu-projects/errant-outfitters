@@ -9,7 +9,7 @@ const Transaction = require("./models/Transaction");
 const User = require("./models/User");
 
 //ASSOCIATIONS
-Guest.hasMany(Transaction);
+//Guest.hasMany(Transaction);
 //Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
@@ -17,7 +17,8 @@ Product.hasMany(Transaction);
 User.hasMany(Review);
 User.hasMany(Transaction);
 Review.belongsTo(Product);
-User.hasMany(Transaction);
+Cart.belongsTo(Product);
+Cart.belongsTo(User);
 
 //EXPORT
 module.exports = {
