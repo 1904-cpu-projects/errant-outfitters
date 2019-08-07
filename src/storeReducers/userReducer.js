@@ -20,7 +20,7 @@ export const loadUser = (user) => (
 // helper function that gets products based on productsReducer
 export const checkSessionLogin = async () => {
   try{
-    const result = await axios.get('/api/checkLoggedIn');
+    const result = await axios.get('/api/login/checkLoggedIn');
     store.dispatch(loadUser(result.data));
   }
   catch(e){

@@ -1,6 +1,21 @@
 const router = require("express").Router();
 const { Cart, Product, User } = require("../db/index.js");
 
+// Helper function to determine guest or user status
+// sends back object with {memberStatus, memberId}
+function determineUser(sessionID, session) {
+  const result = {};
+  if(session.userId) {
+    result.memberStatus = 'user';
+    result.memberId = session.userId;
+  }
+  else {
+    result.memberStatus = 'guest';
+    result.memberId = sessionID;
+  }
+  return result;
+}
+
 // This will send to the client all items in user cart as a list
 // We are relying on the session cookie to supply us with the relevant
 // information though. 
@@ -72,18 +87,3 @@ router.delete("/deleteCart", async (req, res, next) => {
 });
 
 module.exports = router;
-
-// Helper function to determine guest or user status
-// sends back object with {memberStatus, memberId}
-function determineUser(sessionID, session) {
-  const result = {};
-  if(session.userId) {
-    result.memberStatus = 'user';
-    result.memberId = session.userId;
-  }
-  else {
-    result.memberStatus = 'guest';
-    result.memberId = sessionID;
-  }
-  return result;
-}
