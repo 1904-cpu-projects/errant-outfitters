@@ -14,12 +14,15 @@ Guest.hasMany(Transaction);
 Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
-//Product.hasMany(Cart);        // This line is the problem
-Product.belongsTo(Cart);        // I think this is right, Cart should have productId?
-Review.belongsTo(Product);
-User.hasMany(Transaction);
-User.hasMany(Cart);
+
+Product.belongsTo(Cart);
 User.hasMany(Review);
+User.hasMany(Transaction);
+Review.belongsTo(Product);
+// Cart.belongsTo(Product);
+Cart.belongsTo(User);
+
+
 
 // These are the changes I made to the associations
 // which does cause our seed.js to fail. Need to maybe
@@ -34,6 +37,7 @@ User.hasMany(Review);
 // Review.belongsTo(Product);
 // Cart.belongsTo(Product);
 // Cart.belongsTo(User);
+
 
 //EXPORT
 module.exports = {

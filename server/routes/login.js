@@ -7,25 +7,26 @@ const { User } = require("../db/index.js");
 // It will also send the admin flag if the user is an admin, normally set null
 // This will also set req.session.userId which would qualify as the user is logged in
 // on a client browser inital load of the landing page.
-router.post('/login', async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
+  console.log(req.body);
   try {
-    const user = await User.findOne({where: {email: req.body.email}});
-    if(user && User.verifyPassword(user, req.body.password)) {
+    const user = await User.findOne({ where: { email: req.body.email } });
+    if (user && User.verifyPassword(user, req.body.password)) {
       req.session.userId = user.id;
-      res.status(202).send({ isAdmin: user.isAdmin,
-			     id: user.id,
-			     firstName: user.firstName,
-			     lastName: user.LastName});
-    }
-    else {
+      res.status(202).send({
+        isAdmin: user.isAdmin,
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName
+      });
+    } else {
       // User password bad
       // We should probably have a number of login attempts set on req.session
       // so that a suspected brute force hacker can not keep spamming login request
       // Maybe set time limit to retry to like 3 min or so?
       res.status(404).send();
     }
-  }
-  catch(e) {
+  } catch (e) {
     // User not found by email
     // I'm not sure if we should qualify this as a login attempt, but nothing
     // should be set for now.
@@ -39,7 +40,7 @@ router.post('/login', async (req, res, next) => {
 // the only means by which this route can be accessed is through the "logout" button
 // Though this is not true. So maybe more qualification needs to be checked, but for
 // now I think this suffices
-router.get('/logout', (req, res, next) => {
+router.get("/logout", (req, res, next) => {
   req.session.destroy();
   res.status(202).send();
 });
@@ -47,21 +48,21 @@ router.get('/logout', (req, res, next) => {
 // This is for initial load of page in the brower by a client. If req.session.userId
 // exists, we just assume the user is qualified as logged in and send the relevant
 // information.
-router.get('/checkLoggedIn', async (req, res, next) => {
+router.get("/checkLoggedIn", async (req, res, next) => {
   console.log(req.session);
-  if(req.session.userId) {
+  if (req.session.userId) {
     try {
       const user = await User.findByPk(req.session.userId);
-      res.status(202).send({ isAdmin: user.isAdmin,
-			     id: user.id,
-			     firstName: user.firstName,
-			     lastName: user.LastName});
-    }
-    catch(e) {
+      res.status(202).send({
+        isAdmin: user.isAdmin,
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.LastName
+      });
+    } catch (e) {
       res.status(404).send();
     }
-  }
-  else res.send();
+  } else res.send();
 });
 
 module.exports = router;

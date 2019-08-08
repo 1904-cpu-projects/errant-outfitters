@@ -15,6 +15,15 @@ export const loadUser = user => ({
   user
 });
 
+export const loginUser = async (email, password) => {
+  try {
+    const response = await axios.post("/api/login/login", { email, password });
+    store.dispatch(loadUser(response.data));
+  } catch (e) {
+    console.log("something did not go right");
+  }
+};
+
 // helper function that gets products based on productsReducer
 export const checkSessionLogin = async () => {
   try {
