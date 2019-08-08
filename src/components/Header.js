@@ -9,10 +9,12 @@ import { UserHeader } from "./UserHeader";
 function Header({ user, cart }) {
   return (
     <div className="header">
-      <img src="/img/eoLogo.jpeg" />
+      <a href="/">
+        <img src="/img/eoLogo.jpeg" />
+      </a>
       <h1>Errant Outfitters Adventure Shop (This is a stub)</h1>
       <CartHeader numberItems={0} />
-      <UserHeader user={user} />
+      <UserHeader user={user} cart={cart} />
     </div>
   );
 }

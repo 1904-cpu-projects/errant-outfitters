@@ -1,5 +1,7 @@
 import React from "react";
 import { loginUser } from "../storeReducers/userReducer";
+import axios from "axios";
+
 import store from "../store";
 
 function handleLogin(ev) {
@@ -9,8 +11,14 @@ function handleLogin(ev) {
   loginUser(email, password);
 }
 
+function handleLogout(ev) {
+  ev.preventDefault();
+  axios.get("/api/login/logout");
+}
+
 export function UserHeader({ user }) {
   const checkUser = user ? user.firstName : "guest";
+
   return (
     <div>
       {" "}
@@ -20,10 +28,18 @@ export function UserHeader({ user }) {
       </a>
       <form onSubmit={handleLogin}>
         <label htmlFor="email">Email: </label>
-        <input type="text" name="email" placeholder="class@errant.com" />
+        <input
+          type="email"
+          name="email"
+          placeholder="test@test.test"
+          required
+        />
         <label htmlFor="password">Password: </label>
-        <input type="password" name="password" />
+        <input type="password" name="password" required />
         <button>Login</button>
+      </form>
+      <form onSubmit={handleLogout}>
+        <button>Logout</button>
       </form>
     </div>
   );
