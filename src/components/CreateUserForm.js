@@ -55,15 +55,15 @@ export class CreateUserForm extends React.Component {
             type="text"
             onChange={this.onHandle}
             name="class"
-            placeholder="warrior, mage, or rouge"
+            placeholder="warrior, mage, or rouge (exact, case sensitive)"
             value={this.state.class}
           />
           <label htmlFor="email">Email: </label>
           <input
-            type="text"
+            type="email"
             onChange={this.onHandle}
             name="email"
-            placeholder="Example format: class@errant.com"
+            placeholder="user@errant.com"
             value={this.state.email}
           />
           <label htmlFor="password">Password: </label>
