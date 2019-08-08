@@ -48,6 +48,7 @@ router.get('/logout', (req, res, next) => {
 // exists, we just assume the user is qualified as logged in and send the relevant
 // information.
 router.get('/checkLoggedIn', async (req, res, next) => {
+  console.log(req.session);
   if(req.session.userId) {
     try {
       const user = await User.findByPk(req.session.userId);

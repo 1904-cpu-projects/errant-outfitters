@@ -7,7 +7,7 @@ import MainView from "./MenuBar";
 function Products( {products} ) {
   //function to make tiles from SinlgleProduct component
   const tileProducts = products.productList.map((p) => {
-    return(<SingleProduct key={p.id} product={p}/>)
+    return(<SingleProduct key={p.id} product={p}/>);
   });
   return (
   <div className='products-list'>
@@ -20,4 +20,4 @@ const mapStateToProps = state => ({
   products: state.products
 });
 
-export default connect(mapStateToProps)(Products)
+export default connect(mapStateToProps)(Products);

@@ -144,6 +144,7 @@ describe("GET and POST review routes", () => {
 });
 
 afterAll(() => db.sync());
+
 // describe("Delete and PUT review routes", () => {
 //   let betty;
 //   beforeAll(async () => {

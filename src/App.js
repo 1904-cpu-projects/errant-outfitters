@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 
 import store from "./store";
 import { getProducts } from "./storeReducers/productsReducer";
+import { checkSessionLogin } from "./storeReducers/userReducer";
 import { CreateUserForm } from "./components/CreateUserForm";
 import { Home } from "./components/Home";
 import Header from "./components/Header";
@@ -25,6 +26,8 @@ class App extends React.Component {
 
   async componentDidMount() {
     await getProducts();
+    await checkSessionLogin();
+    console.log(store.getStore());
     this.setState({ loading: false });
   }
 

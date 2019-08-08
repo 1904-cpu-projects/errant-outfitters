@@ -5,9 +5,9 @@ import MenuBar from "./MenuBar";
 
 export function Home () {
   return (
-    <div className='mainview'>
-      <Products />
+    <div className='main-view'>
       <MenuBar />
+      <Products />
     </div>
   );
 }
