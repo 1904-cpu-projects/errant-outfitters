@@ -3,7 +3,7 @@ import { singleReviewThunk } from "../actions/reviewActions";
 import { connect } from "react-redux";
 
 const SingleReview = props => {
-  return <div />;
+  return <div>dont you forget about me</div>;
 };
 
 const mapStateToProps = state => ({ review: state.review });
