@@ -9,7 +9,6 @@ import { CreateUserForm } from "./components/CreateUserForm";
 import CreateReview from "./components/CreateReview";
 
 import { Home } from "./components/Home";
-import { CreateUserForm } from "./components/CreateUserForm";
 import Header from "./components/Header";
 import DetailProduct from "./components/DetailedProduct";
 
@@ -40,7 +39,10 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/CreateUserForm" component={CreateUserForm} />
           <Route path="/user/CreateReview" component={CreateReview} />
-	        <Route path="/products/:id" render={({ match }) => <DetailProduct match={match}/> } />
+          <Route
+            path="/products/:id"
+            render={({ match }) => <DetailProduct match={match} />}
+          />
         </Router>
       </Provider>
     );
