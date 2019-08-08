@@ -37,11 +37,18 @@ router.post("/", async (req, res, next) => {
   try {
     const authorId = await User.findOne({
       where: {
-        firstName: req.body.author
+        email: req.body.email
       }
     });
-    const newReview = await Review.create({ ...req.body, userId: authorId.id });
-    res.status(201).send(newReview);
+    if (!authorId) {
+      res.status(401).send("Please sign in with a valid email");
+    } else {
+      const newReview = await Review.create({
+        ...req.body,
+        userId: authorId.id
+      });
+      res.status(201).send(newReview);
+    }
   } catch (e) {
     next(e);
   }

@@ -7,7 +7,7 @@ class CreateReview extends React.Component {
     super();
     this.state = {
       title: "",
-      author: "", //make the default author the first name of the user
+      email: "", //make the default author the emal of the user
       body: ""
     };
     this.onHandle = this.onHandle.bind(this);
@@ -38,11 +38,11 @@ class CreateReview extends React.Component {
             onChange={this.onHandle}
           />
 
-          <label htmlFor="author">Author: </label>
+          <label htmlFor="email">Email: </label>
           <input
-            name="author"
-            type="text"
-            value={this.state.author}
+            name="email"
+            type="email"
+            value={this.state.email}
             onChange={this.onHandle}
           />
           <label htmlFor="body">Please enter your review: </label>
