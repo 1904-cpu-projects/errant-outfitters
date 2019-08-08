@@ -18,13 +18,13 @@ describe("GET and POST review routes", () => {
     const response = await request(app)
       .post("/api/reviews")
       .send({
-        title: "Cras non efficitur ipsum",
-        author: "Betty",
+        title: "This is Betty",
+        email: "boop@acme.com",
         body:
           "Donec magna ex, iaculis ut augue sed, aliquet aliquam tellus. Mauris dolor lectus, venenatis non ultrices ut, cursus non diam. "
       });
     expect(response.status).toEqual(201);
-    expect(response.body.title).toBe("Cras non efficitur ipsum");
+    expect(response.body.title).toBe("This is Betty");
     done();
   });
 });
@@ -35,7 +35,7 @@ describe("Delete and PUT review routes", () => {
   beforeAll(async () => {
     bettyReview = await Review.findOne({
       where: {
-        author: "Betty"
+        email: "boop@acme.com"
       }
     });
   });
