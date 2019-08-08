@@ -16,7 +16,6 @@ const cartSeed = [
   { memberStatus: "user", quantity: 100 },
   { memberStatus: "guest", quantity: 2 }
 ];
-const guestSeed = [];
 
 const reviews = [
   {
@@ -129,6 +128,8 @@ const products = [
   }
 ];
 
+const guestSeed = [];
+
 const transactionSeed = [
   { quantity: 1, totalCost: 1 },
   { quantity: 1, totalCost: 1 },
@@ -173,15 +174,13 @@ const syncAndSeed = async () => {
     await cartSeed.map(item => {
       Cart.create(item);
     });
-    await guestSeed.map(item => {
-      Guest.create(item);
-    });
+
     await transactionSeed.map(item => {
       Transaction.create(item);
     });
-    await userSeed.map(item => {
-      User.create(item);
-    });
+    // await userSeed.map(item => {
+    //   User.create(item);
+    // });
 
     // We need one more user whos id we can count on for login/cart information
     const fixedUser = await User.create({
@@ -227,6 +226,21 @@ const syncAndSeed = async () => {
     ] = await Promise.all(
       products.map(product => Product.create({ ...product }))
     );
+
+    const [user1, user2, user3] = await Promise.all(
+      userSeed.map(user => User.create({ ...user }))
+    );
+
+    review1.userId = user1.id;
+    review2.userId = user1.id;
+    review3.userId = user1.id;
+    review4.userId = user2.id;
+    review5.userId = user2.id;
+    review6.userId = user2.id;
+    review7.userId = user3.id;
+    review8.userId = user3.id;
+    review9.userId = user3.id;
+    review10.userId = user3.id;
 
     review1.productId = product1.id;
     review2.productId = product2.id;
