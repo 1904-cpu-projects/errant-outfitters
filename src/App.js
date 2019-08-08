@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { getProducts } from "./storeReducers/productsReducer";
 import { checkSessionLogin } from "./storeReducers/userReducer";
+import { CreateUserForm } from "./components/CreateUserForm";
+import CreateReview from "./components/CreateReview";
 
 import { Home } from "./components/Home";
 import { CreateUserForm } from "./components/CreateUserForm";
@@ -37,7 +39,8 @@ class App extends React.Component {
         <Router>
           <Route exact path="/" component={Home} />
           <Route exact path="/CreateUserForm" component={CreateUserForm} />
-	  <Route path="/products/:id" render={({ match }) => <DetailProduct match={match}/> } />
+          <Route path="/user/CreateReview" component={CreateReview} />
+	        <Route path="/products/:id" render={({ match }) => <DetailProduct match={match}/> } />
         </Router>
       </Provider>
     );
