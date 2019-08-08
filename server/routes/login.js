@@ -41,8 +41,13 @@ router.post("/login", async (req, res, next) => {
 // Though this is not true. So maybe more qualification needs to be checked, but for
 // now I think this suffices
 router.get("/logout", (req, res, next) => {
-  req.session.destroy();
-  res.status(202).send();
+  try {
+    req.session.destroy();
+    res.status(202).send();
+  } catch (e) {
+    console.log(e);
+    res.status(500).send();
+  }
 });
 
 // This is for initial load of page in the brower by a client. If req.session.userId
