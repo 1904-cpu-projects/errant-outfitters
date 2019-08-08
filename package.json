@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run webpack",
+    "start": "node server/db/seed.js & node server/index.js",
     "webpack": "webpack",
     "webpack:dev": "npm run webpack -- --watch --mode=development",
     "start:dev": "npm run webpack:dev & nodemon server/index.js --ignore public --ignore src",
@@ -43,7 +44,6 @@
     "babel-loader": "^8.0.6",
     "dotenv": "^8.0.0",
     "jest": "^24.8.0",
-    "morgan": "^1.9.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -58,6 +58,7 @@
   "dependencies": {
     "dotenv": "^8.0.0",
     "connect-session-sequelize": "^6.0.0",
+    "morgan": "^1.9.1",
     "css-loader": "^3.0.0",
     "express": "^4.17.1",
     "express-session": "^1.16.2",

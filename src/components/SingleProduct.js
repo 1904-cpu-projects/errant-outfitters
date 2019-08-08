@@ -11,7 +11,7 @@ export function SingleProduct( {product} ) {
       <img className='product-image' src={product.image} alt="Product Image"/>
       <div>
         <h3><b> {product.name} </b></h3>
-	<p> {product.description.slice(0,50)+'...'} </p>
+        <p> {product.description.slice(0,50)+'...'} </p>
       </div>
       <h4> In Stock: {stocked} </h4>
       <Link to={`/products/${product.id}`}>Details!!!</Link>
