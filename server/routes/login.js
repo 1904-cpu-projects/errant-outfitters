@@ -8,7 +8,6 @@ const { User } = require("../db/index.js");
 // This will also set req.session.userId which would qualify as the user is logged in
 // on a client browser inital load of the landing page.
 router.post("/login", async (req, res, next) => {
-  console.log(req.body);
   try {
     const user = await User.findOne({ where: { email: req.body.email } });
     if (user && User.verifyPassword(user, req.body.password)) {
@@ -54,7 +53,6 @@ router.get("/logout", (req, res, next) => {
 // exists, we just assume the user is qualified as logged in and send the relevant
 // information.
 router.get("/checkLoggedIn", async (req, res, next) => {
-  console.log(req.session);
   if (req.session.userId) {
     try {
       const user = await User.findByPk(req.session.userId);
@@ -62,7 +60,7 @@ router.get("/checkLoggedIn", async (req, res, next) => {
         isAdmin: user.isAdmin,
         id: user.id,
         firstName: user.firstName,
-        lastName: user.LastName
+        lastName: user.lastName
       });
     } catch (e) {
       res.status(404).send();

@@ -1,5 +1,5 @@
 import React from "react";
-import { loginUser } from "../storeReducers/userReducer";
+import { loginUser, logoutUser } from "../storeReducers/userReducer";
 import axios from "axios";
 
 import store from "../store";
@@ -13,34 +13,43 @@ function handleLogin(ev) {
 
 function handleLogout(ev) {
   ev.preventDefault();
-  axios.get("/api/login/logout");
+  logoutUser();
 }
 
 export function UserHeader({ user }) {
-  const checkUser = user ? user.firstName : "guest";
+  if(user.id === undefined) {
+    return (
+      <div>
+	{" "}
+	Hello, Guest{" "}
+	<a href="/#/CreateUserForm">
+          <button>Create User</button>
+	</a>
+	<form onSubmit={handleLogin}>
+          <label htmlFor="email">Email: </label>
+          <input
+	    type="email"
+	    name="email"
+	    placeholder="test@test.test"
+	    required
+            />
+          <label htmlFor="password">Password: </label>
+          <input type="password" name="password" required />
+          <button>Login</button>
+	</form>
 
-  return (
-    <div>
-      {" "}
-      Hello, {checkUser}{" "}
-      <a href="/#/CreateUserForm">
-        <button>Create User</button>
-      </a>
-      <form onSubmit={handleLogin}>
-        <label htmlFor="email">Email: </label>
-        <input
-          type="email"
-          name="email"
-          placeholder="test@test.test"
-          required
-        />
-        <label htmlFor="password">Password: </label>
-        <input type="password" name="password" required />
-        <button>Login</button>
-      </form>
-      <form onSubmit={handleLogout}>
-        <button>Logout</button>
-      </form>
-    </div>
-  );
+      </div>
+    );
+  }
+  else {
+    return (
+      <div>
+	{" "}
+	Hello, {user.firstName} {user.lastName}{" "}	
+	<form onSubmit={handleLogout}>
+          <button>Logout</button>
+	</form>
+      </div>
+    );
+  }
 }
