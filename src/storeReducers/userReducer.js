@@ -18,6 +18,7 @@ export const loadUser = user => ({
 export const loginUser = async (email, password) => {
   try {
     const response = await axios.post("/api/login/login", { email, password });
+    console.log(response.data);
     store.dispatch(loadUser(response.data));
   } catch (e) {
     console.log("something did not go right");
@@ -41,7 +42,7 @@ const init = {
 
 // And of course the reducer
 export default (user = init, action) => {
-  const newUser = { ...user };
+  let newUser = { ...user };
   switch (action.type) {
     case SET_USER:
       newUser = { ...action.user };

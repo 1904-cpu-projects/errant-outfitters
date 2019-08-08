@@ -16,7 +16,8 @@ import userReducer from "./storeReducers/userReducer";
 // call
 const reducer = combineReducers({
   products: productReducer,
-  reviews: reveiwReducer
+  reviews: reveiwReducer,
+  user: userReducer,
 });
 
 export default createStore(reducer, applyMiddleware(thunkMiddleware));
