@@ -13,7 +13,7 @@ export function SingleProduct({ product }) {
   return (
     <div key={product.id} className="product-card">
       <img className="product-image" src={product.image} alt="Product Image" />
-      <div>
+      <div className="product-container">
         <h3><b> {product.name} </b></h3>
         <p> {product.description.slice(0,50)+'...'} </p>
       </div>
