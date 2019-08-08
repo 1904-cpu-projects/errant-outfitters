@@ -13,8 +13,6 @@ class Reviews extends React.Component {
       item => item.productId === this.props.productId
     );
     //reviews need to be filtered based on the product id
-    console.log("REVIEWS", this.props);
-    console.log("FILTERED reviews", filteredReviews);
     return (
       <div>
         <footer>

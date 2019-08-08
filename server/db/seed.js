@@ -129,27 +129,6 @@ const products = [
   }
 ];
 
-// const [review1, review2, review3, review4, review5] = await Promise.all(
-//   reviews.map(review => Review.create({ review }))
-// );
-
-// const [product1, product2, product3, product4, product5] = await Promise.all(
-//   products
-// ).map(product => Product.create({ product }));
-
-// review1.productId = product1.id;
-// review2.productId = product1.id;
-// review3.productId = product2.id;
-// review4.productId = product2.id;
-// review5.productId = product3.id;
-// await Promise.all([
-//   review1.save(),
-//   review2.save(),
-//   review3.save(),
-//   review4.save(),
-//   review5.save()
-// ]);
-
 const transactionSeed = [
   { quantity: 1, totalCost: 1 },
   { quantity: 1, totalCost: 1 },
