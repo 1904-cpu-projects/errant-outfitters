@@ -4,10 +4,8 @@ import store from "../store";
 
 function handleLogin(ev) {
   ev.preventDefault();
-  // console.log("we called this function");
   const email = ev.target[0].value;
   const password = ev.target[1].value;
-  // console.log("email and pass", email, " ", password);
   loginUser(email, password);
 }
 
@@ -22,20 +20,9 @@ export function UserHeader({ user }) {
       </a>
       <form onSubmit={handleLogin}>
         <label htmlFor="email">Email: </label>
-        <input
-          type="text"
-          // onChange={this.onHandle}
-          name="email"
-          placeholder="class@errant.com"
-          // value={this.state.email}
-        />
+        <input type="text" name="email" placeholder="class@errant.com" />
         <label htmlFor="password">Password: </label>
-        <input
-          type="password"
-          // onChange={this.onHandle}
-          name="password"
-          // value={this.state.password}
-        />
+        <input type="password" name="password" />
         <button>Login</button>
       </form>
     </div>
