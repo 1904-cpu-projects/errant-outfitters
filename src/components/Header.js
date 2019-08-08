@@ -6,25 +6,26 @@ import { connect } from "react-redux";
 import { CartHeader } from "./CartHeader";
 import { UserHeader } from "./UserHeader";
 
-export default function Header() {
+function Header({ user, cart }) {
   return (
-    <div className='header'>
-      <img src='/img/eoLogo.jpeg' />
+    <div className="header">
+      <a href="/">
+        <img src="/img/eoLogo.jpeg" />
+      </a>
       <h1>Errant Outfitters Adventure Shop (This is a stub)</h1>
-      <CartHeader numberItems={0}/>
-      <UserHeader />
+      <CartHeader numberItems={0} />
+      <UserHeader user={user} cart={cart} />
     </div>
   );
 }
-
 
 // For the moment this is what I can think of
 // May add or take away as needed
 
 // Uncomment when redux stores are made
-// const mapStateToProps = state => ({
-//   user: state.user,
-//   cart: state.cart
-// });
+const mapStateToProps = state => ({
+  user: state.user,
+  cart: state.cart
+});
 
-// export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Header);

@@ -28,13 +28,33 @@ const syncAndSeed = async () => {
   await userSeed.map(item => {
     User.create(item);
   });
+
+  // We need one more user whos id we can count on for login/cart information
+  const fixedUser = await User.create({
+    firstName: "Mr",
+    lastName: "Immutable",
+    password: "test",
+    class: "mage",
+    email: "test@test.test" });
+  const fixedProduct = await Product.create({ cost: 1,
+					      catagory: 'armor',
+					      description: 'Probably crap',
+					      inStock: true,
+					      name: 'Bologna',
+					      stock: 99999
+					    });
+  const fixedCart = await Cart.create({ productId: fixedProduct.id,
+					memberId: fixedUser.id,
+					quantity: 10,
+					memberStatus: 'user'
+				      });
 };
 //SEEDS
 const cartSeed = [
-  { memberStatus: "member", quantity: 2 },
-  { memberStatus: "member", quantity: 1 },
-  { memberStatus: "member", quantity: 4 },
-  { memberStatus: "member", quantity: 100 },
+  { memberStatus: "user", quantity: 2 },
+  { memberStatus: "user", quantity: 1 },
+  { memberStatus: "user", quantity: 4 },
+  { memberStatus: "user", quantity: 100 },
   { memberStatus: "guest", quantity: 2 }
 ];
 const guestSeed = [];
