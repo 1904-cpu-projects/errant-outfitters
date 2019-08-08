@@ -22,10 +22,6 @@ export const loginUser = async (email, password) => {
   } catch (e) {
     console.log("something did not go right");
   }
-  // isAdmin
-  // id
-  // firstname
-  // lastname
 };
 
 // helper function that gets products based on productsReducer
