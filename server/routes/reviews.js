@@ -40,15 +40,14 @@ router.post("/", async (req, res, next) => {
         email: req.body.email
       }
     });
-    if (!authorId) {
-      res.status(401).send("Please sign in with a valid email");
-    } else {
-      const newReview = await Review.create({
-        ...req.body,
-        userId: authorId.id
-      });
-      res.status(201).send(newReview);
-    }
+    // if (!authorId) {
+    //   res.status(401).send("Please sign in with a valid email");
+    // }
+    const newReview = await Review.create({
+      ...req.body,
+      userId: authorId.id
+    });
+    res.status(201).send(newReview);
   } catch (e) {
     next(e);
   }
