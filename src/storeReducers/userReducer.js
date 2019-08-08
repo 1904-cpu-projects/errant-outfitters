@@ -5,6 +5,7 @@ import store from "../store";
 
 // Const defines here
 export const SET_USER = "SET_USER";
+export const REMOVE_USER = "REMOVE_USER";
 
 // Actions
 
@@ -15,13 +16,26 @@ export const loadUser = user => ({
   user
 });
 
+export const removeUser = () => ({
+  type: REMOVE_USER
+});
+
 export const loginUser = async (email, password) => {
   try {
     const response = await axios.post("/api/login/login", { email, password });
-    console.log(response.data);
     store.dispatch(loadUser(response.data));
   } catch (e) {
     console.log("something did not go right");
+  }
+};
+
+export const logoutUser = async () => {
+  try{
+    const response = axios.get("/api/login/logout");
+    store.dispatch(removeUser());
+  }
+  catch(e){
+    console.log("Logout should never fail");
   }
 };
 
@@ -36,7 +50,7 @@ export const checkSessionLogin = async () => {
 };
 
 const init = {
-  userId: "guest",
+  id: undefined,
   isAdmin: false
 };
 
@@ -44,8 +58,12 @@ const init = {
 export default (user = init, action) => {
   let newUser = { ...user };
   switch (action.type) {
-    case SET_USER:
-      newUser = { ...action.user };
+  case SET_USER:
+    newUser = { ...action.user };
+    break;
+  case REMOVE_USER:
+    newUser = { id: undefined, isAdmin: false };
+    break;
   }
   return newUser;
 };
