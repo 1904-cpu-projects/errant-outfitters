@@ -9,16 +9,31 @@ const Transaction = require("./models/Transaction");
 const User = require("./models/User");
 
 //ASSOCIATIONS
-//Guest.hasMany(Transaction);
-//Guest.hasMany(Cart);
+// These are the existing associations where our seed.js wont fail
+Guest.hasMany(Transaction);
+Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
-//Product.hasMany(Cart);
-User.hasMany(Review);
-User.hasMany(Transaction);
+//Product.hasMany(Cart);        // This line is the problem
+Product.belongsTo(Cart);        // I think this is right, Cart should have productId?
 Review.belongsTo(Product);
-Cart.belongsTo(Product);
-Cart.belongsTo(User);
+User.hasMany(Transaction);
+User.hasMany(Cart);
+User.hasMany(Review);
+
+// These are the changes I made to the associations
+// which does cause our seed.js to fail. Need to maybe
+// work on this. 
+// //Guest.hasMany(Transaction);
+// //Guest.hasMany(Cart);
+// Product.hasMany(Review);
+// Product.hasMany(Transaction);
+// //Product.hasMany(Cart);
+// User.hasMany(Review);
+// User.hasMany(Transaction);
+// Review.belongsTo(Product);
+// Cart.belongsTo(Product);
+// Cart.belongsTo(User);
 
 //EXPORT
 module.exports = {
