@@ -7,15 +7,16 @@ import { getProducts } from "./storeReducers/productsReducer";
 import { checkSessionLogin } from "./storeReducers/userReducer";
 import { CreateUserForm } from "./components/CreateUserForm";
 import CreateReview from "./components/CreateReview";
+
 import { Home } from "./components/Home";
+import { CreateUserForm } from "./components/CreateUserForm";
 import Header from "./components/Header";
-//
+import DetailProduct from "./components/DetailedProduct";
+
 /* I think its reasonable to make this thing be the main provider of redux store
  * And also the thing that routes to other places
  * Lets see how this works!
  */
-
-//just a test
 
 class App extends React.Component {
   constructor() {
@@ -28,7 +29,6 @@ class App extends React.Component {
   async componentDidMount() {
     await getProducts();
     await checkSessionLogin();
-    console.log(store.getStore());
     this.setState({ loading: false });
   }
 
@@ -40,6 +40,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/CreateUserForm" component={CreateUserForm} />
           <Route path="/user/CreateReview" component={CreateReview} />
+	        <Route path="/products/:id" render={({ match }) => <DetailProduct match={match}/> } />
         </Router>
       </Provider>
     );

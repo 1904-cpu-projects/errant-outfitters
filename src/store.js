@@ -4,6 +4,8 @@ const thunkMiddleware = require("redux-thunk").default;
 // Here are where we dump the reducers in!
 import productReducer from "./storeReducers/productsReducer";
 import reveiwReducer from "./storeReducers/reviewReducer";
+import userReducer from "./storeReducers/userReducer";
+
 
 // Const Defines!!!
 /* There are No Defines!!! Only Zule!!! */
