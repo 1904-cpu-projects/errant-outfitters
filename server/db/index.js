@@ -13,11 +13,11 @@ const User = require("./models/User");
 //Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
-//Product.hasMany(Cart);
+Product.belongsTo(Cart);
 User.hasMany(Review);
 User.hasMany(Transaction);
 Review.belongsTo(Product);
-Cart.belongsTo(Product);
+// Cart.belongsTo(Product);
 Cart.belongsTo(User);
 
 //EXPORT

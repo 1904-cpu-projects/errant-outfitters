@@ -27,7 +27,6 @@ class App extends React.Component {
   async componentDidMount() {
     await getProducts();
     await checkSessionLogin();
-    console.log(store.getStore());
     this.setState({ loading: false });
   }
 
