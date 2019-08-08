@@ -1,22 +1,22 @@
-const Sequelize = require('sequelize');
-const db = require('../db');
+const Sequelize = require("sequelize");
+const db = require("../db");
 //MODEL
-const Product = db.define('product', {
+const Product = db.define("product", {
   cost: {
     type: Sequelize.FLOAT
   },
   catagory: {
-    type: Sequelize.ENUM('armor', 'weapon', 'potion'),
+    type: Sequelize.ENUM("armor", "weapon", "potion")
   },
   description: {
     type: Sequelize.TEXT
   },
   image: {
     type: Sequelize.STRING,
-    defaultValue: './img/products/default_Product.jpg'
+    defaultValue: "./img/products/default_Product.jpg"
   },
   id: {
-  defaultValue: Sequelize.UUIDV4,
+    defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
     type: Sequelize.UUID
   },

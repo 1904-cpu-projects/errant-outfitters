@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import { postReview } from "../actions/reviewActions";
 
-class reviewForm extends React.Component {
+class CreateReview extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -9,6 +11,7 @@ class reviewForm extends React.Component {
       body: ""
     };
     this.onHandle = this.onHandle.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onHandle(event) {
@@ -17,11 +20,16 @@ class reviewForm extends React.Component {
     });
   }
 
+  onSubmit(event) {
+    event.preventDefault();
+    this.props.postReview(this.state);
+  }
+
   render() {
-    console.log("REVIEW FORM", this.state);
+    console.log("REVIEW FORM", this.props);
     return (
       <div>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <label htmlFor="title">Title: </label>
           <input
             name="title"
@@ -44,10 +52,20 @@ class reviewForm extends React.Component {
             value={this.state.body}
             onChange={this.onHandle}
           />
+          <button type="submit">Submit</button>
         </form>
       </div>
     );
   }
 }
 
-export default reviewForm;
+const mapDispatchToProps = dispatch => {
+  return {
+    postReview: stuff => dispatch(postReview(stuff))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateReview);
