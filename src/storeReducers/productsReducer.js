@@ -4,7 +4,8 @@ import axios from 'axios';
 import store from '../store';
 
 // Const defines here
-export const SET_PRODUCTS = 'SET_PRODUCTS';
+export const SET_PRODUCTS = "SET_PRODUCTS";
+export const SET_DETAIL_PRODUCT = "SET_DETAIL_PRODUCT";
 
 // Actions
 
@@ -16,6 +17,13 @@ export const loadProductsInitial = (list, next) => (
     type: SET_PRODUCTS,
     list,
     next
+  }
+);
+
+export const setDetailProduct = (data) => (
+  {
+    type: SET_DETAIL_PRODUCT,
+    data
   }
 );
 
@@ -34,8 +42,15 @@ export const getProducts = async (next = 0) => {
   }
 };
 
+export const getDetailProduct = (id) => {
+  axios.get(`/api/products/${id}`)
+    .then(result => store.dispatch(setDetailProduct(result.data)))
+    .catch(e => console.log(e));
+};
+
 const init = {
   productList: [],
+  detailProduct: {},
   next: 0
 };
 
@@ -49,6 +64,10 @@ export default (products = init, action) => {
     // This is the initial load, there should be nothing here
     // at this point in time
     newProducts.productList = [...action.list];
+    break;
+  case SET_DETAIL_PRODUCT:
+    newProducts.detailProduct = {...action.data};
+    break;
   }
   return newProducts;
 };

@@ -1,6 +1,16 @@
 const router = require("express").Router();
 const { Product } = require("../db/index.js");
 
+router.get("/:id", async (req, res, next) => {
+  try {
+    const p = await Product.findByPk(req.params.id);
+    res.status(200).send(p);
+  }
+  catch(e) {
+    res.status(404).send("Product missing for some damn reason.");
+  }
+});
+
 router.get("/", async (req, res, next) => {
   try {
     res.status(200).send(await Product.findAll());

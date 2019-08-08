@@ -5,16 +5,16 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { getProducts } from "./storeReducers/productsReducer";
 import { checkSessionLogin } from "./storeReducers/userReducer";
-import { CreateUserForm } from "./components/CreateUserForm";
+
 import { Home } from "./components/Home";
+import { CreateUserForm } from "./components/CreateUserForm";
 import Header from "./components/Header";
-//
+import DetailProduct from "./components/DetailedProduct";
+
 /* I think its reasonable to make this thing be the main provider of redux store
  * And also the thing that routes to other places
  * Lets see how this works!
  */
-
-//just a test
 
 class App extends React.Component {
   constructor() {
@@ -37,6 +37,7 @@ class App extends React.Component {
         <Router>
           <Route exact path="/" component={Home} />
           <Route exact path="/CreateUserForm" component={CreateUserForm} />
+	  <Route path="/products/:id" render={({ match }) => <DetailProduct match={match}/> } />
         </Router>
       </Provider>
     );

@@ -2,7 +2,8 @@ import {applyMiddleware, combineReducers, createStore} from 'redux';
 const thunkMiddleware = require("redux-thunk").default;
 
 // Here are where we dump the reducers in!
-import productReducer from './storeReducers/productsReducer';
+import productReducer from "./storeReducers/productsReducer";
+import userReducer from "./storeReducers/userReducer";
 
 // Const Defines!!!
    /* There are No Defines!!! Only Zule!!! */
