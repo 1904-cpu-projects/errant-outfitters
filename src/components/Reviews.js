@@ -1,6 +1,5 @@
 import React from "react";
 import { listReviews, deleteReview } from "../actions/reviewActions";
-
 import { connect } from "react-redux";
 
 let filteredReviews;
@@ -13,22 +12,17 @@ class Reviews extends React.Component {
 
   render() {
     const { reviews } = this.props.reviews;
-    console.log("PROPS", this.props);
     if (this.props.productId) {
-      console.log("product route");
       filteredReviews = reviews.filter(
         review => review.productId === this.props.productId
       );
 
-      //solmethig wrong with the filtration
+      //solmethig wrong with the filtration - not matching up properly.
     } else if (this.props.user) {
-      console.log("user route");
       filteredReviews = reviews.filter(
         review => review.userId === this.props.user.id
       );
     }
-    console.log("REVEW PROPS", this.props.reviews);
-    console.log("filtered", filteredReviews);
 
     return (
       <div>
@@ -61,7 +55,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     listReviews: () => dispatch(listReviews()),
-    deleteReview: id => dispatch(deleteReview(id))
+    deleteReview: review => dispatch(deleteReview(review))
   };
 };
 
