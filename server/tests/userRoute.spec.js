@@ -1,6 +1,6 @@
 const request = require("supertest");
 const app = require("../server");
-const { User, Product, db } = require("../db/index");
+const { User, db } = require("../db/index");
 
 beforeAll(() => db.sync());
 

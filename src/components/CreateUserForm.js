@@ -15,6 +15,12 @@ export class CreateUserForm extends React.Component {
     this.onHandle = this.onHandle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.create = this.create.bind(this);
+    this.selector = this.selector.bind(this);
+  }
+  selector(event) {
+    this.setState({
+      class: event.target.value
+    });
   }
   onHandle(event) {
     this.setState({
@@ -50,14 +56,21 @@ export class CreateUserForm extends React.Component {
             name="lastName"
             value={this.state.lastName}
           />
-          <label htmlFor="class">Choose a Class: </label>
-          <input
-            type="text"
-            onChange={this.onHandle}
-            name="class"
-            placeholder="warrior, mage, or rouge (exact, case sensitive)"
-            value={this.state.class}
-          />
+          <label htmlFor="class">Class: </label>
+          <select onChange={this.selector}>
+            <option key="0" value="">
+              Choose a Class
+            </option>
+            <option key="1" value="warrior">
+              Warrior
+            </option>
+            <option key="2" value="mage">
+              Mage
+            </option>
+            <option key="3" value="rouge">
+              Rouge
+            </option>
+          </select>
           <label htmlFor="email">Email: </label>
           <input
             type="email"

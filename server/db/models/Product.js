@@ -13,7 +13,7 @@ const Product = db.define("product", {
   },
   image: {
     type: Sequelize.STRING,
-    defaultValue: "/img/products/default_Product.jpg"
+    defaultValue: "/img/products/default-product.jpg"
   },
   id: {
     defaultValue: Sequelize.UUIDV4,
