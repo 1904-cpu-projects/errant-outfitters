@@ -1,38 +1,50 @@
 import React from "react";
-import { listReviews } from "../actions/reviewActions";
+import { listReviews, deleteReview } from "../actions/reviewActions";
+
 import { connect } from "react-redux";
+
+let filteredReviews;
 
 //for this reviews page, we need to properly associate the Product with the reviews
 class Reviews extends React.Component {
   componentDidMount() {
     this.props.listReviews();
   }
+
   render() {
     const { reviews } = this.props.reviews;
-
-    console.log("REVIEWS", this.props.user);
-
-    let filteredReviews;
+    console.log("PROPS", this.props);
     if (this.props.productId) {
+      console.log("product route");
       filteredReviews = reviews.filter(
         review => review.productId === this.props.productId
       );
+
+      //solmethig wrong with the filtration
     } else if (this.props.user) {
+      console.log("user route");
       filteredReviews = reviews.filter(
         review => review.userId === this.props.user.id
       );
     }
-    console.log("FILTERED REVIEWS", filteredReviews);
-    //reviews need to be filtered based on the product id
-    // if (!reviews || !this.props.user) return null;
+    console.log("REVEW PROPS", this.props.reviews);
+    console.log("filtered", filteredReviews);
+
     return (
       <div>
         <footer>
           <div>
-            {filteredReviews.map(i => (
-              <div className="reviewDiv" key={i.id}>
-                <h4>{i.title}</h4>
-                <h5>{i.body}</h5>
+            {filteredReviews.map(review => (
+              <div className="reviewDiv" key={review.id}>
+                <h4>{review.title}</h4>
+                <h5>{review.body}</h5>
+                {this.props.user ? (
+                  <button onClick={() => this.props.deleteReview(review)}>
+                    Delete Review
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
             ))}
           </div>
@@ -48,7 +60,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    listReviews: () => dispatch(listReviews())
+    listReviews: () => dispatch(listReviews()),
+    deleteReview: id => dispatch(deleteReview(id))
   };
 };
 

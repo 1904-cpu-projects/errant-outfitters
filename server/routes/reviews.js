@@ -74,7 +74,7 @@ router.delete("/:id", async (req, res, next) => {
         id: req.params.id
       }
     });
-    res.status(404).send("Review removed");
+    res.status(204).send("Review removed");
   } catch (err) {
     next(err);
   }

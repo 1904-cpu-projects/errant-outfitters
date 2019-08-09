@@ -27,6 +27,7 @@ const reveiwReducer = (state = initialState, action) => {
         )
       };
     case DELETE_REVIEW:
+      console.log("IN THE DELETE STORE");
       return {
         ...state,
         reviews: state.reviews.filter(item => item.id !== action.payload.id)

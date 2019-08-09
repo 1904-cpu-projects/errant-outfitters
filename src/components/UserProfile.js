@@ -5,9 +5,6 @@ import Reviews from "./Reviews";
 class UserProfile extends React.Component {
   render() {
     const { user } = this.props;
-    const { reviews } = this.props;
-    console.log("USER PROFILE", reviews);
-    console.log("USERS ", user);
     return (
       <div>
         <h3>

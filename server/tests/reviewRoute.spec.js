@@ -52,7 +52,7 @@ describe("Delete and PUT review routes", () => {
       `/api/reviews/${bettyReview.id}`
     );
     const noArticle = await request(app).get(`/api/reviews/${bettyReview.id}`);
-    expect(removedArticle.status).toEqual(404);
+    expect(removedArticle.status).toEqual(204);
     expect(noArticle.body.name).toEqual(undefined);
     done();
   });
