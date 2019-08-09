@@ -9,15 +9,25 @@ class Reviews extends React.Component {
   }
   render() {
     const { reviews } = this.props.reviews;
-    const filteredReviews = reviews.filter(
-      item => item.productId === this.props.productId
-    );
-    console.log("REVIEWs", reviews);
+
+    console.log("REVIEWS", this.props.user);
+
+    let filteredReviews;
+    if (this.props.productId) {
+      filteredReviews = reviews.filter(
+        review => review.productId === this.props.productId
+      );
+    } else if (this.props.user) {
+      filteredReviews = reviews.filter(
+        review => review.userId === this.props.user.id
+      );
+    }
+    console.log("FILTERED REVIEWS", filteredReviews);
     //reviews need to be filtered based on the product id
+    // if (!reviews || !this.props.user) return null;
     return (
       <div>
         <footer>
-          <h4>Reviews for the {this.props.product.name}</h4>
           <div>
             {filteredReviews.map(i => (
               <div className="reviewDiv" key={i.id}>

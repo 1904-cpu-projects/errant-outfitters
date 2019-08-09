@@ -4,8 +4,10 @@ import Reviews from "./Reviews";
 
 class UserProfile extends React.Component {
   render() {
-    const { user, reviews } = this.props;
+    const { user } = this.props;
+    const { reviews } = this.props;
     console.log("USER PROFILE", reviews);
+    console.log("USERS ", user);
     return (
       <div>
         <h3>
@@ -18,6 +20,7 @@ class UserProfile extends React.Component {
         </div>
         <div>
           <h1>Authored Reviews</h1>
+          <Reviews user={user} />
         </div>
       </div>
     );

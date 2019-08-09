@@ -24,6 +24,7 @@ function DetailProduct({ detailProduct, id }) {
         <div>{detailProduct.description}</div>
         <div>INSTOCK | {detailProduct.instock ? "YES" : "NO"}</div>
         <footer>
+          <h4>Reviews for the {detailProduct.name}</h4>
           <Reviews product={detailProduct} productId={id} />
         </footer>
       </div>
