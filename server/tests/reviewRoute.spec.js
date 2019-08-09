@@ -2,9 +2,7 @@ const request = require("supertest");
 const app = require("../server");
 const { Review, db } = require("../db/index");
 
-beforeAll(() => {
-  db.sync();
-});
+beforeAll(() => db.sync());
 
 describe("GET and POST review routes", () => {
   it("gets all the current reviews", async done => {
@@ -60,4 +58,4 @@ describe("Delete and PUT review routes", () => {
   });
 });
 
-afterAll(() => db.sync());
+afterAll(() => db.close());
