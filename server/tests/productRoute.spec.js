@@ -1,6 +1,6 @@
 const request = require("supertest");
 const app = require("../server");
-const { User, Product, db } = require("../db/index");
+const { Product, db } = require("../db/index");
 
 beforeAll(() => db.sync());
 
@@ -52,4 +52,4 @@ describe("PUT and DELETE /api/products/:id", () => {
   });
 });
 
-afterAll(() => db.sync());
+afterAll(() => db.close());
