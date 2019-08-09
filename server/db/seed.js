@@ -55,9 +55,6 @@ const syncAndSeed = async () => {
     await transactionSeed.map(item => {
       Transaction.create(item);
     });
-    await users.map(item => {
-      User.create(item);
-    });
 
     // We need one more user whos id we can count on for login/cart information
     const fixedCart = await Cart.create({
