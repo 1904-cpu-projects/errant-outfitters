@@ -56,9 +56,10 @@ export class CreateUserForm extends React.Component {
             name="lastName"
             value={this.state.lastName}
           />
+          <label htmlFor="class">Class: </label>
           <select onChange={this.selector}>
             <option key="0" value="">
-              - Choose a Class -
+              Choose a Class
             </option>
             <option key="1" value="warrior">
               Warrior
