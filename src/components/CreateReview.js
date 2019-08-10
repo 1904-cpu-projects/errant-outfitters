@@ -1,37 +1,37 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { postReview } from '../actions/reviewActions'
+import React from 'react';
+import { connect } from 'react-redux';
+import { postReview } from '../actions/reviewActions';
 
 class CreateReview extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
       title: '',
       body: '',
       productId: '',
-      userId: ''
-    }
-    this.onHandle = this.onHandle.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+      userId: '',
+    };
+    this.onHandle = this.onHandle.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onHandle(event) {
     this.setState({
       [event.target.name]: event.target.value,
       productId: this.props.product.id,
-      userId: this.props.user.id
-    })
+      userId: this.props.user.id,
+    });
   }
 
   onSubmit(event) {
-    event.preventDefault()
-    this.props.postReview(this.state)
+    event.preventDefault();
+    this.props.postReview(this.state);
     this.setState({
       title: '',
       body: '',
       productId: '',
-      userId: ''
-    })
+      userId: '',
+    });
   }
 
   render() {
@@ -55,21 +55,21 @@ class CreateReview extends React.Component {
           <button type="submit">Submit</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user
-})
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    postReview: stuff => dispatch(postReview(stuff))
-  }
-}
+    postReview: (stuff) => dispatch(postReview(stuff)),
+  };
+};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(CreateReview)
+  mapDispatchToProps,
+)(CreateReview);

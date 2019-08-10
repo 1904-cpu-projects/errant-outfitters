@@ -1,15 +1,14 @@
-const router = require("express").Router();
-const { Cart, Product, User } = require("../db/index.js");
+const router = require('express').Router();
+const { Cart, Product, User } = require('../db/index.js');
 
 // Helper function to determine guest or user status
 // sends back object with {memberStatus, memberId}
 function determineUser(sessionID, session) {
   const result = {};
-  if(session.userId) {
+  if (session.userId) {
     result.memberStatus = 'user';
     result.memberId = session.userId;
-  }
-  else {
+  } else {
     result.memberStatus = 'guest';
     result.memberId = sessionID;
   }
@@ -18,18 +17,21 @@ function determineUser(sessionID, session) {
 
 // This will send to the client all items in user cart as a list
 // We are relying on the session cookie to supply us with the relevant
-// information though. 
-router.get("/getCart", async (req, res, next) => {
+// information though.
+router.get('/getCart', async (req, res, next) => {
   const member = determineUser(req.sessionID, req.session);
   // Get all cart rows based on that information and send it
-  try{
-    const userCart = await Cart.findAll({ where: { memberId: member.memberId }});
+  try {
+    const userCart = await Cart.findAll({
+      where: { memberId: member.memberId },
+    });
     // Sends the cart information to client as array
-    res.status(202).send(userCart.map(item => {
-      return {productId: item.productId, quantity: item.quantity};
-    }));
-  }
-  catch(e){
+    res.status(202).send(
+      userCart.map((item) => {
+        return { productId: item.productId, quantity: item.quantity };
+      }),
+    );
+  } catch (e) {
     // for now just log out any error
     // eventually we send the error information
     // to the client and process
@@ -39,53 +41,49 @@ router.get("/getCart", async (req, res, next) => {
 
 // Updates the relevant row in the Cart table based on req.body
 // and result from member
-router.put("/changeCart/:productId", async (req, res, next) => {
+router.put('/changeCart/:productId', async (req, res, next) => {
   const member = determineUser(req.sessionID, req.session);
 
-  try{
-    const product = await Cart.update({ where: { ...member, ...req.body }});
+  try {
+    const product = await Cart.update({ where: { ...member, ...req.body } });
     res.status(202).send(product);
-  }
-  catch(e){
+  } catch (e) {
     // for now just log out any error
     // eventually we send the error information
     // to the client and process
     console.log(e);
-    res.send(400);    
+    res.send(400);
   }
 });
 
-router.post("/createCart", async (req, res, next) => {
+router.post('/createCart', async (req, res, next) => {
   const member = determineUser(req.sessionID, req.session);
-  
-  try{
-    const product = await Cart.create({ ...member,
-					...req.body});
+
+  try {
+    const product = await Cart.create({ ...member, ...req.body });
     console.log(product);
     res.status(201).send();
-  }
-  catch(e){
+  } catch (e) {
     // for now just log out any error
     // eventually we send the error information
     // to the client and process
     console.log(e);
-    res.send(400);    
+    res.send(400);
   }
 });
 
-router.delete("/deleteCart", async (req, res, next) => {
+router.delete('/deleteCart', async (req, res, next) => {
   const member = determineUser(req.session);
 
-  try{
-  const product = await Cart.delete({ where: { ...member, ...req.body}});
-  res.status(202).send();
-  }
-  catch(e){
+  try {
+    const product = await Cart.delete({ where: { ...member, ...req.body } });
+    res.status(202).send();
+  } catch (e) {
     // for now just log out any error
     // eventually we send the error information
     // to the client and process
     console.log(e);
-    res.send(400);    
+    res.send(400);
   }
 });
 

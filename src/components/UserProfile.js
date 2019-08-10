@@ -1,10 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import Reviews from './Reviews'
+import React from 'react';
+import { connect } from 'react-redux';
+import Reviews from './Reviews';
 
 class UserProfile extends React.Component {
   render() {
-    const { user } = this.props
+    const { user } = this.props;
     return (
       <div>
         <h3>
@@ -20,16 +20,16 @@ class UserProfile extends React.Component {
           <Reviews user={user} />
         </div>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.user,
-  reviews: state.reviews
-})
+  reviews: state.reviews,
+});
 
 export default connect(
   mapStateToProps,
-  null
-)(UserProfile)
+  null,
+)(UserProfile);

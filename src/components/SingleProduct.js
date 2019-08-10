@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export function SingleProduct({ product }) {
-  let stocked = 'No'
+  let stocked = 'No';
   if (product.inStock) {
-    stocked = 'Yes'
+    stocked = 'Yes';
   }
 
   return (
@@ -19,5 +19,5 @@ export function SingleProduct({ product }) {
       <h4> In Stock: {stocked} </h4>
       <Link to={`/products/${product.id}`}>Details!!!</Link>
     </div>
-  )
+  );
 }

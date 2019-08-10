@@ -11,15 +11,21 @@
     "start:dev": "npm run webpack:dev & nodemon server/index.js --ignore public --ignore src",
     "test": "node server/db/seed.js & jest",
     "test:watch": "jest --watchAll",
-    "lint": "eslint src",
-    "lint:fix": "eslint --fix src",
-    "prettier": "prettier --write --no-semi --single-quote \"src/**/*.js\""
+    "lint": "eslint src server",
+    "lint:fix": "eslint --fix src server",
+    "prettier": "prettier --write --single-quote \"src/**/*.js\" \"server/**/*.js\" "
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1904-cpu-projects/errant-outfitters.git"
   },
   "keywords": [],
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  },
   "author": "",
   "license": "ISC",
   "babel": {

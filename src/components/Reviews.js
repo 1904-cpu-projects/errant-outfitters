@@ -1,32 +1,32 @@
-import React from 'react'
-import { listReviews, deleteReview } from '../actions/reviewActions'
-import { connect } from 'react-redux'
+import React from 'react';
+import { listReviews, deleteReview } from '../actions/reviewActions';
+import { connect } from 'react-redux';
 
-let filteredReviews
+let filteredReviews;
 
 class Reviews extends React.Component {
   componentDidMount() {
-    this.props.listReviews()
+    this.props.listReviews();
   }
 
   render() {
-    const { reviews } = this.props.reviews
+    const { reviews } = this.props.reviews;
 
     // if (!this.props.user.id === undefined) return null;
     if (this.props.productId) {
       filteredReviews = reviews.filter(
-        review => review.productId === this.props.productId
-      )
+        (review) => review.productId === this.props.productId,
+      );
     } else {
       filteredReviews = reviews.filter(
-        review => review.userId === this.props.user.id
-      )
+        (review) => review.userId === this.props.user.id,
+      );
     }
     return (
       <div>
         <footer>
           <div>
-            {filteredReviews.map(review => (
+            {filteredReviews.map((review) => (
               <div className="reviewDiv" key={review.id}>
                 <h4>{review.title}</h4>
                 <h5>{review.body}</h5>
@@ -45,22 +45,22 @@ class Reviews extends React.Component {
           </div>
         </footer>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({
-  reviews: state.reviews
-})
+const mapStateToProps = (state) => ({
+  reviews: state.reviews,
+});
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     listReviews: () => dispatch(listReviews()),
-    deleteReview: review => dispatch(deleteReview(review))
-  }
-}
+    deleteReview: (review) => dispatch(deleteReview(review)),
+  };
+};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(Reviews)
+  mapDispatchToProps,
+)(Reviews);
