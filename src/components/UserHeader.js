@@ -1,54 +1,58 @@
 import React from "react";
-import { loginUser, logoutUser } from "../storeReducers/userReducer";
 import axios from "axios";
 
-import store from "../store";
+import UserProfile from "./UserProfile";
 
-function handleLogin(ev) {
+import store from "../store";
+import { loginUser, logoutUser } from "../storeReducers/userReducer";
+import { getCart } from "../storeReducers/cartReducer";
+
+async function handleLogin(ev) {
   ev.preventDefault();
   const email = ev.target[0].value;
   const password = ev.target[1].value;
-  loginUser(email, password);
+  await loginUser(email, password);
+  await getCart();
 }
 
-function handleLogout(ev) {
+async function handleLogout(ev) {
   ev.preventDefault();
-  logoutUser();
+  await logoutUser();
+  await getCart();
 }
 
 export function UserHeader({ user }) {
-  if(user.id === undefined) {
+  if (user.id === undefined) {
     return (
       <div>
-	{" "}
-	Hello, Guest{" "}
-	<a href="/#/CreateUserForm">
-          <button>Create User</button>
-	</a>
-	<form onSubmit={handleLogin}>
+        {" "}
+        Hello, Guest{" "}
+        <a href="/#/CreateUserForm">
+          <button>Register</button>
+        </a>
+        <form onSubmit={handleLogin}>
           <label htmlFor="email">Email: </label>
           <input
-	    type="email"
-	    name="email"
-	    placeholder="test@test.test"
-	    required
-            />
+            type="email"
+            name="email"
+            placeholder="test@test.test"
+            required
+          />
           <label htmlFor="password">Password: </label>
           <input type="password" name="password" required />
           <button>Login</button>
-	</form>
-
+        </form>
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <div>
-	{" "}
-	Hello, {user.firstName} {user.lastName}{" "}	
-	<form onSubmit={handleLogout}>
+        {" "}
+        Hello, {user.firstName} {user.lastName}{" "}
+        {user ? <a href="#/user/profile">PROFILE</a> : ""}
+        <form onSubmit={handleLogout}>
           <button>Logout</button>
-	</form>
+        </form>
       </div>
     );
   }

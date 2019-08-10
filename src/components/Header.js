@@ -13,7 +13,7 @@ function Header({ user, cart }) {
         <img src="/img/eoLogo.jpeg" />
       </a>
       <h1>Errant Outfitters Adventure Shop (This is a stub)</h1>
-      <CartHeader numberItems={0} />
+      <CartHeader cart={cart} />
       <UserHeader user={user} cart={cart} />
     </div>
   );

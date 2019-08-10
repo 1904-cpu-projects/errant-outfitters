@@ -7,8 +7,9 @@ class CreateReview extends React.Component {
     super();
     this.state = {
       title: "",
-      email: "", //make the default author the emal of the user
-      body: ""
+      body: "",
+      productId: "",
+      userId: ""
     };
     this.onHandle = this.onHandle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -16,17 +17,24 @@ class CreateReview extends React.Component {
 
   onHandle(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      productId: this.props.product.id,
+      userId: this.props.user.id
     });
   }
 
   onSubmit(event) {
     event.preventDefault();
     this.props.postReview(this.state);
+    this.setState({
+      title: "",
+      body: "",
+      productId: "",
+      userId: ""
+    });
   }
 
   render() {
-    console.log("REVIEW FORM", this.props);
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -35,14 +43,6 @@ class CreateReview extends React.Component {
             name="title"
             value={this.state.title}
             type="text"
-            onChange={this.onHandle}
-          />
-
-          <label htmlFor="email">Email: </label>
-          <input
-            name="email"
-            type="email"
-            value={this.state.email}
             onChange={this.onHandle}
           />
           <label htmlFor="body">Please enter your review: </label>
@@ -59,6 +59,10 @@ class CreateReview extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user: state.user
+});
+
 const mapDispatchToProps = dispatch => {
   return {
     postReview: stuff => dispatch(postReview(stuff))
@@ -66,6 +70,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(CreateReview);

@@ -44,10 +44,10 @@ export const editReview = (id, change) => async dispatch => {
   }
 };
 
-export const deleteReview = id => async dispatch => {
+export const deleteReview = review => async dispatch => {
   try {
-    const response = await axios.delete(`/api/reviews/${id}`);
-    dispatch({ type: DELETE_REVIEW, payload: response.data });
+    await axios.delete(`/api/reviews/${review.id}`);
+    dispatch({ type: DELETE_REVIEW, payload: review });
   } catch (err) {
     console.log(err);
   }

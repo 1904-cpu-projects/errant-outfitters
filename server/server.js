@@ -21,7 +21,7 @@ app.use(
     cookie: { maxAge: 24 * 60 * 60 * 1000 },
     resave: false,
     saveUninitialized: true,
-    name: "SID",
+    name: "SID"
     // store: new SequelizeStore({
     //   db,
     //   table: "session",

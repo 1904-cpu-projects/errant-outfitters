@@ -17,7 +17,6 @@ describe("GET and POST review routes", () => {
       .post("/api/reviews")
       .send({
         title: "Betty knows best",
-        email: "boop@acme.com",
         body:
           "Donec magna ex, iaculis ut augue sed, aliquet aliquam tellus. Mauris dolor lectus, venenatis non ultrices ut, cursus non diam. "
       });
@@ -52,7 +51,7 @@ describe("Delete and PUT review routes", () => {
       `/api/reviews/${bettyReview.id}`
     );
     const noArticle = await request(app).get(`/api/reviews/${bettyReview.id}`);
-    expect(removedArticle.status).toEqual(404);
+    expect(removedArticle.status).toEqual(204);
     expect(noArticle.body.name).toEqual(undefined);
     done();
   });

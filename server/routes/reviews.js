@@ -35,17 +35,8 @@ router.get("/:productId", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const authorId = await User.findOne({
-      where: {
-        email: req.body.email
-      }
-    });
-    // if (!authorId) {
-    //   res.status(401).send("Please sign in with a valid email");
-    // }
     const newReview = await Review.create({
-      ...req.body,
-      userId: authorId.id
+      ...req.body
     });
     res.status(201).send(newReview);
   } catch (e) {
@@ -74,7 +65,7 @@ router.delete("/:id", async (req, res, next) => {
         id: req.params.id
       }
     });
-    res.status(404).send("Review removed");
+    res.status(204).send("Review removed");
   } catch (err) {
     next(err);
   }
