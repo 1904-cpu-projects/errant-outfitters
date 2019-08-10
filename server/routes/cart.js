@@ -22,11 +22,12 @@ function determineUser(sessionID, session) {
 router.get("/getCart", async (req, res, next) => {
   const member = determineUser(req.sessionID, req.session);
   // Get all cart rows based on that information and send it
-  console.log(member);
   try{
-    const [_, userCart] = await Cart.findAll({ where: { ...member }});
+    const userCart = await Cart.findAll({ where: { memberId: member.memberId }});
     // Sends the cart information to client as array
-    res.status(202).send(userCart);
+    res.status(202).send(userCart.map(item => {
+      return {productId: item.productId, quantity: item.quantity};
+    }));
   }
   catch(e){
     // for now just log out any error
@@ -39,7 +40,7 @@ router.get("/getCart", async (req, res, next) => {
 // Updates the relevant row in the Cart table based on req.body
 // and result from member
 router.put("/changeCart/:productId", async (req, res, next) => {
-  const member = determineUser(req.session);
+  const member = determineUser(req.sessionID, req.session);
 
   try{
     const product = await Cart.update({ where: { ...member, ...req.body }});
@@ -55,10 +56,12 @@ router.put("/changeCart/:productId", async (req, res, next) => {
 });
 
 router.post("/createCart", async (req, res, next) => {
-  const member = determineUser(req.session);
-
+  const member = determineUser(req.sessionID, req.session);
+  
   try{
-    const product = await Cart.create({ where: { ...member, ...req.body}});
+    const product = await Cart.create({ ...member,
+					...req.body});
+    console.log(product);
     res.status(201).send();
   }
   catch(e){

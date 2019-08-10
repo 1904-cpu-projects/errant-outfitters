@@ -1,16 +1,24 @@
 import React from "react";
-import { loginUser, logoutUser } from "../storeReducers/userReducer";
+import axios from "axios";
 
-function handleLogin(ev) {
+import UserProfile from "./UserProfile";
+
+import store from "../store";
+import { loginUser, logoutUser } from "../storeReducers/userReducer";
+import { getCart } from "../storeReducers/cartReducer";
+
+async function handleLogin(ev) {
   ev.preventDefault();
   const email = ev.target[0].value;
   const password = ev.target[1].value;
-  loginUser(email, password);
+  await loginUser(email, password);
+  await getCart();
 }
 
-function handleLogout(ev) {
+async function handleLogout(ev) {
   ev.preventDefault();
-  logoutUser();
+  await logoutUser();
+  await getCart();
 }
 
 export function UserHeader({ user }) {
