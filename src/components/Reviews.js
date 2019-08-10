@@ -11,19 +11,17 @@ class Reviews extends React.Component {
 
   render() {
     const { reviews } = this.props.reviews;
-    if (!this.props.user.id) return null;
+
+    // if (!this.props.user.id === undefined) return null;
     if (this.props.productId) {
       filteredReviews = reviews.filter(
         review => review.productId === this.props.productId
       );
-
-      //solmethig wrong with the filtration - not matching up properly.
     } else {
       filteredReviews = reviews.filter(
         review => review.userId === this.props.user.id
       );
     }
-    console.log("filtered reviews", filteredReviews);
     return (
       <div>
         <footer>

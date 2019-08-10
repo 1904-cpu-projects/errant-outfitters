@@ -1,8 +1,5 @@
 import React from "react";
 import { loginUser, logoutUser } from "../storeReducers/userReducer";
-import axios from "axios";
-import UserProfile from "./UserProfile";
-import store from "../store";
 
 function handleLogin(ev) {
   ev.preventDefault();

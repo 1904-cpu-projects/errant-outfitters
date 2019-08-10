@@ -38,7 +38,6 @@ class App extends React.Component {
         <Router>
           <Route exact path="/" component={Home} />
           <Route exact path="/CreateUserForm" component={CreateUserForm} />
-
           <Route path="/user/profile" component={UserProfile} />
           <Route
             path="/products/:id"
