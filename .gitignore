@@ -3,3 +3,4 @@ node_modules/
 /public/main.js.map
 .env
 .DS_Store
+.eslintrc

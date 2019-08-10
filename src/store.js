@@ -1,12 +1,12 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-const thunkMiddleware = require("redux-thunk").default;
+import { applyMiddleware, combineReducers, createStore } from 'redux'
 
 // Here are where we dump the reducers in!
-import productReducer from "./storeReducers/productsReducer";
-import reveiwReducer from "./storeReducers/reviewReducer";
-import userReducer from "./storeReducers/userReducer";
-import cartReducer from "./storeReducers/cartReducer";
+import productReducer from './storeReducers/productsReducer'
+import reveiwReducer from './storeReducers/reviewReducer'
+import userReducer from './storeReducers/userReducer'
+import cartReducer from './storeReducers/cartReducer'
 
+const thunkMiddleware = require('redux-thunk').default
 
 // Const Defines!!!
 /* There are No Defines!!! Only Zule!!! */
@@ -19,7 +19,7 @@ const reducer = combineReducers({
   products: productReducer,
   reviews: reveiwReducer,
   user: userReducer,
-  cart: cartReducer,
-});
+  cart: cartReducer
+})
 
-export default createStore(reducer, applyMiddleware(thunkMiddleware));
+export default createStore(reducer, applyMiddleware(thunkMiddleware))
