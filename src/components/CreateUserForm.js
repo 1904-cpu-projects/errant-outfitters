@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { loginUser } from "../storeReducers/userReducer";
 
 export class CreateUserForm extends React.Component {
   constructor() {
@@ -9,12 +10,10 @@ export class CreateUserForm extends React.Component {
       lastName: "",
       email: "",
       class: "",
-      password: "",
-      users: []
+      password: ""
     };
     this.onHandle = this.onHandle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.create = this.create.bind(this);
     this.selector = this.selector.bind(this);
   }
   selector(event) {
@@ -27,16 +26,15 @@ export class CreateUserForm extends React.Component {
       [event.target.name]: event.target.value
     });
   }
-  onSubmit(event) {
+  async onSubmit(event) {
     event.preventDefault();
-    this.create(this.state, this.props.history);
-    window.location.hash = "/";
-  }
-  async create(user, history) {
-    const response = await axios.post("/api/users", user);
-    const users = [...this.state.users, response.data];
-    this.setState({ users });
-    history.push("/");
+    try {
+      await axios.post("/api/users", this.state);
+      loginUser(this.state.email, this.state.password);
+      window.location.hash = "/";
+    } catch (err) {
+      alert("Email address already registered! Please try another.");
+    }
   }
   render() {
     return (
@@ -97,7 +95,7 @@ export class CreateUserForm extends React.Component {
                 : false
             }
           >
-            Create User
+            Create User and Login
           </button>
         </form>
       </div>
