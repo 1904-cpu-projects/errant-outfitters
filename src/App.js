@@ -10,12 +10,10 @@ import { getCart } from "./storeReducers/cartReducer";
 import { Home } from "./components/Home";
 import Header from "./components/Header";
 import DetailProduct from "./components/DetailedProduct";
-<<<<<<< HEAD
 import { CreateUserForm } from "./components/CreateUserForm";
 import CreateReview from "./components/CreateReview";
-=======
 import UserProfile from "./components/UserProfile";
->>>>>>> dev
+
 
 /* I think its reasonable to make this thing be the main provider of redux store
  * And also the thing that routes to other places
