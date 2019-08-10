@@ -35,15 +35,15 @@ router.get("/:productId", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const authorId = await User.findOne({
-      where: {
-        email: req.body.email
-      }
-    });
+    // const authorId = await User.findOne({
+    //   where: {
+    //     email: req.body.email
+    //   }
+    // });
 
     const newReview = await Review.create({
-      ...req.body,
-      userId: authorId.id
+      ...req.body
+      // userId: authorId.id
     });
     res.status(201).send(newReview);
   } catch (e) {

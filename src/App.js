@@ -6,7 +6,6 @@ import store from "./store";
 import { getProducts } from "./storeReducers/productsReducer";
 import { checkSessionLogin } from "./storeReducers/userReducer";
 import { CreateUserForm } from "./components/CreateUserForm";
-import CreateReview from "./components/CreateReview";
 
 import { Home } from "./components/Home";
 import Header from "./components/Header";
@@ -39,7 +38,7 @@ class App extends React.Component {
         <Router>
           <Route exact path="/" component={Home} />
           <Route exact path="/CreateUserForm" component={CreateUserForm} />
-          <Route path="/user/CreateReview" component={CreateReview} />
+
           <Route path="/user/profile" component={UserProfile} />
           <Route
             path="/products/:id"

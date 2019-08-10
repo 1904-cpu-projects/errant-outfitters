@@ -17,7 +17,6 @@ describe("GET and POST review routes", () => {
       .post("/api/reviews")
       .send({
         title: "Betty knows best",
-        email: "boop@acme.com",
         body:
           "Donec magna ex, iaculis ut augue sed, aliquet aliquam tellus. Mauris dolor lectus, venenatis non ultrices ut, cursus non diam. "
       });
