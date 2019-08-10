@@ -23,7 +23,7 @@ export function UserHeader({ user }) {
         {" "}
         Hello, Guest{" "}
         <a href="/#/CreateUserForm">
-          <button>Create User</button>
+          <button>Register</button>
         </a>
         <form onSubmit={handleLogin}>
           <label htmlFor="email">Email: </label>
