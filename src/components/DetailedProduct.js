@@ -1,11 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getDetailProduct } from "../storeReducers/productsReducer";
-<<<<<<< HEAD
 import { createItem } from "../storeReducers/cartReducer";
-=======
 import CreateReview from "../components/CreateReview";
->>>>>>> dev
 
 import Reviews from "./Reviews";
 
@@ -15,15 +12,8 @@ function handleBuy(matchId) {
 
 // More to come for this thing, need reviews, and add to cart
 // Basics are here!!!
-<<<<<<< HEAD
-function DetailProduct({ detailProduct, matchId }) {
-  //  console.log(detailProduct);
+function DetailProduct({ detailProduct, matchId, user }) {
   if (detailProduct.id !== matchId) getDetailProduct(matchId);
-=======
-function DetailProduct({ detailProduct, id, user }) {
-  console.log("DETAILED PRODUCT", user);
-  if (detailProduct.id !== id) getDetailProduct(id);
->>>>>>> dev
   if (!detailProduct) return null;
   else {
     return (
@@ -51,12 +41,8 @@ function DetailProduct({ detailProduct, id, user }) {
 const mapStateToProps = (state, ownProps) => {
   return {
     detailProduct: state.products.detailProduct,
-<<<<<<< HEAD
-    matchId: ownProps.match.params.id
-=======
-    id: ownProps.match.params.id,
+    matchId: ownProps.match.params.id,
     user: state.user
->>>>>>> dev
   };
 };
 

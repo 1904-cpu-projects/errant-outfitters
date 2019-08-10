@@ -5,11 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { getProducts } from "./storeReducers/productsReducer";
 import { checkSessionLogin } from "./storeReducers/userReducer";
-<<<<<<< HEAD
 import { getCart } from "./storeReducers/cartReducer";
-=======
-import { CreateUserForm } from "./components/CreateUserForm";
->>>>>>> dev
 
 import { Home } from "./components/Home";
 import Header from "./components/Header";

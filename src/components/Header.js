@@ -7,7 +7,6 @@ import { CartHeader } from "./CartHeader";
 import { UserHeader } from "./UserHeader";
 
 function Header({ user, cart }) {
-  console.log(cart);
   return (
     <div className="header">
       <a href="/">
