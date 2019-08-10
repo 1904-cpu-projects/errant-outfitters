@@ -1,8 +1,5 @@
 import React from "react";
 import { loginUser, logoutUser } from "../storeReducers/userReducer";
-import axios from "axios";
-import UserProfile from "./UserProfile";
-import store from "../store";
 
 function handleLogin(ev) {
   ev.preventDefault();
@@ -23,7 +20,7 @@ export function UserHeader({ user }) {
         {" "}
         Hello, Guest{" "}
         <a href="/#/CreateUserForm">
-          <button>Create User</button>
+          <button>Register</button>
         </a>
         <form onSubmit={handleLogin}>
           <label htmlFor="email">Email: </label>

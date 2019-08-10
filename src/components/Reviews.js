@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 let filteredReviews;
 
-//for this reviews page, we need to properly associate the Product with the reviews
 class Reviews extends React.Component {
   componentDidMount() {
     this.props.listReviews();
@@ -12,18 +11,17 @@ class Reviews extends React.Component {
 
   render() {
     const { reviews } = this.props.reviews;
+
+    // if (!this.props.user.id === undefined) return null;
     if (this.props.productId) {
       filteredReviews = reviews.filter(
         review => review.productId === this.props.productId
       );
-
-      //solmethig wrong with the filtration - not matching up properly.
-    } else if (this.props.user) {
+    } else {
       filteredReviews = reviews.filter(
         review => review.userId === this.props.user.id
       );
     }
-
     return (
       <div>
         <footer>
@@ -33,7 +31,10 @@ class Reviews extends React.Component {
                 <h4>{review.title}</h4>
                 <h5>{review.body}</h5>
                 {this.props.user ? (
-                  <button onClick={() => this.props.deleteReview(review)}>
+                  <button
+                    type="submit"
+                    onClick={() => this.props.deleteReview(review)}
+                  >
                     Delete Review
                   </button>
                 ) : (
