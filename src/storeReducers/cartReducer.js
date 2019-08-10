@@ -4,11 +4,19 @@ import store from "../store";
 
 // CONST defs
 export const SET_CART = "SET_CART";
+export const EXPAND_CART_ITEMS = "EXPAND_CART_ITEMS";
 
 // Actions
 const setCart = (items) => (
   {
     type: SET_CART,
+    items
+  }
+);
+
+const expandCart = (items) => (
+  {
+    type: EXPAND_CART_ITEMS,
     items
   }
 );
@@ -19,6 +27,11 @@ export async function getCart() {
     .catch(e => console.log(e));  
 }
 
+export async function getCartExpanded() {
+  axios.get("/api/cart/getCartExpanded")
+    .then(result => store.dispatch(expandCart(result.data)))
+    .catch(e => console.log(e));
+}
 
 // I'm hard setting quantity to 1 as default, we can add
 // a quantity later I think

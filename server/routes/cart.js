@@ -26,7 +26,7 @@ router.get("/getCart", async (req, res, next) => {
     const userCart = await Cart.findAll({ where: { memberId: member.memberId }});
     // Sends the cart information to client as array
     res.status(202).send(userCart.map(item => {
-      return {productId: item.productId, quantity: item.quantity};
+      return {id: item.id, productId: item.productId, quantity: item.quantity};
     }));
   }
   catch(e){
