@@ -37,7 +37,7 @@ const seed = {
 const syncAndSeed = async () => {
   let src = path.join(__dirname, "seedFiles", "users.json");
   let data = fs.readFileSync(src, "utf8");
-  const users = JSON.parse(data);
+  let users = JSON.parse(data);
 
   src = path.join(__dirname, "seedFiles", "products.json");
   data = fs.readFileSync(src, "utf8");
@@ -57,13 +57,6 @@ const syncAndSeed = async () => {
       Transaction.create(item);
     });
 
-    // We need one more user whos id we can count on for login/cart information
-    const fixedCart = await Cart.create({
-      productId: products[products.length - 1].id,
-      memberId: users[users.length - 1].id,
-      quantity: 10,
-      memberStatus: "user"
-    });
     const [
       review1,
       review2,
@@ -87,7 +80,7 @@ const syncAndSeed = async () => {
       products.map(product => Product.create({ ...product }))
     );
 
-    const [user1, user2, user3] = await Promise.all(
+    const [user1, user2, user3, user4] = await Promise.all(
       users.map(user => User.create({ ...user }))
     );
 
@@ -125,6 +118,14 @@ const syncAndSeed = async () => {
       review9.save(),
       review10.save()
     ]);
+
+    // We need one more user whos id we can count on for login/cart information
+    const fixedCart = await Cart.create({
+      productId: product1.id,
+      memberId: user4.id,
+      quantity: 10,
+      memberStatus: "user"
+    });    
   } catch (err) {
     console.log(err);
   }
