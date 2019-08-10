@@ -1,7 +1,7 @@
 import React from "react";
 import { loginUser, logoutUser } from "../storeReducers/userReducer";
 import axios from "axios";
-
+import UserProfile from "./UserProfile";
 import store from "../store";
 
 function handleLogin(ev) {
@@ -17,38 +17,37 @@ function handleLogout(ev) {
 }
 
 export function UserHeader({ user }) {
-  if(user.id === undefined) {
+  if (user.id === undefined) {
     return (
       <div>
-	{" "}
-	Hello, Guest{" "}
-	<a href="/#/CreateUserForm">
+        {" "}
+        Hello, Guest{" "}
+        <a href="/#/CreateUserForm">
           <button>Create User</button>
-	</a>
-	<form onSubmit={handleLogin}>
+        </a>
+        <form onSubmit={handleLogin}>
           <label htmlFor="email">Email: </label>
           <input
-	    type="email"
-	    name="email"
-	    placeholder="test@test.test"
-	    required
-            />
+            type="email"
+            name="email"
+            placeholder="test@test.test"
+            required
+          />
           <label htmlFor="password">Password: </label>
           <input type="password" name="password" required />
           <button>Login</button>
-	</form>
-
+        </form>
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <div>
-	{" "}
-	Hello, {user.firstName} {user.lastName}{" "}	
-	<form onSubmit={handleLogout}>
+        {" "}
+        Hello, {user.firstName} {user.lastName}{" "}
+        {user ? <a href="#/user/profile">PROFILE</a> : ""}
+        <form onSubmit={handleLogout}>
           <button>Logout</button>
-	</form>
+        </form>
       </div>
     );
   }

@@ -17,3 +17,7 @@ form {
 button {
   border-radius: 20px;
 }
+button:hover {
+  background-color: dodgerBlue;
+  color: white;
+}
