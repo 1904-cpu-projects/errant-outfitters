@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: solid black 1px;
+    border-radius: 15px;
+}
+
+.header img {
+    height: 100px;
+    width: 100px;
+}

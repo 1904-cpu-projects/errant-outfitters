@@ -1,0 +1,23 @@
+.CreateUserForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 15px auto;
+  width: 30%;
+  min-width: 250px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  max-width: 125px;
+}
+button {
+  border-radius: 20px;
+}
+button:hover {
+  background-color: dodgerBlue;
+  color: white;
+}
