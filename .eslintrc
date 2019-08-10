@@ -1,0 +1,9 @@
+{
+  "extends": "airbnb/hooks",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "plugins": ["react"]
+}
