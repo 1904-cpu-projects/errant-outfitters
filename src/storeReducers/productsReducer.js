@@ -64,7 +64,6 @@ export default (products = init, action) => {
     case SET_DETAIL_PRODUCT:
       newProducts.detailProduct = { ...action.data };
       break;
-    default:
-      return newProducts;
   }
+  return newProducts;
 };
