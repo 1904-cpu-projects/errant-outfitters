@@ -11,9 +11,6 @@ const Review = db.define("review", {
     type: Sequelize.STRING(200),
     allowNull: false
   },
-  email: {
-    type: Sequelize.STRING
-  },
   body: {
     type: Sequelize.TEXT,
     allowNull: false

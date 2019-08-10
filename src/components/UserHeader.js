@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import axios from "axios";
 
 import UserProfile from "./UserProfile";
@@ -6,6 +7,9 @@ import UserProfile from "./UserProfile";
 import store from "../store";
 import { loginUser, logoutUser } from "../storeReducers/userReducer";
 import { getCart } from "../storeReducers/cartReducer";
+=======
+import { loginUser, logoutUser } from "../storeReducers/userReducer";
+>>>>>>> dev
 
 async function handleLogin(ev) {
   ev.preventDefault();
@@ -28,7 +32,7 @@ export function UserHeader({ user }) {
         {" "}
         Hello, Guest{" "}
         <a href="/#/CreateUserForm">
-          <button>Create User</button>
+          <button>Register</button>
         </a>
         <form onSubmit={handleLogin}>
           <label htmlFor="email">Email: </label>
