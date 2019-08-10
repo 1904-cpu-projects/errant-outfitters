@@ -2,10 +2,10 @@ import React from "react";
 
 // numberItems needs to just be a number
 // pull in from redux store CartStore I think
-export function CartHeader({numberItems = 0}) {
+export function CartHeader({cart = []}) {
   return(
     <div>
-      Cart | {numberItems}
+      Cart | {cart.length}
     </div>
   );
 }

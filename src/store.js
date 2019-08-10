@@ -5,6 +5,7 @@ const thunkMiddleware = require("redux-thunk").default;
 import productReducer from "./storeReducers/productsReducer";
 import reveiwReducer from "./storeReducers/reviewReducer";
 import userReducer from "./storeReducers/userReducer";
+import cartReducer from "./storeReducers/cartReducer";
 
 
 // Const Defines!!!
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   products: productReducer,
   reviews: reveiwReducer,
   user: userReducer,
+  cart: cartReducer,
 });
 
 export default createStore(reducer, applyMiddleware(thunkMiddleware));
