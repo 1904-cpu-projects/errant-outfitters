@@ -23,7 +23,7 @@ class UserProfile extends React.Component {
           <Reviews user={user} />
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -36,4 +36,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(UserProfile);
+)(UserProfile)

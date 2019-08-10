@@ -1,18 +1,18 @@
-import React from "react";
-import { HashRouter as Router, Route } from "react-router-dom";
-import { Provider } from "react-redux";
+import React from 'react'
+import { HashRouter as Router, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
-import store from "./store";
-import { getProducts } from "./storeReducers/productsReducer";
-import { checkSessionLogin } from "./storeReducers/userReducer";
-import { getCart } from "./storeReducers/cartReducer";
+import store from './store'
+import { getProducts } from './storeReducers/productsReducer'
+import { checkSessionLogin } from './storeReducers/userReducer'
+import { getCart } from './storeReducers/cartReducer'
 
-import { Home } from "./components/Home";
-import Header from "./components/Header";
-import DetailProduct from "./components/DetailedProduct";
-import { CreateUserForm } from "./components/CreateUserForm";
-import CreateReview from "./components/CreateReview";
-import UserProfile from "./components/UserProfile";
+import { Home } from './components/Home'
+import Header from './components/Header'
+import DetailProduct from './components/DetailedProduct'
+import { CreateUserForm } from './components/CreateUserForm'
+import CreateReview from './components/CreateReview'
+import UserProfile from './components/UserProfile'
 
 /* I think its reasonable to make this thing be the main provider of redux store
  * And also the thing that routes to other places
@@ -21,17 +21,17 @@ import UserProfile from "./components/UserProfile";
 
 class App extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       loading: true
-    };
+    }
   }
 
-  componentDidMount() {
-    getProducts();
-    getCart();
-    checkSessionLogin();
-    this.setState({ loading: false });
+  async componentDidMount() {
+    await getProducts()
+    await getCart()
+    await checkSessionLogin()
+    this.setState({ loading: false })
   }
 
   render() {
@@ -48,8 +48,8 @@ class App extends React.Component {
           />
         </Router>
       </Provider>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -10,7 +10,10 @@
     "webpack:dev": "npm run webpack -- --watch --mode=development",
     "start:dev": "npm run webpack:dev & nodemon server/index.js --ignore public --ignore src",
     "test": "node server/db/seed.js & jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
+    "prettier": "prettier --write --no-semi --single-quote \"src/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -26,7 +29,7 @@
         "@babel/preset-env",
         {
           "targets": {
-            "node": 10
+            "node": 12
           }
         }
       ]
@@ -41,9 +44,17 @@
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "axios": "^0.19.0",
+    "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "dotenv": "^8.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.8.0",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",

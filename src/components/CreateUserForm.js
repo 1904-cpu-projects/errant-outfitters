@@ -1,39 +1,39 @@
-import React from "react";
-import axios from "axios";
-import { loginUser } from "../storeReducers/userReducer";
+import React from 'react'
+import axios from 'axios'
+import { loginUser } from '../storeReducers/userReducer'
 
 export class CreateUserForm extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      class: "",
-      password: ""
-    };
-    this.onHandle = this.onHandle.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.selector = this.selector.bind(this);
+      firstName: '',
+      lastName: '',
+      email: '',
+      class: '',
+      password: ''
+    }
+    this.onHandle = this.onHandle.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    this.selector = this.selector.bind(this)
   }
   selector(event) {
     this.setState({
       class: event.target.value
-    });
+    })
   }
   onHandle(event) {
     this.setState({
       [event.target.name]: event.target.value
-    });
+    })
   }
   async onSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
     try {
-      await axios.post("/api/users", this.state);
-      loginUser(this.state.email, this.state.password);
-      window.location.hash = "/";
+      await axios.post('/api/users', this.state)
+      loginUser(this.state.email, this.state.password)
+      window.location.hash = '/'
     } catch (err) {
-      alert("Email address already registered! Please try another.");
+      alert('Email address already registered! Please try another.')
     }
   }
   render() {
@@ -99,6 +99,6 @@ export class CreateUserForm extends React.Component {
           </button>
         </form>
       </div>
-    );
+    )
   }
 }
