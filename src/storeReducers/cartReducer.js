@@ -4,6 +4,7 @@ import store from '../store';
 
 // CONST defs
 export const SET_CART = 'SET_CART';
+export const DELETE_ITEM = 'DELETE_ITEM';
 
 // Actions
 const setCart = items => ({
@@ -11,9 +12,9 @@ const setCart = items => ({
   items,
 });
 
-const expandCart = items => ({
-  type: EXPAND_CART_ITEMS,
-  items,
+const deleteItem = id => ({
+  type: DELETE_ITEM,
+  id: id
 });
 
 export function getCart() {
@@ -23,20 +24,12 @@ export function getCart() {
     .catch(e => console.log(e));
 }
 
-// This basically grabs all the relevant information
-// for cart items for a user - independant of the
-// products redux store
-export function getCartExpanded() {
+export function deleteCartItem(id) {
   axios
-    .get('/api/cart/getCartExpanded')
-    .then(result => store.dispatch(expandCart(result.data)))
+    .delete('/api/cart/deleteCartItem', {data: {id: id}})
+    .then(store.dispatch(deleteItem(id)))
     .catch(e => console.log(e));
 }
-
-// export function deleteCartItem() {
-//   axios
-//     .delete('/api/cart/deleteCartItem', )
-// }
 
 // I'm hard setting quantity to 1 as default, we can add
 // a quantity later I think
@@ -47,12 +40,16 @@ export async function createItem(productId, quantity = 1) {
     .catch(e => console.log(e));
 }
 
+
 // REDUCE the stuffs
 export default (cart = [], action) => {
   switch (action.type) {
-    case SET_CART:
-      cart = [...action.items];
-      break;
+  case SET_CART:
+    cart = [...action.items];
+    break;
+  case DELETE_ITEM:
+    cart = cart.filter(i => i.id !== action.id);
+    break;
   }
   return cart;
 };

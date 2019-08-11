@@ -102,18 +102,18 @@ router.post('/createCart', async (req, res, next) => {
   }
 });
 
-router.delete('/deleteCart', async (req, res, next) => {
-  const member = determineUser(req.session);
-
+router.delete('/deleteCartItem', async (req, res, next) => {
+  const member = determineUser(req.sessionID, req.session);
+  console.log(req.body.id);
   try {
-    const product = await Cart.delete({ where: { ...member, ...req.body } });
+    const product = await Cart.destroy({ where: { ...member, id: req.body.id } });
     res.status(202).send();
   } catch (e) {
     // for now just log out any error
     // eventually we send the error information
     // to the client and process
     console.log(e);
-    res.send(400);
+    res.status(400).send();
   }
 });
 
