@@ -1,6 +1,6 @@
-import React from "react";
-import { listReviews, deleteReview } from "../actions/reviewActions";
-import { connect } from "react-redux";
+import React from 'react';
+import { listReviews, deleteReview } from '../actions/reviewActions';
+import { connect } from 'react-redux';
 
 let filteredReviews;
 
@@ -15,11 +15,11 @@ class Reviews extends React.Component {
     // if (!this.props.user.id === undefined) return null;
     if (this.props.productId) {
       filteredReviews = reviews.filter(
-        review => review.productId === this.props.productId
+        review => review.productId === this.props.productId,
       );
     } else {
       filteredReviews = reviews.filter(
-        review => review.userId === this.props.user.id
+        review => review.userId === this.props.user.id,
       );
     }
     return (
@@ -38,7 +38,7 @@ class Reviews extends React.Component {
                     Delete Review
                   </button>
                 ) : (
-                  ""
+                  ''
                 )}
               </div>
             ))}
@@ -50,17 +50,17 @@ class Reviews extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  reviews: state.reviews
+  reviews: state.reviews,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     listReviews: () => dispatch(listReviews()),
-    deleteReview: review => dispatch(deleteReview(review))
+    deleteReview: review => dispatch(deleteReview(review)),
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Reviews);

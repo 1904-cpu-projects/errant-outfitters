@@ -1,11 +1,11 @@
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
 
-import UserProfile from "./UserProfile";
+import UserProfile from './UserProfile';
 
-import store from "../store";
-import { loginUser, logoutUser } from "../storeReducers/userReducer";
-import { getCart } from "../storeReducers/cartReducer";
+import store from '../store';
+import { loginUser, logoutUser } from '../storeReducers/userReducer';
+import { getCart } from '../storeReducers/cartReducer';
 
 async function handleLogin(ev) {
   ev.preventDefault();
@@ -25,8 +25,8 @@ export function UserHeader({ user }) {
   if (user.id === undefined) {
     return (
       <div>
-        {" "}
-        Hello, Guest{" "}
+        {' '}
+        Hello, Guest{' '}
         <a href="/#/CreateUserForm">
           <button>Register</button>
         </a>
@@ -47,9 +47,9 @@ export function UserHeader({ user }) {
   } else {
     return (
       <div>
-        {" "}
-        Hello, {user.firstName} {user.lastName}{" "}
-        {user ? <a href="#/user/profile">PROFILE</a> : ""}
+        {' '}
+        Hello, {user.firstName} {user.lastName}{' '}
+        {user ? <a href="#/user/profile">PROFILE</a> : ''}
         <form onSubmit={handleLogout}>
           <button>Logout</button>
         </form>

@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import Reviews from "./Reviews";
+import React from 'react';
+import { connect } from 'react-redux';
+import Reviews from './Reviews';
 
 class UserProfile extends React.Component {
   render() {
@@ -26,10 +26,10 @@ class UserProfile extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  reviews: state.reviews
+  reviews: state.reviews,
 });
 
 export default connect(
   mapStateToProps,
-  null
+  null,
 )(UserProfile);

@@ -1,16 +1,15 @@
+import axios from 'axios';
 import {
   FETCH_REVIEWS,
   FETCH_SINGLE_REVIEW,
   POST_REVIEW,
   EDIT_REVIEW,
-  DELETE_REVIEW
-} from "./actionTypes";
-
-import axios from "axios";
+  DELETE_REVIEW,
+} from './actionTypes';
 
 export const listReviews = () => async dispatch => {
   try {
-    const response = await axios.get("/api/reviews");
+    const response = await axios.get('/api/reviews');
     dispatch({ type: FETCH_REVIEWS, payload: response.data });
   } catch (err) {
     console.error(err);
@@ -28,7 +27,7 @@ export const singleReviewThunk = id => async dispatch => {
 
 export const postReview = review => async dispatch => {
   try {
-    const response = await axios.post("/api/reviews", review);
+    const response = await axios.post('/api/reviews', review);
     dispatch({ type: POST_REVIEW, payload: response.data });
   } catch (err) {
     console.error(err);

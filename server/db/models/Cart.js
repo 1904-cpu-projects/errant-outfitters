@@ -5,17 +5,17 @@ const Sequelize = require('sequelize');
 const Cart = db.define('cart', {
   productId: {
     type: Sequelize.STRING,
-//    allowNull: false
+    //    allowNull: false
   },
   memberStatus: {
-    type: Sequelize.ENUM('guest', 'user')
+    type: Sequelize.ENUM('guest', 'user'),
   },
   memberId: {
     type: Sequelize.STRING,
   },
   quantity: {
-    type: Sequelize.INTEGER
-  }
+    type: Sequelize.INTEGER,
+  },
 });
 
 // Since some decisions need to be made before we create
@@ -23,9 +23,7 @@ const Cart = db.define('cart', {
 // create a new row. Where this calls Cart.create() for
 // us
 
-Cart.addToCart = function(type = 'guest', mId, pId, quantity) {
-  
-};
+Cart.addToCart = function(type = 'guest', mId, pId, quantity) {};
 
 //EXPORT
 module.exports = Cart;

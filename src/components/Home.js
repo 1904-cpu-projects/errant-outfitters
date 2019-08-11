@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import Products from "./Products";
-import MenuBar from "./MenuBar";
+import Products from './Products';
+import MenuBar from './MenuBar';
 
-export function Home () {
+export function Home() {
   return (
-    <div className='main-view'>
+    <div className="main-view">
       <MenuBar />
       <Products />
     </div>

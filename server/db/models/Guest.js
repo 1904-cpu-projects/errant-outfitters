@@ -6,8 +6,8 @@ const Guest = db.define('guest', {
   id: {
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
-    type: Sequelize.UUID
-  }
+    type: Sequelize.UUID,
+  },
 });
 //EXPORT
 module.exports = Guest;
