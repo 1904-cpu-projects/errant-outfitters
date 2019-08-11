@@ -3,11 +3,11 @@ const Sequelize = require('sequelize');
 //MODEL
 const Transaction = db.define('transaction', {
   quantity: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
   },
   totalCost: {
-    type: Sequelize.FLOAT
-  }
+    type: Sequelize.FLOAT,
+  },
 });
 //EXPORT
 module.exports = Transaction;

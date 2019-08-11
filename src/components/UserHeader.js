@@ -1,24 +1,24 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
 
-import UserProfile from './UserProfile'
+import UserProfile from './UserProfile';
 
-import store from '../store'
-import { loginUser, logoutUser } from '../storeReducers/userReducer'
-import { getCart } from '../storeReducers/cartReducer'
+import store from '../store';
+import { loginUser, logoutUser } from '../storeReducers/userReducer';
+import { getCart } from '../storeReducers/cartReducer';
 
 async function handleLogin(ev) {
-  ev.preventDefault()
-  const email = ev.target[0].value
-  const password = ev.target[1].value
-  await loginUser(email, password)
-  await getCart()
+  ev.preventDefault();
+  const email = ev.target[0].value;
+  const password = ev.target[1].value;
+  await loginUser(email, password);
+  await getCart();
 }
 
 async function handleLogout(ev) {
-  ev.preventDefault()
-  await logoutUser()
-  await getCart()
+  ev.preventDefault();
+  await logoutUser();
+  await getCart();
 }
 
 export function UserHeader({ user }) {
@@ -43,7 +43,7 @@ export function UserHeader({ user }) {
           <button>Login</button>
         </form>
       </div>
-    )
+    );
   } else {
     return (
       <div>
@@ -54,6 +54,6 @@ export function UserHeader({ user }) {
           <button>Logout</button>
         </form>
       </div>
-    )
+    );
   }
 }

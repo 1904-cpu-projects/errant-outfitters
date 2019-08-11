@@ -1,10 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
 // Will probably end up putting these in their own folder
 // But for now I think this will suffice
-import { CartHeader } from './CartHeader'
-import { UserHeader } from './UserHeader'
+import { CartHeader } from './CartHeader';
+import { UserHeader } from './UserHeader';
 
 function Header({ user, cart }) {
   return (
@@ -16,7 +16,7 @@ function Header({ user, cart }) {
       <CartHeader cart={cart} />
       <UserHeader user={user} cart={cart} />
     </div>
-  )
+  );
 }
 
 // For the moment this is what I can think of
@@ -25,7 +25,7 @@ function Header({ user, cart }) {
 // Uncomment when redux stores are made
 const mapStateToProps = state => ({
   user: state.user,
-  cart: state.cart
-})
+  cart: state.cart,
+});
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(Header);

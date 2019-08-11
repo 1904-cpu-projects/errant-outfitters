@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
 // This is just to hook in some methods into the main store
-import store from "../store";
+import store from '../store';
 
 // Const defines here
-export const SET_PRODUCTS = "SET_PRODUCTS";
-export const SET_DETAIL_PRODUCT = "SET_DETAIL_PRODUCT";
+export const SET_PRODUCTS = 'SET_PRODUCTS';
+export const SET_DETAIL_PRODUCT = 'SET_DETAIL_PRODUCT';
 
 // Actions
 
@@ -15,17 +15,17 @@ export const SET_DETAIL_PRODUCT = "SET_DETAIL_PRODUCT";
 export const loadProductsInitial = (list, next) => ({
   type: SET_PRODUCTS,
   list,
-  next
+  next,
 });
 
-export const setDetailProduct = (data) => ({
+export const setDetailProduct = data => ({
   type: SET_DETAIL_PRODUCT,
-  data
+  data,
 });
 
 // helper function that gets products based on productsReducer
 export const getProducts = async (next = 0) => {
-  let getRoute = "/api/products";
+  let getRoute = '/api/products';
   if (next) {
     getRoute += `/${next}`;
   }
@@ -33,21 +33,21 @@ export const getProducts = async (next = 0) => {
     const result = await axios.get(getRoute);
     store.dispatch(loadProductsInitial(result.data, next));
   } catch (e) {
-    console.log("I did a bad", e);
+    console.log('I did a bad', e);
   }
 };
 
-export const getDetailProduct = (id) => {
+export const getDetailProduct = id => {
   axios
     .get(`/api/products/${id}`)
-    .then((result) => store.dispatch(setDetailProduct(result.data)))
-    .catch((e) => console.log(e));
+    .then(result => store.dispatch(setDetailProduct(result.data)))
+    .catch(e => console.log(e));
 };
 
 const init = {
   productList: [],
   detailProduct: {},
-  next: 0
+  next: 0,
 };
 
 // And of course the reducer

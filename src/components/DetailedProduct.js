@@ -1,20 +1,20 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { getDetailProduct } from '../storeReducers/productsReducer'
-import { createItem } from '../storeReducers/cartReducer'
-import CreateReview from '../components/CreateReview'
+import React from 'react';
+import { connect } from 'react-redux';
+import { getDetailProduct } from '../storeReducers/productsReducer';
+import { createItem } from '../storeReducers/cartReducer';
+import CreateReview from '../components/CreateReview';
 
-import Reviews from './Reviews'
+import Reviews from './Reviews';
 
 function handleBuy(matchId) {
-  createItem(matchId)
+  createItem(matchId);
 }
 
 // More to come for this thing, need reviews, and add to cart
 // Basics are here!!!
 function DetailProduct({ detailProduct, matchId, user }) {
-  if (detailProduct.id !== matchId) getDetailProduct(matchId)
-  if (!detailProduct) return null
+  if (detailProduct.id !== matchId) getDetailProduct(matchId);
+  if (!detailProduct) return null;
   else {
     return (
       <div>
@@ -34,7 +34,7 @@ function DetailProduct({ detailProduct, matchId, user }) {
         <h4>Like this product? Consider logging in and writing a review</h4>
         {user.id ? <CreateReview product={detailProduct} /> : ''}
       </div>
-    )
+    );
   }
 }
 
@@ -42,8 +42,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     detailProduct: state.products.detailProduct,
     matchId: ownProps.match.params.id,
-    user: state.user
-  }
-}
+    user: state.user,
+  };
+};
 
-export default connect(mapStateToProps)(DetailProduct)
+export default connect(mapStateToProps)(DetailProduct);

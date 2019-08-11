@@ -1,15 +1,15 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import store from '../store'
+import store from '../store';
 
 // CONST defs
-export const SET_CART = 'SET_CART'
+export const SET_CART = 'SET_CART';
 
 // Actions
 const setCart = items => ({
   type: SET_CART,
-  items
-})
+  items,
+});
 
 const expandCart = (items) => (
   {
@@ -22,7 +22,7 @@ export async function getCart() {
   axios
     .get('/api/cart/getCart')
     .then(result => store.dispatch(setCart(result.data)))
-    .catch(e => console.log(e))
+    .catch(e => console.log(e));
 }
 
 export async function getCartExpanded() {
@@ -37,15 +37,15 @@ export async function createItem(productId, quantity = 1) {
   axios
     .post('/api/cart/createCart', { productId, quantity })
     .then(() => getCart())
-    .catch(e => console.log(e))
+    .catch(e => console.log(e));
 }
 
 // REDUCE the stuffs
 export default (cart = [], action) => {
   switch (action.type) {
     case SET_CART:
-      cart = [...action.items]
-      break
+      cart = [...action.items];
+      break;
   }
-  return cart
-}
+  return cart;
+};
