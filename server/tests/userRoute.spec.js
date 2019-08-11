@@ -9,7 +9,6 @@ describe('GET Users', () => {
     const response = await request(app).get('/api/users');
     expect(response.status).toEqual(200);
     expect(response.body.length).toBeGreaterThan(1);
-
   });
 });
 
@@ -46,7 +45,6 @@ describe('PUT a change to a user', () => {
     const improvedPreston = await request(app).get(`/api/users/${preston.id}`);
     expect(changePreston.status).toEqual(204);
     expect(improvedPreston.body.lastName).toBe('the Brave');
-
   });
 });
 
