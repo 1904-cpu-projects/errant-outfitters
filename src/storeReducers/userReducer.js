@@ -11,7 +11,7 @@ export const REMOVE_USER = 'REMOVE_USER';
 
 // This sets user information that is received from the server
 // isAdmin: is initially 'guest' and can only otherwise be 'user' or 'admin'
-export const loadUser = (user) => ({
+export const loadUser = user => ({
   type: SET_USER,
   user,
 });

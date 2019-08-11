@@ -59,13 +59,13 @@ class CreateReview extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    postReview: (stuff) => dispatch(postReview(stuff)),
+    postReview: stuff => dispatch(postReview(stuff)),
   };
 };
 

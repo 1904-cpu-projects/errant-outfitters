@@ -23,8 +23,7 @@
   "prettier": {
     "semi": true,
     "singleQuote": true,
-    "trailingComma": "all",
-    "arrowParens": "always"
+    "trailingComma": "all"
   },
   "author": "",
   "license": "ISC",

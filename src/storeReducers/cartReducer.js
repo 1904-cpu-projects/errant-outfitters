@@ -6,7 +6,7 @@ import store from '../store';
 export const SET_CART = 'SET_CART';
 
 // Actions
-const setCart = (items) => ({
+const setCart = items => ({
   type: SET_CART,
   items,
 });
@@ -14,8 +14,8 @@ const setCart = (items) => ({
 export async function getCart() {
   axios
     .get('/api/cart/getCart')
-    .then((result) => store.dispatch(setCart(result.data)))
-    .catch((e) => console.log(e));
+    .then(result => store.dispatch(setCart(result.data)))
+    .catch(e => console.log(e));
 }
 
 // I'm hard setting quantity to 1 as default, we can add
@@ -24,7 +24,7 @@ export async function createItem(productId, quantity = 1) {
   axios
     .post('/api/cart/createCart', { productId, quantity })
     .then(() => getCart())
-    .catch((e) => console.log(e));
+    .catch(e => console.log(e));
 }
 
 // REDUCE the stuffs

@@ -23,7 +23,7 @@ function DetailProduct({ detailProduct, matchId, user }) {
           className={'product-image'}
           alt="Product Image"
         />
-        <button onClick={(e) => handleBuy(matchId)}>Buy this stuff!</button>
+        <button onClick={e => handleBuy(matchId)}>Buy this stuff!</button>
         <h1>{detailProduct.name}</h1>
         <div>{detailProduct.description}</div>
         <div>INSTOCK | {detailProduct.instock ? 'YES' : 'NO'}</div>

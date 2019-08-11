@@ -15,18 +15,18 @@ class Reviews extends React.Component {
     // if (!this.props.user.id === undefined) return null;
     if (this.props.productId) {
       filteredReviews = reviews.filter(
-        (review) => review.productId === this.props.productId,
+        review => review.productId === this.props.productId,
       );
     } else {
       filteredReviews = reviews.filter(
-        (review) => review.userId === this.props.user.id,
+        review => review.userId === this.props.user.id,
       );
     }
     return (
       <div>
         <footer>
           <div>
-            {filteredReviews.map((review) => (
+            {filteredReviews.map(review => (
               <div className="reviewDiv" key={review.id}>
                 <h4>{review.title}</h4>
                 <h5>{review.body}</h5>
@@ -49,14 +49,14 @@ class Reviews extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   reviews: state.reviews,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     listReviews: () => dispatch(listReviews()),
-    deleteReview: (review) => dispatch(deleteReview(review)),
+    deleteReview: review => dispatch(deleteReview(review)),
   };
 };
 

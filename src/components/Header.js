@@ -23,7 +23,7 @@ function Header({ user, cart }) {
 // May add or take away as needed
 
 // Uncomment when redux stores are made
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
   cart: state.cart,
 });

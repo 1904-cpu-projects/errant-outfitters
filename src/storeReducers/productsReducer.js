@@ -18,7 +18,7 @@ export const loadProductsInitial = (list, next) => ({
   next,
 });
 
-export const setDetailProduct = (data) => ({
+export const setDetailProduct = data => ({
   type: SET_DETAIL_PRODUCT,
   data,
 });
@@ -37,11 +37,11 @@ export const getProducts = async (next = 0) => {
   }
 };
 
-export const getDetailProduct = (id) => {
+export const getDetailProduct = id => {
   axios
     .get(`/api/products/${id}`)
-    .then((result) => store.dispatch(setDetailProduct(result.data)))
-    .catch((e) => console.log(e));
+    .then(result => store.dispatch(setDetailProduct(result.data)))
+    .catch(e => console.log(e));
 };
 
 const init = {

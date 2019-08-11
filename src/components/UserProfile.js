@@ -24,7 +24,7 @@ class UserProfile extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
   reviews: state.reviews,
 });

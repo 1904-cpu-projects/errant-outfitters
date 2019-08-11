@@ -22,14 +22,14 @@ const reveiwReducer = (state = initialState, action) => {
     case EDIT_REVIEW:
       return {
         ...state,
-        reviews: state.reviews.map((item) =>
+        reviews: state.reviews.map(item =>
           item.id === action.payload.id ? action.payload : item,
         ),
       };
     case DELETE_REVIEW:
       return {
         ...state,
-        reviews: state.reviews.filter((item) => item.id !== action.payload.id),
+        reviews: state.reviews.filter(item => item.id !== action.payload.id),
       };
     default:
       return state;

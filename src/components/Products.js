@@ -5,13 +5,13 @@ import MainView from './MenuBar';
 
 function Products({ products }) {
   //function to make tiles from SinlgleProduct component
-  const tileProducts = products.productList.map((p) => {
+  const tileProducts = products.productList.map(p => {
     return <SingleProduct key={p.id} product={p} />;
   });
   return <div className="products-list">{tileProducts}</div>;
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   products: state.products,
 });
 

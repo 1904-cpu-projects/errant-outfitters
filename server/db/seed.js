@@ -50,10 +50,10 @@ const syncAndSeed = async () => {
   try {
     await db.sync({ force: true });
 
-    await cartSeed.map((item) => {
+    await cartSeed.map(item => {
       Cart.create(item);
     });
-    await transactionSeed.map((item) => {
+    await transactionSeed.map(item => {
       Transaction.create(item);
     });
 
@@ -68,9 +68,7 @@ const syncAndSeed = async () => {
       review8,
       review9,
       review10,
-    ] = await Promise.all(
-      reviews.map((review) => Review.create({ ...review })),
-    );
+    ] = await Promise.all(reviews.map(review => Review.create({ ...review })));
 
     const [
       product1,
@@ -79,11 +77,11 @@ const syncAndSeed = async () => {
       product4,
       product5,
     ] = await Promise.all(
-      products.map((product) => Product.create({ ...product })),
+      products.map(product => Product.create({ ...product })),
     );
 
     const [user1, user2, user3, user4] = await Promise.all(
-      users.map((user) => User.create({ ...user })),
+      users.map(user => User.create({ ...user })),
     );
 
     review1.userId = user1.id;

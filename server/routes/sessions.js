@@ -19,7 +19,7 @@ router.get('/login', async (req, res, next) => {
 
 //logout the user
 router.post('/logout', (req, res, next) => {
-  req.session.destroy((err) => {
+  req.session.destroy(err => {
     console.error(err);
   });
   res.clearCookie('SID');

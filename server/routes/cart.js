@@ -27,7 +27,7 @@ router.get('/getCart', async (req, res, next) => {
     });
     // Sends the cart information to client as array
     res.status(202).send(
-      userCart.map((item) => {
+      userCart.map(item => {
         return { productId: item.productId, quantity: item.quantity };
       }),
     );
