@@ -26,11 +26,16 @@ router.get('/getCart', async (req, res, next) => {
       where: { memberId: member.memberId },
     });
     // Sends the cart information to client as array
-    res.status(202).send(userCart.map(item => {
-      return {id: item.id, productId: item.productId, quantity: item.quantity};
-    }));
-  }
-  catch(e){
+    res.status(202).send(
+      userCart.map(item => {
+        return {
+          id: item.id,
+          productId: item.productId,
+          quantity: item.quantity,
+        };
+      }),
+    );
+  } catch (e) {
     // for now just log out any error
     // eventually we send the error information
     // to the client and process

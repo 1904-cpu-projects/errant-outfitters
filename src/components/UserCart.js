@@ -1,33 +1,31 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-function generateCartList() {
-}
+function generateCartList() {}
 
-function UserCart ({ cart }) {
+function UserCart({ cart }) {
   if (cart.length) {
     return (
       <div>
-	<h3>Here is all your junk...</h3>
-	<ul>
-	  {cart.map(i => <li key={i.id}>{i.productId}</li>)}
-	</ul>
+        <h3>Here is all your junk...</h3>
+        <ul>
+          {cart.map(i => (
+            <li key={i.id}>{i.productId}</li>
+          ))}
+        </ul>
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <div>
-	<h1>Your cart is empty</h1>
+        <h1>Your cart is empty</h1>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => (
-  {
-    cart: state.cart
-  }
-);
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
 
 export default connect(mapStateToProps)(UserCart);

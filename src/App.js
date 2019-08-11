@@ -38,7 +38,7 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <Router>
-        <Header />
+          <Header />
           <Route exact path="/" component={Home} />
           <Route exact path="/CreateUserForm" component={CreateUserForm} />
           <Route path="/user/profile" component={UserProfile} />

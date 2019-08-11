@@ -11,12 +11,10 @@ const setCart = items => ({
   items,
 });
 
-const expandCart = (items) => (
-  {
-    type: EXPAND_CART_ITEMS,
-    items
-  }
-);
+const expandCart = items => ({
+  type: EXPAND_CART_ITEMS,
+  items,
+});
 
 export async function getCart() {
   axios
@@ -26,7 +24,8 @@ export async function getCart() {
 }
 
 export async function getCartExpanded() {
-  axios.get("/api/cart/getCartExpanded")
+  axios
+    .get('/api/cart/getCartExpanded')
     .then(result => store.dispatch(expandCart(result.data)))
     .catch(e => console.log(e));
 }
