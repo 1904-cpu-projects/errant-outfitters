@@ -21,6 +21,11 @@
   background-color: rgb(240,255,255);
 }
 
+.cart-list img {
+    width: 100px;
+    height: 100px;
+}
+
 .cart-checkout {
     background-color: bisque;
     border-left: solid 3px black;

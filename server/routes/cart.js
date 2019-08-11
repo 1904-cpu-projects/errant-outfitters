@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Cart, Product, User } = require('../db/index.js');
+const { Cart, Product } = require('../db/index.js');
 
 // Helper function to determine guest or user status
 // sends back object with {memberStatus, memberId}
@@ -39,6 +39,22 @@ router.get('/getCart', async (req, res, next) => {
     // for now just log out any error
     // eventually we send the error information
     // to the client and process
+    next(e);
+  }
+});
+
+// The intent of this route is to provide the client with relevant information
+// for all their cart row entries. So we just get a request, and provide an array
+// of all the product information.
+router.get('/getCartProducts', async (req, res, next) => {
+  const member = determineUser(req.sessionID, req.session);
+  try {
+    const cart = await Cart.findAll({ where: { ...member } });
+    const products = await Promise.all(
+      cart.map(i => Product.findByPk(i.productId)),
+    );
+    res.status(200).send(products);
+  } catch (e) {
     next(e);
   }
 });
