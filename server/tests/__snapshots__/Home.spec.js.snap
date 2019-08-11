@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home/> renders the home component 1`] = `
+<div
+  className="main-view"
+>
+  <MenuBar />
+  <Connect(Products) />
+</div>
+`;

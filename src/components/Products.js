@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { SingleProduct } from './SingleProduct';
-import MainView from './MenuBar';
 
-function Products({ products }) {
+export function Products({ products }) {
   //function to make tiles from SinlgleProduct component
   const tileProducts = products.productList.map(p => {
     return <SingleProduct key={p.id} product={p} />;

@@ -25,6 +25,12 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
+  "jest": {
+    "verbose": true,
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "babel": {
