@@ -62,10 +62,20 @@ router.put('/changeCart/:productId', async (req, res, next) => {
 
 router.post('/createCart', async (req, res, next) => {
   const member = determineUser(req.sessionID, req.session);
-
   try {
-    const product = await Cart.create({ ...member, ...req.body });
-    console.log(product);
+    const productExists = await Cart.findOne({
+      where: { productId: req.body.productId, ...member },
+    });
+    let product;
+    if (productExists === null)
+      product = await Cart.create({ ...member, ...req.body });
+    else {
+      product = await Cart.update(
+        { quantity: productExists.quantity + req.body.quantity },
+        { where: { id: productExists.id } },
+      );
+      console.log(product);
+    }
     res.status(201).send();
   } catch (e) {
     // for now just log out any error

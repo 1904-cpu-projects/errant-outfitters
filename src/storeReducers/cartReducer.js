@@ -16,19 +16,27 @@ const expandCart = items => ({
   items,
 });
 
-export async function getCart() {
+export function getCart() {
   axios
     .get('/api/cart/getCart')
     .then(result => store.dispatch(setCart(result.data)))
     .catch(e => console.log(e));
 }
 
-export async function getCartExpanded() {
+// This basically grabs all the relevant information
+// for cart items for a user - independant of the
+// products redux store
+export function getCartExpanded() {
   axios
     .get('/api/cart/getCartExpanded')
     .then(result => store.dispatch(expandCart(result.data)))
     .catch(e => console.log(e));
 }
+
+// export function deleteCartItem() {
+//   axios
+//     .delete('/api/cart/deleteCartItem', )
+// }
 
 // I'm hard setting quantity to 1 as default, we can add
 // a quantity later I think
