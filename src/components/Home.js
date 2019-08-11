@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import Products from './Products'
-import MenuBar from './MenuBar'
+import Products from './Products';
+import MenuBar from './MenuBar';
 
 export function Home() {
   return (
@@ -9,5 +9,5 @@ export function Home() {
       <MenuBar />
       <Products />
     </div>
-  )
+  );
 }

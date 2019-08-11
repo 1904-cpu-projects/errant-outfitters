@@ -1,5 +1,5 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
 function MenuBar({ products }) {
   return (
@@ -7,7 +7,7 @@ function MenuBar({ products }) {
       Add menu button here. Such as filtering items. Later project
       <button> All Products</button>
     </div>
-  )
+  );
 }
 
-export default MenuBar
+export default MenuBar;

@@ -1,17 +1,16 @@
-const router = require("express").Router();
-const { Product } = require("../db/index.js");
+const router = require('express').Router();
+const { Product } = require('../db/index.js');
 
-router.get("/:id", async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const p = await Product.findByPk(req.params.id);
     res.status(200).send(p);
-  }
-  catch(e) {
-    res.status(404).send("Product missing for some damn reason.");
+  } catch (e) {
+    res.status(404).send('Product missing for some damn reason.');
   }
 });
 
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     res.status(200).send(await Product.findAll());
   } catch (err) {
@@ -19,7 +18,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
     const newItem = await Product.create({ ...req.body });
     res.status(201).send(newItem);
@@ -28,7 +27,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
     const updateProduct = await Product.findByPk(req.params.id);
     updateProduct.update({ ...req.body });
@@ -38,12 +37,12 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
     await Product.destroy({
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     });
     res.sendStatus(204);
   } catch (err) {
