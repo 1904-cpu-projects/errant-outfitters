@@ -15,6 +15,7 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 // active though. There is a lot of thought that goes into
 // that little peice of code though
 // Additionally we may want to investigate saveUninitialized a bit more
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "We're going on a bear hunt",
@@ -48,24 +49,29 @@ app.use('/api/cart', require('./routes/cart'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/users', require('./routes/users'));
 
-//SANDBOX//
-/*
-router.use('/checkout', (async () => {
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: [{
-      name: 'T-shirt',
-      description: 'Comfortable cotton t-shirt',
-      images: ['https://example.com/t-shirt.png'],
-      amount: 500,
-      currency: 'usd',
-      quantity: 1,
-    }],
-    success_url: 'https://example.com/success',
-    cancel_url: 'https://example.com/cancel',
-  });
-})());
-*/
-//SANDBOX//
+//WORKSHOP//
+
+//app.use('/api/checkout', require('./routes/checkout'));
+
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+
+app.use(
+  (async () => {
+    const stripeSession = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        name: 'T-shirt',
+        description: 'Comfortable cotton t-shirt',
+        images: ['https://example.com/t-shirt.png'],
+        amount: 500,
+        currency: 'usd',
+        quantity: 1,
+      }],
+      success_url: 'https://example.com/success',
+      cancel_url: 'https://example.com/cancel',
+    });
+  })()
+);
+//WORKSHOP//
 
 module.exports = app;
