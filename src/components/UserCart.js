@@ -73,7 +73,7 @@ class UserCart extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  cart: state.cart,
+  cart: state.cart.items,
 });
 
 const mapDispatchToProps = dispatch => ({

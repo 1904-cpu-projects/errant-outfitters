@@ -19,7 +19,7 @@ function Header({ user, cart }) {
 
 const mapStateToProps = state => ({
   user: state.user,
-  cart: state.cart,
+  cart: state.cart.items,
 });
 
 export default connect(mapStateToProps)(Header);
