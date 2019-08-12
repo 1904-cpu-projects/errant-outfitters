@@ -48,4 +48,24 @@ app.use('/api/cart', require('./routes/cart'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/users', require('./routes/users'));
 
+//SANDBOX//
+/*
+router.use('/checkout', (async () => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [{
+      name: 'T-shirt',
+      description: 'Comfortable cotton t-shirt',
+      images: ['https://example.com/t-shirt.png'],
+      amount: 500,
+      currency: 'usd',
+      quantity: 1,
+    }],
+    success_url: 'https://example.com/success',
+    cancel_url: 'https://example.com/cancel',
+  });
+})());
+*/
+//SANDBOX//
+
 module.exports = app;
