@@ -77,8 +77,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  deleteCartItem: (id) => dispatch(deleteCartItem(id))
+  deleteCartItem: id => dispatch(deleteCartItem(id)),
 });
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserCart);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserCart);

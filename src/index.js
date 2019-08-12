@@ -8,7 +8,7 @@ import App from './App';
 function AppWrapper() {
   return (
     <Provider store={store}>
-      <App/>
+      <App />
     </Provider>
   );
 }

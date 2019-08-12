@@ -1,7 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
-
 // import store is temporary until Thom gets the product thunks done
 
 import { connect } from 'react-redux';
@@ -39,26 +38,27 @@ class App extends React.Component {
 
   render() {
     return (
-        <Router>
-          <Header />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/CreateUserForm" component={CreateUserForm} />
-          <Route path="/user/profile" component={UserProfile} />
-          <Route path="/myCart" component={UserCart} />
-          <Route
-            path="/products/:id"
-            render={({ match }) => <DetailProduct match={match} />}
-          />
-        </Router>
+      <Router>
+        <Header />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/CreateUserForm" component={CreateUserForm} />
+        <Route path="/user/profile" component={UserProfile} />
+        <Route path="/myCart" component={UserCart} />
+        <Route
+          path="/products/:id"
+          render={({ match }) => <DetailProduct match={match} />}
+        />
+      </Router>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   checkSessionLogin: () => dispatch(checkSessionLogin()),
-  getCart: () => dispatch(getCart())
+  getCart: () => dispatch(getCart()),
 });
 
 export default connect(
   null,
-  mapDispatchToProps)(App);
+  mapDispatchToProps,
+)(App);

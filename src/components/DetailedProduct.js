@@ -23,7 +23,9 @@ function DetailProduct({ detailProduct, matchId, user, createItem }) {
           className={'product-image'}
           alt="Product Image"
         />
-        <button onClick={() => handleBuy(createItem, matchId)}>Buy this stuff!</button>
+        <button onClick={() => handleBuy(createItem, matchId)}>
+          Buy this stuff!
+        </button>
         <h1>{detailProduct.name}</h1>
         <div>{detailProduct.description}</div>
         <div>INSTOCK | {detailProduct.instock ? 'YES' : 'NO'}</div>
@@ -47,9 +49,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  createItem: (productId, quantity) => dispatch(createItem(productId, quantity)),
+  createItem: (productId, quantity) =>
+    dispatch(createItem(productId, quantity)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps)(DetailProduct);
+  mapDispatchToProps,
+)(DetailProduct);

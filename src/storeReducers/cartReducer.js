@@ -34,12 +34,12 @@ export const getCart = () => dispatch => {
     .catch(e => console.log(e));
 };
 
-export const deleteCartItem = (id) => dispatch => {
+export const deleteCartItem = id => dispatch => {
   axios
     .delete('/api/cart/deleteCartItem', { data: { id: id } })
     .then(store.dispatch(deleteItem(id)))
     .catch(e => console.log(e));
-}
+};
 
 // I'm hard setting quantity to 1 as default, we can add
 // a quantity later I think

@@ -33,7 +33,7 @@ function UserHeader({ user, loginUser, logoutUser }) {
         <a href="/#/CreateUserForm">
           <button>Register</button>
         </a>
-        <form onSubmit={(e) => handleLogin(e, loginUser)}>
+        <form onSubmit={e => handleLogin(e, loginUser)}>
           <label htmlFor="email">Email: </label>
           <input
             type="email"
@@ -53,7 +53,7 @@ function UserHeader({ user, loginUser, logoutUser }) {
         {' '}
         Hello, {user.firstName} {user.lastName}{' '}
         {user ? <a href="#/user/profile">PROFILE</a> : ''}
-        <form onSubmit={(e) => handleLogout(e, logoutUser)}>
+        <form onSubmit={e => handleLogout(e, logoutUser)}>
           <button>Logout</button>
         </form>
       </div>
@@ -63,15 +63,16 @@ function UserHeader({ user, loginUser, logoutUser }) {
 
 const mapStateToProps = state => ({
   user: state.user,
-  cart: state.cart
+  cart: state.cart,
 });
 
 const mapDispatchToProps = dispatch => ({
   loginUser: (email, password) => dispatch(loginUser(email, password)),
   logoutUser: () => dispatch(logoutUser()),
-  getCart: () => dispatch(getCart())
+  getCart: () => dispatch(getCart()),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps)(UserHeader);
+  mapDispatchToProps,
+)(UserHeader);
