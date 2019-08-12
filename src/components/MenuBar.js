@@ -1,21 +1,21 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-function MenuBar({ products }) {
+function MenuBar() {
   return (
     <div className="menu-bar">
-      <a href="/#/">
+      <NavLink className="navlink" exact to="/">
         <button>All Products</button>
-      </a>
-      <a href="/#/Armor">
+      </NavLink>
+      <NavLink className="navlink" exact to="/Armor">
         <button>Armor</button>
-      </a>
-      <a href="/#/Weapon">
+      </NavLink>
+      <NavLink className="navlink" exact to="/Weapon">
         <button>Weapon</button>
-      </a>
-      <a href="/#/Potion">
+      </NavLink>
+      <NavLink className="navlink" exact to="/Potion">
         <button>Potion</button>
-      </a>
-      <br />
+      </NavLink>
     </div>
   );
 }
