@@ -33,7 +33,7 @@ class UserCart extends React.Component {
   }
 
   render() {
-    const { cart, user } = this.props;
+    const { cart, user, deleteCartItem } = this.props;
     if (cart.length) {
       return (
         <div className="user-cart">
@@ -76,4 +76,9 @@ const mapStateToProps = state => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps)(UserCart);
+const mapDispatchToProps = dispatch => ({
+  deleteCartItem: (id) => dispatch(deleteCartItem(id))
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserCart);

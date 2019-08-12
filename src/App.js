@@ -1,8 +1,10 @@
 import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
 
-import store from './store';
+
+// import store is temporary until Thom gets the product thunks done
+
+import { connect } from 'react-redux';
 import { getProducts } from './storeReducers/productsReducer';
 import { checkSessionLogin } from './storeReducers/userReducer';
 import { getCart } from './storeReducers/cartReducer';
@@ -30,14 +32,13 @@ class App extends React.Component {
 
   componentDidMount() {
     getProducts();
-    getCart();
-    checkSessionLogin();
+    this.props.getCart();
+    this.props.checkSessionLogin();
     this.setState({ loading: false });
   }
 
   render() {
     return (
-      <Provider store={store}>
         <Router>
           <Header />
           <Route exact path="/" component={Home} />
@@ -49,9 +50,15 @@ class App extends React.Component {
             render={({ match }) => <DetailProduct match={match} />}
           />
         </Router>
-      </Provider>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  checkSessionLogin: () => dispatch(checkSessionLogin()),
+  getCart: () => dispatch(getCart())
+});
+
+export default connect(
+  null,
+  mapDispatchToProps)(App);

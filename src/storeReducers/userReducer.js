@@ -20,7 +20,7 @@ export const removeUser = () => ({
   type: REMOVE_USER,
 });
 
-export const loginUserThunk = (email, password) =>async dispatch => {
+export const loginUser = (email, password) => async dispatch => {
   try {
     const response = await axios.post('/api/login/login', { email, password });
     dispatch(loadUser(response.data));
@@ -29,17 +29,17 @@ export const loginUserThunk = (email, password) =>async dispatch => {
   }
 };
 
-export const logoutUser = async () => {
+export const logoutUser = () => async dispatch => {
   try {
     const response = axios.get('/api/login/logout');
-    store.dispatch(removeUser());
+    dispatch(removeUser());
   } catch (e) {
     console.log('Logout should never fail');
   }
 };
 
 // helper function that gets products based on productsReducer
-export const checkSessionLogin = async () => {
+export const checkSessionLogin = () => async () => {
   try {
     const result = await axios.get('/api/login/checkLoggedIn');
     store.dispatch(loadUser(result.data));
