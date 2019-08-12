@@ -41,10 +41,11 @@ app.use(
 app.use('/api/sessions', require('./routes/sessions'));
 
 //Main routes
+// Nick: I've ordered these in most used to least used
 app.use('/api/products', require('./routes/products'));
-app.use('/api/cart', require('./routes/cart'));
-app.use('/api/users', require('./routes/users'));
 app.use('/api/reviews', require('./routes/reviews'));
+app.use('/api/cart', require('./routes/cart'));
 app.use('/api/login', require('./routes/login'));
+app.use('/api/users', require('./routes/users'));
 
 module.exports = app;

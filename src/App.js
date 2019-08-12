@@ -13,6 +13,7 @@ import DetailProduct from './components/DetailedProduct';
 import { CreateUserForm } from './components/CreateUserForm';
 import CreateReview from './components/CreateReview';
 import UserProfile from './components/UserProfile';
+import UserCart from './components/UserCart';
 
 /* I think its reasonable to make this thing be the main provider of redux store
  * And also the thing that routes to other places
@@ -27,21 +28,22 @@ class App extends React.Component {
     };
   }
 
-  async componentDidMount() {
-    await getProducts();
-    await getCart();
-    await checkSessionLogin();
+  componentDidMount() {
+    getProducts();
+    getCart();
+    checkSessionLogin();
     this.setState({ loading: false });
   }
 
   render() {
     return (
       <Provider store={store}>
-        <Header />
         <Router>
+          <Header />
           <Route exact path="/" component={Home} />
           <Route exact path="/CreateUserForm" component={CreateUserForm} />
           <Route path="/user/profile" component={UserProfile} />
+          <Route path="/myCart" component={UserCart} />
           <Route
             path="/products/:id"
             render={({ match }) => <DetailProduct match={match} />}

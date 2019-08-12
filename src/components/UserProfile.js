@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
+import UserCart from './UserCart';
 import Reviews from './Reviews';
 
 class UserProfile extends React.Component {
   render() {
-    const { user } = this.props;
+    const { user, cart } = this.props;
     return (
       <div>
         <h3>
@@ -15,6 +17,7 @@ class UserProfile extends React.Component {
           Last Name: {user.lastName}
           email:
         </div>
+        <UserCart cart={cart} />
         <div>
           <h1>Authored Reviews</h1>
           <Reviews user={user} />
@@ -27,6 +30,7 @@ class UserProfile extends React.Component {
 const mapStateToProps = state => ({
   user: state.user,
   reviews: state.reviews,
+  cart: state.cart,
 });
 
 export default connect(

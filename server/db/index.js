@@ -15,7 +15,7 @@ Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
 
-Product.belongsTo(Cart);
+//Product.belongsTo(Cart);
 User.hasMany(Review);
 User.hasMany(Transaction);
 Review.belongsTo(Product);
