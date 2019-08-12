@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getDetailProduct } from '../storeReducers/productsReducer';
 import { createItem } from '../storeReducers/cartReducer';
 import CreateReview from '../components/CreateReview';
+import { Link } from 'react-router-dom';
 
 import Reviews from './Reviews';
 
@@ -33,6 +34,16 @@ function DetailProduct({ detailProduct, matchId, user }) {
         </footer>
         <h4>Like this product? Consider logging in and writing a review</h4>
         {user.id ? <CreateReview product={detailProduct} /> : ''}
+        <div>
+          {user.isAdmin ? (
+            <Link to={`/products/${detailProduct.id}/edit`}>
+              Edit Product Info
+            </Link>
+          ) : (
+            ''
+          )}
+        </div>
+        <div>{user.isAdmin ? <button>Delete Product</button> : ''}</div>
       </div>
     );
   }

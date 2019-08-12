@@ -35,7 +35,7 @@ describe('PUT and DELETE /api/products/:id', () => {
 
   it('put a product by `id`', async () => {
     const changeProduct = await request(app)
-      .put(`/api/products/${item.id}`)
+      .put(`/api/products/${item.id}/edit`)
       .send({ name: 'Staff' });
     expect(changeProduct.status).toEqual(200);
   });
