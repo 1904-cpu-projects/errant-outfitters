@@ -9,7 +9,13 @@ export function SingleProduct({ product }) {
 
   return (
     <div key={product.id} className="product-card">
-      <img className="product-image" src={product.image} alt="Product Image" />
+      <img
+        className="product-image"
+        src={
+          product.image ? product.image : '/img/products/default-product.jpg'
+        }
+        alt="Product Image"
+      />
       <div className="product-container">
         <h3>
           <b> {product.name} </b>
