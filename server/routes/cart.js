@@ -15,37 +15,9 @@ function determineUser(sessionID, session) {
   return result;
 }
 
-// This will send to the client all items in user cart as a list
-// We are relying on the session cookie to supply us with the relevant
-// information though.
-router.get('/getCart', async (req, res, next) => {
-  const member = determineUser(req.sessionID, req.session);
-  // Get all cart rows based on that information and send it
-  try {
-    const userCart = await Cart.findAll({
-      where: { memberId: member.memberId },
-    });
-    // Sends the cart information to client as array
-    res.status(202).send(
-      userCart.map(item => {
-        return {
-          id: item.id,
-          productId: item.productId,
-          quantity: item.quantity,
-        };
-      }),
-    );
-  } catch (e) {
-    // for now just log out any error
-    // eventually we send the error information
-    // to the client and process
-    next(e);
-  }
-});
-
 // The intent of this route is to provide the client with relevant information
 // for all their cart row entries. So we just get a request, and provide an array
-// of all the product information.
+// of all the product and cart information.
 router.get('/getCartProducts', async (req, res, next) => {
   const member = determineUser(req.sessionID, req.session);
   try {
@@ -53,7 +25,7 @@ router.get('/getCartProducts', async (req, res, next) => {
     const products = await Promise.all(
       cart.map(i => Product.findByPk(i.productId)),
     );
-    res.status(200).send(products);
+    res.status(200).send({ products, cart });
   } catch (e) {
     next(e);
   }
@@ -106,7 +78,9 @@ router.delete('/deleteCartItem', async (req, res, next) => {
   const member = determineUser(req.sessionID, req.session);
   console.log(req.body.id);
   try {
-    const product = await Cart.destroy({ where: { ...member, id: req.body.id } });
+    const product = await Cart.destroy({
+      where: { ...member, id: req.body.id },
+    });
     res.status(202).send();
   } catch (e) {
     // for now just log out any error
