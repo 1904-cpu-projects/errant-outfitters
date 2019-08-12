@@ -17,7 +17,7 @@ const deleteItem = id => ({
   id: id,
 });
 
-export function getCart() {
+export const getCart = () => dispatch => {
   axios
     .get('/api/cart/getCartProducts')
     .then(({ data }) => {
@@ -32,23 +32,23 @@ export function getCart() {
       store.dispatch(setCart(cart));
     })
     .catch(e => console.log(e));
-}
+};
 
-export function deleteCartItem(id) {
+export const deleteCartItem = id => dispatch => {
   axios
     .delete('/api/cart/deleteCartItem', { data: { id: id } })
     .then(store.dispatch(deleteItem(id)))
     .catch(e => console.log(e));
-}
+};
 
 // I'm hard setting quantity to 1 as default, we can add
 // a quantity later I think
-export async function createItem(productId, quantity = 1) {
+export const createItem = (productId, quantity = 1) => dispatch => {
   axios
     .post('/api/cart/createCart', { productId, quantity })
-    .then(() => getCart())
+    .then(() => dispatch(getCart()))
     .catch(e => console.log(e));
-}
+};
 
 // REDUCE the stuffs
 export default (cart = [], action) => {

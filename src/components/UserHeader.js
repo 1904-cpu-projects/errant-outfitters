@@ -3,25 +3,28 @@ import axios from 'axios';
 
 import UserProfile from './UserProfile';
 
-import store from '../store';
+import { connect } from 'react-redux';
 import { loginUser, logoutUser } from '../storeReducers/userReducer';
 import { getCart } from '../storeReducers/cartReducer';
 
-async function handleLogin(ev) {
+// This needs to be async based on the fact that getCart()
+// relies on loginUser() having completed?
+async function handleLogin(ev, loginUser) {
   ev.preventDefault();
   const email = ev.target[0].value;
   const password = ev.target[1].value;
   await loginUser(email, password);
-  await getCart();
+  this.props.getCart();
 }
 
-async function handleLogout(ev) {
+// This also has the same thing happening
+async function handleLogout(ev, logoutUser) {
   ev.preventDefault();
   await logoutUser();
-  await getCart();
+  this.props.getCart();
 }
 
-export function UserHeader({ user }) {
+function UserHeader({ user, loginUser, logoutUser }) {
   if (user.id === undefined) {
     return (
       <div>
@@ -30,7 +33,7 @@ export function UserHeader({ user }) {
         <a href="/#/CreateUserForm">
           <button>Register</button>
         </a>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={e => handleLogin(e, loginUser)}>
           <label htmlFor="email">Email: </label>
           <input
             type="email"
@@ -50,10 +53,26 @@ export function UserHeader({ user }) {
         {' '}
         Hello, {user.firstName} {user.lastName}{' '}
         {user ? <a href="#/user/profile">PROFILE</a> : ''}
-        <form onSubmit={handleLogout}>
+        <form onSubmit={e => handleLogout(e, logoutUser)}>
           <button>Logout</button>
         </form>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  user: state.user,
+  cart: state.cart,
+});
+
+const mapDispatchToProps = dispatch => ({
+  loginUser: (email, password) => dispatch(loginUser(email, password)),
+  logoutUser: () => dispatch(logoutUser()),
+  getCart: () => dispatch(getCart()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserHeader);

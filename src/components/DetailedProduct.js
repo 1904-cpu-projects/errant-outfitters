@@ -6,13 +6,13 @@ import CreateReview from '../components/CreateReview';
 
 import Reviews from './Reviews';
 
-function handleBuy(matchId) {
+function handleBuy(createItem, matchId) {
   createItem(matchId);
 }
 
 // More to come for this thing, need reviews, and add to cart
 // Basics are here!!!
-function DetailProduct({ detailProduct, matchId, user }) {
+function DetailProduct({ detailProduct, matchId, user, createItem }) {
   if (detailProduct.id !== matchId) getDetailProduct(matchId);
   if (!detailProduct) return null;
   else {
@@ -23,7 +23,9 @@ function DetailProduct({ detailProduct, matchId, user }) {
           className={'product-image'}
           alt="Product Image"
         />
-        <button onClick={e => handleBuy(matchId)}>Buy this stuff!</button>
+        <button onClick={() => handleBuy(createItem, matchId)}>
+          Buy this stuff!
+        </button>
         <h1>{detailProduct.name}</h1>
         <div>{detailProduct.description}</div>
         <div>INSTOCK | {detailProduct.instock ? 'YES' : 'NO'}</div>
@@ -46,4 +48,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(DetailProduct);
+const mapDispatchToProps = dispatch => ({
+  createItem: (productId, quantity) =>
+    dispatch(createItem(productId, quantity)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DetailProduct);
