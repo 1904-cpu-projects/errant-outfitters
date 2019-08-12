@@ -5,6 +5,7 @@ import { createItem } from '../storeReducers/cartReducer';
 import CreateReview from '../components/CreateReview';
 
 import Reviews from './Reviews';
+import MenuBar from './MenuBar';
 
 function handleBuy(createItem, matchId) {
   createItem(matchId);
@@ -18,6 +19,7 @@ function DetailProduct({ detailProduct, matchId, user, createItem }) {
   else {
     return (
       <div>
+        <MenuBar />
         <img
           src={detailProduct.image}
           className={'product-image'}
