@@ -10,6 +10,7 @@ import { getCart } from './storeReducers/cartReducer';
 
 import { Home } from './components/Home';
 import Header from './components/Header';
+import ErrorList from './components/ErrorList';
 import DetailProduct from './components/DetailedProduct';
 import { CreateUserForm } from './components/CreateUserForm';
 import CreateReview from './components/CreateReview';
@@ -43,6 +44,7 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
+        <ErrorList />
         <Route exact path="/" component={Home} />
         <Route exact path="/CreateUserForm" component={CreateUserForm} />
         <Route path="/user/profile" component={UserProfile} />
