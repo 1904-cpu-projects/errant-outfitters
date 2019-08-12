@@ -15,6 +15,9 @@ import { CreateUserForm } from './components/CreateUserForm';
 import CreateReview from './components/CreateReview';
 import UserProfile from './components/UserProfile';
 import UserCart from './components/UserCart';
+import Armor from './components/Armor';
+import Weapon from './components/Weapon';
+import Potion from './components/Potion';
 
 /* I think its reasonable to make this thing be the main provider of redux store
  * And also the thing that routes to other places
@@ -44,6 +47,9 @@ class App extends React.Component {
         <Route exact path="/CreateUserForm" component={CreateUserForm} />
         <Route path="/user/profile" component={UserProfile} />
         <Route path="/myCart" component={UserCart} />
+        <Route path="/Armor" component={Armor} />
+        <Route path="/Weapon" component={Weapon} />
+        <Route path="/Potion" component={Potion} />
         <Route
           path="/products/:id"
           render={({ match }) => <DetailProduct match={match} />}

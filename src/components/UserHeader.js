@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 
-import UserProfile from './UserProfile';
-
 import { connect } from 'react-redux';
 import { loginUser, logoutUser } from '../storeReducers/userReducer';
 import { getCart } from '../storeReducers/cartReducer';
@@ -35,12 +33,7 @@ function UserHeader({ user, loginUser, logoutUser }) {
         </a>
         <form onSubmit={e => handleLogin(e, loginUser)}>
           <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            name="email"
-            placeholder="test@test.test"
-            required
-          />
+          <input type="email" name="email" required />
           <label htmlFor="password">Password: </label>
           <input type="password" name="password" required />
           <button>Login</button>
