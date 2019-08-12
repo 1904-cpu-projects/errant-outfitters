@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import UserProfile from './UserProfile';
 
-import store from '../store';
+import { connect } from 'react-redux';
 import { loginUser, logoutUser } from '../storeReducers/userReducer';
 import { getCart } from '../storeReducers/cartReducer';
 
@@ -57,3 +57,12 @@ export function UserHeader({ user }) {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+import { loginUser, logoutUser } from '../storeReducers/userReducer';
+const mapDispatchToProps = dispatch => ({
+  loginUserThunk: () => dispatch()
+});

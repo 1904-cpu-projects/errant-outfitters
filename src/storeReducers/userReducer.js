@@ -20,10 +20,10 @@ export const removeUser = () => ({
   type: REMOVE_USER,
 });
 
-export const loginUser = async (email, password) => {
+export const loginUserThunk = (email, password) =>async dispatch => {
   try {
     const response = await axios.post('/api/login/login', { email, password });
-    store.dispatch(loadUser(response.data));
+    dispatch(loadUser(response.data));
   } catch (e) {
     console.log('something did not go right');
   }
