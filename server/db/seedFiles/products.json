@@ -85,7 +85,7 @@
     "name": "Kikko Armor",
     "description": "Kikko armor consists of a clever arrangement of hexagonal plates made from iron and sewn to cloth, granting the wearer greater flexibility than that provided by many armors that afford similar defense. The plates may be left exposed or hidden by a layer of cloth.",
     "cost": "250",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 38
   },
@@ -175,7 +175,7 @@
     "name": "Wall Shield",
     "description": "An incredibly large shield with spikes on the bottom that allow it to be planted into the ground. When planted, this shield is a barrier that is five feet wide and six feet tall",
     "cost": "300",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 38
   },
@@ -193,7 +193,7 @@
     "name": "Living Goblin Shield",
     "description": "A wooden or steel shield with a living goblin tied to it for extra padding. Every so often, an attack hits the goblin tied to the shield. Once the goblin attached to the shield dies the world becomes just slightly better.",
     "cost": "120",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 2
   },
@@ -202,7 +202,7 @@
     "name": "Battle Umbrella",
     "description": "A battle umbrella is really two weapons in one. While it can be used as a normal umbrella, it is more commonly used as a covert weapon.",
     "cost": "5",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 289
   },
@@ -211,7 +211,7 @@
     "name": "Bokken",
     "description": "A wooden training sword. Doesn't do much, but makes one feel good about the training they are about to receive.",
     "cost": "5",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 9
   },
@@ -220,7 +220,7 @@
     "name": "Brandisock",
     "description": "This peculiar spear-like weapon is popular among travelers and law enforcement. The brandistock's three-pronged head is retractable, which renders it indistinguishable from a quarterstaff (unless closely inspected). Extending the blades is instantaneous, but pulling them back requires a little effort.",
     "cost": "10",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 109
   },
@@ -229,7 +229,7 @@
     "name": "Brass Knuckles",
     "description": "Brass knuckles, or knuckledusters, are pieces of metal shaped to fit around the knuckles. Designed to preserve and concentrate a punch's force by directing it toward a harder and smaller contact area, they result in increased tissue disruption, including an increased likelihood of fracturing the victim's bones on impact. The extended and rounded palm grip also spreads across the attacker's palm the counter-force that would otherwise be absorbed primarily by the attacker's fingers, reducing the likelihood of damage to the attacker's fingers.",
     "cost": "5",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 30
   },
@@ -247,7 +247,7 @@
     "name": "Disk Blade",
     "description": "This weapon is a simplified version of the chakram or chakri, designed to be used by common folk more easily. It offers safety and reliability in exchange for its effectiveness as a thrown weapon. It fits tightly around the wrist and contains a slightly padded inner ring to provide a cushion when struck against something.",
     "cost": "10",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 20
   },
@@ -256,7 +256,7 @@
     "name": "Greatclub",
     "description": "A altered version of the vanilla greatclub designed to make it feel more powerful, like you're swinging a tree trunk at someone.",
     "cost": "5",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 19
   },
@@ -265,7 +265,7 @@
     "name": "Scythe",
     "description": "This weapon is inspired by the common farming implement used to cut swaths of grown hay, but it has a straight handle and a heavier blade. Despite its humble origins, the scythe is recognized as a symbol of death in many cultures because of its use in reaping. Rather than being too heavy for most smaller creatures, the scythe is too long for Small sized creatures to wield effectively.",
     "cost": "2",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 48
   },
@@ -274,7 +274,7 @@
     "name": "Boomerang",
     "description": "A boomerang is a thrown tool, typically constructed as a flat aerofoil, that is designed to spin about an axis perpendicular to the direction of its flight. A returning boomerang is designed to return to the thrower. Boomerangs have been historically used for hunting, as well as a sport, and entertainment.",
     "cost": "1",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 3
   },
@@ -283,7 +283,7 @@
     "name": "Staff",
     "description": "You shall not pass!",
     "cost": "1",
-    "image": "",
+    "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 3
   },

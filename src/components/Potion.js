@@ -6,13 +6,15 @@ import MenuBar from './MenuBar';
 export function Products({ products }) {
   const potion = products.productList.filter(a => a.catagory === 'potion');
   //function to make tiles from SingleProduct component
-  const tileProducts = potion.map(p => {
-    return <SingleProduct key={p.id} product={p} />;
-  });
+
   return (
     <div>
       <MenuBar />
-      <div className="products-list">{tileProducts}</div>
+      <div className="products-list">
+        {potion.map(p => {
+          return <SingleProduct key={p.id} product={p} />;
+        })}
+      </div>
     </div>
   );
 }

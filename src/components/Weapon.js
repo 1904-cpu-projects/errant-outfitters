@@ -6,13 +6,15 @@ import MenuBar from './MenuBar';
 export function Products({ products }) {
   const weapon = products.productList.filter(a => a.catagory === 'weapon');
   //function to make tiles from SingleProduct component
-  const tileProducts = weapon.map(p => {
-    return <SingleProduct key={p.id} product={p} />;
-  });
+
   return (
     <div>
       <MenuBar />
-      <div className="products-list">{tileProducts}</div>
+      <div className="products-list">
+        {weapon.map(p => {
+          return <SingleProduct key={p.id} product={p} />;
+        })}
+      </div>
     </div>
   );
 }
