@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 let filteredReviews;
 
-class Reviews extends React.Component {
+export class Reviews extends React.Component {
   componentDidMount() {
     this.props.listReviews();
   }
@@ -12,11 +12,12 @@ class Reviews extends React.Component {
   render() {
     const { reviews } = this.props.reviews;
 
-    // if (!this.props.user.id === undefined) return null;
+    //This is the product path
     if (this.props.productId) {
       filteredReviews = reviews.filter(
         review => review.productId === this.props.productId,
       );
+      //this is the user path
     } else {
       filteredReviews = reviews.filter(
         review => review.userId === this.props.user.id,
@@ -32,6 +33,7 @@ class Reviews extends React.Component {
                 <h5>{review.body}</h5>
                 {this.props.user ? (
                   <button
+                    className="review-delete"
                     type="submit"
                     onClick={() => this.props.deleteReview(review)}
                   >

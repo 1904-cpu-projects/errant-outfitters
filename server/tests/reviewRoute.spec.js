@@ -5,14 +5,13 @@ const { Review, db } = require('../db/index');
 beforeAll(() => db.sync());
 
 describe('GET and POST review routes', () => {
-  it('gets all the current reviews', async (done) => {
+  it('gets all the current reviews', async () => {
     const response = await request(app).get('/api/reviews');
     expect(response.status).toEqual(200);
     expect(response.body.length).toBeGreaterThan(1);
-    done();
   });
 
-  it('can post a new review', async (done) => {
+  it('can post a new review', async () => {
     const response = await request(app)
       .post('/api/reviews')
       .send({
@@ -22,7 +21,6 @@ describe('GET and POST review routes', () => {
       });
     expect(response.status).toEqual(201);
     expect(response.body.title).toBe('Betty knows best');
-    done();
   });
 });
 
@@ -37,23 +35,21 @@ describe('Delete and PUT review routes', () => {
     });
   });
 
-  it("changes the title of Betty's article", async (done) => {
+  it("changes the title of Betty's article", async () => {
     const response = await request(app)
       .put(`/api/reviews/${bettyReview.id}`)
       .send({ title: "Where's Preston?" });
     expect(response.status).toEqual(201);
     expect(response.body.title).toEqual("Where's Preston?");
-    done();
   });
 
-  it('Removes the article based on the id', async (done) => {
+  it('Removes the article based on the id', async () => {
     const removedArticle = await request(app).delete(
       `/api/reviews/${bettyReview.id}`,
     );
     const noArticle = await request(app).get(`/api/reviews/${bettyReview.id}`);
     expect(removedArticle.status).toEqual(204);
     expect(noArticle.body.name).toEqual(undefined);
-    done();
   });
 });
 
