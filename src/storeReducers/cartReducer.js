@@ -4,6 +4,7 @@ import store from '../store';
 
 // CONST defs
 export const SET_CART = 'SET_CART';
+export const SET_GUEST_CART = 'SET_GUEST_CART';
 export const DELETE_ITEM = 'DELETE_ITEM';
 
 // Actions
@@ -12,12 +13,17 @@ const setCart = items => ({
   items,
 });
 
+const setGuestCart = items => ({
+  type: SET_GUEST_CART,
+  items
+});
+
 const deleteItem = id => ({
   type: DELETE_ITEM,
   id: id,
 });
 
-export const getCart = () => dispatch => {
+export const getCart = (userLogin = false) => (dispatch, getStore) => {
   axios
     .get('/api/cart/getCartProducts')
     .then(({ data }) => {
@@ -29,6 +35,12 @@ export const getCart = () => dispatch => {
           else return undefined;
         }, undefined);
       });
+      if(userLogin) {
+	const existingStore = getStore();
+	if(existingStore.cart.items.length && existingStore.cart.items[0].memberStatus === 'guest') {
+	  store.dispatch(setGuestCart([...existingStore.cart.items]));
+	}
+      }
       store.dispatch(setCart(cart));
     })
     .catch(e => console.log(e));
@@ -51,14 +63,18 @@ export const createItem = (productId, quantity = 1) => dispatch => {
 };
 
 // REDUCE the stuffs
-export default (cart = [], action) => {
+export default (cart = { items: [], guest: [] }, action) => {
   switch (action.type) {
     case SET_CART:
-      cart = [...action.items];
-      break;
+      cart.items = [...action.items];
+    break;
+  case SET_GUEST_CART:
+      cart.guest = [...action.items];
+    break;    
     case DELETE_ITEM:
-      cart = cart.filter(i => i.id !== action.id);
+      cart.items = cart.items.filter(i => i.id !== action.id);
       break;
   }
+  console.log(cart);
   return cart;
 };
