@@ -4,6 +4,7 @@ import { createError, removeError } from './errorReducer';
 export const SET_CART = 'SET_CART';
 export const SET_GUEST_CART = 'SET_GUEST_CART';
 export const DELETE_ITEM = 'DELETE_ITEM';
+export const DELETE_GUEST_ITEM = 'DELETE_GUEST_ITEM';
 
 // Actions
 const setCart = items => ({
@@ -18,6 +19,11 @@ const setGuestCart = items => ({
 
 const deleteItem = id => ({
   type: DELETE_ITEM,
+  id: id,
+});
+
+const deleteGuestItem = id => ({
+  type: DELETE_GUEST_ITEM,
   id: id,
 });
 
@@ -56,10 +62,25 @@ export const getCart = (userLogin = false) => (dispatch, getStore) => {
     .catch(e => console.log(e));
 };
 
-export const deleteCartItem = (id, forGuest = false) => dispatch => {
+export const deleteCartItem = (id) => (dispatch, getStore) => {
   axios
     .delete('/api/cart/deleteCartItem', { data: { id: id } })
-    .then(dispatch(deleteItem(id)))
+    .then(() => {
+      const store = getStore();
+      let guestOrUser = store.cart.items.filter(i => i.id === id);
+      if(guestOrUser.length) {
+	dispatch(deleteItem(id));
+      }
+      else {
+	dispatch(deleteGuestItem(id));
+	if(store.cart.guest.length === 1)
+	  dispatch(removeError(
+              'CART',
+              'You had items in your cart before logging in. Please goto your cart and check to add them to your cart or these items will be lost',
+          ));
+      }
+      
+    })
     .catch(e => console.log(e));
 };
 
@@ -83,7 +104,10 @@ export default (cart = { items: [], guest: [] }, action) => {
       break;
     case DELETE_ITEM:
       cart.items = cart.items.filter(i => i.id !== action.id);
-      break;
+    break;
+  case DELETE_GUEST_ITEM:
+    cart.guest = cart.guest.filter(i => i.id !== action.id);
+    break;
   }
   return cart;
 };
