@@ -51,6 +51,7 @@ export const checkSessionLogin = () => async () => {
 const init = {
   id: undefined,
   isAdmin: false,
+  class: '',
 };
 
 // And of course the reducer

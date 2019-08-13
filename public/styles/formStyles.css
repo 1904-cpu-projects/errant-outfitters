@@ -25,11 +25,9 @@ a.active,
 a:hover {
   background-color: dodgerBlue;
   color: white;
-  border: solid 1px white;
   border-radius: 20px;
 }
 a {
-  padding: 5px;
-  text-decoration: none;
+  padding: 10px;
   color: dodgerBlue;
 }

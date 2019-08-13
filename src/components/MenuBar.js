@@ -11,10 +11,13 @@ function MenuBar() {
         <button>Armor</button>
       </NavLink>
       <NavLink className="navlink" exact to="/Weapon">
-        <button>Weapon</button>
+        <button>Weapons</button>
       </NavLink>
       <NavLink className="navlink" exact to="/Potion">
-        <button>Potion</button>
+        <button>Potions</button>
+      </NavLink>
+      <NavLink className="navlink" exact to="/ClassProducts">
+        <button>Your Class Products</button>
       </NavLink>
     </div>
   );

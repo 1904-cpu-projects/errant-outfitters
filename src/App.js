@@ -19,7 +19,7 @@ import UserCart from './components/UserCart';
 import Armor from './components/Armor';
 import Weapon from './components/Weapon';
 import Potion from './components/Potion';
-
+import ClassProducts from './components/ClassProducts';
 /* I think its reasonable to make this thing be the main provider of redux store
  * And also the thing that routes to other places
  * Lets see how this works!
@@ -52,6 +52,7 @@ class App extends React.Component {
         <Route path="/Armor" component={Armor} />
         <Route path="/Weapon" component={Weapon} />
         <Route path="/Potion" component={Potion} />
+        <Route path="/ClassProducts" component={ClassProducts} />
         <Route
           path="/products/:id"
           render={({ match }) => <DetailProduct match={match} />}
