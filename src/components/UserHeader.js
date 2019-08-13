@@ -45,8 +45,12 @@ function UserHeader({ user, loginUser, logoutUser, getCart }) {
     return (
       <div>
         {' '}
-        Hello, {user.firstName} {user.lastName}{' '}
-        {user ? <a href="#/user/profile">PROFILE</a> : ''}
+        Hello, {user.firstName} {user.lastName} <br />
+        Class: {user.class.charAt(0).toUpperCase() + user.class.slice(1)}
+        <br />
+        {user ? <a href="#/user/profile">Profile</a> : ''}
+        <br />
+        <br />
         <form onSubmit={e => handleLogout(e, logoutUser, getCart)}>
           <button>Logout</button>
         </form>

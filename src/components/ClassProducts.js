@@ -11,7 +11,7 @@ export function Products({ products, user }) {
   if (classProducts.length !== 0) {
     return (
       <div>
-        <MenuBar />
+        <MenuBar classProdUsr={classProducts[0].class} />
         <div className="products-list">
           {classProducts.map(p => {
             return <SingleProduct key={p.id} product={p} />;
