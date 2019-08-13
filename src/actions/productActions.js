@@ -8,27 +8,41 @@ import {
   DELETE_PRODUCT,
 } from './actionTypes';
 
-export const listProductsThunk = () => async dispatch => {
+export const loadProductsInitial = (list, next) => ({
+  type: SET_PRODUCTS,
+  list,
+  next,
+});
+
+export const listProductsThunk = (next = 0) => async dispatch => {
+  let getRoute = '/api/products';
+  if (next) {
+    getRoute += `/${next}`;
+  }
   try {
-    const response = await axios.get('/api/products');
-    dispatch({ type: SET_PRODUCTS, payload: response.data });
-  } catch (err) {
-    console.error(err);
+    const result = await axios.get(getRoute);
+    dispatch(loadProductsInitial(result.data, next));
+  } catch (e) {
+    console.log('I did a bad', e);
   }
 };
 
+export const setDetailProduct = data => ({
+  type: SET_DETAIL_PRODUCT,
+  data,
+});
+
 export const singleProductThunk = id => async dispatch => {
-  try {
-    const response = await axios.get(`/api/products/${id}`);
-    dispatch({ type: SET_DETAIL_PRODUCT, payload: response.data });
-  } catch (err) {
-    console.error(err);
-  }
+  axios
+    .get(`/api/products/${id}`)
+    .then(result => dispatch(setDetailProduct(result.data)))
+    .catch(e => console.log(e));
 };
 
 export const postProductThunk = product => async dispatch => {
   try {
     const response = await axios.post('/api/products', product);
+    console.log('in the post thunk', response.data);
     dispatch({ type: POST_PRODUCT, payload: response.data });
   } catch (err) {
     console.error(err);
