@@ -13,8 +13,8 @@ import Header from './components/Header';
 import ErrorList from './components/ErrorList';
 import DetailProduct from './components/DetailedProduct';
 import { CreateUserForm } from './components/CreateUserForm';
-import CreateReview from './components/CreateReview';
 import UserProfile from './components/UserProfile';
+import EditProduct from './components/EditProduct';
 import UserCart from './components/UserCart';
 import Armor from './components/Armor';
 import Weapon from './components/Weapon';
@@ -44,18 +44,26 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
+        <Router>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/CreateUserForm" component={CreateUserForm} />
+          <Route path="/user/profile" component={UserProfile} />
+          <Route path="/myCart" component={UserCart} />
+          <Route path="/Armor" component={Armor} />
+          <Route path="/Weapon" component={Weapon} />
+          <Route path="/Potion" component={Potion} />
+          <Route
+            exact
+            path="/products/:id"
+            render={({ match }) => <DetailProduct match={match} />}
+          />
+          <Route
+            exact
+            path="/products/:id/edit"
+            render={({ match }) => <EditProduct match={match} />}
+          />
+        </Router>
         <ErrorList />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/CreateUserForm" component={CreateUserForm} />
-        <Route path="/user/profile" component={UserProfile} />
-        <Route path="/myCart" component={UserCart} />
-        <Route path="/Armor" component={Armor} />
-        <Route path="/Weapon" component={Weapon} />
-        <Route path="/Potion" component={Potion} />
-        <Route
-          path="/products/:id"
-          render={({ match }) => <DetailProduct match={match} />}
-        />
       </Router>
     );
   }

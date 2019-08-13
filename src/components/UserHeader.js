@@ -62,7 +62,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   loginUser: (email, password) => dispatch(loginUser(email, password)),
   logoutUser: () => dispatch(logoutUser()),
-  getCart: (userLogin) => dispatch(getCart(userLogin)),
+  getCart: userLogin => dispatch(getCart(userLogin)),
 });
 
 export default connect(

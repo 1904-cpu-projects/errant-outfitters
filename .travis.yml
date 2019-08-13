@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - "12"
+  - '12'
 install:
   - npm ci
 script:
   - npm run prettier
-  - npm run lint:fix
+  - npm run lint
   - npm run test
 services:
   - postgresql
