@@ -25,7 +25,11 @@ function initQuantity() {
 function populateQuantityOptions(max) {
   const options = [];
   for (let i = 0; i <= max && i <= 10; i++) {
-    options.push(<option value={i}>{i}</option>);
+    options.push(
+      <option key={i} value={i}>
+        {i}
+      </option>,
+    );
   }
   return options;
 }

@@ -35,7 +35,7 @@ export default (errors = {}, action) => {
       break;
     case REMOVE_ERROR:
       newErrors[action.context] = newErrors[action.context].filter(
-        e => e.error !== action.error,
+        e => e !== action.error,
       );
       break;
   }
