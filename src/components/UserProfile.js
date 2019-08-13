@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import UserCart from './UserCart';
 import Reviews from './Reviews';
@@ -16,6 +17,12 @@ class UserProfile extends React.Component {
           First Name: {user.firstName}
           Last Name: {user.lastName}
           email:
+        </div>
+        <div>
+          {user.isAdmin ? <a href="/users/edit">Edit Current Users</a> : ''}
+        </div>
+        <div>
+          {user.isAdmin ? <Link to="/create-product">Create Product</Link> : ''}
         </div>
         <UserCart cart={cart} />
         <div>

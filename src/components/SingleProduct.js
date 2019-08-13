@@ -6,7 +6,6 @@ export function SingleProduct({ product }) {
   if (product.inStock) {
     stocked = 'Yes';
   }
-
   return (
     <div key={product.id} className="product-card">
       <Link to={`/products/${product.id}`}>
