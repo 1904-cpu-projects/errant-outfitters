@@ -21,3 +21,15 @@ button:hover {
   background-color: dodgerBlue;
   color: white;
 }
+a.active,
+a:hover {
+  background-color: dodgerBlue;
+  color: white;
+  border: solid 1px white;
+  border-radius: 20px;
+}
+a {
+  padding: 5px;
+  text-decoration: none;
+  color: dodgerBlue;
+}

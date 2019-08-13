@@ -6,26 +6,64 @@ import { createItem } from '../storeReducers/cartReducer';
 import CreateReview from '../components/CreateReview';
 import { Link } from 'react-router-dom';
 import { deleteProductThunk } from '../actions/productActions';
+import MenuBar from './MenuBar';
 
-function handleBuy(matchId) {
-  createItem(matchId);
+function handleBuy(createItem, matchId, quantity) {
+  if (quantity) createItem(matchId, quantity);
 }
 
-function DetailProduct({ detailProduct, matchId, user, deleteProduct }) {
+function initQuantity() {
+  let result = 0;
+  return function(update = false, value) {
+    if (update) result = value;
+    return result;
+  };
+}
+
+function populateQuantityOptions(max) {
+  const options = [];
+  for (let i = 0; i <= max && i <= 10; i++) {
+    options.push(<option value={i}>{i}</option>);
+  }
+  return options;
+}
+
+// More to come for this thing, need reviews, and add to cart
+// Basics are here!!!
+function DetailProduct({
+  detailProduct,
+  matchId,
+  user,
+  createItem,
+  deleteProduct,
+}) {
+  const updatedQuantity = initQuantity();
   if (detailProduct.id !== matchId) getDetailProduct(matchId);
   if (!detailProduct) return null;
   else {
     return (
       <div>
+        <MenuBar />
         <img
           src={detailProduct.image}
           className={'product-image'}
           alt="Product Image"
         />
-        <button onClick={e => handleBuy(matchId)}>Buy this stuff!</button>
+        <button
+          onClick={() => handleBuy(createItem, matchId, updatedQuantity())}
+        >
+          Buy this stuff!
+        </button>
+        <select onChange={e => updatedQuantity(true, e.target.value)}>
+          {populateQuantityOptions(detailProduct.stock)}
+        </select>
+
         <h1>{detailProduct.name}</h1>
         <div>{detailProduct.description}</div>
-        <div>INSTOCK | {detailProduct.instock ? 'YES' : 'NO'}</div>
+        <div>
+          INSTOCK | {detailProduct.instock ? 'YES' : 'NO'} | Available:{' '}
+          {detailProduct.stock}
+        </div>
         <footer>
           <h4>Reviews for the {detailProduct.name}</h4>
           <Reviews product={detailProduct} productId={matchId} />
@@ -63,13 +101,13 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapStateToDispatch = dispatch => {
-  return {
-    deleteProduct: item => dispatch(deleteProductThunk(item)),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  createItem: (productId, quantity) =>
+    dispatch(createItem(productId, quantity)),
+  deleteProduct: item => dispatch(deleteProductThunk(item)),
+});
 
 export default connect(
   mapStateToProps,
-  mapStateToDispatch,
+  mapDispatchToProps,
 )(DetailProduct);

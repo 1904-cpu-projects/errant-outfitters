@@ -1,10 +1,21 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-function MenuBar({ products }) {
+function MenuBar() {
   return (
     <div className="menu-bar">
-      Add menu button here. Such as filtering items. Later project
-      <button> All Products</button>
+      <NavLink className="navlink" exact to="/">
+        <button>All Products</button>
+      </NavLink>
+      <NavLink className="navlink" exact to="/Armor">
+        <button>Armor</button>
+      </NavLink>
+      <NavLink className="navlink" exact to="/Weapon">
+        <button>Weapon</button>
+      </NavLink>
+      <NavLink className="navlink" exact to="/Potion">
+        <button>Potion</button>
+      </NavLink>
     </div>
   );
 }

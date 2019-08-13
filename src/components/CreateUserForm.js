@@ -30,7 +30,7 @@ export class CreateUserForm extends React.Component {
     event.preventDefault();
     try {
       await axios.post('/api/users', this.state);
-      loginUser(this.state.email, this.state.password);
+      await loginUser(this.state.email, this.state.password);
       window.location.hash = '/';
     } catch (err) {
       alert('Email address already registered! Please try another.');
@@ -95,7 +95,7 @@ export class CreateUserForm extends React.Component {
                 : false
             }
           >
-            Create User and Login
+            Register and Login
           </button>
         </form>
       </div>

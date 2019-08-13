@@ -1,0 +1,35 @@
+.user-cart {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-list {
+    flex-grow: 1;
+}
+
+.cart-list ul {
+    list-style: none;
+}
+
+.cart-list li {
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    margin: 5px;
+}
+
+.cart-list li:hover {
+  background-color: rgb(240,255,255);
+}
+
+.cart-list img {
+    width: 100px;
+    height: 100px;
+}
+
+.cart-checkout {
+    background-color: bisque;
+    border-left: solid 3px black;
+    margin: 25px;
+    min-width: 200px;
+    max-height: 200px;
+}
