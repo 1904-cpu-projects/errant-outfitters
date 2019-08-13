@@ -1,10 +1,11 @@
 import React from 'react';
+import Reviews from './Reviews';
 import { connect } from 'react-redux';
 import { getDetailProduct } from '../storeReducers/productsReducer';
 import { createItem } from '../storeReducers/cartReducer';
 import CreateReview from '../components/CreateReview';
-
-import Reviews from './Reviews';
+import { Link } from 'react-router-dom';
+import { deleteProductThunk } from '../actions/productActions';
 import MenuBar from './MenuBar';
 
 function handleBuy(createItem, matchId, quantity) {
@@ -33,7 +34,13 @@ function populateQuantityOptions(max) {
 
 // More to come for this thing, need reviews, and add to cart
 // Basics are here!!!
-function DetailProduct({ detailProduct, matchId, user, createItem }) {
+function DetailProduct({
+  detailProduct,
+  matchId,
+  user,
+  createItem,
+  deleteProduct,
+}) {
   const updatedQuantity = initQuantity();
   if (detailProduct.id !== matchId) getDetailProduct(matchId);
   if (!detailProduct) return null;
@@ -67,6 +74,24 @@ function DetailProduct({ detailProduct, matchId, user, createItem }) {
         </footer>
         <h4>Like this product? Consider logging in and writing a review</h4>
         {user.id ? <CreateReview product={detailProduct} /> : ''}
+        <div>
+          {user.isAdmin ? (
+            <Link to={`/products/${detailProduct.id}/edit`}>
+              Edit Product Info
+            </Link>
+          ) : (
+            ''
+          )}
+        </div>
+        <div>
+          {user.isAdmin ? (
+            <button onClick={() => deleteProduct(detailProduct)}>
+              Delete Product
+            </button>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
     );
   }
@@ -83,6 +108,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   createItem: (productId, quantity) =>
     dispatch(createItem(productId, quantity)),
+  deleteProduct: item => dispatch(deleteProductThunk(item)),
 });
 
 export default connect(

@@ -31,5 +31,5 @@ const Product = db.define('product', {
     type: Sequelize.INTEGER,
   },
 });
-//EXPORT
+
 module.exports = Product;

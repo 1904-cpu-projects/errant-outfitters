@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postReview } from '../actions/reviewActions';
+import { postReviewThunk } from '../actions/reviewActions';
 
 class CreateReview extends React.Component {
   constructor() {
@@ -65,7 +65,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    postReview: stuff => dispatch(postReview(stuff)),
+    postReview: stuff => dispatch(postReviewThunk(stuff)),
   };
 };
 

@@ -9,6 +9,9 @@ class UserProfile extends React.Component {
     const { user, cart } = this.props;
     return (
       <div>
+        <div>
+          {user.isAdmin ? <a href="/users/admin">Edit Current Users</a> : ''}
+        </div>
         <h3>
           User profile for {user.firstName} {user.lastName}
         </h3>
