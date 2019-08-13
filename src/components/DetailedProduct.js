@@ -8,13 +8,12 @@ import Reviews from './Reviews';
 import MenuBar from './MenuBar';
 
 function handleBuy(createItem, matchId, quantity) {
-  if(quantity)
-    createItem(matchId, quantity);
+  if (quantity) createItem(matchId, quantity);
 }
 
 function initQuantity() {
   let result = 0;
-  return function (update = false, value) {
+  return function(update = false, value) {
     if (update) result = value;
     return result;
   };
@@ -22,8 +21,12 @@ function initQuantity() {
 
 function populateQuantityOptions(max) {
   const options = [];
-  for(let i = 0; i <= max && i <= 10; i++){
-    options.push(<option value={i}>{i}</option>);
+  for (let i = 0; i <= max && i <= 10; i++) {
+    options.push(
+      <option key={i} value={i}>
+        {i}
+      </option>,
+    );
   }
   return options;
 }
@@ -43,16 +46,21 @@ function DetailProduct({ detailProduct, matchId, user, createItem }) {
           className={'product-image'}
           alt="Product Image"
         />
-        <button onClick={() => handleBuy(createItem, matchId, updatedQuantity())}>
+        <button
+          onClick={() => handleBuy(createItem, matchId, updatedQuantity())}
+        >
           Buy this stuff!
         </button>
-        <select onChange={(e) => updatedQuantity(true, e.target.value)}>
+        <select onChange={e => updatedQuantity(true, e.target.value)}>
           {populateQuantityOptions(detailProduct.stock)}
         </select>
 
         <h1>{detailProduct.name}</h1>
         <div>{detailProduct.description}</div>
-        <div>INSTOCK | {detailProduct.instock ? 'YES' : 'NO'} | Available: {detailProduct.stock}</div>
+        <div>
+          INSTOCK | {detailProduct.instock ? 'YES' : 'NO'} | Available:{' '}
+          {detailProduct.stock}
+        </div>
         <footer>
           <h4>Reviews for the {detailProduct.name}</h4>
           <Reviews product={detailProduct} productId={matchId} />

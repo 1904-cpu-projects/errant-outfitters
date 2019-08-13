@@ -9,14 +9,16 @@ export function SingleProduct({ product }) {
 
   return (
     <div key={product.id} className="product-card">
-      <img
-        className="product-image"
-        src={
-          product.image ? product.image : '/img/products/default-product.jpg'
-        }
-        alt="Product Image"
-      />
-      <div key="42" className="product-container">
+      <Link to={`/products/${product.id}`}>
+        <img
+          className="product-image"
+          src={
+            product.image ? product.image : '/img/products/default-product.jpg'
+          }
+          alt="Product Image"
+        />
+      </Link>
+      <div key={product.id} className="product-container">
         <h3>
           <b> {product.name} </b>
         </h3>
