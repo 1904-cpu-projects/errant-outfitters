@@ -48,6 +48,7 @@ export const checkSessionLogin = () => async dispatch => {
 const init = {
   id: undefined,
   isAdmin: false,
+  class: '',
 };
 
 // And of course the reducer

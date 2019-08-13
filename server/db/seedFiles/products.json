@@ -1,5 +1,6 @@
 [
   {
+    "class": "warrior",
     "catagory": "armor",
     "cost": "20",
     "description": "The armored kilt is made of a thick cloth skirt with bars of steel hanging down from the waist and a ring of horizontal steel plates just above the hem. An armored kilt can be worn separately as light armor, or it can be added to other suits of light or medium armor.",
@@ -9,6 +10,7 @@
     "stock": 12
   },
   {
+    "class": "rouge",
     "catagory": "armor",
     "cost": "3",
     "description": "Also called a belly-warmer, a haramaki is a simple silken sash lined with chainmail or articulated metal plates and tied about the stomach to protect it.",
@@ -18,6 +20,7 @@
     "stock": 13
   },
   {
+    "class": "warrior",
     "catagory": "armor",
     "cost": "3",
     "description": "More than simple clothing, padded armor combines heavy, quilted cloth and layers of densely packed stuffing to create a cheap and basic protection. It is typically worn by those not intending to face lethal combat or those who wish their maneuverability to be impacted as little as possible.",
@@ -27,6 +30,7 @@
     "stock": 14
   },
   {
+    "class": "warrior",
     "catagory": "armor",
     "cost": "1",
     "description": "Sometimes called a leine, this belted tunic has thick cords woven through it that cover vital areas. A reinforced tunic’s armor bonus is increased by 2 against attack rolls made to confirm critical hits against the wearer.",
@@ -36,6 +40,7 @@
     "stock": 0
   },
   {
+    "class": "warrior",
     "catagory": "armor",
     "cost": "15",
     "description": "Lamellar is a type of armor in which small plates of various types of materials are strung together in parallel rows using fine cord. Lamellar plates can be constructed from lacquered leather, horn, or even stone, though suits of iron and steel are the most common. Lamellar armor can be crafted into various shapes, including partial pieces such as breastplates, greaves, or even entire coats. The properties of specific suits and pieces of lamellar armor are determined by their material. This armor consists of a light breastplate and shoulder guards made from lacquered leather plates bound together and fitted over a silk shirt.",
@@ -45,6 +50,7 @@
     "stock": 42
   },
   {
+    "class": "rouge",
     "catagory": "armor",
     "name": "Spider-Silk Bodysuit",
     "description": "This exotic form-fitting garment is woven entirely from alchemically treated silk harvested from giant spiders or other arachnid creatures.",
@@ -54,6 +60,7 @@
     "stock": 76
   },
   {
+    "class": "mage",
     "catagory": "armor",
     "name": "Armored Coat",
     "description": "This sturdy leather coat is reinforced with metal plates sewn into the lining. An armored coat is more cumbersome than light armor but less effective than most medium armors.",
@@ -63,6 +70,7 @@
     "stock": 8
   },
   {
+    "class": "warrior",
     "catagory": "armor",
     "name": "Chain Coat",
     "description": "This relatively simple armor consists of heavy chains that wrap around your body and limbs. While it weighs more and provides less protection than other medium armors, it is also less of a hindrance. In addition, if you are wielding a spiked chain, you can affix it to one hand.",
@@ -72,6 +80,7 @@
     "stock": 38
   },
   {
+    "class": "mage",
     "catagory": "armor",
     "name": "Do-Maru",
     "description": "The lightest of armors typically favored by samurai, do-maru wraps around the wearer’s body like a short armored coat. It consists primarily of lamellar and lacks a solid breastplate or sleeves, leaving the shoulders and upper body somewhat exposed, but permitting the wearer greater flexibility than do the majority of heavier armors.",
@@ -81,6 +90,7 @@
     "stock": 298
   },
   {
+    "class": "mage",
     "catagory": "armor",
     "name": "Kikko Armor",
     "description": "Kikko armor consists of a clever arrangement of hexagonal plates made from iron and sewn to cloth, granting the wearer greater flexibility than that provided by many armors that afford similar defense. The plates may be left exposed or hidden by a layer of cloth.",
@@ -90,6 +100,7 @@
     "stock": 38
   },
   {
+    "class": "warrior",
     "catagory": "armor",
     "name": "Breastplate",
     "description": "A breastplate protects a wearer’s torso with a single piece of sculpted metal, similar to the core piece of a suit of full plate. Despite its sturdiness, its inflexibility and open back make it inferior to complete suits of metal armor, but still an improvement over most non-metal armors.",
@@ -99,6 +110,7 @@
     "stock": 2
   },
   {
+    "class": "mage",
     "catagory": "armor",
     "name": "Scale Mail",
     "description": "Scale mail is made up of dozens of small, overlapping metal plates. Similar to both splint mail and banded mail, scalemail has a flexible arrangement of scales in an attempt to avoid hindering the wearer’s mobility, but at the expense of omitting additional protective layers of armor. A suit of scale mail includes gauntlets.",
@@ -108,6 +120,7 @@
     "stock": 0
   },
   {
+    "class": "mage",
     "catagory": "armor",
     "name": "Banded Mail",
     "description": "Banded mail is made up of overlapping strips of metal, fastened to a sturdy backing of leather and chain. The size of the metal plates, interconnected metal bands, and layers of underlying armor make it a more significant defense than similar armors, like scale mail or splint mail.",
@@ -117,6 +130,7 @@
     "stock": 217
   },
   {
+    "class": "mage",
     "catagory": "armor",
     "name": "Tatami-Do",
     "description": "Worn by samurai as a lighter-weight alternative to o-yoroi, tatami-do is a full-body field armor that combines both metal lamellar and kikko components into a suit of mail with a cloth backing. It typically includes a collapsible kabuto helmet or an armored hood, as well as arm, shoulder, and thigh guards.",
@@ -126,6 +140,7 @@
     "stock": 28
   },
   {
+    "class": "mage",
     "catagory": "armor",
     "name": "Fortress Plate",
     "description": "This dwarf-forged armor features layers of overlapping plates molded to deflect projectiles—especially those from firearms.",
@@ -135,6 +150,7 @@
     "stock": 58
   },
   {
+    "class": "mage",
     "catagory": "armor",
     "name": "Full Plate",
     "description": "This metal suit comprises multiple pieces of interconnected and overlaying metal plates, incorporating the benefits of numerous types of lesser armor. A complete suit of full plate (or platemail, as it is often called) includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate must be individually fitted to its owner by a master armorsmith",
@@ -144,6 +160,7 @@
     "stock": 98
   },
   {
+    "class": "mage",
     "catagory": "armor",
     "name": "Hell Knight Plate",
     "description": "These distinctive suits of armor are a special type of masterwork full plate that grant additional effects when worn by a character with levels in the Hell Knight prestige class. Apart from its distinctive look (each order of Hell Knights has its own style of armor), a suit of Hell Knight plate functions the same as a suit of masterwork full plate.",
@@ -153,6 +170,7 @@
     "stock": 1
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Buckler",
     "description": "A wooden round thing that helps you block things. Thats about it. It will probably break on you eventually, but not after saving your butt a whole bunch.",
@@ -162,6 +180,7 @@
     "stock": 48
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Tower Shield",
     "description": "This shield is as tall as the size of the creature that wields it and is built to be used as mobile cover.",
@@ -171,6 +190,7 @@
     "stock": 2948
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Wall Shield",
     "description": "An incredibly large shield with spikes on the bottom that allow it to be planted into the ground. When planted, this shield is a barrier that is five feet wide and six feet tall",
@@ -180,6 +200,7 @@
     "stock": 38
   },
   {
+    "class": "rouge",
     "catagory": "weapon",
     "name": "Shield Gauntlet",
     "description": "This shield covers the entire arm, and is comprised of thick steel plates. It is designed to be used both defensively and offensively. It can be used as a melee weapon. Some gauntlets have blades or spikes attached to change the damage type. You can not hold any other items in a hand that has a shield gauntlet on.",
@@ -189,6 +210,7 @@
     "stock": 398
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Living Goblin Shield",
     "description": "A wooden or steel shield with a living goblin tied to it for extra padding. Every so often, an attack hits the goblin tied to the shield. Once the goblin attached to the shield dies the world becomes just slightly better.",
@@ -198,6 +220,7 @@
     "stock": 2
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Battle Umbrella",
     "description": "A battle umbrella is really two weapons in one. While it can be used as a normal umbrella, it is more commonly used as a covert weapon.",
@@ -207,6 +230,7 @@
     "stock": 289
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Bokken",
     "description": "A wooden training sword. Doesn't do much, but makes one feel good about the training they are about to receive.",
@@ -216,6 +240,7 @@
     "stock": 9
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Brandisock",
     "description": "This peculiar spear-like weapon is popular among travelers and law enforcement. The brandistock's three-pronged head is retractable, which renders it indistinguishable from a quarterstaff (unless closely inspected). Extending the blades is instantaneous, but pulling them back requires a little effort.",
@@ -225,6 +250,7 @@
     "stock": 109
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Brass Knuckles",
     "description": "Brass knuckles, or knuckledusters, are pieces of metal shaped to fit around the knuckles. Designed to preserve and concentrate a punch's force by directing it toward a harder and smaller contact area, they result in increased tissue disruption, including an increased likelihood of fracturing the victim's bones on impact. The extended and rounded palm grip also spreads across the attacker's palm the counter-force that would otherwise be absorbed primarily by the attacker's fingers, reducing the likelihood of damage to the attacker's fingers.",
@@ -234,6 +260,7 @@
     "stock": 30
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Chain Sickle",
     "description": "This weapon is a sickle attached to a heavy iron weight by a length of chain. In some cultures it is known as a kusarigama. Has probably ended the career of more adventures than one would initially think. ",
@@ -243,6 +270,7 @@
     "stock": 57
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Disk Blade",
     "description": "This weapon is a simplified version of the chakram or chakri, designed to be used by common folk more easily. It offers safety and reliability in exchange for its effectiveness as a thrown weapon. It fits tightly around the wrist and contains a slightly padded inner ring to provide a cushion when struck against something.",
@@ -252,6 +280,7 @@
     "stock": 20
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Greatclub",
     "description": "A altered version of the vanilla greatclub designed to make it feel more powerful, like you're swinging a tree trunk at someone.",
@@ -261,6 +290,7 @@
     "stock": 19
   },
   {
+    "class": "rouge",
     "catagory": "weapon",
     "name": "Scythe",
     "description": "This weapon is inspired by the common farming implement used to cut swaths of grown hay, but it has a straight handle and a heavier blade. Despite its humble origins, the scythe is recognized as a symbol of death in many cultures because of its use in reaping. Rather than being too heavy for most smaller creatures, the scythe is too long for Small sized creatures to wield effectively.",
@@ -270,6 +300,7 @@
     "stock": 48
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Boomerang",
     "description": "A boomerang is a thrown tool, typically constructed as a flat aerofoil, that is designed to spin about an axis perpendicular to the direction of its flight. A returning boomerang is designed to return to the thrower. Boomerangs have been historically used for hunting, as well as a sport, and entertainment.",
@@ -279,6 +310,7 @@
     "stock": 3
   },
   {
+    "class": "mage",
     "catagory": "weapon",
     "name": "Staff",
     "description": "You shall not pass!",
@@ -288,6 +320,7 @@
     "stock": 3
   },
   {
+    "class": "warrior",
     "catagory": "potion",
     "name": "Potion",
     "description": "Restores health",
@@ -297,6 +330,7 @@
     "stock": 3
   },
   {
+    "class": "mage",
     "catagory": "potion",
     "name": "Elixir",
     "description": "Restores Mana",
@@ -306,6 +340,7 @@
     "stock": 3
   },
   {
+    "class": "rouge",
     "catagory": "potion",
     "name": "Move Potion",
     "description": "Restores Stamina",

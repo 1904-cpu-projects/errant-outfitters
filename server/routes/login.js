@@ -17,6 +17,7 @@ router.post('/login', async (req, res, next) => {
         id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
+        class: user.class,
       });
     } else {
       // User password bad
@@ -61,6 +62,7 @@ router.get('/checkLoggedIn', async (req, res, next) => {
         id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
+        class: user.class,
       });
     } catch (e) {
       res.status(404).send();

@@ -16,7 +16,9 @@
   transition: 0.3s;
   border-radius: 5px;
   width: 20vw;
-  margin: 5px;
+  margin: 5px auto;
+  align-content: center;
+  justify-content: center;
 }
 .product-container {
   display: flex;

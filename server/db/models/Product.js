@@ -27,6 +27,9 @@ const Product = db.define('product', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  class: {
+    type: Sequelize.ENUM('warrior', 'mage', 'rouge'),
+  },
   stock: {
     type: Sequelize.INTEGER,
   },

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-function MenuBar() {
+function MenuBar({ classProdUsr }) {
   return (
     <div className="menu-bar">
       <NavLink className="navlink" exact to="/">
@@ -11,10 +11,18 @@ function MenuBar() {
         <button>Armor</button>
       </NavLink>
       <NavLink className="navlink" exact to="/Weapon">
-        <button>Weapon</button>
+        <button>Weapons</button>
       </NavLink>
       <NavLink className="navlink" exact to="/Potion">
-        <button>Potion</button>
+        <button>Potions</button>
+      </NavLink>
+      <NavLink className="navlink" exact to="/ClassProducts">
+        <button>
+          {classProdUsr
+            ? classProdUsr.charAt(0).toUpperCase() + classProdUsr.slice(1)
+            : ''}{' '}
+          Class Products
+        </button>
       </NavLink>
     </div>
   );
