@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { deleteCartItem } from '../storeReducers/cartReducer';
-//import {checkoutId} from '../../server/server'
 
 
 class UserCart extends React.Component {
@@ -23,10 +22,19 @@ class UserCart extends React.Component {
     this.setState({ total: total });
   }
 //WORKSHOP//
-  checkout() {
-    var stripe = new Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
-    axios.post('/api/checkout', stripe)
-  }
+  async checkout() {
+    let stripe = new Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
+    const { cart } = this.props;
+    const reply = await axios.post('/api/checkout', cart)
+    const checkoutId = reply.data;
+
+    await stripe.redirectToCheckout({
+      sessionId: checkoutId
+    })
+    await (function (result) {
+      console.log('Something went wrong, devs performing server seance')
+    });
+  };
 //WORKSHOP//
   componentDidUpdate(prevProps) {
     if (this.props.cart.length !== prevProps.cart.length) {

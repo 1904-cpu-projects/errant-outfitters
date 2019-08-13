@@ -2,6 +2,8 @@ const express = require('express');
 const session = require('express-session');
 const app = express();
 const path = require('path');
+//Stripe
+const stripeFormatter = require('./utils/stripeFormatter')
 
 //Main route middleware
 app.use(express.json());
@@ -50,38 +52,32 @@ app.use('/api/login', require('./routes/login'));
 app.use('/api/users', require('./routes/users'));
 
 //WORKSHOP- STRIPE//
-
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
-
-let checkoutId
+const stripe = require('stripe')('sk_test_VFD2hiPa4YhyInOUapuwWQYu00EJFUD9Ql');
+let checkoutId;
 
 (async () => {
   const stripeSession = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    line_items: [{
-      name: 'T-shirt',
-      description: 'Comfortable cotton t-shirt',
-      images: ['https://example.com/t-shirt.png'],
-      amount: 500,
-      currency: 'usd',
-      quantity: 1,
-    }],
-    success_url: 'https://example.com/success',
+    line_items: [
+      {
+        name: "Example",
+        amount: 100,
+        currency: "usd",
+        quantity: 2
+      }
+    ],
+    success_url: 'http://localhost:3000/#/',
     cancel_url: 'http://localhost:3000/#/myCart',
   });
+  checkoutId = stripeSession.id
 })()
 
-app.post('/api/checkout', (req,res,next) => {
-  stripe.redirectToCheckout({
-    sessionId: checkoutId
-  }).then(function (result) {
-    // If `redirectToCheckout` fails due to a browser or network
-    // error, display the localized error message to your customer
-    // using `result.error.message`.
-  });
-})
-
+app.post('/api/checkout', async (req,res,next) => {
+  const cart = req.body;
+  stripeFormatter(cart);
+  (res.send(checkoutId))
+});
 
 //WORKSHOP//
 
-module.exports = app, checkoutId;
+module.exports = app;
