@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-// This is just to hook in some methods into the main store
-import store from '../store';
-
 // Const defines here
 export const SET_USER = 'SET_USER';
 export const REMOVE_USER = 'REMOVE_USER';
@@ -39,10 +36,10 @@ export const logoutUser = () => async dispatch => {
 };
 
 // helper function that gets products based on productsReducer
-export const checkSessionLogin = () => async () => {
+export const checkSessionLogin = () => async dispatch => {
   try {
     const result = await axios.get('/api/login/checkLoggedIn');
-    store.dispatch(loadUser(result.data));
+    dispatch(loadUser(result.data));
   } catch (e) {
     console.log('Nick has no clue what he is doing', e);
   }

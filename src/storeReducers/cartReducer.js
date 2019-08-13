@@ -1,7 +1,5 @@
 import axios from 'axios';
-
-import store from '../store';
-
+import { createError, removeError } from './errorReducer';
 // CONST defs
 export const SET_CART = 'SET_CART';
 export const SET_GUEST_CART = 'SET_GUEST_CART';
@@ -15,7 +13,7 @@ const setCart = items => ({
 
 const setGuestCart = items => ({
   type: SET_GUEST_CART,
-  items
+  items,
 });
 
 const deleteItem = id => ({
@@ -23,6 +21,9 @@ const deleteItem = id => ({
   id: id,
 });
 
+// This function got a little out of control, if anyone can think of a way to
+// reduce this let me know. Its really not that bad, but certainly adds some
+// complexity to what is actually happening with the cart.
 export const getCart = (userLogin = false) => (dispatch, getStore) => {
   axios
     .get('/api/cart/getCartProducts')
@@ -35,21 +36,30 @@ export const getCart = (userLogin = false) => (dispatch, getStore) => {
           else return undefined;
         }, undefined);
       });
-      if(userLogin) {
-	const existingStore = getStore();
-	if(existingStore.cart.items.length && existingStore.cart.items[0].memberStatus === 'guest') {
-	  store.dispatch(setGuestCart([...existingStore.cart.items]));
-	}
+      if (userLogin) {
+        const existingStore = getStore();
+        if (
+          existingStore.cart.items.length &&
+          existingStore.cart.items[0].memberStatus === 'guest'
+        ) {
+          dispatch(setGuestCart([...existingStore.cart.items]));
+          dispatch(
+            createError(
+              'CART',
+              'You had items in your cart before logging in. Please goto your cart and check to add them to your cart or these items will be lost',
+            ),
+          );
+        }
       }
-      store.dispatch(setCart(cart));
+      dispatch(setCart(cart));
     })
     .catch(e => console.log(e));
 };
 
-export const deleteCartItem = id => dispatch => {
+export const deleteCartItem = (id, forGuest = false) => dispatch => {
   axios
     .delete('/api/cart/deleteCartItem', { data: { id: id } })
-    .then(store.dispatch(deleteItem(id)))
+    .then(dispatch(deleteItem(id)))
     .catch(e => console.log(e));
 };
 
@@ -67,14 +77,13 @@ export default (cart = { items: [], guest: [] }, action) => {
   switch (action.type) {
     case SET_CART:
       cart.items = [...action.items];
-    break;
-  case SET_GUEST_CART:
+      break;
+    case SET_GUEST_CART:
       cart.guest = [...action.items];
-    break;    
+      break;
     case DELETE_ITEM:
       cart.items = cart.items.filter(i => i.id !== action.id);
       break;
   }
-  console.log(cart);
   return cart;
 };
