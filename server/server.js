@@ -49,29 +49,28 @@ app.use('/api/cart', require('./routes/cart'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/users', require('./routes/users'));
 
-//WORKSHOP//
+//WORKSHOP- STRIPE//
 
 //app.use('/api/checkout', require('./routes/checkout'));
 
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
-app.use(
-  (async () => {
-    const stripeSession = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [{
-        name: 'T-shirt',
-        description: 'Comfortable cotton t-shirt',
-        images: ['https://example.com/t-shirt.png'],
-        amount: 500,
-        currency: 'usd',
-        quantity: 1,
-      }],
-      success_url: 'https://example.com/success',
-      cancel_url: 'https://example.com/cancel',
-    });
-  })()
-);
+(async () => {
+  const stripeSession = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [{
+      name: 'T-shirt',
+      description: 'Comfortable cotton t-shirt',
+      images: ['https://example.com/t-shirt.png'],
+      amount: 500,
+      currency: 'usd',
+      quantity: 1,
+    }],
+    success_url: 'https://example.com/success',
+    cancel_url: 'http://localhost:3000/#/myCart',
+  });
+  console.log(stripeSession)
+})()
 //WORKSHOP//
 
 module.exports = app;

@@ -1,17 +1,17 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-
 import { deleteCartItem } from '../storeReducers/cartReducer';
+//import {CHECKOUT_SESSION_ID} from '../../server/server'
 
 class UserCart extends React.Component {
   constructor() {
     super();
-
     this.state = {
       total: 0,
     };
     this.calcTotal = this.calcTotal.bind(this);
+    this.checkout = this.checkout.bind(this);
   }
 
   calcTotal() {
@@ -21,7 +21,21 @@ class UserCart extends React.Component {
     }, 0);
     this.setState({ total: total });
   }
-
+//WORKSHOP//
+  checkout() {
+    var stripe = Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
+    stripe.redirectToCheckout({
+      // Make the id field from the Checkout Session creation API response
+      // available to this file, so you can provide it as parameter here
+      // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+      sessionId: CHECKOUT_SESSION_ID
+    }).then(function (result) {
+      // If `redirectToCheckout` fails due to a browser or network
+      // error, display the localized error message to your customer
+      // using `result.error.message`.
+    });
+  }
+//WORKSHOP//
   componentDidUpdate(prevProps) {
     if (this.props.cart.length !== prevProps.cart.length) {
       this.calcTotal();
@@ -57,7 +71,7 @@ class UserCart extends React.Component {
               Subtotal ({cart.length})<br />
               total: {this.state.total} GOLDS!!!!
             </h3>
-            <button>Proceed to checkout</button>
+            <button onClick={this.checkout}>Proceed to checkout</button>
           </div>
         </div>
       );
