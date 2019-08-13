@@ -15,7 +15,7 @@ const setCart = items => ({
 
 const setGuestCart = items => ({
   type: SET_GUEST_CART,
-  items
+  items,
 });
 
 const deleteItem = id => ({
@@ -35,11 +35,14 @@ export const getCart = (userLogin = false) => (dispatch, getStore) => {
           else return undefined;
         }, undefined);
       });
-      if(userLogin) {
-	const existingStore = getStore();
-	if(existingStore.cart.items.length && existingStore.cart.items[0].memberStatus === 'guest') {
-	  store.dispatch(setGuestCart([...existingStore.cart.items]));
-	}
+      if (userLogin) {
+        const existingStore = getStore();
+        if (
+          existingStore.cart.items.length &&
+          existingStore.cart.items[0].memberStatus === 'guest'
+        ) {
+          store.dispatch(setGuestCart([...existingStore.cart.items]));
+        }
       }
       store.dispatch(setCart(cart));
     })
@@ -67,10 +70,10 @@ export default (cart = { items: [], guest: [] }, action) => {
   switch (action.type) {
     case SET_CART:
       cart.items = [...action.items];
-    break;
-  case SET_GUEST_CART:
+      break;
+    case SET_GUEST_CART:
       cart.guest = [...action.items];
-    break;    
+      break;
     case DELETE_ITEM:
       cart.items = cart.items.filter(i => i.id !== action.id);
       break;

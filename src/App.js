@@ -48,6 +48,10 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/CreateUserForm" component={CreateUserForm} />
           <Route path="/user/profile" component={UserProfile} />
+          <Route path="/myCart" component={UserCart} />
+          <Route path="/Armor" component={Armor} />
+          <Route path="/Weapon" component={Weapon} />
+          <Route path="/Potion" component={Potion} />
           <Route
             exact
             path="/products/:id"
@@ -59,19 +63,7 @@ class App extends React.Component {
             render={({ match }) => <EditProduct match={match} />}
           />
         </Router>
-
         <ErrorList />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/CreateUserForm" component={CreateUserForm} />
-        <Route path="/user/profile" component={UserProfile} />
-        <Route path="/myCart" component={UserCart} />
-        <Route path="/Armor" component={Armor} />
-        <Route path="/Weapon" component={Weapon} />
-        <Route path="/Potion" component={Potion} />
-        <Route
-          path="/products/:id"
-          render={({ match }) => <DetailProduct match={match} />}
-        />
       </Router>
     );
   }

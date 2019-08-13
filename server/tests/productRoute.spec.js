@@ -17,10 +17,10 @@ describe('/POST', () => {
   it('Adds a product to the products list', async () => {
     const response = await request(app)
       .post('/api/products')
-      .send({ name: 'Potion' });
+      .send({ name: 'CRAZY TRAIN' });
     expect(response.status).toEqual(201);
     expect(response.body.id).not.toBe(undefined);
-    expect(response.body.name).toBe('Potion');
+    expect(response.body.name).toBe('CRAZY TRAIN');
   });
 });
 describe('PUT and DELETE /api/products/:id', () => {
@@ -28,15 +28,15 @@ describe('PUT and DELETE /api/products/:id', () => {
   beforeAll(async () => {
     item = await Product.findOne({
       where: {
-        name: 'Potion',
+        name: 'CRAZY TRAIN',
       },
     });
   });
 
   it('put a product by `id`', async () => {
     const changeProduct = await request(app)
-      .put(`/api/products/${item.id}/edit`)
-      .send({ name: 'Staff' });
+      .put(`/api/products/${item.id}`)
+      .send({ name: 'CRAZY CAT' });
     expect(changeProduct.status).toEqual(200);
   });
 

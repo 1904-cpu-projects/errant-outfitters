@@ -17,7 +17,7 @@ export const listProductsThunk = () => async dispatch => {
   }
 };
 
-export const singleReviewThunk = id => async dispatch => {
+export const singleProductThunk = id => async dispatch => {
   try {
     const response = await axios.get(`/api/products/${id}`);
     dispatch({ type: SET_DETAIL_PRODUCT, payload: response.data });
@@ -26,9 +26,9 @@ export const singleReviewThunk = id => async dispatch => {
   }
 };
 
-export const postProductThunk = review => async dispatch => {
+export const postProductThunk = product => async dispatch => {
   try {
-    const response = await axios.post('/api/products', review);
+    const response = await axios.post('/api/products', product);
     dispatch({ type: POST_PRODUCT, payload: response.data });
   } catch (err) {
     console.error(err);
