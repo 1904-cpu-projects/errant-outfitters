@@ -1,11 +1,14 @@
 import axios from 'axios';
 
+import {
+  EDIT_PRODUCT,
+  DELETE_PRODUCT,
+  SET_PRODUCTS,
+  SET_DETAIL_PRODUCT,
+} from '../actions/actionTypes';
+
 // This is just to hook in some methods into the main store
 import store from '../store';
-
-// Const defines here
-export const SET_PRODUCTS = 'SET_PRODUCTS';
-export const SET_DETAIL_PRODUCT = 'SET_DETAIL_PRODUCT';
 
 // Actions
 
@@ -64,6 +67,20 @@ export default (products = init, action) => {
     case SET_DETAIL_PRODUCT:
       newProducts.detailProduct = { ...action.data };
       break;
+    case EDIT_PRODUCT:
+      return {
+        ...products,
+        productList: products.productList.map(item =>
+          item.id === action.payload.id ? action.payload : item,
+        ),
+      };
+    case DELETE_PRODUCT:
+      return {
+        ...products,
+        productList: products.productList.filter(
+          item => item.id !== action.payload.id,
+        ),
+      };
   }
   return newProducts;
 };

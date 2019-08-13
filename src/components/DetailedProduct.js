@@ -1,19 +1,17 @@
 import React from 'react';
+import Reviews from './Reviews';
 import { connect } from 'react-redux';
 import { getDetailProduct } from '../storeReducers/productsReducer';
 import { createItem } from '../storeReducers/cartReducer';
 import CreateReview from '../components/CreateReview';
 import { Link } from 'react-router-dom';
-
-import Reviews from './Reviews';
+import { deleteProductThunk } from '../actions/productActions';
 
 function handleBuy(matchId) {
   createItem(matchId);
 }
 
-// More to come for this thing, need reviews, and add to cart
-// Basics are here!!!
-function DetailProduct({ detailProduct, matchId, user }) {
+function DetailProduct({ detailProduct, matchId, user, deleteProduct }) {
   if (detailProduct.id !== matchId) getDetailProduct(matchId);
   if (!detailProduct) return null;
   else {
@@ -43,7 +41,15 @@ function DetailProduct({ detailProduct, matchId, user }) {
             ''
           )}
         </div>
-        <div>{user.isAdmin ? <button>Delete Product</button> : ''}</div>
+        <div>
+          {user.isAdmin ? (
+            <button onClick={() => deleteProduct(detailProduct)}>
+              Delete Product
+            </button>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
     );
   }
@@ -57,4 +63,13 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(DetailProduct);
+const mapStateToDispatch = dispatch => {
+  return {
+    deleteProduct: item => dispatch(deleteProductThunk(item)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapStateToDispatch,
+)(DetailProduct);
