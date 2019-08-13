@@ -1,11 +1,13 @@
 import React from 'react';
 import Reviews from './Reviews';
 import { connect } from 'react-redux';
-import { getDetailProduct } from '../storeReducers/productsReducer';
 import { createItem } from '../storeReducers/cartReducer';
 import CreateReview from '../components/CreateReview';
 import { Link } from 'react-router-dom';
-import { deleteProductThunk } from '../actions/productActions';
+import {
+  deleteProductThunk,
+  singleProductThunk,
+} from '../actions/productActions';
 import MenuBar from './MenuBar';
 
 function handleBuy(createItem, matchId, quantity) {
@@ -36,9 +38,10 @@ function DetailProduct({
   user,
   createItem,
   deleteProduct,
+  singleProductThunk,
 }) {
   const updatedQuantity = initQuantity();
-  if (detailProduct.id !== matchId) getDetailProduct(matchId);
+  if (detailProduct.id !== matchId) singleProductThunk(matchId);
   if (!detailProduct) return null;
   else {
     return (
@@ -105,6 +108,7 @@ const mapDispatchToProps = dispatch => ({
   createItem: (productId, quantity) =>
     dispatch(createItem(productId, quantity)),
   deleteProduct: item => dispatch(deleteProductThunk(item)),
+  singleProductThunk: id => dispatch(singleProductThunk(id)),
 });
 
 export default connect(

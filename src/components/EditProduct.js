@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getDetailProduct } from '../storeReducers/productsReducer';
-import { editProductThunk } from '../actions/productActions';
+import {
+  editProductThunk,
+  singleProductThunk,
+} from '../actions/productActions';
 
 class EditProduct extends React.Component {
   constructor() {
@@ -23,10 +25,8 @@ class EditProduct extends React.Component {
     window.location.hash = '/#/';
   }
 
-  //how to properly pre-fill
-
   componentDidMount() {
-    getDetailProduct(this.props.matchId);
+    this.props.singleProductThunk(this.props.matchId);
   }
 
   render() {
@@ -35,7 +35,6 @@ class EditProduct extends React.Component {
         <form onSubmit={this.onSubmit}>
           <label htmlFor="name">Name: </label>
           <input
-            //I dont like the use of placeholders in this case
             defaultValue={this.props.detailProduct.name}
             name="name"
             onChange={this.onHandle}
@@ -93,6 +92,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     editProductThunk: (id, newItem) => dispatch(editProductThunk(id, newItem)),
+    singleProductThunk: id => dispatch(singleProductThunk(id)),
   };
 };
 export default connect(

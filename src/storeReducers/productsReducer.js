@@ -5,47 +5,12 @@ import {
   DELETE_PRODUCT,
   SET_PRODUCTS,
   SET_DETAIL_PRODUCT,
+  POST_PRODUCT,
 } from '../actions/actionTypes';
-
-// This is just to hook in some methods into the main store
-import store from '../store';
-
-// Actions
 
 // list is the literal list of products that get loaded in from the server api
 // next is the conditional route which gets sent to the server to get the next
 // 25 or so results from a products query
-export const loadProductsInitial = (list, next) => ({
-  type: SET_PRODUCTS,
-  list,
-  next,
-});
-
-export const setDetailProduct = data => ({
-  type: SET_DETAIL_PRODUCT,
-  data,
-});
-
-// helper function that gets products based on productsReducer
-export const getProducts = async (next = 0) => {
-  let getRoute = '/api/products';
-  if (next) {
-    getRoute += `/${next}`;
-  }
-  try {
-    const result = await axios.get(getRoute);
-    store.dispatch(loadProductsInitial(result.data, next));
-  } catch (e) {
-    console.log('I did a bad', e);
-  }
-};
-
-export const getDetailProduct = id => {
-  axios
-    .get(`/api/products/${id}`)
-    .then(result => store.dispatch(setDetailProduct(result.data)))
-    .catch(e => console.log(e));
-};
 
 const init = {
   productList: [],
@@ -67,6 +32,7 @@ export default (products = init, action) => {
     case SET_DETAIL_PRODUCT:
       newProducts.detailProduct = { ...action.data };
       break;
+
     case EDIT_PRODUCT:
       return {
         ...products,
@@ -74,12 +40,19 @@ export default (products = init, action) => {
           item.id === action.payload.id ? action.payload : item,
         ),
       };
+
     case DELETE_PRODUCT:
       return {
         ...products,
         productList: products.productList.filter(
           item => item.id !== action.payload.id,
         ),
+      };
+    case POST_PRODUCT:
+      console.log('in the post reducer');
+      return {
+        ...products,
+        productList: [...products.productList, action.payload],
       };
   }
   return newProducts;
