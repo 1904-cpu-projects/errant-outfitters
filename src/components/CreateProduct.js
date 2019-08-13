@@ -10,12 +10,14 @@ class CreateProduct extends React.Component {
       description: '',
       image: '',
       category: '',
-      stock: null,
+      stock: '',
+      cost: null,
     };
 
     this.onHandle = this.onHandle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onSelection = this.onSelection.bind(this);
+    this.onCategorySelection = this.onCategorySelection.bind(this);
+    this.onInstockSelection = this.onInstockSelection.bind(this);
   }
 
   onHandle(event) {
@@ -24,9 +26,15 @@ class CreateProduct extends React.Component {
     });
   }
 
-  onSelection(event) {
+  onCategorySelection(event) {
     this.setState({
       category: event.target.value,
+    });
+  }
+
+  onInstockSelection(event) {
+    this.setState({
+      inStock: event.target.value,
     });
   }
 
@@ -64,23 +72,36 @@ class CreateProduct extends React.Component {
             value={this.state.image}
             name="image"
           />
-          {/*
+
           <label htmlFor="inStock">inStock: </label>
-          <select onChange={this.onHandle} value={this.state.inStock}>
+          <select onChange={this.onInstockSelection} value={this.state.inStock}>
             <option value="false">false</option>
             <option value="true">true</option>
-          </select> */}
+          </select>
 
           <label htmlFor="stock">Stock: </label>
           <input
             onChange={this.onHandle}
+            name="stock"
             type="number"
             min="0"
             value={this.state.stock}
           />
 
-          <label htmlFor="name">Category: </label>
-          <select onChange={this.onSelection} value={this.state.category}>
+          <label htmlFor="cost">Cost: </label>
+          <input
+            onChange={this.onHandle}
+            name="cost"
+            type="number"
+            min="0"
+            value={this.state.cost}
+          />
+
+          <label htmlFor="category">Category: </label>
+          <select
+            onChange={this.onCategorySelection}
+            value={this.state.category}
+          >
             <option key="0" value="armor">
               Armour
             </option>
