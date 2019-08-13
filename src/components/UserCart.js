@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { deleteCartItem } from '../storeReducers/cartReducer';
-//import {CHECKOUT_SESSION_ID} from '../../server/server'
+//import {checkoutId} from '../../server/server'
+
 
 class UserCart extends React.Component {
   constructor() {
@@ -23,17 +24,8 @@ class UserCart extends React.Component {
   }
 //WORKSHOP//
   checkout() {
-    var stripe = Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
-    stripe.redirectToCheckout({
-      // Make the id field from the Checkout Session creation API response
-      // available to this file, so you can provide it as parameter here
-      // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-      sessionId: CHECKOUT_SESSION_ID
-    }).then(function (result) {
-      // If `redirectToCheckout` fails due to a browser or network
-      // error, display the localized error message to your customer
-      // using `result.error.message`.
-    });
+    var stripe = new Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
+    axios.post('/api/checkout', stripe)
   }
 //WORKSHOP//
   componentDidUpdate(prevProps) {

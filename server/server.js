@@ -51,9 +51,9 @@ app.use('/api/users', require('./routes/users'));
 
 //WORKSHOP- STRIPE//
 
-//app.use('/api/checkout', require('./routes/checkout'));
-
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+
+let checkoutId
 
 (async () => {
   const stripeSession = await stripe.checkout.sessions.create({
@@ -69,8 +69,19 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
     success_url: 'https://example.com/success',
     cancel_url: 'http://localhost:3000/#/myCart',
   });
-  console.log(stripeSession)
 })()
+
+app.post('/api/checkout', (req,res,next) => {
+  stripe.redirectToCheckout({
+    sessionId: checkoutId
+  }).then(function (result) {
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `result.error.message`.
+  });
+})
+
+
 //WORKSHOP//
 
-module.exports = app;
+module.exports = app, checkoutId;
