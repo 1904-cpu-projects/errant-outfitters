@@ -78,6 +78,5 @@ export default (cart = { items: [], guest: [] }, action) => {
       cart.items = cart.items.filter(i => i.id !== action.id);
       break;
   }
-  console.log(cart);
   return cart;
 };

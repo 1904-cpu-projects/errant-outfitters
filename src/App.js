@@ -1,13 +1,9 @@
 import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-
-// import store is temporary until Thom gets the product thunks done
-
 import { connect } from 'react-redux';
-import { getProducts } from './storeReducers/productsReducer';
+import { listProductsThunk } from '../src/actions/productActions';
 import { checkSessionLogin } from './storeReducers/userReducer';
 import { getCart } from './storeReducers/cartReducer';
-
 import { Home } from './components/Home';
 import Header from './components/Header';
 import ErrorList from './components/ErrorList';
@@ -19,11 +15,7 @@ import UserCart from './components/UserCart';
 import Armor from './components/Armor';
 import Weapon from './components/Weapon';
 import Potion from './components/Potion';
-
-/* I think its reasonable to make this thing be the main provider of redux store
- * And also the thing that routes to other places
- * Lets see how this works!
- */
+import CreateProduct from './components/CreateProduct';
 
 class App extends React.Component {
   constructor() {
@@ -34,7 +26,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    getProducts();
+    this.props.listProductsThunk();
     this.props.getCart();
     this.props.checkSessionLogin();
     this.setState({ loading: false });
@@ -62,6 +54,7 @@ class App extends React.Component {
             path="/products/:id/edit"
             render={({ match }) => <EditProduct match={match} />}
           />
+          <Route path="/create-product" component={CreateProduct} />
         </Router>
         <ErrorList />
       </Router>
@@ -72,6 +65,7 @@ class App extends React.Component {
 const mapDispatchToProps = dispatch => ({
   checkSessionLogin: () => dispatch(checkSessionLogin()),
   getCart: () => dispatch(getCart()),
+  listProductsThunk: () => dispatch(listProductsThunk()),
 });
 
 export default connect(
