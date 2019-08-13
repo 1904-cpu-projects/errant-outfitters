@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import {
   EDIT_PRODUCT,
   DELETE_PRODUCT,
@@ -48,8 +46,8 @@ export default (products = init, action) => {
           item => item.id !== action.payload.id,
         ),
       };
+
     case POST_PRODUCT:
-      console.log('in the post reducer');
       return {
         ...products,
         productList: [...products.productList, action.payload],
