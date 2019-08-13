@@ -34,11 +34,8 @@ export default (errors = {}, action) => {
       else newErrors[action.context] = [action.error];
       break;
     case REMOVE_ERROR:
-    newErrors[action.context] = newErrors[action.context].filter(
-      e => {
-	console.log(e);
-	return e.error !== action.error;
-      }
+      newErrors[action.context] = newErrors[action.context].filter(
+        e => e !== action.error,
       );
       break;
   }

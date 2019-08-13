@@ -44,26 +44,24 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
-        <Router>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/CreateUserForm" component={CreateUserForm} />
-          <Route path="/user/profile" component={UserProfile} />
-          <Route path="/myCart" component={UserCart} />
-          <Route path="/Armor" component={Armor} />
-          <Route path="/Weapon" component={Weapon} />
-          <Route path="/Potion" component={Potion} />
-          <Route
-            exact
-            path="/products/:id"
-            render={({ match }) => <DetailProduct match={match} />}
-          />
-          <Route
-            exact
-            path="/products/:id/edit"
-            render={({ match }) => <EditProduct match={match} />}
-          />
-        </Router>
         <ErrorList />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/CreateUserForm" component={CreateUserForm} />
+        <Route path="/user/profile" component={UserProfile} />
+        <Route path="/myCart" component={UserCart} />
+        <Route path="/Armor" component={Armor} />
+        <Route path="/Weapon" component={Weapon} />
+        <Route path="/Potion" component={Potion} />
+        <Route
+          exact
+          path="/products/:id"
+          render={({ match }) => <DetailProduct match={match} />}
+        />
+        <Route
+          exact
+          path="/products/:id/edit"
+          render={({ match }) => <EditProduct match={match} />}
+        />
       </Router>
     );
   }
