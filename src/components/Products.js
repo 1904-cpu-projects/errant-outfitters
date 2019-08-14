@@ -4,13 +4,18 @@ import { SingleProduct } from './SingleProduct';
 import ClassProducts from './ClassProducts';
 
 export function Products({ products, match }) {
+  let displayFilter = [];
   if (match.params.filterBar === 'ClassProducts') return <ClassProducts />;
 
-  const displayFilter = match.params.filterBar
-    ? products.productList.filter(
-        p => p.catagory === match.params.filterBar.toLowerCase(),
-      )
-    : products.productList;
+  match.params.filterBar === 'inStock'
+    ? (displayFilter = products.productList.filter(p => p.inStock))
+    : match.params.filterBar === 'outStock'
+    ? (displayFilter = products.productList.filter(p => !p.inStock))
+    : (displayFilter = match.params.filterBar
+        ? products.productList.filter(
+            p => p.catagory === match.params.filterBar,
+          )
+        : products.productList);
 
   //function to make tiles from SingleProduct component
   return (

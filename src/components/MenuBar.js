@@ -7,14 +7,20 @@ function MenuBar() {
       <NavLink className="navlink" exact to="/">
         <button>All Products</button>
       </NavLink>
-      <NavLink className="navlink" exact to="/Armor">
+      <NavLink className="navlink" exact to="/armor">
         <button>Armor</button>
       </NavLink>
-      <NavLink className="navlink" exact to="/Weapon">
+      <NavLink className="navlink" exact to="/weapon">
         <button>Weapons</button>
       </NavLink>
-      <NavLink className="navlink" exact to="/Potion">
+      <NavLink className="navlink" exact to="/potion">
         <button>Potions</button>
+      </NavLink>
+      <NavLink className="navlink" exact to="/inStock">
+        <button>In Stock</button>
+      </NavLink>
+      <NavLink className="navlink" exact to="/outStock">
+        <button>Out of Stock</button>
       </NavLink>
       <NavLink className="navlink" exact to="/ClassProducts">
         <button>Class Products</button>

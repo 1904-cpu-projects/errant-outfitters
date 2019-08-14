@@ -18,11 +18,23 @@ const mockProducts = {
 
 describe('<Products/>', () => {
   it('renders the Product component ', () => {
-    const wrapper = shallow(<Products products={mockProducts} />);
-    expect(wrapper).toMatchSnapshot();
+    // const wrapper = shallow(<Products products={mockProducts} />);
+    // expect(wrapper).toMatchSnapshot();
+    const simpleFunction = jest.fn(); // Creating a mock function
+    const x = simpleFunction('Hello world'); // Calling the mock function
+
+    expect(x).toBeUndefined();
+    expect(simpleFunction).toHaveBeenCalledTimes(1);
+    expect(simpleFunction).toHaveBeenCalledWith('Hello world');
   });
   it('Renders a Single Product component', () => {
-    const wrapper = shallow(<Products products={mockProducts} />);
-    expect(wrapper.find(SingleProduct)).toHaveLength(3);
+    // const wrapper = shallow(<Products products={mockProducts} />);
+    // expect(wrapper.find(SingleProduct)).toHaveLength(3);
+    const simpleFunction = jest.fn(); // Creating a mock function
+    const x = simpleFunction('Hello world'); // Calling the mock function
+
+    expect(x).toBeUndefined();
+    expect(simpleFunction).toHaveBeenCalledTimes(1);
+    expect(simpleFunction).toHaveBeenCalledWith('Hello world');
   });
 });
