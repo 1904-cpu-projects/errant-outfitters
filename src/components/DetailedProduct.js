@@ -34,69 +34,74 @@ function populateQuantityOptions(max) {
   return options;
 }
 
-// More to come for this thing, need reviews, and add to cart
-// Basics are here!!!
-function DetailProduct({
-  detailProduct,
-  matchId,
-  user,
-  createItem,
-  deleteProduct,
-  singleProductThunk,
-}) {
-  const updatedQuantity = initQuantity();
-  if (detailProduct.id !== matchId) singleProductThunk(matchId);
-  if (!detailProduct) return null;
-  else {
-    return (
-      <div>
-        <MenuBar />
-        <img
-          src={detailProduct.image}
-          className={'product-image'}
-          alt="Product Image"
-        />
-        <button
-          onClick={() => handleBuy(createItem, matchId, updatedQuantity())}
-        >
-          Buy this stuff!
-        </button>
-        <select onChange={e => updatedQuantity(true, e.target.value)}>
-          {populateQuantityOptions(detailProduct.stock)}
-        </select>
+class DetailProduct extends React.Component {
+  componentDidMount() {
+    this.props.singleProductThunk(this.props.matchId);
+  }
 
-        <h1>{detailProduct.name}</h1>
-        <div>{detailProduct.description}</div>
+  render() {
+    const {
+      detailProduct,
+      matchId,
+      user,
+      createItem,
+      deleteProduct,
+    } = this.props;
+
+    const updatedQuantity = initQuantity();
+
+    if (!detailProduct) return null;
+    else {
+      return (
         <div>
-          INSTOCK | {detailProduct.instock ? 'YES' : 'NO'} | Available:{' '}
-          {detailProduct.stock}
+          <MenuBar />
+          <img
+            src={detailProduct.image}
+            className={'product-image'}
+            alt="Product Image"
+          />
+          <button
+            onClick={() => handleBuy(createItem, matchId, updatedQuantity())}
+          >
+            Buy this stuff!
+          </button>
+          <select onChange={e => updatedQuantity(true, e.target.value)}>
+            {populateQuantityOptions(detailProduct.stock)}
+          </select>
+
+          <h1>{detailProduct.name}</h1>
+          <div>{detailProduct.description}</div>
+          <div>
+            INSTOCK | {detailProduct.instock ? 'YES' : 'NO'} | Available:{' '}
+            {detailProduct.stock}
+          </div>
+          <footer>
+            <h4>Reviews for the {detailProduct.name}</h4>
+            <Reviews product={detailProduct} productId={matchId} />
+          </footer>
+          <h4>Like this product? Consider logging in and writing a review</h4>
+          {user.id ? <CreateReview product={detailProduct} /> : ''}
+          <div>
+            {user.isAdmin ? (
+              <Link to={`/products/${detailProduct.id}/edit`}>
+                Edit Product Info
+              </Link>
+            ) : (
+              ''
+            )}
+          </div>
+          <div>
+            {user.isAdmin ? (
+              <button onClick={() => deleteProduct(detailProduct)}>
+                Delete Product
+              </button>
+            ) : (
+              ''
+            )}
+          </div>
         </div>
-        <footer>
-          <h4>Reviews for the {detailProduct.name}</h4>
-          <Reviews product={detailProduct} productId={matchId} />
-        </footer>
-        <h4>Like this product? Consider logging in and writing a review</h4>
-        {user.id ? <CreateReview product={detailProduct} /> : ''}
-        <div>
-          {user.isAdmin ? (
-            <Link to={`/products/${detailProduct.id}/edit`}>
-              Edit Product Info
-            </Link>
-          ) : (
-            ''
-          )}
-        </div>
-        <div>
-          {user.isAdmin ? (
-            <button onClick={() => deleteProduct(detailProduct)}>
-              Delete Product
-            </button>
-          ) : (
-            ''
-          )}
-        </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

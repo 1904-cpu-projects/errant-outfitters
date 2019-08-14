@@ -18,7 +18,6 @@ import Potion from './components/Potion';
 import ClassProducts from './components/ClassProducts';
 import CreateProduct from './components/CreateProduct';
 
-
 class App extends React.Component {
   constructor() {
     super();
@@ -47,6 +46,7 @@ class App extends React.Component {
         <Route path="/Weapon" component={Weapon} />
         <Route path="/Potion" component={Potion} />
         <Route path="/ClassProducts" component={ClassProducts} />
+        <Route exact path="/create-product" component={CreateProduct} />
         <Route
           exact
           path="/products/:id"
