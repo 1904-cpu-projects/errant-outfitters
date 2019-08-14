@@ -12,11 +12,6 @@ import { CreateUserForm } from './components/CreateUserForm';
 import UserProfile from './components/UserProfile';
 import EditProduct from './components/EditProduct';
 import UserCart from './components/UserCart';
-import Armor from './components/Armor';
-import Weapon from './components/Weapon';
-import Potion from './components/Potion';
-import ClassProducts from './components/ClassProducts';
-import CreateProduct from './components/CreateProduct';
 
 class App extends React.Component {
   constructor() {
@@ -39,13 +34,13 @@ class App extends React.Component {
         <Header />
         <ErrorList />
         <Route exact path="/" component={Home} />
+        <Route
+          path="/:filterBar"
+          render={({ match }) => <Home match={match} />}
+        />
         <Route exact path="/CreateUserForm" component={CreateUserForm} />
         <Route path="/user/profile" component={UserProfile} />
         <Route path="/myCart" component={UserCart} />
-        <Route path="/Armor" component={Armor} />
-        <Route path="/Weapon" component={Weapon} />
-        <Route path="/Potion" component={Potion} />
-        <Route path="/ClassProducts" component={ClassProducts} />
         <Route
           exact
           path="/products/:id"
