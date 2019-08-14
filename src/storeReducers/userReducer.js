@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-// This is just to hook in some methods into the main store
-import store from '../store';
-
 // Const defines here
 export const SET_USER = 'SET_USER';
 export const REMOVE_USER = 'REMOVE_USER';
@@ -20,29 +17,29 @@ export const removeUser = () => ({
   type: REMOVE_USER,
 });
 
-export const loginUser = async (email, password) => {
+export const loginUser = (email, password) => async dispatch => {
   try {
     const response = await axios.post('/api/login/login', { email, password });
-    store.dispatch(loadUser(response.data));
+    dispatch(loadUser(response.data));
   } catch (e) {
     console.log('something did not go right');
   }
 };
 
-export const logoutUser = async () => {
+export const logoutUser = () => async dispatch => {
   try {
     const response = axios.get('/api/login/logout');
-    store.dispatch(removeUser());
+    dispatch(removeUser());
   } catch (e) {
     console.log('Logout should never fail');
   }
 };
 
 // helper function that gets products based on productsReducer
-export const checkSessionLogin = async () => {
+export const checkSessionLogin = () => async dispatch => {
   try {
     const result = await axios.get('/api/login/checkLoggedIn');
-    store.dispatch(loadUser(result.data));
+    dispatch(loadUser(result.data));
   } catch (e) {
     console.log('Nick has no clue what he is doing', e);
   }
@@ -51,6 +48,7 @@ export const checkSessionLogin = async () => {
 const init = {
   id: undefined,
   isAdmin: false,
+  class: '',
 };
 
 // And of course the reducer

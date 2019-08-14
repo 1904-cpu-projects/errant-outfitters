@@ -1,0 +1,13 @@
+.errors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 15px auto;
+  min-width: 250px;
+}
+
+.error-item {
+    background-color: lightpink;
+    text-align: center;
+}

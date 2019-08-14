@@ -7,7 +7,9 @@ export function CartHeader({ cart }) {
   const cartItems = cart ? cart.length : 0;
   return (
     <div>
-      <Link to="/myCart">Cart</Link> | {cartItems}
+      <Link to="/myCart">
+        <button>Cart:{cartItems}</button>
+      </Link>
     </div>
   );
 }

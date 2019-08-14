@@ -1,7 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { deleteCartItem } from '../storeReducers/cartReducer';
+import {
+  updateUserItemFromGuest,
+  deleteCartItem,
+} from '../storeReducers/cartReducer';
 
 
 class UserCart extends React.Component {
@@ -47,12 +50,39 @@ class UserCart extends React.Component {
   }
 
   render() {
-    const { cart, user } = this.props;
-    if (cart.length) {
+    const {
+      cart,
+      guestCart,
+      user,
+      updateUserItemFromGuest,
+      deleteCartItem,
+    } = this.props;
+    if (cart.length || guestCart) {
       return (
         <div className="user-cart">
           <div className="cart-list">
             <h3>Hey {user.firstName}! Here is all your junk...</h3>
+            <ul>
+              {guestCart.length
+                ? guestCart.map(i => (
+                    <li key={i.id}>
+                      <img src={i.product.image} />
+                      <h2>
+                        This item is from the guest cart: Pick an action or lose
+                        it
+                      </h2>
+                      <button onClick={() => updateUserItemFromGuest(i)}>
+                        Move to my cart
+                      </button>
+                      <button onClick={() => deleteCartItem(i.id)}>
+                        Remove From Existance
+                      </button>
+                      {i.product.name} | quantity {i.quantity} | In Stock :{' '}
+                      {i.product.inStock ? 'YES' : 'NO'}
+                    </li>
+                  ))
+                : null}
+            </ul>
             <ul>
               {cart.map(i => (
                 <li key={i.id}>
@@ -87,7 +117,16 @@ class UserCart extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  cart: state.cart,
+  cart: state.cart.items,
+  guestCart: state.cart.guest,
 });
 
-export default connect(mapStateToProps)(UserCart);
+const mapDispatchToProps = dispatch => ({
+  deleteCartItem: id => dispatch(deleteCartItem(id)),
+  updateUserItemFromGuest: item => dispatch(updateUserItemFromGuest(item)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserCart);

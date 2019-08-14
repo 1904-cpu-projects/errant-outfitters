@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { loginUser } from '../storeReducers/userReducer';
 
 export class CreateUserForm extends React.Component {
   constructor() {
@@ -30,10 +29,20 @@ export class CreateUserForm extends React.Component {
     event.preventDefault();
     try {
       await axios.post('/api/users', this.state);
-      loginUser(this.state.email, this.state.password);
-      window.location.hash = '/';
-    } catch (err) {
-      alert('Email address already registered! Please try another.');
+
+      document.getElementById('msg').innerHTML =
+        'Account registered! Please login at the top right';
+      this.setState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        class: '',
+        password: '',
+      });
+    } catch (e) {
+      document.getElementById('msg').innerHTML =
+        'Email address already registered! Please try another.';
+      console.log(e);
     }
   }
   render() {
@@ -95,8 +104,11 @@ export class CreateUserForm extends React.Component {
                 : false
             }
           >
-            Create User and Login
+            Register
           </button>
+          <center>
+            <h3 id="msg"></h3>
+          </center>
         </form>
       </div>
     );

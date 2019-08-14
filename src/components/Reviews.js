@@ -1,5 +1,5 @@
 import React from 'react';
-import { listReviews, deleteReview } from '../actions/reviewActions';
+import { listReviewsThunk, deleteReviewThunk } from '../actions/reviewActions';
 import { connect } from 'react-redux';
 
 let filteredReviews;
@@ -57,8 +57,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    listReviews: () => dispatch(listReviews()),
-    deleteReview: review => dispatch(deleteReview(review)),
+    listReviews: () => dispatch(listReviewsThunk()),
+    deleteReview: review => dispatch(deleteReviewThunk(review)),
   };
 };
 

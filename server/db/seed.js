@@ -20,8 +20,6 @@ const cartSeed = [
   { memberStatus: 'guest', quantity: 2 },
 ];
 
-const guestSeed = [];
-
 const transactionSeed = [
   { quantity: 1, totalCost: 1 },
   { quantity: 1, totalCost: 1 },

@@ -44,7 +44,23 @@ router.put('/changeCart/:productId', async (req, res, next) => {
     // eventually we send the error information
     // to the client and process
     console.log(e);
-    res.send(400);
+    res.status(400).send();
+  }
+});
+
+router.put('/updateGuestToUser', async (req, res, next) => {
+  const member = determineUser(req.sessionID, req.session);
+  try {
+    let updated = await Cart.findByPk(req.body.id);
+    updated = await Cart.update(
+      { memberId: member.memberId, memberStatus: member.memberStatus },
+      { where: { id: req.body.id } },
+    );
+    if (updated) updated = await Cart.findByPk(req.body.id);
+    res.status(202).send(updated);
+  } catch (e) {
+    console.log(e);
+    res.status(400).send();
   }
 });
 
