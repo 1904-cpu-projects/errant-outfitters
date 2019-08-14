@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { SingleProduct } from './SingleProduct';
 
 export function Products({ products }) {
-  //function to make tiles from SinlgleProduct component
-
   return (
     <div className="products-list">
       {products.productList.map(p => {
