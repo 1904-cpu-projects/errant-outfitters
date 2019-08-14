@@ -18,7 +18,6 @@ import Potion from './components/Potion';
 import ClassProducts from './components/ClassProducts';
 import CreateProduct from './components/CreateProduct';
 
-
 class App extends React.Component {
   constructor() {
     super();

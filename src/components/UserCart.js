@@ -6,7 +6,6 @@ import {
   deleteCartItem,
 } from '../storeReducers/cartReducer';
 
-
 class UserCart extends React.Component {
   constructor() {
     super();
@@ -24,21 +23,21 @@ class UserCart extends React.Component {
     }, 0);
     this.setState({ total: total });
   }
-//WORKSHOP//
+  //WORKSHOP//
   async checkout() {
     let stripe = new Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
     const { cart } = this.props;
-    const reply = await axios.post('/api/checkout', cart)
+    const reply = await axios.post('/api/checkout', cart);
     const checkoutId = reply.data;
-    console.log(checkoutId)
+    console.log(checkoutId);
     await stripe.redirectToCheckout({
-      sessionId: checkoutId
-    })
-    await (function (result) {
-      console.log('Something went wrong, devs performing server seance')
+      sessionId: checkoutId,
     });
-  };
-//WORKSHOP//
+    await function(result) {
+      console.log('Something went wrong, devs performing server seance');
+    };
+  }
+  //WORKSHOP//
   componentDidUpdate(prevProps) {
     if (this.props.cart.length !== prevProps.cart.length) {
       this.calcTotal();
