@@ -12,6 +12,7 @@ import { CreateUserForm } from './components/CreateUserForm';
 import UserProfile from './components/UserProfile';
 import EditProduct from './components/EditProduct';
 import UserCart from './components/UserCart';
+import CreateProduct from './components/CreateProduct';
 
 class App extends React.Component {
   constructor() {

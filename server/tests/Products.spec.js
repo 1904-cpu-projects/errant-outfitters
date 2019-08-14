@@ -15,26 +15,18 @@ configure({ adapter: new Adapter() });
 const mockProducts = {
   productList: [{ key1: 'value1' }, { key2: 'value2' }, { key3: 'value3' }],
 };
-
+const match = {
+  params: {
+    baseId: 1, //any id you want to set
+  },
+};
 describe('<Products/>', () => {
   it('renders the Product component ', () => {
-    // const wrapper = shallow(<Products products={mockProducts} />);
-    // expect(wrapper).toMatchSnapshot();
-    const simpleFunction = jest.fn(); // Creating a mock function
-    const x = simpleFunction('Hello world'); // Calling the mock function
-
-    expect(x).toBeUndefined();
-    expect(simpleFunction).toHaveBeenCalledTimes(1);
-    expect(simpleFunction).toHaveBeenCalledWith('Hello world');
+    const wrapper = shallow(<Products products={mockProducts} match={match} />);
+    expect(wrapper).toMatchSnapshot();
   });
   it('Renders a Single Product component', () => {
-    // const wrapper = shallow(<Products products={mockProducts} />);
-    // expect(wrapper.find(SingleProduct)).toHaveLength(3);
-    const simpleFunction = jest.fn(); // Creating a mock function
-    const x = simpleFunction('Hello world'); // Calling the mock function
-
-    expect(x).toBeUndefined();
-    expect(simpleFunction).toHaveBeenCalledTimes(1);
-    expect(simpleFunction).toHaveBeenCalledWith('Hello world');
+    const wrapper = shallow(<Products products={mockProducts} match={match} />);
+    expect(wrapper.find(SingleProduct)).toHaveLength(3);
   });
 });
