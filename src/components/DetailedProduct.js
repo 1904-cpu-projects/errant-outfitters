@@ -8,7 +8,6 @@ import {
   deleteProductThunk,
   singleProductThunk,
 } from '../actions/productActions';
-import MenuBar from './MenuBar';
 
 function handleBuy(createItem, matchId, quantity) {
   if (quantity) createItem(matchId, quantity);
@@ -50,7 +49,6 @@ function DetailProduct({
   else {
     return (
       <div>
-        <MenuBar />
         <img
           src={detailProduct.image}
           className={'product-image'}
