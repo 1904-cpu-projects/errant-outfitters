@@ -27,7 +27,7 @@ class UserCart extends React.Component {
     const { cart } = this.props;
     const reply = await axios.post('/api/checkout', cart)
     const checkoutId = reply.data;
-
+    console.log(checkoutId)
     await stripe.redirectToCheckout({
       sessionId: checkoutId
     })

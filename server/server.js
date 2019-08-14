@@ -2,8 +2,6 @@ const express = require('express');
 const session = require('express-session');
 const app = express();
 const path = require('path');
-//Stripe
-const stripeFormatter = require('./utils/stripeFormatter')
 
 //Main route middleware
 app.use(express.json());
@@ -50,34 +48,6 @@ app.use('/api/reviews', require('./routes/reviews'));
 app.use('/api/cart', require('./routes/cart'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/users', require('./routes/users'));
-
-//WORKSHOP- STRIPE//
-const stripe = require('stripe')('sk_test_VFD2hiPa4YhyInOUapuwWQYu00EJFUD9Ql');
-let checkoutId;
-
-(async () => {
-  const stripeSession = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: [
-      {
-        name: "Example",
-        amount: 100,
-        currency: "usd",
-        quantity: 2
-      }
-    ],
-    success_url: 'http://localhost:3000/#/',
-    cancel_url: 'http://localhost:3000/#/myCart',
-  });
-  checkoutId = stripeSession.id
-})()
-
-app.post('/api/checkout', async (req,res,next) => {
-  const cart = req.body;
-  stripeFormatter(cart);
-  (res.send(checkoutId))
-});
-
-//WORKSHOP//
+app.use('/api/checkout', require('./routes/checkout'));
 
 module.exports = app;
