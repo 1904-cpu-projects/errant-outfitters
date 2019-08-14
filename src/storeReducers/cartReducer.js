@@ -21,7 +21,6 @@ const setGuestCart = items => ({
 const updateCartFromGuest = item => ({
   type: UPDATE_CART_FROM_GUEST,
   item,
-
 });
 
 const deleteItem = id => ({
@@ -55,7 +54,6 @@ export const getCart = (userLogin = false) => (dispatch, getStore) => {
           existingStore.cart.items.length &&
           existingStore.cart.items[0].memberStatus === 'guest'
         ) {
-
           store.dispatch(setGuestCart([...existingStore.cart.items]));
 
           dispatch(setGuestCart([...existingStore.cart.items]));
@@ -65,7 +63,6 @@ export const getCart = (userLogin = false) => (dispatch, getStore) => {
               'You had items in your cart before logging in. Please goto your cart and check to add them to your cart or these items will be lost',
             ),
           );
-
         }
       }
       dispatch(setCart(cart));

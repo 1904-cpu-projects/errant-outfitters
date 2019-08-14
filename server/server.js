@@ -15,6 +15,7 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 // active though. There is a lot of thought that goes into
 // that little peice of code though
 // Additionally we may want to investigate saveUninitialized a bit more
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "We're going on a bear hunt",
@@ -47,5 +48,6 @@ app.use('/api/reviews', require('./routes/reviews'));
 app.use('/api/cart', require('./routes/cart'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/checkout', require('./routes/checkout'));
 
 module.exports = app;
