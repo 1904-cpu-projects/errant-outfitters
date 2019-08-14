@@ -1,16 +1,15 @@
-import React from "react";
-import axios from "axios";
-import { loginUser } from "../storeReducers/userReducer";
+import React from 'react';
+import axios from 'axios';
 
 export class CreateUserForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      class: "",
-      password: ""
+      firstName: '',
+      lastName: '',
+      email: '',
+      class: '',
+      password: '',
     };
     this.onHandle = this.onHandle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -18,22 +17,32 @@ export class CreateUserForm extends React.Component {
   }
   selector(event) {
     this.setState({
-      class: event.target.value
+      class: event.target.value,
     });
   }
   onHandle(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   }
   async onSubmit(event) {
     event.preventDefault();
     try {
-      await axios.post("/api/users", this.state);
-      loginUser(this.state.email, this.state.password);
-      window.location.hash = "/";
-    } catch (err) {
-      alert("Email address already registered! Please try another.");
+      await axios.post('/api/users', this.state);
+
+      document.getElementById('msg').innerHTML =
+        'Account registered! Please login at the top right';
+      this.setState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        class: '',
+        password: '',
+      });
+    } catch (e) {
+      document.getElementById('msg').innerHTML =
+        'Email address already registered! Please try another.';
+      console.log(e);
     }
   }
   render() {
@@ -95,8 +104,11 @@ export class CreateUserForm extends React.Component {
                 : false
             }
           >
-            Create User and Login
+            Register
           </button>
+          <center>
+            <h3 id="msg"></h3>
+          </center>
         </form>
       </div>
     );

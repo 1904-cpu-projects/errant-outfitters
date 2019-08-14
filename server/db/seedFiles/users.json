@@ -25,6 +25,7 @@
     "lastName": "Immutable",
     "password": "test",
     "class": "mage",
-    "email": "test@test.test"
+    "email": "test@test.test",
+    "isAdmin": true
   }
 ]

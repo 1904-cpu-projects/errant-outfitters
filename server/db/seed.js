@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
 const {
   db,
@@ -8,43 +8,41 @@ const {
   Product,
   Review,
   Transaction,
-  User
-} = require("./index");
+  User,
+} = require('./index');
 
 //SEEDS
 const cartSeed = [
-  { memberStatus: "user", quantity: 2 },
-  { memberStatus: "user", quantity: 1 },
-  { memberStatus: "user", quantity: 4 },
-  { memberStatus: "user", quantity: 100 },
-  { memberStatus: "guest", quantity: 2 }
+  { memberStatus: 'user', quantity: 2 },
+  { memberStatus: 'user', quantity: 1 },
+  { memberStatus: 'user', quantity: 4 },
+  { memberStatus: 'user', quantity: 100 },
+  { memberStatus: 'guest', quantity: 2 },
 ];
-
-const guestSeed = [];
 
 const transactionSeed = [
   { quantity: 1, totalCost: 1 },
   { quantity: 1, totalCost: 1 },
   { quantity: 1, totalCost: 1 },
-  { quantity: 1, totalCost: 1 }
+  { quantity: 1, totalCost: 1 },
 ];
 
 const seed = {
   cartSeed,
-  transactionSeed
+  transactionSeed,
 };
 
 const syncAndSeed = async () => {
-  let src = path.join(__dirname, "seedFiles", "users.json");
-  let data = fs.readFileSync(src, "utf8");
+  let src = path.join(__dirname, 'seedFiles', 'users.json');
+  let data = fs.readFileSync(src, 'utf8');
   let users = JSON.parse(data);
 
-  src = path.join(__dirname, "seedFiles", "products.json");
-  data = fs.readFileSync(src, "utf8");
+  src = path.join(__dirname, 'seedFiles', 'products.json');
+  data = fs.readFileSync(src, 'utf8');
   const products = JSON.parse(data);
 
-  src = path.join(__dirname, "seedFiles", "reviews.json");
-  data = fs.readFileSync(src, "utf8");
+  src = path.join(__dirname, 'seedFiles', 'reviews.json');
+  data = fs.readFileSync(src, 'utf8');
   const reviews = JSON.parse(data);
 
   try {
@@ -67,7 +65,7 @@ const syncAndSeed = async () => {
       review7,
       review8,
       review9,
-      review10
+      review10,
     ] = await Promise.all(reviews.map(review => Review.create({ ...review })));
 
     const [
@@ -75,13 +73,13 @@ const syncAndSeed = async () => {
       product2,
       product3,
       product4,
-      product5
+      product5,
     ] = await Promise.all(
-      products.map(product => Product.create({ ...product }))
+      products.map(product => Product.create({ ...product })),
     );
 
     const [user1, user2, user3, user4] = await Promise.all(
-      users.map(user => User.create({ ...user }))
+      users.map(user => User.create({ ...user })),
     );
 
     review1.userId = user1.id;
@@ -116,7 +114,7 @@ const syncAndSeed = async () => {
       review7.save(),
       review8.save(),
       review9.save(),
-      review10.save()
+      review10.save(),
     ]);
 
     // We need one more user whos id we can count on for login/cart information
@@ -124,8 +122,8 @@ const syncAndSeed = async () => {
       productId: product1.id,
       memberId: user4.id,
       quantity: 10,
-      memberStatus: "user"
-    });    
+      memberStatus: 'user',
+    });
   } catch (err) {
     console.log(err);
   }
@@ -135,5 +133,5 @@ syncAndSeed();
 //EXPORT
 module.exports = {
   syncAndSeed,
-  seed
+  seed,
 };

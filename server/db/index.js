@@ -1,12 +1,12 @@
 //DB
-const db = require("./db");
+const db = require('./db');
 //MODELS
-const Cart = require("./models/Cart");
-const Guest = require("./models/Guest");
-const Product = require("./models/Product");
-const Review = require("./models/Review");
-const Transaction = require("./models/Transaction");
-const User = require("./models/User");
+const Cart = require('./models/Cart');
+const Guest = require('./models/Guest');
+const Product = require('./models/Product');
+const Review = require('./models/Review');
+const Transaction = require('./models/Transaction');
+const User = require('./models/User');
 
 //ASSOCIATIONS
 // These are the existing associations where our seed.js wont fail
@@ -15,18 +15,16 @@ Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
 
-Product.belongsTo(Cart);
+//Product.belongsTo(Cart);
 User.hasMany(Review);
 User.hasMany(Transaction);
 Review.belongsTo(Product);
 // Cart.belongsTo(Product);
 Cart.belongsTo(User);
 
-
-
 // These are the changes I made to the associations
 // which does cause our seed.js to fail. Need to maybe
-// work on this. 
+// work on this.
 // //Guest.hasMany(Transaction);
 // //Guest.hasMany(Cart);
 // Product.hasMany(Review);
@@ -38,7 +36,6 @@ Cart.belongsTo(User);
 // Cart.belongsTo(Product);
 // Cart.belongsTo(User);
 
-
 //EXPORT
 module.exports = {
   db,
@@ -47,5 +44,5 @@ module.exports = {
   Product,
   Review,
   Transaction,
-  User
+  User,
 };

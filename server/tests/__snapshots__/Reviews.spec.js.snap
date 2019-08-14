@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Reviews/> renders the Reviews component present 1`] = `
+<div>
+  <footer>
+    <div>
+      <div
+        className="reviewDiv"
+      >
+        <h4>
+          review1
+        </h4>
+        <h5>
+          stuff
+        </h5>
+        <button
+          className="review-delete"
+          onClick={[Function]}
+          type="submit"
+        >
+          Delete Review
+        </button>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
