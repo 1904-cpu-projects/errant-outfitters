@@ -17,6 +17,7 @@ import Weapon from './components/Weapon';
 import Potion from './components/Potion';
 import ClassProducts from './components/ClassProducts';
 import CreateProduct from './components/CreateProduct';
+import EditUser from './components/EditUser';
 
 class App extends React.Component {
   constructor() {
@@ -41,6 +42,7 @@ class App extends React.Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/CreateUserForm" component={CreateUserForm} />
         <Route path="/user/profile" component={UserProfile} />
+        <Route path="/edit-user" component={EditUser} />
         <Route path="/myCart" component={UserCart} />
         <Route path="/Armor" component={Armor} />
         <Route path="/Weapon" component={Weapon} />
