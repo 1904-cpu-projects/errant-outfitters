@@ -43,7 +43,7 @@ describe('PUT a change to a user', () => {
       .put(`/api/users/${preston.id}`)
       .send({ lastName: 'the Brave' });
     const improvedPreston = await request(app).get(`/api/users/${preston.id}`);
-    expect(changePreston.status).toEqual(204);
+    expect(changePreston.status).toEqual(200);
     expect(improvedPreston.body.lastName).toBe('the Brave');
   });
 });

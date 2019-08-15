@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SingleProduct } from './SingleProduct';
-import MenuBar from './MenuBar';
 
 export function Products({ products, user }) {
   const classProducts = products.productList.filter(
@@ -11,7 +11,6 @@ export function Products({ products, user }) {
   if (classProducts.length !== 0) {
     return (
       <div>
-        <MenuBar classProdUsr={classProducts[0].class} />
         <div className="products-list">
           {classProducts.map(p => {
             return <SingleProduct key={p.id} product={p} />;
@@ -22,14 +21,18 @@ export function Products({ products, user }) {
   } else {
     return (
       <div>
-        <MenuBar />
         <h2 className="products-list">
-          Please register/login to see your recommended class products
+          Please register/login to see your class recommended products
         </h2>
       </div>
     );
   }
 }
+
+Products.propTypes = {
+  productList: PropTypes.array,
+  user: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   products: state.products,

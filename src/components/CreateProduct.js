@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { postProductThunk } from '../actions/productActions';
+import PropTypes from 'prop-types';
 
 class CreateProduct extends React.Component {
   constructor() {
@@ -11,7 +12,7 @@ class CreateProduct extends React.Component {
       image: '',
       category: '',
       stock: '',
-      cost: null,
+      cost: '',
     };
 
     this.onHandle = this.onHandle.bind(this);
@@ -118,6 +119,10 @@ class CreateProduct extends React.Component {
     );
   }
 }
+
+CreateProduct.propTypes = {
+  postProductThunk: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = dispatch => {
   return {

@@ -18,6 +18,7 @@ router.post('/login', async (req, res, next) => {
         firstName: user.firstName,
         lastName: user.lastName,
         class: user.class,
+        email: user.email,
       });
     } else {
       // User password bad

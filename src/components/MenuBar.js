@@ -1,28 +1,29 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-function MenuBar({ classProdUsr }) {
+function MenuBar() {
   return (
     <div className="menu-bar">
       <NavLink className="navlink" exact to="/">
         <button>All Products</button>
       </NavLink>
-      <NavLink className="navlink" exact to="/Armor">
+      <NavLink className="navlink" exact to="/armor">
         <button>Armor</button>
       </NavLink>
-      <NavLink className="navlink" exact to="/Weapon">
+      <NavLink className="navlink" exact to="/weapon">
         <button>Weapons</button>
       </NavLink>
-      <NavLink className="navlink" exact to="/Potion">
+      <NavLink className="navlink" exact to="/potion">
         <button>Potions</button>
       </NavLink>
+      <NavLink className="navlink" exact to="/inStock">
+        <button>In Stock</button>
+      </NavLink>
+      <NavLink className="navlink" exact to="/outStock">
+        <button>Out of Stock</button>
+      </NavLink>
       <NavLink className="navlink" exact to="/ClassProducts">
-        <button>
-          {classProdUsr
-            ? classProdUsr.charAt(0).toUpperCase() + classProdUsr.slice(1)
-            : ''}{' '}
-          Class Products
-        </button>
+        <button>Class Products</button>
       </NavLink>
     </div>
   );

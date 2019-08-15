@@ -3,6 +3,7 @@ import axios from 'axios';
 // Const defines here
 export const SET_USER = 'SET_USER';
 export const REMOVE_USER = 'REMOVE_USER';
+export const EDIT_USER = 'EDIT_USER';
 
 // Actions
 
@@ -45,10 +46,22 @@ export const checkSessionLogin = () => async dispatch => {
   }
 };
 
+//Edit user information
+export const editUserThunk = (userId, user) => async dispatch => {
+  try {
+    const response = await axios.put(`/api/users/${userId}`, user);
+    dispatch({ type: EDIT_USER, payload: response.data });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const init = {
   id: undefined,
   isAdmin: false,
   class: '',
+  email: '',
+  password: '',
 };
 
 // And of course the reducer
@@ -61,6 +74,9 @@ export default (user = init, action) => {
     case REMOVE_USER:
       newUser = { id: undefined, isAdmin: false };
       break;
+
+    case EDIT_USER:
+      return { ...user, ...action.payload };
   }
   return newUser;
 };

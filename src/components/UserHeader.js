@@ -48,6 +48,7 @@ function UserHeader({ user, loginUser, logoutUser, getCart }) {
         Hello, {user.firstName} {user.lastName} <br />
         Class: {user.class.charAt(0).toUpperCase() + user.class.slice(1)}
         <br />
+        {user.isAdmin ? 'You are logged in as an ADMIN' : ''}
         {user ? <a href="#/user/profile">Profile</a> : ''}
         <br />
         <br />
