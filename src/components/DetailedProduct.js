@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Reviews from './Reviews';
 import CreateReview from '../components/CreateReview';
@@ -106,6 +107,12 @@ class DetailProduct extends React.Component {
     }
   }
 }
+
+DetailProduct.propTypes = {
+  detailProduct: PropTypes.object,
+  matchId: PropTypes.string,
+  user: PropTypes.object,
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {

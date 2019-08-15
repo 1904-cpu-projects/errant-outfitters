@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SingleProduct } from './SingleProduct';
 
@@ -27,6 +28,11 @@ export function Products({ products, user }) {
     );
   }
 }
+
+Products.propTypes = {
+  productList: PropTypes.array,
+  user: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   products: state.products,

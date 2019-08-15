@@ -25,7 +25,7 @@ class EditUser extends React.Component {
     // const hashedPassword = hashPassword(this.state.password);
     const updateUser = {
       ...this.state,
-      password: hashedPassword,
+      // password: hashedPassword,
     };
     this.props.editUserThunk(this.props.user.id, updateUser);
     window.location.hash = '/user/profile';
