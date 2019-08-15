@@ -8,6 +8,7 @@ import {
   deleteProductThunk,
   singleProductThunk,
 } from '../actions/productActions';
+import MenuBar from './MenuBar';
 
 function handleBuy(createItem, matchId, quantity) {
   if (quantity) createItem(matchId, quantity);
