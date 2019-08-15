@@ -24,8 +24,9 @@ export function SingleProduct({ product }) {
         <p>
           {product.description ? product.description.slice(0, 50) + '...' : ''}
         </p>
+        <p>Cost: {product.cost}</p>
+        <p>In Stock: {stocked}</p> <p>Count: {product.stock}</p>
       </div>
-      <h4> In Stock: {stocked} </h4>
       <Link to={`/products/${product.id}`}>
         <button>Details</button>
       </Link>

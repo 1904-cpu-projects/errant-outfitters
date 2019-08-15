@@ -69,6 +69,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -82,14 +83,15 @@
     "webpack-cli": "^3.3.5"
   },
   "dependencies": {
-    "dotenv": "^8.0.0",
     "connect-session-sequelize": "^6.0.0",
-    "morgan": "^1.9.1",
     "css-loader": "^3.0.0",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
+    "morgan": "^1.9.1",
     "pg": "^7.11.0",
     "sequelize": "^5.10.0",
+    "stripe": "^7.8.0",
     "style-loader": "^0.23.1"
   }
 }

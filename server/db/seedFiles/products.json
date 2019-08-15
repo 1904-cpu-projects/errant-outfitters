@@ -2,7 +2,7 @@
   {
     "class": "warrior",
     "catagory": "armor",
-    "cost": "20",
+    "cost": "200",
     "description": "The armored kilt is made of a thick cloth skirt with bars of steel hanging down from the waist and a ring of horizontal steel plates just above the hem. An armored kilt can be worn separately as light armor, or it can be added to other suits of light or medium armor.",
     "image": "/img/products/armored-kilt.jpg",
     "inStock": true,
@@ -12,7 +12,7 @@
   {
     "class": "rouge",
     "catagory": "armor",
-    "cost": "3",
+    "cost": "300",
     "description": "Also called a belly-warmer, a haramaki is a simple silken sash lined with chainmail or articulated metal plates and tied about the stomach to protect it.",
     "image": "/img/products/Haramaki.jpg",
     "inStock": true,
@@ -22,7 +22,7 @@
   {
     "class": "warrior",
     "catagory": "armor",
-    "cost": "3",
+    "cost": "300",
     "description": "More than simple clothing, padded armor combines heavy, quilted cloth and layers of densely packed stuffing to create a cheap and basic protection. It is typically worn by those not intending to face lethal combat or those who wish their maneuverability to be impacted as little as possible.",
     "image": "/img/products/Light-Armor.png",
     "inStock": true,
@@ -32,7 +32,7 @@
   {
     "class": "warrior",
     "catagory": "armor",
-    "cost": "1",
+    "cost": "100",
     "description": "Sometimes called a leine, this belted tunic has thick cords woven through it that cover vital areas. A reinforced tunic’s armor bonus is increased by 2 against attack rolls made to confirm critical hits against the wearer.",
     "image": "/img/products/Tunic.jpg",
     "inStock": false,
@@ -42,7 +42,7 @@
   {
     "class": "warrior",
     "catagory": "armor",
-    "cost": "15",
+    "cost": "150",
     "description": "Lamellar is a type of armor in which small plates of various types of materials are strung together in parallel rows using fine cord. Lamellar plates can be constructed from lacquered leather, horn, or even stone, though suits of iron and steel are the most common. Lamellar armor can be crafted into various shapes, including partial pieces such as breastplates, greaves, or even entire coats. The properties of specific suits and pieces of lamellar armor are determined by their material. This armor consists of a light breastplate and shoulder guards made from lacquered leather plates bound together and fitted over a silk shirt.",
     "image": "/img/products/lamellar-cuirass.jfif",
     "inStock": true,
@@ -64,7 +64,7 @@
     "catagory": "armor",
     "name": "Armored Coat",
     "description": "This sturdy leather coat is reinforced with metal plates sewn into the lining. An armored coat is more cumbersome than light armor but less effective than most medium armors.",
-    "cost": "50",
+    "cost": "500",
     "image": "/img/products/armored-coat.jpg",
     "inStock": true,
     "stock": 8
@@ -74,7 +74,7 @@
     "catagory": "armor",
     "name": "Chain Coat",
     "description": "This relatively simple armor consists of heavy chains that wrap around your body and limbs. While it weighs more and provides less protection than other medium armors, it is also less of a hindrance. In addition, if you are wielding a spiked chain, you can affix it to one hand.",
-    "cost": "75",
+    "cost": "750",
     "image": "/img/products/Chain-Shirt.png",
     "inStock": true,
     "stock": 38
@@ -95,7 +95,6 @@
     "name": "Kikko Armor",
     "description": "Kikko armor consists of a clever arrangement of hexagonal plates made from iron and sewn to cloth, granting the wearer greater flexibility than that provided by many armors that afford similar defense. The plates may be left exposed or hidden by a layer of cloth.",
     "cost": "250",
-    "image": "",
     "inStock": true,
     "stock": 38
   },
@@ -114,7 +113,7 @@
     "catagory": "armor",
     "name": "Scale Mail",
     "description": "Scale mail is made up of dozens of small, overlapping metal plates. Similar to both splint mail and banded mail, scalemail has a flexible arrangement of scales in an attempt to avoid hindering the wearer’s mobility, but at the expense of omitting additional protective layers of armor. A suit of scale mail includes gauntlets.",
-    "cost": "50",
+    "cost": "500",
     "image": "/img/products/Simple-Scale-Armour.png",
     "inStock": false,
     "stock": 0
@@ -174,7 +173,7 @@
     "catagory": "weapon",
     "name": "Buckler",
     "description": "A wooden round thing that helps you block things. Thats about it. It will probably break on you eventually, but not after saving your butt a whole bunch.",
-    "cost": "5",
+    "cost": "500",
     "image": "/img/products/Shield_Buckler.png",
     "inStock": true,
     "stock": 48
@@ -184,7 +183,7 @@
     "catagory": "weapon",
     "name": "Tower Shield",
     "description": "This shield is as tall as the size of the creature that wields it and is built to be used as mobile cover.",
-    "cost": "30",
+    "cost": "300",
     "image": "/img/products/tower-shield.png",
     "inStock": true,
     "stock": 2948
@@ -195,7 +194,6 @@
     "name": "Wall Shield",
     "description": "An incredibly large shield with spikes on the bottom that allow it to be planted into the ground. When planted, this shield is a barrier that is five feet wide and six feet tall",
     "cost": "300",
-    "image": "",
     "inStock": true,
     "stock": 38
   },
@@ -204,7 +202,7 @@
     "catagory": "weapon",
     "name": "Shield Gauntlet",
     "description": "This shield covers the entire arm, and is comprised of thick steel plates. It is designed to be used both defensively and offensively. It can be used as a melee weapon. Some gauntlets have blades or spikes attached to change the damage type. You can not hold any other items in a hand that has a shield gauntlet on.",
-    "cost": "45",
+    "cost": "450",
     "image": "/img/products/shield-gauntlet.jpg",
     "inStock": true,
     "stock": 398
@@ -215,7 +213,6 @@
     "name": "Living Goblin Shield",
     "description": "A wooden or steel shield with a living goblin tied to it for extra padding. Every so often, an attack hits the goblin tied to the shield. Once the goblin attached to the shield dies the world becomes just slightly better.",
     "cost": "120",
-    "image": "",
     "inStock": true,
     "stock": 2
   },
@@ -224,8 +221,7 @@
     "catagory": "weapon",
     "name": "Battle Umbrella",
     "description": "A battle umbrella is really two weapons in one. While it can be used as a normal umbrella, it is more commonly used as a covert weapon.",
-    "cost": "5",
-    "image": "",
+    "cost": "500",
     "inStock": true,
     "stock": 289
   },
@@ -234,8 +230,7 @@
     "catagory": "weapon",
     "name": "Bokken",
     "description": "A wooden training sword. Doesn't do much, but makes one feel good about the training they are about to receive.",
-    "cost": "5",
-    "image": "",
+    "cost": "500",
     "inStock": true,
     "stock": 9
   },
@@ -244,8 +239,7 @@
     "catagory": "weapon",
     "name": "Brandisock",
     "description": "This peculiar spear-like weapon is popular among travelers and law enforcement. The brandistock's three-pronged head is retractable, which renders it indistinguishable from a quarterstaff (unless closely inspected). Extending the blades is instantaneous, but pulling them back requires a little effort.",
-    "cost": "10",
-    "image": "",
+    "cost": "100",
     "inStock": true,
     "stock": 109
   },
@@ -254,8 +248,7 @@
     "catagory": "weapon",
     "name": "Brass Knuckles",
     "description": "Brass knuckles, or knuckledusters, are pieces of metal shaped to fit around the knuckles. Designed to preserve and concentrate a punch's force by directing it toward a harder and smaller contact area, they result in increased tissue disruption, including an increased likelihood of fracturing the victim's bones on impact. The extended and rounded palm grip also spreads across the attacker's palm the counter-force that would otherwise be absorbed primarily by the attacker's fingers, reducing the likelihood of damage to the attacker's fingers.",
-    "cost": "5",
-    "image": "",
+    "cost": "500",
     "inStock": true,
     "stock": 30
   },
@@ -264,7 +257,7 @@
     "catagory": "weapon",
     "name": "Chain Sickle",
     "description": "This weapon is a sickle attached to a heavy iron weight by a length of chain. In some cultures it is known as a kusarigama. Has probably ended the career of more adventures than one would initially think. ",
-    "cost": "5",
+    "cost": "500",
     "image": "/img/products/chain-sickle.jpg",
     "inStock": true,
     "stock": 57
@@ -274,8 +267,7 @@
     "catagory": "weapon",
     "name": "Disk Blade",
     "description": "This weapon is a simplified version of the chakram or chakri, designed to be used by common folk more easily. It offers safety and reliability in exchange for its effectiveness as a thrown weapon. It fits tightly around the wrist and contains a slightly padded inner ring to provide a cushion when struck against something.",
-    "cost": "10",
-    "image": "",
+    "cost": "100",
     "inStock": true,
     "stock": 20
   },
@@ -284,8 +276,7 @@
     "catagory": "weapon",
     "name": "Greatclub",
     "description": "A altered version of the vanilla greatclub designed to make it feel more powerful, like you're swinging a tree trunk at someone.",
-    "cost": "5",
-    "image": "",
+    "cost": "500",
     "inStock": true,
     "stock": 19
   },
@@ -294,8 +285,7 @@
     "catagory": "weapon",
     "name": "Scythe",
     "description": "This weapon is inspired by the common farming implement used to cut swaths of grown hay, but it has a straight handle and a heavier blade. Despite its humble origins, the scythe is recognized as a symbol of death in many cultures because of its use in reaping. Rather than being too heavy for most smaller creatures, the scythe is too long for Small sized creatures to wield effectively.",
-    "cost": "2",
-    "image": "",
+    "cost": "200",
     "inStock": true,
     "stock": 48
   },
@@ -304,8 +294,7 @@
     "catagory": "weapon",
     "name": "Boomerang",
     "description": "A boomerang is a thrown tool, typically constructed as a flat aerofoil, that is designed to spin about an axis perpendicular to the direction of its flight. A returning boomerang is designed to return to the thrower. Boomerangs have been historically used for hunting, as well as a sport, and entertainment.",
-    "cost": "1",
-    "image": "",
+    "cost": "100",
     "inStock": true,
     "stock": 3
   },
@@ -314,7 +303,7 @@
     "catagory": "weapon",
     "name": "Staff",
     "description": "You shall not pass!",
-    "cost": "1",
+    "cost": "100",
     "image": "/img/products/lotr.png",
     "inStock": true,
     "stock": 3
@@ -324,7 +313,7 @@
     "catagory": "potion",
     "name": "Potion",
     "description": "Restores health",
-    "cost": "1",
+    "cost": "100",
     "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 3
@@ -334,7 +323,7 @@
     "catagory": "potion",
     "name": "Elixir",
     "description": "Restores Mana",
-    "cost": "1",
+    "cost": "100",
     "image": "/img/products/elixir.jpg",
     "inStock": true,
     "stock": 3
@@ -344,7 +333,7 @@
     "catagory": "potion",
     "name": "Move Potion",
     "description": "Restores Stamina",
-    "cost": "1",
+    "cost": "100",
     "image": "/img/products/potion.jpg",
     "inStock": true,
     "stock": 3

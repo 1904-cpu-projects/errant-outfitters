@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
 import {
   updateUserItemFromGuest,
   deleteCartItem,
@@ -10,11 +10,11 @@ import {
 class UserCart extends React.Component {
   constructor() {
     super();
-
     this.state = {
       total: 0,
     };
     this.calcTotal = this.calcTotal.bind(this);
+    this.checkout = this.checkout.bind(this);
   }
 
   calcTotal() {
@@ -24,7 +24,21 @@ class UserCart extends React.Component {
     }, 0);
     this.setState({ total: total });
   }
-
+  //WORKSHOP//
+  async checkout() {
+    let stripe = new Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
+    const { cart } = this.props;
+    const reply = await axios.post('/api/checkout', cart);
+    const checkoutId = reply.data;
+    const reconcileReply = await axios.post('/api/checkout/reconcile', cart);
+    await stripe.redirectToCheckout({
+      sessionId: checkoutId,
+    });
+    await function(result) {
+      console.log('Something went wrong, devs performing server seance');
+    };
+  }
+  //WORKSHOP//
   componentDidUpdate(prevProps) {
     if (this.props.cart.length !== prevProps.cart.length) {
       this.calcTotal();
@@ -87,7 +101,7 @@ class UserCart extends React.Component {
               Subtotal ({cart.length})<br />
               total: {this.state.total} GOLDS!!!!
             </h3>
-            <button>Proceed to checkout</button>
+            <button onClick={this.checkout}>Proceed to checkout</button>
           </div>
         </div>
       );
@@ -100,6 +114,12 @@ class UserCart extends React.Component {
     }
   }
 }
+
+UserCart.propTypes = {
+  user: PropTypes.object,
+  cart: PropTypes.array,
+  guestCart: PropTypes.array,
+};
 
 const mapStateToProps = state => ({
   user: state.user,

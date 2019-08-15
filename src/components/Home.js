@@ -2,11 +2,11 @@ import React from 'react';
 import Products from './Products';
 import MenuBar from './MenuBar';
 
-export function Home() {
+export function Home({ match }) {
   return (
     <div className="main-view">
       <MenuBar />
-      <Products />
+      <Products match={match} />
     </div>
   );
 }
