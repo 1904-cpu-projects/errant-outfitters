@@ -12,8 +12,8 @@ async function checkoutStripe(cart) {
   const stripeSession = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     line_items: stripeCart,
-    success_url: 'http://localhost:3000/#/',
-    cancel_url: 'http://localhost:3000/#/myCart',
+    success_url: 'https://errant-outfitters-cpu.herokuapp.com/#/',
+    cancel_url: 'https://errant-outfitters-cpu.herokuapp.com/#/myCart',
   });
   checkoutId = stripeSession.id;
   return checkoutId;

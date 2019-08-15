@@ -30,7 +30,6 @@ router.post('/reconcile', async (req,res,next) => {
         quantity: item.quantity,
         totalCost: item.quantity * item.product.cost,
         productId: item.productId,
-        guestId: item.memberId,
         userId: item.memberId
       })
     })
