@@ -30,7 +30,7 @@ export function Products({ products, user }) {
 }
 
 Products.propTypes = {
-  products: PropTypes.array,
+  productList: PropTypes.array,
   user: PropTypes.object,
 };
 

@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 export function Products({ products, match }) {
   let displayFilter = [];
   if (match.params.filterBar === 'ClassProducts') return <ClassProducts />;
-
   match.params.filterBar === 'inStock'
     ? (displayFilter = products.productList.filter(p => p.inStock))
     : match.params.filterBar === 'outStock'
@@ -29,7 +28,7 @@ export function Products({ products, match }) {
 }
 
 Products.propTypes = {
-  products: PropTypes.array,
+  productList: PropTypes.array,
 };
 
 const mapStateToProps = state => ({

@@ -121,7 +121,7 @@ class CreateProduct extends React.Component {
 }
 
 CreateProduct.propTypes = {
-  postProductThunk: PropTypes.func,
+  postProductThunk: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
