@@ -49,9 +49,7 @@ export const checkSessionLogin = () => async dispatch => {
 //Edit user information
 export const editUserThunk = (userId, user) => async dispatch => {
   try {
-    console.log('USER BEFORE AXIOS', await user);
     const response = await axios.put(`/api/users/${userId}`, user);
-    console.log('In edit user thunk', response.data);
     dispatch({ type: EDIT_USER, payload: response.data });
   } catch (err) {
     console.error(err);
@@ -78,8 +76,7 @@ export default (user = init, action) => {
       break;
 
     case EDIT_USER:
-      console.log('IN EDIT USER REDUCER');
-      return { ...user, ...action.payload }; //trying to update the whole user
+      return { ...user, ...action.payload };
   }
   return newUser;
 };

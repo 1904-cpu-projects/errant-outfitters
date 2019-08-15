@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { editUserThunk } from '../storeReducers/userReducer';
-import { hashPassword } from '../../server/utils/commonUtils';
+// import { hashPassword } from '../../server/utils/commonUtils';
 
 class EditUser extends React.Component {
   constructor() {
@@ -22,16 +22,16 @@ class EditUser extends React.Component {
   }
   onSubmit(event) {
     event.preventDefault();
+    // const hashedPassword = hashPassword(this.state.password);
     const updateUser = {
       ...this.state,
-      password: hashPassword(this.state.password),
+      password: hashedPassword,
     };
     this.props.editUserThunk(this.props.user.id, updateUser);
     window.location.hash = '/user/profile';
   }
 
   render() {
-    console.log('EDIT USER', this.props);
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -65,14 +65,14 @@ class EditUser extends React.Component {
             <option value="mage">Mage</option>
             <option value="rouge">Rouge</option>
           </select>
-
+          {/*
           <label htmlFor="password">Password: </label>
           <input
             onChange={this.onHandle}
             type="password"
             name="password"
             placeholder="new password"
-          />
+          /> */}
           <button type="submit">Submit Changes</button>
         </form>
       </div>
