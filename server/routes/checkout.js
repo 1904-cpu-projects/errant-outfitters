@@ -30,8 +30,8 @@ router.post('/reconcile', async (req,res,next) => {
         quantity: item.quantity,
         totalCost: item.quantity * item.product.cost,
         productId: item.productId,
-        guestId: memberId,
-        userId: memberId
+        guestId: item.memberId,
+        userId: item.memberId
       })
     })
     res.send('purchase reconciled')
