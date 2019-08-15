@@ -13,6 +13,7 @@ import UserProfile from './components/UserProfile';
 import EditProduct from './components/EditProduct';
 import UserCart from './components/UserCart';
 import CreateProduct from './components/CreateProduct';
+import EditUser from './components/EditUser';
 
 class App extends React.Component {
   constructor() {
@@ -41,7 +42,9 @@ class App extends React.Component {
         />
         <Route exact path="/CreateUserForm" component={CreateUserForm} />
         <Route path="/user/profile" component={UserProfile} />
+        <Route path="/edit-user" component={EditUser} />
         <Route path="/myCart" component={UserCart} />
+        <Route exact path="/create-product" component={CreateProduct} />
         <Route
           exact
           path="/products/:id"

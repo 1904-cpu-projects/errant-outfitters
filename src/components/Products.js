@@ -6,7 +6,6 @@ import ClassProducts from './ClassProducts';
 export function Products({ products, match }) {
   let displayFilter = [];
   if (match.params.filterBar === 'ClassProducts') return <ClassProducts />;
-  console.log(match);
 
   match.params.filterBar === 'inStock'
     ? (displayFilter = products.productList.filter(p => p.inStock))
