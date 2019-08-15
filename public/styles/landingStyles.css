@@ -38,3 +38,19 @@
   align-content: center;
   margin: auto;
 }
+/* google buttons */
+.btn {
+  border: none;
+  transition: all 0.75s ease;
+  outline: none;
+  background-color: green;
+}
+.rounded {
+  border-radius: 3px;
+}
+.btn.bg-blue:hover {
+  background-color: #47a09d;
+}
+.btn.bg-red:hover {
+  background-color: #ad000f;
+}

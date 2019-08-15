@@ -25,6 +25,11 @@ function MenuBar() {
       <NavLink className="navlink" exact to="/ClassProducts">
         <button>Class Products</button>
       </NavLink>
+      <form method="get" action="/auth/google">
+        <button type="submit" className="btn bg-red white p1 rounded">
+          Login with Google
+        </button>
+      </form>
     </div>
   );
 }
