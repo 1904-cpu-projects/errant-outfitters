@@ -1,30 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { editUserThunk } from '../storeReducers/userReducer';
+import { hashPassword } from '../../server/utils/commonUtils';
 
 class EditUser extends React.Component {
   constructor() {
     super();
-    this.state = {
-      password: '',
-    };
+    this.state = {};
     this.onHandle = this.onHandle.bind(this);
     this.onSelect = this.onSelect.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onHandle(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
   onSelect(event) {
     this.setState({ class: event.target.value });
   }
+  onSubmit(event) {
+    event.preventDefault();
+    const updateUser = {
+      ...this.state,
+      password: hashPassword(this.state.password),
+    };
+    this.props.editUserThunk(this.props.user.id, updateUser);
+    window.location.hash = '/user/profile';
+  }
 
   render() {
-    console.log('EDIT USER', this.state);
-    console.log('EDIT USER PROPS', this.props);
+    console.log('EDIT USER', this.props);
     return (
       <div>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <label htmlFor="firstName">First Name: </label>
           <input
             onChange={this.onHandle}
@@ -63,6 +73,7 @@ class EditUser extends React.Component {
             name="password"
             placeholder="new password"
           />
+          <button type="submit">Submit Changes</button>
         </form>
       </div>
     );
@@ -77,7 +88,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editUser: id => dispatch(editUserThunk(id)),
+    editUserThunk: (id, user) => dispatch(editUserThunk(id, user)),
   };
 };
 

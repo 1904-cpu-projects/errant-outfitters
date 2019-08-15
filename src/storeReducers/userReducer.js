@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { runInNewContext } from 'vm';
 
 // Const defines here
 export const SET_USER = 'SET_USER';
@@ -48,9 +47,11 @@ export const checkSessionLogin = () => async dispatch => {
 };
 
 //Edit user information
-export const editUserThunk = userId => async dispatch => {
+export const editUserThunk = (userId, user) => async dispatch => {
   try {
-    const response = await axios.put(`/api/users/${userId}`);
+    console.log('USER BEFORE AXIOS', await user);
+    const response = await axios.put(`/api/users/${userId}`, user);
+    console.log('In edit user thunk', response.data);
     dispatch({ type: EDIT_USER, payload: response.data });
   } catch (err) {
     console.error(err);
@@ -77,8 +78,8 @@ export default (user = init, action) => {
       break;
 
     case EDIT_USER:
-      newUser = { ...action.payload }; //trying to update the whole user
-      break;
+      console.log('IN EDIT USER REDUCER');
+      return { ...user, ...action.payload }; //trying to update the whole user
   }
   return newUser;
 };

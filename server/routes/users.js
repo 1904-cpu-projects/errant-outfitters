@@ -35,7 +35,7 @@ router.put('/:id', async (req, res, next) => {
   try {
     const updateUser = await User.findByPk(req.params.id);
     updateUser.update({ ...req.body });
-    res.status(204).send(updateUser);
+    res.status(200).send(updateUser);
   } catch (err) {
     next(err);
   }

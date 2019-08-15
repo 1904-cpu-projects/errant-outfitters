@@ -11,7 +11,7 @@ class CreateProduct extends React.Component {
       image: '',
       category: '',
       stock: '',
-      cost: null,
+      cost: '',
     };
 
     this.onHandle = this.onHandle.bind(this);
