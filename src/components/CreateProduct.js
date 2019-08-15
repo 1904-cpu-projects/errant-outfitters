@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { postProductThunk } from '../actions/productActions';
+import PropTypes from 'prop-types';
 
 class CreateProduct extends React.Component {
   constructor() {
@@ -118,6 +119,10 @@ class CreateProduct extends React.Component {
     );
   }
 }
+
+CreateProduct.propTypes = {
+  postProductThunk: PropTypes.func,
+};
 
 const mapDispatchToProps = dispatch => {
   return {

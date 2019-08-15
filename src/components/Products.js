@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { SingleProduct } from './SingleProduct';
 import ClassProducts from './ClassProducts';
+import PropTypes from 'prop-types';
 
 export function Products({ products, match }) {
   let displayFilter = [];
@@ -26,6 +27,10 @@ export function Products({ products, match }) {
     </div>
   );
 }
+
+Products.propTypes = {
+  products: PropTypes.array,
+};
 
 const mapStateToProps = state => ({
   products: state.products,
