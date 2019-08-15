@@ -1,14 +1,16 @@
 import React from 'react';
-import Reviews from './Reviews';
-import { connect } from 'react-redux';
-import { createItem } from '../storeReducers/cartReducer';
-import CreateReview from '../components/CreateReview';
 import { Link } from 'react-router-dom';
+
+import Reviews from './Reviews';
+import CreateReview from '../components/CreateReview';
+import MenuBar from './MenuBar';
+
+import { connect } from 'react-redux';
 import {
   deleteProductThunk,
   singleProductThunk,
 } from '../actions/productActions';
-import MenuBar from './MenuBar';
+import { createItem } from '../storeReducers/cartReducer';
 
 function handleBuy(createItem, matchId, quantity) {
   if (quantity) createItem(matchId, quantity);
