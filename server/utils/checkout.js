@@ -5,7 +5,7 @@ let checkoutId;
 async function checkoutStripe(cart) {
   const stripeCart = cart.map(item => ({
     name: item.product.name,
-    amount: 100 || item.product.cost,
+    amount: item.product.cost || 99999,
     currency: 'usd',
     quantity: item.quantity,
   }));
