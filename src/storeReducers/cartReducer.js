@@ -54,8 +54,6 @@ export const getCart = (userLogin = false) => (dispatch, getStore) => {
           existingStore.cart.items.length &&
           existingStore.cart.items[0].memberStatus === 'guest'
         ) {
-          store.dispatch(setGuestCart([...existingStore.cart.items]));
-
           dispatch(setGuestCart([...existingStore.cart.items]));
           dispatch(
             createError(
