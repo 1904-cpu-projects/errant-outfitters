@@ -33,7 +33,8 @@ export default (errors = {}, action) => {
         ];
       else newErrors[action.context] = [action.error];
       break;
-    case REMOVE_ERROR:
+  case REMOVE_ERROR:
+    console.log("this happened!");
       newErrors[action.context] = newErrors[action.context].filter(
         e => e !== action.error,
       );

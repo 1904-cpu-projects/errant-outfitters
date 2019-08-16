@@ -18,7 +18,7 @@ function handleBuy(createItem, matchId, quantity) {
 }
 
 function initQuantity() {
-  let result = 0;
+  let result = 1;
   return function(update = false, value) {
     if (update) result = value;
     return result;
@@ -27,7 +27,7 @@ function initQuantity() {
 
 function populateQuantityOptions(max) {
   const options = [];
-  for (let i = 0; i <= max && i <= 10; i++) {
+  for (let i = 1; i <= max && i <= 10; i++) {
     options.push(
       <option key={i} value={i}>
         {i}
@@ -57,7 +57,6 @@ class DetailProduct extends React.Component {
     else {
       return (
         <div>
-          <MenuBar />
           <img
             src={detailProduct.image}
             className={'product-image'}
