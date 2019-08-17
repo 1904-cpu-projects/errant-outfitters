@@ -11,7 +11,7 @@ function Header({ user, cart }) {
       <Link to="/">
         <img src="/img/eoLogo.jpeg" />
       </Link>
-      <h1>Errant Outfitters Adventure Shop</h1>
+      <h1 id='title-menu'>Errant Outfitters Adventure Shop</h1>
       <CartHeader cart={cart} />
       <UserHeader />
     </div>

@@ -26,7 +26,7 @@ async function handleLogout(ev, logoutUser, getCart) {
 function UserHeader({ user, loginUser, logoutUser, getCart }) {
   if (user.id === undefined) {
     return (
-      <div>
+      <div id='login-box'>
         {' '}
         Hello, Guest{' '}
         <a href="/#/CreateUserForm">
@@ -43,7 +43,7 @@ function UserHeader({ user, loginUser, logoutUser, getCart }) {
     );
   } else {
     return (
-      <div>
+      <div id='login-box'>
         {' '}
         Hello, {user.firstName} {user.lastName} <br />
         Class: {user.class.charAt(0).toUpperCase() + user.class.slice(1)}
