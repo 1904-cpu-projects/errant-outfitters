@@ -4,6 +4,7 @@
   "description": "Nick Napoli, Schuyler, Thom, Sam",
   "main": "index.js",
   "scripts": {
+    "seed": "node server/db/seed.js",
     "postinstall": "npm run webpack",
     "start": "node server/db/seed.js & node server/index.js",
     "webpack": "webpack",
