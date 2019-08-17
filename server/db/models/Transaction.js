@@ -8,6 +8,9 @@ const Transaction = db.define('transaction', {
   totalCost: {
     type: Sequelize.FLOAT,
   },
+  guestId: {
+    type: Sequelize.STRING
+  }
 });
 //EXPORT
 module.exports = Transaction;

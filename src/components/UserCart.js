@@ -28,7 +28,6 @@ class UserCart extends React.Component {
   async checkout() {
     let stripe = new Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
     const { cart } = this.props;
-    console.log(cart)
     const reply = await axios.post('/api/checkout', cart);
     const checkoutId = reply.data;
     const reconcileReply = await axios.post('/api/checkout/reconcile', cart);

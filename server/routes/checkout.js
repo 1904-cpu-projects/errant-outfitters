@@ -4,6 +4,7 @@ const { Cart, Product, Transaction } = require('../db/index');
 
 router.post('/', async (req, res, next) => {
   const cart = req.body;
+  console.log(cart)
   try {
     res.send(await checkoutStripe(cart));
   } catch (e) {
@@ -26,12 +27,21 @@ router.post('/reconcile', async (req,res,next) => {
       )
     });
     const postTransaction = await cart.map( (item) => {
-      Transaction.create({
-        quantity: item.quantity,
-        totalCost: item.quantity * item.product.cost,
-        productId: item.productId,
-        userId: item.memberId
-      })
+      if (item.memberStatus === 'guest') {
+        Transaction.create({
+          quantity: item.quantity,
+          totalCost: item.quantity * item.product.cost,
+          productId: item.productId,
+          guestId: item.memberId
+        });
+      } else {
+        Transaction.create({
+          quantity: item.quantity,
+          totalCost: item.quantity * item.product.cost,
+          productId: item.productId,
+          userId: item.memberId
+        });
+      };
     })
     res.send('purchase reconciled')
   } catch(e) {
