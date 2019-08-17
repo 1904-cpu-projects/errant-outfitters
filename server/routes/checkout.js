@@ -12,19 +12,19 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.post('/reconcile', async (req,res,next) => {
+router.post('/reconcile', async (req, res, next) => {
   const cart = req.body;
-  try{
-    const removeCart = await cart.map( (item) => {
+  try {
+    const removeCart = await cart.map(item => {
       Cart.destroy({
-        where: { id: item.id}
-      })
+        where: { id: item.id },
+      });
     });
-    const reduceStock = await cart.map( (item) => {
-      Product.decrement(
-        'stock',
-        {by: item.quantity, where: {id: item.productId}}
-      )
+    const reduceStock = await cart.map(item => {
+      Product.decrement('stock', {
+        by: item.quantity,
+        where: { id: item.productId },
+      });
     });
     const postTransaction = await cart.map( (item) => {
       if (item.memberStatus === 'guest') {
@@ -47,5 +47,5 @@ router.post('/reconcile', async (req,res,next) => {
   } catch(e) {
     next(e);
   }
-})
+});
 module.exports = router;
