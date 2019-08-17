@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import UserCart from './UserCart';
 import Reviews from './Reviews';
+import Transactions from './Transactions';
 
 class UserProfile extends React.Component {
   render() {
@@ -29,6 +30,10 @@ class UserProfile extends React.Component {
         <div>
           <h1>Authored Reviews</h1>
           <Reviews user={user} />
+        </div>
+        <div>
+          <h2>Your past Transactions</h2>
+          <Transactions />
         </div>
       </div>
     );
