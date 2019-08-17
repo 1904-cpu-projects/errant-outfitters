@@ -4,7 +4,6 @@ const { Cart, Product, Transaction } = require('../db/index');
 
 router.post('/', async (req, res, next) => {
   const cart = req.body;
-  console.log(cart)
   try {
     res.send(await checkoutStripe(cart));
   } catch (e) {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import UserCart from './UserCart';
 import Reviews from './Reviews';
-import Transactions from './Transactions';
+//import Transactions from './Transactions';
 
 class UserProfile extends React.Component {
   render() {
