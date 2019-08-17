@@ -90,6 +90,8 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
     "pg": "^7.11.0",
     "sequelize": "^5.10.0",
     "stripe": "^7.8.0",

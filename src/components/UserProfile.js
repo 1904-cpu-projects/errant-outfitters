@@ -16,7 +16,7 @@ class UserProfile extends React.Component {
         <div>
           First Name: {user.firstName}
           Last Name: {user.lastName}
-          email:
+          email:{user.email}
         </div>
         <Link to="/edit-user">Edit Profile Info</Link>
         <div>
