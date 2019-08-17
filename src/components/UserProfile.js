@@ -18,8 +18,9 @@ class UserProfile extends React.Component {
           Last Name: {user.lastName}
           email:{user.email}
         </div>
+        <Link to="/edit-user">Edit Profile Info</Link>
         <div>
-          {user.isAdmin ? <a href="/users/edit">Edit Current Users</a> : ''}
+          {user.isAdmin ? <a href="/edit-user">Edit Current Users</a> : ''}
         </div>
         <div>
           {user.isAdmin ? <Link to="/create-product">Create Product</Link> : ''}

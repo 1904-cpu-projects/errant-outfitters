@@ -20,7 +20,7 @@ export const removeError = (context, error) => dispatch => {
 
 // The context is the actual CONSTANT used, which are an object key
 // every object key is an array of the the error test
-// So wild. Make stuff. Go BANANAS!
+// Go wild. Make stuff. Go BANANAS!
 
 export default (errors = {}, action) => {
   const newErrors = { ...errors };

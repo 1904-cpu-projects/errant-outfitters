@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   updateUserItemFromGuest,
@@ -29,7 +30,7 @@ class UserCart extends React.Component {
     const { cart } = this.props;
     const reply = await axios.post('/api/checkout', cart);
     const checkoutId = reply.data;
-    console.log(checkoutId);
+    const reconcileReply = await axios.post('/api/checkout/reconcile', cart);
     await stripe.redirectToCheckout({
       sessionId: checkoutId,
     });
@@ -113,6 +114,12 @@ class UserCart extends React.Component {
     }
   }
 }
+
+UserCart.propTypes = {
+  user: PropTypes.object,
+  cart: PropTypes.array,
+  guestCart: PropTypes.array,
+};
 
 const mapStateToProps = state => ({
   user: state.user,

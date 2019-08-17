@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { CartHeader } from './CartHeader';
 
-function MenuBar() {
+function MenuBar(cart) {
   return (
-    <div className="menu-bar">
+    <div id="menu-bar">
       <NavLink className="navlink" exact to="/">
         <button>All Products</button>
       </NavLink>
@@ -30,6 +31,7 @@ function MenuBar() {
           Login with Google
         </button>
       </form>
+      <CartHeader cart={cart} />
     </div>
   );
 }

@@ -4,6 +4,7 @@
   "description": "Nick Napoli, Schuyler, Thom, Sam",
   "main": "index.js",
   "scripts": {
+    "seed": "node server/db/seed.js",
     "postinstall": "npm run webpack",
     "start": "node server/db/seed.js & node server/index.js",
     "webpack": "webpack",
@@ -69,6 +70,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -92,7 +94,7 @@
     "passport-google-oauth": "^2.0.0",
     "pg": "^7.11.0",
     "sequelize": "^5.10.0",
-    "stripe": "^7.7.0",
+    "stripe": "^7.8.0",
     "style-loader": "^0.23.1"
   }
 }

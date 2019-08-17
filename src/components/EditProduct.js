@@ -22,7 +22,7 @@ class EditProduct extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     this.props.editProductThunk(this.props.matchId, this.state);
-    window.location.hash = '/#/';
+    window.location.hash = '/';
   }
 
   componentDidMount() {
