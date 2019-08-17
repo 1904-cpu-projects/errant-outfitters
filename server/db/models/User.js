@@ -34,9 +34,6 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  imageUrl: {
-    type: Sequelize.STRING,
-  },
   googleId: { type: Sequelize.STRING },
 });
 

@@ -3,7 +3,7 @@ const session = require('express-session');
 const app = express();
 const path = require('path');
 const passport = require('passport');
-const { User } = require('./db/models/User');
+const User = require('./db/models/User');
 
 //Main route middleware
 app.use(express.json());
@@ -54,7 +54,7 @@ passport.serializeUser((user, done) => {
 // and attach it as 'req.user'.
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findById(id);
+    const user = await User.findByPk(id);
     done(null, user);
   } catch (err) {
     done(err);
@@ -62,6 +62,7 @@ passport.deserializeUser(async (id, done) => {
 });
 // authentication router
 app.use('/auth', require('./auth'));
+
 ////oauth
 
 // Setting up sessions routes

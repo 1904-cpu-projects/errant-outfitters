@@ -1,7 +1,9 @@
 const router = require('express').Router();
-
+const Sequelize = require('sequelize');
 const { hashPassword } = require('../utils/commonUtils');
 const { User } = require('../db/index.js');
+
+// router.use('/google', require('./oauth'));
 
 // This route will setup the user as logged in by sending the userId to the client
 // It will also send the admin flag if the user is an admin, normally set null
@@ -9,7 +11,14 @@ const { User } = require('../db/index.js');
 // on a client browser inital load of the landing page.
 router.post('/login', async (req, res, next) => {
   try {
-    const user = await User.findOne({ where: { email: req.body.email } });
+    // let user = await User.findOne({
+    //   where: { googleId: { [Sequelize.Op.ne]: null } },
+    // });
+    // console.log('router login post!!!!!!!!!!!!!!');
+
+    // if (!user.email) {
+    let user = await User.findOne({ where: { email: req.body.email } });
+    // console.log('########googleuser###########' + JSON.stringify(user));
     if (user && User.verifyPassword(user, req.body.password)) {
       req.session.userId = user.id;
       res.status(202).send({
@@ -18,7 +27,18 @@ router.post('/login', async (req, res, next) => {
         firstName: user.firstName,
         lastName: user.lastName,
         class: user.class,
+        email: user.email,
       });
+      // } else {
+      // req.session.userId = user.id;
+      // res.status(202).send({
+      //   isAdmin: user.isAdmin,
+      //   id: user.id,
+      //   firstName: user.firstName,
+      //   lastName: user.lastName,
+      //   class: user.class,
+      // });
+      // }
     } else {
       // User password bad
       // We should probably have a number of login attempts set on req.session

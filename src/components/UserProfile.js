@@ -8,6 +8,8 @@ import Reviews from './Reviews';
 class UserProfile extends React.Component {
   render() {
     const { user, cart } = this.props;
+    console.log(user);
+
     return (
       <div>
         <h3>
@@ -16,7 +18,7 @@ class UserProfile extends React.Component {
         <div>
           First Name: {user.firstName}
           Last Name: {user.lastName}
-          email:
+          email:{user.email}
         </div>
         <div>
           {user.isAdmin ? <a href="/users/edit">Edit Current Users</a> : ''}

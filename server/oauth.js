@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('./db/models/User.js');
+const User = require('./db/models/User.js');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 module.exports = router;
@@ -16,7 +16,7 @@ router.get('/', passport.authenticate('google', { scope: 'email' }));
 router.get(
   '/callback',
   passport.authenticate('google', {
-    successRedirect: '/home',
+    successRedirect: '/#/user/profile',
     failureRedirect: '/',
   }),
 );
@@ -32,11 +32,15 @@ const googleCredentials = {
 
 const verificationCallback = async (token, refreshToken, profile, done) => {
   const info = {
-    // name: profile.displayName,
+    // firstName: profile.displayName,
+    firstName: profile.emails[0].value,
+    lastName: '',
+    class: 'mage',
     email: profile.emails[0].value,
-    imageUrl: profile.photos ? profile.photos[0].value : undefined,
+    password: '123',
   };
-  console.log('-----------------' + profile.id);
+  // console.log('-----------------' + profile.id);
+  // console.log(profile);
 
   try {
     const [user] = await User.findOrCreate({
@@ -50,17 +54,8 @@ const verificationCallback = async (token, refreshToken, profile, done) => {
 };
 
 const strategy = new GoogleStrategy(googleCredentials, verificationCallback);
+// console.log(strategy);
 
 // configuring the strategy (credentials + verification callback)
 // this is used by 'passport.authenticate'
 passport.use(strategy);
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-passport.deserializeUser((user, done) => {
-  passport.deserializeUser((id, done) => {
-    User.findById(id)
-      .then(user => done(null, user))
-      .catch(done);
-  });
-});
