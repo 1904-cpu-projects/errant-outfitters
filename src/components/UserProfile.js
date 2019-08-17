@@ -8,8 +8,6 @@ import Reviews from './Reviews';
 class UserProfile extends React.Component {
   render() {
     const { user, cart } = this.props;
-    console.log(user);
-
     return (
       <div>
         <h3>

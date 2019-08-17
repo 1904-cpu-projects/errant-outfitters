@@ -11,14 +11,7 @@ const { User } = require('../db/index.js');
 // on a client browser inital load of the landing page.
 router.post('/login', async (req, res, next) => {
   try {
-    // let user = await User.findOne({
-    //   where: { googleId: { [Sequelize.Op.ne]: null } },
-    // });
-    // console.log('router login post!!!!!!!!!!!!!!');
-
-    // if (!user.email) {
     let user = await User.findOne({ where: { email: req.body.email } });
-    // console.log('########googleuser###########' + JSON.stringify(user));
     if (user && User.verifyPassword(user, req.body.password)) {
       req.session.userId = user.id;
       res.status(202).send({
@@ -29,16 +22,6 @@ router.post('/login', async (req, res, next) => {
         class: user.class,
         email: user.email,
       });
-      // } else {
-      // req.session.userId = user.id;
-      // res.status(202).send({
-      //   isAdmin: user.isAdmin,
-      //   id: user.id,
-      //   firstName: user.firstName,
-      //   lastName: user.lastName,
-      //   class: user.class,
-      // });
-      // }
     } else {
       // User password bad
       // We should probably have a number of login attempts set on req.session
@@ -60,7 +43,7 @@ router.post('/login', async (req, res, next) => {
 // the only means by which this route can be accessed is through the "logout" button
 // Though this is not true. So maybe more qualification needs to be checked, but for
 // now I think this suffices
-router.get('/logout', (req, res, next) => {
+router.get('/logout', async (req, res, next) => {
   try {
     req.session.destroy();
     res.status(202).send();
@@ -74,6 +57,7 @@ router.get('/logout', (req, res, next) => {
 // exists, we just assume the user is qualified as logged in and send the relevant
 // information.
 router.get('/checkLoggedIn', async (req, res, next) => {
+  // console.log(req.session.passport.user);
   if (req.session.userId) {
     try {
       const user = await User.findByPk(req.session.userId);
@@ -83,9 +67,10 @@ router.get('/checkLoggedIn', async (req, res, next) => {
         firstName: user.firstName,
         lastName: user.lastName,
         class: user.class,
+        email: user.email,
       });
     } catch (e) {
-      res.status(404).send();
+      res.status(404).send(e);
     }
   } else res.send();
 });
