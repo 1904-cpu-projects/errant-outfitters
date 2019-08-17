@@ -20,7 +20,7 @@ export const removeError = (context, error) => dispatch => {
 
 // The context is the actual CONSTANT used, which are an object key
 // every object key is an array of the the error test
-// So wild. Make stuff. Go BANANAS!
+// Go wild. Make stuff. Go BANANAS!
 
 export default (errors = {}, action) => {
   const newErrors = { ...errors };
@@ -33,8 +33,7 @@ export default (errors = {}, action) => {
         ];
       else newErrors[action.context] = [action.error];
       break;
-  case REMOVE_ERROR:
-    console.log("this happened!");
+    case REMOVE_ERROR:
       newErrors[action.context] = newErrors[action.context].filter(
         e => e !== action.error,
       );
