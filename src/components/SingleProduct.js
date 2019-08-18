@@ -34,7 +34,7 @@ function SingleProduct({ product }) {
             In Stock: {stocked} <br />
             Stock Count: {product.stock}
             <br />
-            Recommended Class:
+            Recommended Class:{' '}
             {product.class.charAt(0).toUpperCase() + product.class.slice(1)}
           </p>
         </center>
