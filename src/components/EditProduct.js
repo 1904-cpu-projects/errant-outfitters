@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   editProductThunk,
@@ -81,6 +82,17 @@ class EditProduct extends React.Component {
     );
   }
 }
+
+EditProduct.propTypes = {
+  singleProductThunk: PropTypes.func,
+  editProductThunk: PropTypes.func,
+  createItem: PropTypes.func,
+  matchId: PropTypes.string,
+  user: PropTypes.object,
+  detailProduct: PropTypes.object,
+  cost: PropTypes.number,
+  stock: PropTypes.number,
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {

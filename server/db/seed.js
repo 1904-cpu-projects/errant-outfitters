@@ -1,15 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const {
-  db,
-  Cart,
-  Guest,
-  Product,
-  Review,
-  Transaction,
-  User,
-} = require('./index');
+const { db, Cart, Product, Review, Transaction, User } = require('./index');
 
 //SEEDS
 const cartSeed = [
@@ -118,13 +110,13 @@ const syncAndSeed = async () => {
     ]);
 
     // We need one more user whos id we can count on for login/cart information
-    const fixedCart = await Cart.create({
+    await Cart.create({
       productId: product1.id,
       memberId: user4.id,
       quantity: 10,
       memberStatus: 'user',
     });
-    db.close();
+    await db.close();
   } catch (err) {
     console.log(err);
   }

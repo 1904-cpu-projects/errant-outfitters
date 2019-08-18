@@ -23,7 +23,7 @@ const Cart = db.define('cart', {
 // create a new row. Where this calls Cart.create() for
 // us
 
-Cart.addToCart = function(type = 'guest', mId, pId, quantity) {};
+// Cart.addToCart = function(type = 'guest', mId, pId, quantity) {};
 
 //EXPORT
 module.exports = Cart;

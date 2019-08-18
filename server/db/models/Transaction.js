@@ -9,8 +9,8 @@ const Transaction = db.define('transaction', {
     type: Sequelize.FLOAT,
   },
   guestId: {
-    type: Sequelize.STRING
-  }
+    type: Sequelize.STRING,
+  },
 });
 //EXPORT
 module.exports = Transaction;
