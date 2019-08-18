@@ -24,16 +24,38 @@ class Transactions extends React.Component {
     // Add our server call here
   }
 
+  calcTotal(cart) {
+    const total = cart.reduce((acc, item) => {
+      return acc + item.product.cost * item.quantity;
+    }, 0);
+    this.setState({ total: total });
+  }
+
   render() {
-    console.log(this.props);
+    const { cart } = this.props;
+    const total = this.calcTotal(cart);
     return (
       <div className="checkout">
         <p>Would you like to complete the purchase?</p>
-        <CardElement />
-        <button onClick={this.handleSubmit}>Send</button>
+        <div>
+          <CardElement />
+          <button onClick={this.handleSubmit}>Send</button>
+        </div>
+        <div>
+          <h2>Your total for this purchase is ${total}</h2>
+          <p>You don't even need to worry about shipping information<br/>
+            We have mages on standby to teleport your items directly to you!
+          </p>
+        </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  cart: state.cart
+});
+
+connect(mapStateToProps, null)(Transactions);
 
 export default injectStripe(Transactions);

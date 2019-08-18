@@ -1,6 +1,5 @@
 import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import {Elements, StripeProvider} from 'react-stripe-elements';
 import { connect } from 'react-redux';
 
 import { listProductsThunk } from '../src/actions/productActions';
@@ -17,7 +16,7 @@ import EditProduct from './components/EditProduct';
 import UserCart from './components/UserCart';
 import CreateProduct from './components/CreateProduct';
 import EditUser from './components/EditUser';
-import Transactions from './components/Transactions';
+import Checkout from './components/Checkout';
 
 class App extends React.Component {
   constructor() {
@@ -59,11 +58,7 @@ class App extends React.Component {
           path="/products/:id/edit"
           render={({ match }) => <EditProduct match={match} />}
         />
-        <StripeProvider apiKey="pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy">
-          <Elements>
-            <Route exact path="/checkout" component={Transactions}/>
-          </Elements>
-        </StripeProvider>
+        <Route exact path="/checkout" component={Checkout}/>
       </Router>
     );
   }
