@@ -124,7 +124,7 @@ const syncAndSeed = async () => {
       quantity: 10,
       memberStatus: 'user',
     });
-    db.close()
+    db.close();
   } catch (err) {
     console.log(err);
   }

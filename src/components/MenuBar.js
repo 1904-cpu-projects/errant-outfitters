@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { CartHeader } from './CartHeader';
 
-
 function MenuBar(cart) {
   return (
     <div id="menu-bar">
@@ -27,6 +26,11 @@ function MenuBar(cart) {
       <NavLink className="navlink" exact to="/ClassProducts">
         <button>Class Products</button>
       </NavLink>
+      <form method="get" action="/auth/google">
+        <button type="submit" className="btn bg-red white p1 rounded">
+          Login with Google
+        </button>
+      </form>
       <CartHeader cart={cart} />
     </div>
   );
