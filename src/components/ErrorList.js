@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 function ErrorList({ errors }) {
@@ -16,6 +17,10 @@ function ErrorList({ errors }) {
     </div>
   );
 }
+
+ErrorList.propTypes = {
+  errors: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   errors: state.errors,

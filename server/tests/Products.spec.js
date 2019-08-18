@@ -3,7 +3,7 @@ import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallow } from 'enzyme';
 import { Products } from '../../src/components/Products';
-import { SingleProduct } from '../../src/components/SingleProduct';
+import SingleProduct from '../../src/components/SingleProduct';
 
 configure({ adapter: new Adapter() });
 

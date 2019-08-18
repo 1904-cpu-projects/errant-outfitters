@@ -5,6 +5,9 @@ exports[`<Products/> renders the Product component  1`] = `
   className="products-list"
 >
   <SingleProduct
+    description=""
+    image=""
+    name=""
     product={
       Object {
         "key1": "value1",
@@ -12,6 +15,9 @@ exports[`<Products/> renders the Product component  1`] = `
     }
   />
   <SingleProduct
+    description=""
+    image=""
+    name=""
     product={
       Object {
         "key2": "value2",
@@ -19,6 +25,9 @@ exports[`<Products/> renders the Product component  1`] = `
     }
   />
   <SingleProduct
+    description=""
+    image=""
+    name=""
     product={
       Object {
         "key3": "value3",

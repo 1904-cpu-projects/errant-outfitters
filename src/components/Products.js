@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { SingleProduct } from './SingleProduct';
-import ClassProducts from './ClassProducts';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import SingleProduct from './SingleProduct';
+import ClassProducts from './ClassProducts';
 
 export function Products({ products, match }) {
   let displayFilter = [];
@@ -27,8 +27,24 @@ export function Products({ products, match }) {
   );
 }
 
+Products.defaultProps = {
+  productList: [],
+  products: [],
+  match: {},
+};
+
 Products.propTypes = {
-  productList: PropTypes.array,
+  products: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+    PropTypes.number,
+  ]),
+  productList: PropTypes.arrayOf(PropTypes.object),
+  match: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.number,
+  ]),
 };
 
 const mapStateToProps = state => ({

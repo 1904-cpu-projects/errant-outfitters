@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { postReviewThunk } from '../actions/reviewActions';
 
@@ -67,6 +68,21 @@ const mapDispatchToProps = dispatch => {
   return {
     postReview: stuff => dispatch(postReviewThunk(stuff)),
   };
+};
+
+CreateReview.defaultProps = {
+  product: {},
+  user: {},
+};
+
+CreateReview.propTypes = {
+  product: PropTypes.object,
+  postReview: PropTypes.func,
+  user: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string,
+  ]),
 };
 
 export default connect(

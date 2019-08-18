@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Product } = require('../db/index.js');
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', async (req, res) => {
   try {
     const p = await Product.findByPk(req.params.id);
     res.status(200).send(p);

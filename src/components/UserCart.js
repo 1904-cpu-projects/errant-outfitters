@@ -105,6 +105,8 @@ UserCart.propTypes = {
   user: PropTypes.object,
   cart: PropTypes.array,
   guestCart: PropTypes.array,
+  updateUserItemFromGuest: PropTypes.func,
+  deleteCartItem: PropTypes.func,
 };
 
 const mapStateToProps = state => ({

@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { listProductsThunk } from '../src/actions/productActions';
 import { checkSessionLogin } from './storeReducers/userReducer';
 import { getCart } from './storeReducers/cartReducer';
-
-import { Home } from './components/Home';
+import Home from './components/Home';
 import Header from './components/Header';
 import ErrorList from './components/ErrorList';
 import DetailProduct from './components/DetailedProduct';
@@ -63,6 +63,12 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  listProductsThunk: PropTypes.func,
+  getCart: PropTypes.func,
+  checkSessionLogin: PropTypes.func,
+};
 
 const mapDispatchToProps = dispatch => ({
   checkSessionLogin: () => dispatch(checkSessionLogin()),

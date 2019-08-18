@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import Reviews from './Reviews';
 import CreateReview from '../components/CreateReview';
-import MenuBar from './MenuBar';
 
 import { connect } from 'react-redux';
 import {
@@ -108,6 +107,9 @@ class DetailProduct extends React.Component {
 }
 
 DetailProduct.propTypes = {
+  singleProductThunk: PropTypes.func,
+  createItem: PropTypes.func,
+  deleteProduct: PropTypes.func,
   detailProduct: PropTypes.object,
   matchId: PropTypes.string,
   user: PropTypes.object,

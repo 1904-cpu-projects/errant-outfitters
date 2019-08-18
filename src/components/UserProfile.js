@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -39,6 +40,11 @@ class UserProfile extends React.Component {
     );
   }
 }
+
+UserProfile.propTypes = {
+  user: PropTypes.object,
+  cart: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   user: state.user,
