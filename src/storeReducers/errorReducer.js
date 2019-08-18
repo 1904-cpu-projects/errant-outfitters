@@ -11,17 +11,6 @@ export const removeError = (context, error) => dispatch => {
   dispatch({ type: REMOVE_ERROR, context, error });
 };
 
-// CONSTANTS for what I think are good types of errors
-// SERVER: any error generated from the server
-// CART: any error related to the front end cart itself
-// USER: any error related to the user
-// ADMIN: of course admins make errors
-// ...
-
-// The context is the actual CONSTANT used, which are an object key
-// every object key is an array of the the error test
-// Go wild. Make stuff. Go BANANAS!
-
 export default (errors = {}, action) => {
   const newErrors = { ...errors };
   switch (action.type) {

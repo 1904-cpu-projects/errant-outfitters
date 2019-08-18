@@ -35,14 +35,16 @@ router.get('/getCartProducts', async (req, res, next) => {
 // and result from member
 router.put('/changeCart/:productId', async (req, res) => {
   const member = determineUser(req.sessionID, req.session);
-
   try {
-    const product = await Cart.update({ where: { ...member, ...req.body } });
+    const product = await Cart.update({
+      where: {
+        ...member,
+        memberStatus: req.body.memberStatus,
+        quantity: req.body.quantity,
+      },
+    });
     res.status(202).send(product);
   } catch (e) {
-    // for now just log out any error
-    // eventually we send the error information
-    // to the client and process
     console.log(e);
     res.status(400).send();
   }
@@ -72,7 +74,12 @@ router.post('/createCart', async (req, res) => {
     });
     let product;
     if (productExists === null)
-      product = await Cart.create({ ...member, ...req.body });
+      product = await Cart.create({
+        ...member,
+        memberStatus: req.body.memberStatus,
+        quantity: req.body.quantity,
+        productId: req.body.productId,
+      });
     else {
       product = await Cart.update(
         { quantity: productExists.quantity + req.body.quantity },
@@ -82,9 +89,6 @@ router.post('/createCart', async (req, res) => {
     }
     res.status(201).send();
   } catch (e) {
-    // for now just log out any error
-    // eventually we send the error information
-    // to the client and process
     console.log(e);
     res.send(400);
   }

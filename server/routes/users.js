@@ -24,7 +24,13 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const newItem = await User.create({ ...req.body });
+    const newItem = await User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      class: req.body.class,
+      password: req.body.password,
+    });
     res.status(201).send(newItem);
   } catch (err) {
     next(err);
@@ -34,7 +40,12 @@ router.post('/', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
     const updateUser = await User.findByPk(req.params.id);
-    updateUser.update({ ...req.body });
+    updateUser.update({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      class: req.body.class,
+    });
     res.status(200).send(updateUser);
   } catch (err) {
     next(err);
