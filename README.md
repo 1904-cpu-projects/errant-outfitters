@@ -1,13 +1,18 @@
 # team-nsts
+
 Nick Napoli, Schuyler, Thom, Sam
+
 ####
 
-
 ## To run application locally
+
 ### Requirements:
+
 - Node.js
 - PostgreSQL
+
 ### Instructions:
+
 - open terminal
   - 'createdb errant'
   - 'npm install'
