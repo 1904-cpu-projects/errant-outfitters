@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { listProductsThunk } from '../src/actions/productActions';
 import { checkSessionLogin } from './storeReducers/userReducer';
 import { getCart } from './storeReducers/cartReducer';
@@ -15,6 +16,7 @@ import EditProduct from './components/EditProduct';
 import UserCart from './components/UserCart';
 import CreateProduct from './components/CreateProduct';
 import EditUser from './components/EditUser';
+import Checkout from './components/Checkout';
 
 class App extends React.Component {
   constructor() {
@@ -56,6 +58,7 @@ class App extends React.Component {
           path="/products/:id/edit"
           render={({ match }) => <EditProduct match={match} />}
         />
+        <Route exact path="/checkout" component={Checkout} />
       </Router>
     );
   }
