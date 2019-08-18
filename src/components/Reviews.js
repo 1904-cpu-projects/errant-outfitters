@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { listReviewsThunk, deleteReviewThunk } from '../actions/reviewActions';
 import { connect } from 'react-redux';
 
@@ -50,6 +51,22 @@ export class Reviews extends React.Component {
     );
   }
 }
+
+Reviews.defaultProps = {
+  reviews: {},
+  user: {},
+  productId: '',
+  listReviews: PropTypes.func,
+  deleteReview: PropTypes.func,
+};
+
+Reviews.propTypes = {
+  listReviews: PropTypes.func,
+  deleteReview: PropTypes.func,
+  reviews: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  productId: PropTypes.string,
+  user: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   reviews: state.reviews,

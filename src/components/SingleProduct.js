@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export function SingleProduct({ product }) {
+function SingleProduct({ product }) {
   let stocked = 'No';
   if (product.inStock) {
     stocked = 'Yes';
@@ -33,3 +34,24 @@ export function SingleProduct({ product }) {
     </div>
   );
 }
+
+SingleProduct.defaultProps = {
+  image: '',
+  product: {},
+  description: '',
+  name: '',
+};
+
+SingleProduct.propTypes = {
+  description: PropTypes.string,
+  name: PropTypes.string,
+  image: PropTypes.string,
+  product: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.number,
+  ]),
+};
+
+export default SingleProduct;

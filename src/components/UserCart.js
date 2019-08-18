@@ -26,15 +26,16 @@ class UserCart extends React.Component {
   }
   //WORKSHOP//
   async checkout() {
+    //WHere is 'STRIPE" being imported from?
     let stripe = new Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
     const { cart } = this.props;
     const reply = await axios.post('/api/checkout', cart);
     const checkoutId = reply.data;
-    const reconcileReply = await axios.post('/api/checkout/reconcile', cart);
+    await axios.post('/api/checkout/reconcile', cart);
     await stripe.redirectToCheckout({
       sessionId: checkoutId,
     });
-    await function(result) {
+    await function() {
       console.log('Something went wrong, devs performing server seance');
     };
   }
@@ -119,6 +120,8 @@ UserCart.propTypes = {
   user: PropTypes.object,
   cart: PropTypes.array,
   guestCart: PropTypes.array,
+  updateUserItemFromGuest: PropTypes.func,
+  deleteCartItem: PropTypes.func,
 };
 
 const mapStateToProps = state => ({

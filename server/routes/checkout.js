@@ -4,7 +4,7 @@ const { Cart, Product, Transaction } = require('../db/index');
 
 router.post('/', async (req, res, next) => {
   const cart = req.body;
-  console.log(cart)
+  console.log(cart);
   try {
     res.send(await checkoutStripe(cart));
   } catch (e) {
@@ -41,9 +41,9 @@ router.post('/reconcile', async (req, res, next) => {
           productId: item.productId,
           userId: item.memberId
         });
-      };
-    })
-    res.send('purchase reconciled')
+      }
+    });
+    res.send('purchase reconciled');
   } catch(e) {
     next(e);
   }
