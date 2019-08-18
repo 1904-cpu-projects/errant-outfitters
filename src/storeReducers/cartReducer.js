@@ -1,9 +1,5 @@
 import axios from 'axios';
-import {
-  createError,
-  removeError,
-  USER_GUEST_CART_EXIST,
-} from './errorReducer';
+import { createError, removeError } from './errorReducer';
 // CONST defs
 export const SET_CART = 'SET_CART';
 export const SET_GUEST_CART = 'SET_GUEST_CART';
@@ -38,14 +34,6 @@ const deleteGuestItem = id => ({
   id: id,
 });
 
-const deleteUserItem = id => ({
-  type: DELETE_USER_ITEM,
-  id: id,
-});
-
-// This function got a little out of control, if anyone can think of a way to
-// reduce this let me know. Its really not that bad, but certainly adds some
-// complexity to what is actually happening with the cart.
 export const getCart = (userLogin = false) => (dispatch, getStore) => {
   axios
     .get('/api/cart/getCartProducts')
@@ -87,7 +75,7 @@ export const getCart = (userLogin = false) => (dispatch, getStore) => {
     .catch(e => console.log(e));
 };
 
-export const updateUserItemFromGuest = item => (dispatch, getStore) => {
+export const updateUserItemFromGuest = item => dispatch => {
   axios
     .put('/api/cart/updateGuestToUser', item)
     .then(({ data }) => {
@@ -135,17 +123,19 @@ export default (cart = { items: [], guest: [] }, action) => {
       break;
 
     case UPDATE_CART_FROM_GUEST:
-      const [tempGuest] = cart.guest.filter(i => i.id === action.item.id);
-      cart.guest = cart.guest.filter(i => i.id !== action.item.id);
-      cart.items = [
-        ...cart.items,
-        {
-          ...tempGuest,
-          id: action.item.id,
-          memberStatus: action.item.memberStatus,
-          memberId: action.item.memberId,
-        },
-      ];
+      {
+        const [tempGuest] = cart.guest.filter(i => i.id === action.item.id);
+        cart.guest = cart.guest.filter(i => i.id !== action.item.id);
+        cart.items = [
+          ...cart.items,
+          {
+            ...tempGuest,
+            id: action.item.id,
+            memberStatus: action.item.memberStatus,
+            memberId: action.item.memberId,
+          },
+        ];
+      }
       break;
 
     case DELETE_ITEM:

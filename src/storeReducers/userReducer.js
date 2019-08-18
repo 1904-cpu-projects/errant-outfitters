@@ -29,7 +29,7 @@ export const loginUser = (email, password) => async dispatch => {
 
 export const logoutUser = () => async dispatch => {
   try {
-    const response = axios.get('/api/login/logout');
+    axios.get('/api/login/logout');
     dispatch(removeUser());
   } catch (e) {
     console.log('Logout should never fail');
@@ -74,7 +74,6 @@ export default (user = init, action) => {
     case REMOVE_USER:
       newUser = { id: undefined, isAdmin: false };
       break;
-
     case EDIT_USER:
       return { ...user, ...action.payload };
   }

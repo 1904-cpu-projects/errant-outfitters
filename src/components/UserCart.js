@@ -27,6 +27,7 @@ class UserCart extends React.Component {
   //WORKSHOP//
   async checkout() {
     //WHere is 'STRIPE" being imported from?
+    // eslint-disable-next-line no-undef
     let stripe = new Stripe('pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy');
     const { cart } = this.props;
     const reply = await axios.post('/api/checkout', cart);

@@ -37,7 +37,7 @@ const User = db.define('user', {
   googleId: { type: Sequelize.STRING },
 });
 
-User.beforeCreate((userInstance, optionsObject) => {
+User.beforeCreate(userInstance => {
   userInstance.password = hashPassword(userInstance.password);
 });
 

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Product, Review } = require('../db/index.js');
+const { Review } = require('../db/index.js');
 
 //All reviews
 router.get('/', async (req, res, next) => {
