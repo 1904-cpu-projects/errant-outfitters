@@ -3,9 +3,17 @@ const { checkoutStripe, checkoutId } = require('../utils/checkout');
 const { Cart, Product, Transaction } = require('../db/index');
 
 router.post('/', async (req, res, next) => {
-  const cart = req.body;
-  try {
-    res.send(await checkoutStripe(cart));
+  let cart;
+  try {  
+    if(req.session.userId) cart = await Cart.findAll({ where: { memberId: req.session.userId },
+						       include: [{model: Product}]
+						     });
+    else cart = await Cart.findAll({ where: { memberId: req.sessionId,
+					      include: [{model: Product}]
+					    }});
+    const result = await checkoutStripe(req.body, cart);
+    console.log(result);
+    res.send(result);
   } catch (e) {
     next(e);
   }

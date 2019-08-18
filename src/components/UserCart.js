@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -101,7 +102,7 @@ class UserCart extends React.Component {
               Subtotal ({cart.length})<br />
               total: {this.state.total} GOLDS!!!!
             </h3>
-            <button onClick={this.checkout}>Proceed to checkout</button>
+	    <Link to="/checkout"></Link>
           </div>
         </div>
       );
@@ -114,6 +115,9 @@ class UserCart extends React.Component {
     }
   }
 }
+
+//Pulled from li 104 for the moment
+  //<button onClick={this.checkout}>Proceed to checkout</button>
 
 UserCart.propTypes = {
   user: PropTypes.object,

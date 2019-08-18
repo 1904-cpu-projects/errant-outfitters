@@ -3,10 +3,10 @@ const Sequelize = require('sequelize');
 
 //MODEL
 const Cart = db.define('cart', {
-  productId: {
-    type: Sequelize.STRING,
-    //    allowNull: false
-  },
+  // productId: {
+  //   type: Sequelize.STRING,
+  //   //    allowNull: false
+  // },
   memberStatus: {
     type: Sequelize.ENUM('guest', 'user'),
   },
