@@ -12,9 +12,10 @@ router.post('/', async (req, res, next) => {
       });
     else
       cart = await Cart.findAll({
-        where: { memberId: req.sessionId, include: [{ model: Product }] },
+        where: { memberId: req.sessionID },
+        include: [{ model: Product }],
       });
-    const result = await checkoutStripe(req.body, cart);
+    await checkoutStripe(req.body, cart);
     const timeStamp = Date.now();
     const transactions = cart.map(item => {
       const t = {};

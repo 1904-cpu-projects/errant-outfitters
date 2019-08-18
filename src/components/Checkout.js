@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import { connect } from 'react-redux';
 
@@ -31,7 +32,7 @@ class Checkout extends React.Component {
 
   componentDidMount() {
     const { cart } = this.props;
-    const total = this.calcTotal(cart);
+    this.calcTotal(cart);
   }
 
   render() {
@@ -49,7 +50,7 @@ class Checkout extends React.Component {
           <div>
             <h2>Your total for this purchase is ${this.state.total}</h2>
             <p>
-              You don't even need to worry about shipping information
+              You don&apos;t even need to worry about shipping information
               <br />
               We have mages on standby to teleport your items directly to you!
             </p>
@@ -61,6 +62,11 @@ class Checkout extends React.Component {
     }
   }
 }
+
+Checkout.propTypes = {
+  cart: PropTypes.object,
+  getCart: PropTypes.func,
+};
 
 const mapStateToProps = state => ({
   cart: state.cart,

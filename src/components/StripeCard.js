@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import axios from 'axios';
 
@@ -8,7 +9,7 @@ class StripeCard extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async handleSubmit(e) {
+  async handleSubmit() {
     let { token } = await this.props.stripe.createToken({ name: 'Name' });
     try {
       const { data } = await axios.post('/api/checkout', token);
@@ -27,5 +28,11 @@ class StripeCard extends React.Component {
     );
   }
 }
+
+StripeCard.propTypes = {
+  stripe: PropTypes.object,
+  createToken: PropTypes.func,
+  updateCart: PropTypes.func,
+};
 
 export default injectStripe(StripeCard);
