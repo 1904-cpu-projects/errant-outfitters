@@ -36,7 +36,6 @@ class CreateReview extends React.Component {
   }
 
   render() {
-    console.log('CREATE REVIEW', this.props);
     return (
       <div>
         <form onSubmit={this.onSubmit}>

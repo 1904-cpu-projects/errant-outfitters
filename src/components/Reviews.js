@@ -32,7 +32,7 @@ export class Reviews extends React.Component {
               <div className="reviewDiv" key={review.id}>
                 <h4>{review.title}</h4>
                 <h5>{review.body}</h5>
-                {this.props.user ? (
+                {this.props.user.id ? (
                   <button
                     className="review-delete"
                     type="submit"
