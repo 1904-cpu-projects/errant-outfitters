@@ -20,7 +20,14 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const newItem = await Product.create({ ...req.body });
+    const newItem = await Product.create({
+      name: req.body.name,
+      description: req.body.description,
+      image: req.body.image,
+      category: req.body.category,
+      stock: req.body.stock,
+      cost: req.body.cost,
+    });
     res.status(201).send(newItem);
   } catch (err) {
     next(err);
@@ -30,7 +37,14 @@ router.post('/', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
     const updateProduct = await Product.findByPk(req.params.id);
-    updateProduct.update({ ...req.body });
+    updateProduct.update({
+      name: req.body.name,
+      description: req.body.description,
+      image: req.body.image,
+      category: req.body.category,
+      stock: req.body.stock,
+      cost: req.body.cost,
+    });
     res.send(updateProduct);
   } catch (err) {
     next(err);

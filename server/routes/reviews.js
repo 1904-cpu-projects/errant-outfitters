@@ -36,7 +36,10 @@ router.get('/:productId', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const newReview = await Review.create({
-      ...req.body,
+      title: req.body.title,
+      body: req.body.body,
+      productId: req.body.productId,
+      userId: req.body.userId,
     });
     res.status(201).send(newReview);
   } catch (e) {
@@ -51,7 +54,12 @@ router.put('/:id', async (req, res, next) => {
         id: req.params.id,
       },
     });
-    await article.update({ ...req.body });
+    await article.update({
+      title: req.body.title,
+      body: req.body.body,
+      productId: req.body.productId,
+      userId: req.body.userId,
+    });
     res.status(201).send(article);
   } catch (err) {
     next(err);
