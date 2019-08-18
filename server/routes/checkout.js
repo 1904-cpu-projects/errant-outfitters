@@ -12,7 +12,6 @@ router.post('/', async (req, res, next) => {
 					      include: [{model: Product}]
 					    }});
     const result = await checkoutStripe(req.body, cart);
-    console.log(result);
     res.send(result);
   } catch (e) {
     next(e);

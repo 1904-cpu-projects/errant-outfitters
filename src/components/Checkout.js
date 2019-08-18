@@ -17,7 +17,6 @@ class Transactions extends React.Component {
     const total = cart.items.reduce((acc, item) => {
       return acc + item.product.cost * item.quantity;
     }, 0);
-    console.log(total);
     this.setState({ total: total });
   }
 

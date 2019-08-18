@@ -10,10 +10,8 @@ const User = require('./models/User');
 
 //ASSOCIATIONS
 // These are the existing associations where our seed.js wont fail
-Guest.hasMany(Cart);
 Product.hasMany(Review);
 Product.hasMany(Transaction);
-//Product.belongsTo(Cart);
 User.hasMany(Review);
 User.hasMany(Transaction);
 Review.belongsTo(Product);
