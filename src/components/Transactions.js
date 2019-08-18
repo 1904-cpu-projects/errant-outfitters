@@ -1,6 +1,6 @@
 import React from 'react';
-import {Elements, StripeProvider} from 'react-stripe-elements';
-import {CardElement, injectStripe} from 'react-stripe-elements';
+import { Elements, StripeProvider } from 'react-stripe-elements';
+import { CardElement, injectStripe } from 'react-stripe-elements';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -12,13 +12,12 @@ class Transactions extends React.Component {
 
   async handleSubmit(e) {
     console.log('this happened');
-    let {token} = await this.props.stripe.createToken({name: "Name"});
+    let { token } = await this.props.stripe.createToken({ name: 'Name' });
     console.log(token);
     try {
       const { data } = await axios.post('/api/checkout', token);
       console.log(data);
-    }
-    catch(e) {
+    } catch (e) {
       console.log(e);
     }
     // Add our server call here
@@ -43,7 +42,9 @@ class Transactions extends React.Component {
         </div>
         <div>
           <h2>Your total for this purchase is ${total}</h2>
-          <p>You don't even need to worry about shipping information<br/>
+          <p>
+            You don't even need to worry about shipping information
+            <br />
             We have mages on standby to teleport your items directly to you!
           </p>
         </div>
@@ -53,9 +54,12 @@ class Transactions extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  cart: state.cart,
 });
 
-connect(mapStateToProps, null)(Transactions);
+connect(
+  mapStateToProps,
+  null,
+)(Transactions);
 
 export default injectStripe(Transactions);

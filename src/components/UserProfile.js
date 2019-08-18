@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 import UserCart from './UserCart';
 import Reviews from './Reviews';
-import Transactions from './Transactions';
+// This needs to be implemented
+//import Transactions from './Transactions';
 
 class UserProfile extends React.Component {
   render() {
@@ -34,7 +35,7 @@ class UserProfile extends React.Component {
         </div>
         <div>
           <h2>Your past Transactions</h2>
-          <Transactions />
+          {/* Yet to be implemented<Transactions />*/}
         </div>
       </div>
     );

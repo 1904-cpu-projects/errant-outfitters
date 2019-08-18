@@ -58,7 +58,7 @@ class App extends React.Component {
           path="/products/:id/edit"
           render={({ match }) => <EditProduct match={match} />}
         />
-        <Route exact path="/checkout" component={Checkout}/>
+        <Route exact path="/checkout" component={Checkout} />
       </Router>
     );
   }

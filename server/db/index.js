@@ -10,7 +10,7 @@ const User = require('./models/User');
 
 //ASSOCIATIONS
 Product.hasMany(Review);
-Product.hasMany(Transaction);
+Transaction.belongsTo(Product);
 User.hasMany(Review);
 User.hasMany(Transaction);
 Review.belongsTo(Product);

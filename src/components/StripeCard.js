@@ -1,5 +1,5 @@
 import React from 'react';
-import {CardElement, injectStripe} from 'react-stripe-elements';
+import { CardElement, injectStripe } from 'react-stripe-elements';
 import axios from 'axios';
 
 class StripeCard extends React.Component {
@@ -9,14 +9,11 @@ class StripeCard extends React.Component {
   }
 
   async handleSubmit(e) {
-    console.log('this happened');
-    let {token} = await this.props.stripe.createToken({name: "Name"});
-    console.log(token);
+    let { token } = await this.props.stripe.createToken({ name: 'Name' });
     try {
       const { data } = await axios.post('/api/checkout', token);
-      console.log(data);
-    }
-    catch(e) {
+      this.props.updateCart(data);
+    } catch (e) {
       console.log(e);
     }
   }
@@ -24,7 +21,7 @@ class StripeCard extends React.Component {
   render() {
     return (
       <div>
-        <CardElement />        
+        <CardElement />
         <button onClick={this.handleSubmit}>Send</button>
       </div>
     );

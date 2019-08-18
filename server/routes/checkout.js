@@ -4,54 +4,39 @@ const { Cart, Product, Transaction } = require('../db/index');
 
 router.post('/', async (req, res, next) => {
   let cart;
-  try {  
-    if(req.session.userId) cart = await Cart.findAll({ where: { memberId: req.session.userId },
-						       include: [{model: Product}]
-						     });
-    else cart = await Cart.findAll({ where: { memberId: req.sessionId,
-					      include: [{model: Product}]
-					    }});
+  try {
+    if (req.session.userId)
+      cart = await Cart.findAll({
+        where: { memberId: req.session.userId },
+        include: [{ model: Product }],
+      });
+    else
+      cart = await Cart.findAll({
+        where: { memberId: req.sessionId, include: [{ model: Product }] },
+      });
     const result = await checkoutStripe(req.body, cart);
-    res.send(result);
+    const timeStamp = Date.now();
+    const transactions = cart.map(item => {
+      const t = {};
+      if (req.session.userId) t.userId = req.session.userId;
+      t.productId = item.product.id;
+      t.quantity = item.quantity;
+      t.totalCost = item.product.cost * item.quantity;
+      t.createdAt = timeStamp;
+      item.destroy();
+      return t;
+    });
+    await Promise.all(
+      transactions.map(item => Transaction.create({ ...item })),
+    );
+    const currentTransaction = await Transaction.findAll({
+      where: { createdAt: timeStamp },
+      include: [{ model: Product }],
+    });
+    res.send(currentTransaction);
   } catch (e) {
     next(e);
   }
 });
 
-router.post('/reconcile', async (req, res, next) => {
-  const cart = req.body;
-  try {
-    await cart.map(item => {
-      Cart.destroy({
-        where: { id: item.id },
-      });
-    });
-    await cart.map(item => {
-      Product.decrement('stock', {
-        by: item.quantity,
-        where: { id: item.productId },
-      });
-    });
-    await cart.map(item => {
-      if (item.memberStatus === 'guest') {
-        Transaction.create({
-          quantity: item.quantity,
-          totalCost: item.quantity * item.product.cost,
-          productId: item.productId,
-          guestId: item.memberId,
-        });
-      } else {
-        Transaction.create({
-          quantity: item.quantity,
-          totalCost: item.quantity * item.product.cost,
-          productId: item.productId,
-          userId: item.memberId,
-        });
-      }
-    });
-    res.send('purchase reconciled');
-  } catch (e) {
-    next(e);
-  }
-});
 module.exports = router;
