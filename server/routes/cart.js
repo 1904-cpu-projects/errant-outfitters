@@ -76,7 +76,6 @@ router.post('/createCart', async (req, res) => {
     if (productExists === null)
       product = await Cart.create({
         ...member,
-        memberStatus: req.body.memberStatus,
         quantity: req.body.quantity,
         productId: req.body.productId,
       });
