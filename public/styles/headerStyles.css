@@ -1,25 +1,21 @@
 .header {
-    background-color: #27231F;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border: solid black 1px;
-    border-radius: 15px;
+  background-color: #27231f;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border: solid black 1px;
+  border-radius: 15px;
 }
 
 .header img {
-    height: 100px;
-    width: 100px;
+  height: 100px;
+  width: 100px;
 }
 
 #login-box {
-    background-color: #6F8198;
-    padding: 10px
+  background-color: #6f8198;
+  padding: 10px;
 }
 #cart-header {
-    padding: 50px
-}
-
-#titleHeader {
-
+  padding: 50px;
 }

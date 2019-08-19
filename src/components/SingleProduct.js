@@ -25,7 +25,7 @@ function SingleProduct({ product }) {
         <center>
           <p>
             {product.description
-              ? product.description.slice(0, 50) + '...'
+              ? product.description.slice(0, 80) + '...'
               : ''}
           </p>
           <p>
