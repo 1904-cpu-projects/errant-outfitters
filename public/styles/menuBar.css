@@ -1,5 +1,5 @@
 #menu-bar {
   display: flex;
-  padding: 15px;
-  justify-content: center
+  padding: 10px;
+  justify-content: center;
 }
