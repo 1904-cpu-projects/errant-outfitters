@@ -4,7 +4,6 @@ const app = express();
 const path = require('path');
 const passport = require('passport');
 const User = require('./db/models/User');
-//
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
