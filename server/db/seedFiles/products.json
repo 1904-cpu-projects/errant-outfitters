@@ -20,7 +20,7 @@
     "stock": 13
   },
   {
-    "class": "warrior",
+    "class": "rouge",
     "catagory": "armor",
     "cost": "300",
     "description": "More than simple clothing, padded armor combines heavy, quilted cloth and layers of densely packed stuffing to create a cheap and basic protection. It is typically worn by those not intending to face lethal combat or those who wish their maneuverability to be impacted as little as possible.",
@@ -30,7 +30,7 @@
     "stock": 14
   },
   {
-    "class": "warrior",
+    "class": "rouge",
     "catagory": "armor",
     "cost": "100",
     "description": "Sometimes called a leine, this belted tunic has thick cords woven through it that cover vital areas. A reinforced tunic’s armor bonus is increased by 2 against attack rolls made to confirm critical hits against the wearer.",
@@ -40,7 +40,7 @@
     "stock": 0
   },
   {
-    "class": "warrior",
+    "class": "mage",
     "catagory": "armor",
     "cost": "150",
     "description": "Lamellar is a type of armor in which small plates of various types of materials are strung together in parallel rows using fine cord. Lamellar plates can be constructed from lacquered leather, horn, or even stone, though suits of iron and steel are the most common. Lamellar armor can be crafted into various shapes, including partial pieces such as breastplates, greaves, or even entire coats. The properties of specific suits and pieces of lamellar armor are determined by their material. This armor consists of a light breastplate and shoulder guards made from lacquered leather plates bound together and fitted over a silk shirt.",
@@ -139,7 +139,7 @@
     "stock": 28
   },
   {
-    "class": "mage",
+    "class": "warrior",
     "catagory": "armor",
     "name": "Fortress Plate",
     "description": "This dwarf-forged armor features layers of overlapping plates molded to deflect projectiles—especially those from firearms.",
@@ -159,7 +159,7 @@
     "stock": 98
   },
   {
-    "class": "mage",
+    "class": "warrior",
     "catagory": "armor",
     "name": "Hell Knight Plate",
     "description": "These distinctive suits of armor are a special type of masterwork full plate that grant additional effects when worn by a character with levels in the Hell Knight prestige class. Apart from its distinctive look (each order of Hell Knights has its own style of armor), a suit of Hell Knight plate functions the same as a suit of masterwork full plate.",

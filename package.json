@@ -4,6 +4,7 @@
   "description": "Nick Napoli, Schuyler, Thom, Sam",
   "main": "index.js",
   "scripts": {
+    "seed": "node server/db/seed.js",
     "postinstall": "npm run webpack",
     "start": "node server/db/seed.js & node server/index.js",
     "webpack": "webpack",
@@ -58,6 +59,7 @@
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "dotenv": "^8.0.0",
+    "dotenv-webpack": "^1.7.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
@@ -89,7 +91,10 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
     "pg": "^7.11.0",
+    "react-stripe-elements": "^4.0.1",
     "sequelize": "^5.10.0",
     "stripe": "^7.8.0",
     "style-loader": "^0.23.1"

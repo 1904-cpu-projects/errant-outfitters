@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Products from './Products';
 import MenuBar from './MenuBar';
 
-export function Home({ match }) {
+export default function Home({ match }) {
   return (
     <div className="main-view">
       <MenuBar />
@@ -10,3 +11,7 @@ export function Home({ match }) {
     </div>
   );
 }
+
+Home.propTypes = {
+  match: PropTypes.object,
+};

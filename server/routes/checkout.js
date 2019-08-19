@@ -1,41 +1,59 @@
 const router = require('express').Router();
-const { checkoutStripe, checkoutId } = require('../utils/checkout');
+const { checkoutStripe } = require('../utils/checkout');
 const { Cart, Product, Transaction } = require('../db/index');
 
 router.post('/', async (req, res, next) => {
-  const cart = req.body;
+  let cart;
   try {
-    res.send(await checkoutStripe(cart));
+    if (req.session.userId)
+      cart = await Cart.findAll({
+        where: { memberId: req.session.userId },
+        include: [{ model: Product }],
+      });
+    else
+      cart = await Cart.findAll({
+        where: { memberId: req.sessionID },
+        include: [{ model: Product }],
+      });
+    await checkoutStripe(req.body, cart);
+    const timeStamp = Date.now();
+    const transactions = cart.map(item => {
+      const t = {};
+      if (req.session.userId) t.userId = req.session.userId;
+      t.productId = item.product.id;
+      t.quantity = item.quantity;
+      t.totalCost = item.product.cost * item.quantity;
+      t.createdAt = timeStamp;
+      item.destroy();
+      return t;
+    });
+    Promise.all(
+      cart.map(item => {
+        let newStock = item.product.stock - item.quantity;
+        if (newStock > 0) {
+          return Product.update(
+            { stock: newStock },
+            { where: { id: item.product.id } },
+          );
+        } else {
+          return Product.update(
+            { stock: 0, inStock: false },
+            { where: { id: item.product.id } },
+          );
+        }
+      }),
+    );
+    await Promise.all(
+      transactions.map(item => Transaction.create({ ...item })),
+    );
+    const currentTransaction = await Transaction.findAll({
+      where: { createdAt: timeStamp },
+      include: [{ model: Product }],
+    });
+    res.send(currentTransaction);
   } catch (e) {
     next(e);
   }
 });
 
-router.post('/reconcile', async (req,res,next) => {
-  const cart = req.body;
-  try{
-    const removeCart = await cart.map( (item) => {
-      Cart.destroy({
-        where: { id: item.id}
-      })
-    });
-    const reduceStock = await cart.map( (item) => {
-      Product.decrement(
-        'stock',
-        {by: item.quantity, where: {id: item.productId}}
-      )
-    });
-    const postTransaction = await cart.map( (item) => {
-      Transaction.create({
-        quantity: item.quantity,
-        totalCost: item.quantity * item.product.cost,
-        productId: item.productId,
-        userId: item.memberId
-      })
-    })
-    res.send('purchase reconciled')
-  } catch(e) {
-    next(e);
-  }
-})
 module.exports = router;

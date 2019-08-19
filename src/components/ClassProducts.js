@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { SingleProduct } from './SingleProduct';
+import SingleProduct from './SingleProduct';
 
 export function Products({ products, user }) {
   const classProducts = products.productList.filter(
     a => a.class === user.class,
   );
-  //function to make tiles from SingleProduct component
   if (classProducts.length !== 0) {
     return (
       <div>

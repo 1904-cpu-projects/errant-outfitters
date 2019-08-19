@@ -6,6 +6,7 @@ export const SET_GUEST_CART = 'SET_GUEST_CART';
 export const UPDATE_CART_FROM_GUEST = 'UPDATE_CART';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const DELETE_GUEST_ITEM = 'DELETE_GUEST_ITEM';
+export const DELETE_USER_ITEM = 'DELETE_USER_ITEM';
 
 // Actions
 const setCart = items => ({
@@ -33,13 +34,11 @@ const deleteGuestItem = id => ({
   id: id,
 });
 
-// This function got a little out of control, if anyone can think of a way to
-// reduce this let me know. Its really not that bad, but certainly adds some
-// complexity to what is actually happening with the cart.
 export const getCart = (userLogin = false) => (dispatch, getStore) => {
   axios
     .get('/api/cart/getCartProducts')
     .then(({ data }) => {
+      const existingStore = getStore();
       const { cart, products } = data;
       cart.forEach(elem => {
         elem.product = products.reduce((acc, p) => {
@@ -49,7 +48,6 @@ export const getCart = (userLogin = false) => (dispatch, getStore) => {
         }, undefined);
       });
       if (userLogin) {
-        const existingStore = getStore();
         if (
           existingStore.cart.items.length &&
           existingStore.cart.items[0].memberStatus === 'guest'
@@ -64,6 +62,15 @@ export const getCart = (userLogin = false) => (dispatch, getStore) => {
         }
       }
       dispatch(setCart(cart));
+      if (!existingStore.cart.guest.length) {
+        if (existingStore.errors.CART && existingStore.errors.CART.length)
+          dispatch(
+            removeError(
+              'CART',
+              'You had items in your cart before logging in. Please goto your cart and check to add them to your cart or these items will be lost',
+            ),
+          );
+      }
     })
     .catch(e => console.log(e));
 };
@@ -90,14 +97,8 @@ export const deleteCartItem = id => (dispatch, getStore) => {
         dispatch(deleteItem(id));
       } else {
         dispatch(deleteGuestItem(id));
-        if (!store.cart.guest.length)
-          dispatch(
-            removeError(
-              'CART',
-              'You had items in your cart before logging in. Please goto your cart and check to add them to your cart or these items will be lost',
-            ),
-          );
       }
+      dispatch(getCart());
     })
     .catch(e => console.log(e));
 };
@@ -122,17 +123,19 @@ export default (cart = { items: [], guest: [] }, action) => {
       break;
 
     case UPDATE_CART_FROM_GUEST:
-      const [tempGuest] = cart.guest.filter(i => i.id === action.item.id);
-      cart.guest = cart.guest.filter(i => i.id !== action.item.id);
-      cart.items = [
-        ...cart.items,
-        {
-          ...tempGuest,
-          id: action.item.id,
-          memberStatus: action.item.memberStatus,
-          memberId: action.item.memberId,
-        },
-      ];
+      {
+        const [tempGuest] = cart.guest.filter(i => i.id === action.item.id);
+        cart.guest = cart.guest.filter(i => i.id !== action.item.id);
+        cart.items = [
+          ...cart.items,
+          {
+            ...tempGuest,
+            id: action.item.id,
+            memberStatus: action.item.memberStatus,
+            memberId: action.item.memberId,
+          },
+        ];
+      }
       break;
 
     case DELETE_ITEM:

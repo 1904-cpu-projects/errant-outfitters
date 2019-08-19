@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { SingleProduct } from './SingleProduct';
-import ClassProducts from './ClassProducts';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import SingleProduct from './SingleProduct';
+import ClassProducts from './ClassProducts';
 
 export function Products({ products, match }) {
   let displayFilter = [];
@@ -11,6 +11,22 @@ export function Products({ products, match }) {
     ? (displayFilter = products.productList.filter(p => p.inStock))
     : match.params.filterBar === 'outStock'
     ? (displayFilter = products.productList.filter(p => !p.inStock))
+    : match.params.filterBar === 'costA'
+    ? (displayFilter = products.productList
+        .filter(p => p.cost)
+        .sort((a, b) => (a.cost > b.cost ? 1 : -1)))
+    : match.params.filterBar === 'costD'
+    ? (displayFilter = products.productList
+        .filter(p => p.cost)
+        .sort((a, b) => (a.cost < b.cost ? 1 : -1)))
+    : match.params.filterBar === 'stockD'
+    ? (displayFilter = products.productList
+        .filter(p => p.stock)
+        .sort((a, b) => (a.stock < b.stock ? 1 : -1)))
+    : match.params.filterBar === 'stockA'
+    ? (displayFilter = products.productList
+        .filter(p => p.stock)
+        .sort((a, b) => (a.stock > b.stock ? 1 : -1)))
     : (displayFilter = match.params.filterBar
         ? products.productList.filter(
             p => p.catagory === match.params.filterBar,
@@ -27,8 +43,24 @@ export function Products({ products, match }) {
   );
 }
 
+Products.defaultProps = {
+  productList: [],
+  products: [],
+  match: {},
+};
+
 Products.propTypes = {
-  productList: PropTypes.array,
+  products: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+    PropTypes.number,
+  ]),
+  productList: PropTypes.arrayOf(PropTypes.object),
+  match: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.number,
+  ]),
 };
 
 const mapStateToProps = state => ({

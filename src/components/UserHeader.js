@@ -1,12 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 
 import { connect } from 'react-redux';
 import { loginUser, logoutUser } from '../storeReducers/userReducer';
 import { getCart } from '../storeReducers/cartReducer';
 
-// This needs to be async based on the fact that getCart()
-// relies on loginUser() having completed?
 async function handleLogin(ev, loginUser, getCart) {
   ev.preventDefault();
   const email = ev.target[0].value;
@@ -26,7 +23,7 @@ async function handleLogout(ev, logoutUser, getCart) {
 function UserHeader({ user, loginUser, logoutUser, getCart }) {
   if (user.id === undefined) {
     return (
-      <div>
+      <div id="login-box">
         {' '}
         Hello, Guest{' '}
         <a href="/#/CreateUserForm">
@@ -39,11 +36,16 @@ function UserHeader({ user, loginUser, logoutUser, getCart }) {
           <input type="password" name="password" required />
           <button>Login</button>
         </form>
+        <form method="get" action="/auth/google">
+          <button type="submit" className="btn bg-red white p1 rounded">
+            Login with Google
+          </button>
+        </form>
       </div>
     );
   } else {
     return (
-      <div>
+      <div id="login-box">
         {' '}
         Hello, {user.firstName} {user.lastName} <br />
         Class: {user.class.charAt(0).toUpperCase() + user.class.slice(1)}

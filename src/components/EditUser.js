@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { editUserThunk } from '../storeReducers/userReducer';
-// import { hashPassword } from '../../server/utils/commonUtils';
 
 class EditUser extends React.Component {
   constructor() {
@@ -79,6 +79,12 @@ class EditUser extends React.Component {
     );
   }
 }
+
+EditUser.propTypes = {
+  editUserThunk: PropTypes.func,
+  user: PropTypes.object,
+  id: PropTypes.string,
+};
 
 const mapStateToProps = state => {
   return {

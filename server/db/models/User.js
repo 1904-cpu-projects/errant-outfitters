@@ -1,5 +1,6 @@
 const db = require('../db');
 const Sequelize = require('sequelize');
+require('dotenv').config();
 
 const { hashPassword } = require('../../utils/commonUtils');
 //MODEL
@@ -34,9 +35,10 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  googleId: { type: Sequelize.STRING },
 });
 
-User.beforeCreate((userInstance, optionsObject) => {
+User.beforeCreate(userInstance => {
   userInstance.password = hashPassword(userInstance.password);
 });
 

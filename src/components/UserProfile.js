@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import UserCart from './UserCart';
 import Reviews from './Reviews';
+import Transactions from './Transactions';
 
 class UserProfile extends React.Component {
   render() {
@@ -16,7 +18,7 @@ class UserProfile extends React.Component {
         <div>
           First Name: {user.firstName}
           Last Name: {user.lastName}
-          email:
+          email:{user.email}
         </div>
         <Link to="/edit-user">Edit Profile Info</Link>
         <div>
@@ -30,10 +32,19 @@ class UserProfile extends React.Component {
           <h1>Authored Reviews</h1>
           <Reviews user={user} />
         </div>
+        <div>
+          <h2>Your past Transactions</h2>
+          <Transactions />
+        </div>
       </div>
     );
   }
 }
+
+UserProfile.propTypes = {
+  user: PropTypes.object,
+  cart: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   user: state.user,
