@@ -1,12 +1,11 @@
-const path = require("path");
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: [
-    path.join(__dirname, 'src', 'index.js')
-  ],
+  entry: [path.join(__dirname, 'src', 'index.js')],
   output: {
-    path: path.join(__dirname, "public"),
-    filename: "main.js"
+    path: path.join(__dirname, 'public'),
+    filename: 'main.js',
   },
   devtool: 'source-map',
   module: {
@@ -14,12 +13,17 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: ["babel-loader"]
+        loader: ['babel-loader'],
       },
       {
         test: /\.css$/,
-        loaders: ["style-loader", "css-loader"]
-      }
-    ]
-  }
+        loaders: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  plugins: [
+    new Dotenv({
+      path: '.env',
+    }),
+  ],
 };
