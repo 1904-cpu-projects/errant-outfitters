@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import StripCard from './StripeCard';
 import { getCart } from '../storeReducers/cartReducer';
+import { listProductsThunk } from '../actions/productActions';
 
 class Checkout extends React.Component {
   constructor() {
@@ -27,6 +28,7 @@ class Checkout extends React.Component {
   updateCart(data) {
     console.log(data);
     this.props.getCart();
+    this.props.listProductsThunk();
     this.setState({ transactionComplete: true, transactions: [...data] });
   }
 
@@ -66,6 +68,7 @@ class Checkout extends React.Component {
 Checkout.propTypes = {
   cart: PropTypes.object,
   getCart: PropTypes.func,
+  listProductsThunk: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -74,6 +77,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCart: () => dispatch(getCart()),
+  listProductsThunk: () => dispatch(listProductsThunk()),
 });
 
 export default connect(
