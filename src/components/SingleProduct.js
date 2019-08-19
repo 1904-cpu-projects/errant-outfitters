@@ -22,11 +22,22 @@ function SingleProduct({ product }) {
         <h3>
           <b> {product.name} </b>
         </h3>
-        <p>
-          {product.description ? product.description.slice(0, 50) + '...' : ''}
-        </p>
-        <p>Cost: {product.cost}</p>
-        <p>In Stock: {stocked}</p> <p>Count: {product.stock}</p>
+        <center>
+          <p>
+            {product.description
+              ? product.description.slice(0, 50) + '...'
+              : ''}
+          </p>
+          <p>
+            Cost: {product.cost} Golds
+            <br />
+            In Stock: {stocked} <br />
+            Stock Count: {product.stock}
+            <br />
+            Recommended Class:{' '}
+            {product.class.charAt(0).toUpperCase() + product.class.slice(1)}
+          </p>
+        </center>
       </div>
       <Link to={`/products/${product.id}`}>
         <button>Details</button>
