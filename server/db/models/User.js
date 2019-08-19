@@ -1,5 +1,6 @@
 const db = require('../db');
 const Sequelize = require('sequelize');
+require('dotenv').config();
 
 const { hashPassword } = require('../../utils/commonUtils');
 //MODEL

@@ -8,11 +8,8 @@ module.exports = router;
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        process.env.GOOGLE_CLIENT_ID ||
-        '836317429935-avbgq12e0kegafhjjfabf65j9g5n04jg.apps.googleusercontent.com',
-      clientSecret:
-        process.env.GOOGLE_CLIENT_SECRET || 'XmZB0o7LxU5kic_AnJgNRRWy',
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: 'http://localhost:3000/auth/google/callback',
     },
     async function(accessToken, refreshToken, profile, done) {

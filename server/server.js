@@ -11,9 +11,11 @@ app.use(require('morgan')('tiny'));
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 
+require('dotenv').config();
+
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "We're going on a bear hunt",
+    secret: process.env.SESSION_SECRET,
     cookie: { maxAge: 24 * 60 * 60 * 1000 },
     resave: false,
     saveUninitialized: true,
