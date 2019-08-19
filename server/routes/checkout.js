@@ -27,6 +27,15 @@ router.post('/', async (req, res, next) => {
       item.destroy();
       return t;
     });
+    Promise.all(cart.map(item => {
+      let newStock = item.product.stock - item.quantity;
+      if(newStock > 0) {
+	return Product.update({stock: newStock}, {where: {id: item.product.id}});
+      }
+      else {
+	return Product.update({stock: 0, inStock: false}, {where: {id: item.product.id}});
+      }
+    }));
     await Promise.all(
       transactions.map(item => Transaction.create({ ...item })),
     );
