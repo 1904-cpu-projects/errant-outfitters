@@ -60,7 +60,24 @@ class Checkout extends React.Component {
         </div>
       );
     } else {
-      return <div>Your transaction is complete!</div>;
+      return (
+        <div>
+          <h2>Your transaction is complete!</h2>
+          <div>
+            Total cost: {this.state.transactions[0].totalCost}
+            <br />
+            Transaction #: {this.state.transactions[0].id}
+            <br />
+            Your Items:
+            <br />
+            {this.state.transactions.map((item, idx) => (
+              <p key={idx}>
+                {item.product.name} | Quantity: {item.quantity}
+              </p>
+            ))}
+          </div>
+        </div>
+      );
     }
   }
 }
