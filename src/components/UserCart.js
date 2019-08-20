@@ -16,22 +16,25 @@ class UserCart extends React.Component {
     this.calcTotal = this.calcTotal.bind(this);
   }
 
+  componentDidMount() {
+    this.calcTotal();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.cart.length !== prevProps.cart.length ||
+      (this.props.cart.length > 1 && this.state.total === 0)
+    ) {
+      this.calcTotal();
+    }
+  }
+
   calcTotal() {
     const { cart } = this.props;
     const total = cart.reduce((acc, item) => {
       return acc + item.product.cost * item.quantity;
     }, 0);
     this.setState({ total: total });
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.cart.length !== prevProps.cart.length) {
-      this.calcTotal();
-    }
-  }
-
-  componentDidMount() {
-    this.calcTotal();
   }
 
   render() {
