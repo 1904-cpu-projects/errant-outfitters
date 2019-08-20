@@ -1,21 +1,24 @@
 .header {
-  background-color: #27231f;
+  background-color: #58585B;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   border: solid black 1px;
   border-radius: 15px;
-}
+  align-items: center
 
+}
 .header img {
   height: 100px;
   width: 100px;
 }
-
 #login-box {
-  background-color: #6f8198;
+  background-color: #6F8198;
   padding: 10px;
 }
 #cart-header {
   padding: 50px;
+}
+#eoTitle {
+  width: 800px;
 }
