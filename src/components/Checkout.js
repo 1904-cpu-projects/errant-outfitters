@@ -31,6 +31,12 @@ class Checkout extends React.Component {
     this.props.listProductsThunk();
     this.setState({ transactionComplete: true, transactions: [...data] });
   }
+
+  componentDidMount() {
+    const { cart } = this.props;
+    this.calcTotal(cart);
+  }
+
   render() {
     if (!this.state.transactionComplete) {
       return (
@@ -79,7 +85,6 @@ class Checkout extends React.Component {
 }
 
 Checkout.propTypes = {
-  stripe: PropTypes.string,
   cart: PropTypes.object,
   getCart: PropTypes.func,
   listProductsThunk: PropTypes.func,
