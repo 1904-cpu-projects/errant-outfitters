@@ -14,8 +14,14 @@ class Checkout extends React.Component {
       total: 0,
       transactionComplete: false,
       transacitons: [],
+      stripe: null,
     };
     this.updateCart = this.updateCart.bind(this);
+  }
+  componentDidMount() {
+    const { cart } = this.props;
+    this.calcTotal(cart);
+    this.setState({ stripe: window.Stripe(process.env.STRIPE_API) });
   }
 
   calcTotal(cart) {
@@ -32,18 +38,13 @@ class Checkout extends React.Component {
     this.setState({ transactionComplete: true, transactions: [...data] });
   }
 
-  componentDidMount() {
-    const { cart } = this.props;
-    this.calcTotal(cart);
-  }
-
   render() {
     if (!this.state.transactionComplete) {
       return (
         <div className="checkout">
           <p>Would you like to complete the purchase?</p>
           <div>
-            <StripeProvider apiKey={process.env.STRIPE_API || null}>
+            <StripeProvider stripe={this.state.stripe}>
               <Elements>
                 <StripCard updateCart={this.updateCart} />
               </Elements>
