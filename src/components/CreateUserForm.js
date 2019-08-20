@@ -1,7 +1,9 @@
 import React from 'react';
-import axios from 'axios';
+import { postUser } from '../storeReducers/userReducer';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export class CreateUserForm extends React.Component {
+class CreateUserForm extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -25,30 +27,23 @@ export class CreateUserForm extends React.Component {
       [event.target.name]: event.target.value,
     });
   }
-  async onSubmit(event) {
-    event.preventDefault();
-    try {
-      await axios.post('/api/users', this.state);
-
-      document.getElementById('msg').innerHTML =
-        'Account registered! Please login at the top right';
-      this.setState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        class: '',
-        password: '',
-      });
-    } catch (e) {
-      document.getElementById('msg').innerHTML =
-        'Email address already registered! Please try another.';
-      console.log(e);
-    }
+  onSubmit(e) {
+    e.preventDefault();
+    this.props.postUser(this.state);
+    document.getElementById('msg').innerHTML =
+      'Account registered! Please login at the top right';
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      class: '',
+      password: '',
+    });
   }
   render() {
     return (
       <div>
-        <form className="CreateUserForm" onSubmit={this.onSubmit}>
+        <form className="CreateUserForm" onSubmit={e => this.onSubmit(e)}>
           <label htmlFor="firstName">First Name: </label>
           <input
             type="text"
@@ -114,3 +109,13 @@ export class CreateUserForm extends React.Component {
     );
   }
 }
+CreateUserForm.propTypes = {
+  postUser: PropTypes.func.isRequired,
+};
+const mapDispatchToProps = dispatch => ({
+  postUser: data => dispatch(postUser(data)),
+});
+export default connect(
+  null,
+  mapDispatchToProps,
+)(CreateUserForm);
