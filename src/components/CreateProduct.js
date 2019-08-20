@@ -42,7 +42,7 @@ class CreateProduct extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     this.props.postProductThunk(this.state);
-    window.location.hash = '/#/';
+    window.location.hash = '/';
   }
 
   render() {
