@@ -1,4 +1,4 @@
-const stripe = require('stripe')(process.env.STRIPE_TEST);
+const stripe = require('stripe')('sk_test_VFD2hiPa4YhyInOUapuwWQYu00EJFUD9Ql');
 
 let checkoutId;
 
