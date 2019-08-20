@@ -21,7 +21,7 @@ class Checkout extends React.Component {
   componentDidMount() {
     const { cart } = this.props;
     this.calcTotal(cart);
-    this.setState({ stripe: window.Stripe(process.env.STRIPE_API) });
+    // this.setState({ stripe: process.env.STRIPE_API });
   }
 
   calcTotal(cart) {
@@ -37,14 +37,17 @@ class Checkout extends React.Component {
     this.props.listProductsThunk();
     this.setState({ transactionComplete: true, transactions: [...data] });
   }
-
   render() {
+    console.log('STRIPE', this.state.stripe);
+    if (process.env.STRIPE_API === null) return null;
+    console.log('STRIPE', process.env.STRIPE_API);
+
     if (!this.state.transactionComplete) {
       return (
         <div className="checkout">
           <p>Would you like to complete the purchase?</p>
           <div>
-            <StripeProvider stripe={this.state.stripe}>
+            <StripeProvider apiKey={process.env.STRIPE_API}>
               <Elements>
                 <StripCard updateCart={this.updateCart} />
               </Elements>
@@ -84,6 +87,7 @@ class Checkout extends React.Component {
 }
 
 Checkout.propTypes = {
+  stripe: PropTypes.string,
   cart: PropTypes.object,
   getCart: PropTypes.func,
   listProductsThunk: PropTypes.func,
