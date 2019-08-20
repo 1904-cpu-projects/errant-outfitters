@@ -55,21 +55,22 @@ class DetailProduct extends React.Component {
     if (!detailProduct) return null;
     else {
       return (
-        <div>
-          <img
-            src={detailProduct.image}
-            className={'product-image'}
-            alt="Product Image"
-          />
-          <button
-            onClick={() => handleBuy(createItem, matchId, updatedQuantity())}
-          >
-            Buy this stuff!
-          </button>
-          <select onChange={e => updatedQuantity(true, e.target.value)}>
-            {populateQuantityOptions(detailProduct.stock)}
-          </select>
-
+        <div className='detailedProducts'>
+          <div id='productTile'>
+            <img
+              src={detailProduct.image}
+              className={'product-image'}
+              alt="Product Image"
+            />
+            <button
+              onClick={() => handleBuy(createItem, matchId, updatedQuantity())}
+            >
+              Buy this stuff!
+            </button>
+            <select onChange={e => updatedQuantity(true, e.target.value)}>
+              {populateQuantityOptions(detailProduct.stock)}
+            </select>
+          </div>
           <h1>{detailProduct.name}</h1>
           <div>{detailProduct.description}</div>
           <div>

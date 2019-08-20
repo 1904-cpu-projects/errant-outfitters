@@ -1,0 +1,12 @@
+.detailedProducts{
+  display: flex;
+  flex-direction: column;
+  background-color: #A6A6A7
+}
+#productTile{
+  display: flex;
+  flex-direction: column;
+  width: 10vw;
+  align-items: center;
+  margin: auto
+}
