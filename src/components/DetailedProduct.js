@@ -88,23 +88,28 @@ class DetailProduct extends React.Component {
             <h4>Like this product? Consider logging in and writing a review</h4>
             {user.id ? <CreateReview product={detailProduct} /> : ''}
           </div>
-          <div>
-            {user.isAdmin ? (
-              <Link to={`/products/${detailProduct.id}/edit`}>
-                Edit Product Info
-              </Link>
-            ) : (
-              ''
-            )}
-          </div>
-          <div>
-            {user.isAdmin ? (
-              <button onClick={() => deleteProduct(detailProduct)}>
-                Delete Product
-              </button>
-            ) : (
-              ''
-            )}
+          <div className='admin-tools'>
+            <div>
+              {user.isAdmin ? (
+                <div>
+                  <h3>Admin Tools</h3>
+                  <Link to={`/products/${detailProduct.id}/edit`}>
+                    Edit Product Info
+                  </Link>
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
+            <div>
+              {user.isAdmin ? (
+                <button onClick={() => deleteProduct(detailProduct)}>
+                  Delete Product
+                </button>
+              ) : (
+                ''
+              )}
+            </div>
           </div>
         </div>
       );

@@ -10,9 +10,12 @@
   align-items: center;
   margin: auto
 }
-#productDetails {
-}
 #reviewProduct {
   background-color: #6F8198
-
+}
+.admin-tools {
+  display: flex;
+  flex-direction: column;
+  background-color: #94DED6;
+  align-items: space-between
 }

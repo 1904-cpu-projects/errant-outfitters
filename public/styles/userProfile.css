@@ -26,3 +26,13 @@
 .transactions{
   background-color: #A6A6A7
 }
+.create-product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #A6A6A7
+}
+#add-product-input {
+  width: 25vw;
+  max-width: 300px;
+}

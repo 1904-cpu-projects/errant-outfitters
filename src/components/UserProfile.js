@@ -22,10 +22,10 @@ class UserProfile extends React.Component {
           Email:{user.email}<br/>
         </div>
         <Link to="/edit-user">Edit Profile Info</Link>
-        <div>
+        <div className='admin-tools'>
           {user.isAdmin ? <a href="/edit-user">Edit Current Users</a> : ''}
         </div>
-        <div>
+        <div className='admin-tools'>
           {user.isAdmin ? <Link to="/create-product">Create Product</Link> : ''}
         </div>
         <UserCart cart={cart} />
