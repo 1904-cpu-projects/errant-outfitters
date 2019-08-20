@@ -27,6 +27,7 @@ router.post('/', async (req, res, next) => {
       category: req.body.category,
       stock: req.body.stock,
       cost: req.body.cost,
+      class: req.body.class,
     });
     res.status(201).send(newItem);
   } catch (err) {
@@ -42,6 +43,7 @@ router.put('/:id', async (req, res, next) => {
       description: req.body.description,
       image: req.body.image,
       category: req.body.category,
+      class: req.body.class,
       stock: req.body.stock,
       cost: req.body.cost,
     });
