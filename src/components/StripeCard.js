@@ -21,9 +21,9 @@ class StripeCard extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='card-element'>
         <CardElement />
-        <button onClick={this.handleSubmit}>Send</button>
+        <button id='payment-button' onClick={this.handleSubmit}>Send</button>
       </div>
     );
   }

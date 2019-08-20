@@ -1,12 +1,18 @@
-.detailedProducts{
+.detailedProducts {
   display: flex;
   flex-direction: column;
   background-color: #A6A6A7
 }
-#productTile{
+#productTile {
   display: flex;
   flex-direction: column;
   width: 10vw;
   align-items: center;
   margin: auto
+}
+#productDetails {
+}
+#reviewProduct {
+  background-color: #6F8198
+
 }

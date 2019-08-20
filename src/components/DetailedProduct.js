@@ -71,18 +71,23 @@ class DetailProduct extends React.Component {
               {populateQuantityOptions(detailProduct.stock)}
             </select>
           </div>
-          <h1>{detailProduct.name}</h1>
-          <div>{detailProduct.description}</div>
-          <div>
-            INSTOCK | {detailProduct.instock ? 'YES' : 'NO'} | Available:{' '}
-            {detailProduct.stock}
+          <div id='productDetails'>
+            <h1>{detailProduct.name}</h1>
+            <div>{detailProduct.description}</div>
+            <br/>
+            <div>
+              Available:{' '}
+              {detailProduct.stock}
+            </div>
+            </div>
+          <div id='reviewProduct'>
+            <footer>
+              <h4>Reviews for the {detailProduct.name}</h4>
+              <Reviews product={detailProduct} productId={matchId} />
+            </footer>
+            <h4>Like this product? Consider logging in and writing a review</h4>
+            {user.id ? <CreateReview product={detailProduct} /> : ''}
           </div>
-          <footer>
-            <h4>Reviews for the {detailProduct.name}</h4>
-            <Reviews product={detailProduct} productId={matchId} />
-          </footer>
-          <h4>Like this product? Consider logging in and writing a review</h4>
-          {user.id ? <CreateReview product={detailProduct} /> : ''}
           <div>
             {user.isAdmin ? (
               <Link to={`/products/${detailProduct.id}/edit`}>
