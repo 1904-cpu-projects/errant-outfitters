@@ -42,7 +42,6 @@ export const singleProductThunk = id => async dispatch => {
 export const postProductThunk = product => async dispatch => {
   try {
     const response = await axios.post('/api/products', product);
-
     dispatch({ type: POST_PRODUCT, payload: response.data });
   } catch (err) {
     console.error(err);
