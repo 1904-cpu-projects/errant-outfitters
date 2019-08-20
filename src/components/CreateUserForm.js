@@ -30,8 +30,7 @@ class CreateUserForm extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     this.props.postUser(this.state);
-    document.getElementById('msg').innerHTML =
-      'Account registered! Please login at the top right';
+    document.getElementById('msg').innerHTML = 'Account registered!';
     this.setState({
       firstName: '',
       lastName: '',

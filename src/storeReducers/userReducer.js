@@ -20,7 +20,9 @@ export const removeUser = () => ({
 
 export const postUser = userData => async dispatch => {
   try {
-    await axios.post('/api/users', userData);
+    const response = await axios.post('/api/users', userData);
+    dispatch(loadUser(response.data));
+    window.location.hash = '/';
   } catch (e) {
     alert(
       'Email already exists, please retry registration with a different email',
