@@ -10,15 +10,17 @@ class CreateProduct extends React.Component {
       name: '',
       description: '',
       image: '',
-      category: '',
+      category: 'armor',
       stock: '',
       cost: '',
+      class: 'warrior',
     };
 
     this.onHandle = this.onHandle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onCategorySelection = this.onCategorySelection.bind(this);
     this.onInstockSelection = this.onInstockSelection.bind(this);
+    this.onClassSelection = this.onClassSelection.bind(this);
   }
 
   onHandle(event) {
@@ -33,6 +35,12 @@ class CreateProduct extends React.Component {
     });
   }
 
+  onClassSelection(event) {
+    this.setState({
+      class: event.target.value,
+    });
+  }
+
   onInstockSelection(event) {
     this.setState({
       inStock: event.target.value,
@@ -42,7 +50,7 @@ class CreateProduct extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     this.props.postProductThunk(this.state);
-    window.location.hash = '/#/';
+    window.location.hash = '/';
   }
 
   render() {
@@ -56,6 +64,7 @@ class CreateProduct extends React.Component {
             type="text"
             name="name"
             value={this.state.name}
+            required
           />
 
           <label htmlFor="description">Description: </label>
@@ -64,6 +73,7 @@ class CreateProduct extends React.Component {
             type="text"
             value={this.state.description}
             name="description"
+            required
           />
 
           <label htmlFor="image">Image: </label>
@@ -72,6 +82,7 @@ class CreateProduct extends React.Component {
             type="text"
             value={this.state.image}
             name="image"
+            required
           />
 
           <label htmlFor="inStock">inStock: </label>
@@ -87,6 +98,7 @@ class CreateProduct extends React.Component {
             type="number"
             min="0"
             value={this.state.stock}
+            required
           />
 
           <label htmlFor="cost">Cost: </label>
@@ -96,6 +108,7 @@ class CreateProduct extends React.Component {
             type="number"
             min="0"
             value={this.state.cost}
+            required
           />
 
           <label htmlFor="category">Category: </label>
@@ -103,16 +116,30 @@ class CreateProduct extends React.Component {
             onChange={this.onCategorySelection}
             value={this.state.category}
           >
-            <option key="0" value="armor">
-              Armour
+            <option key="1" value="armor">
+              Armor
             </option>
-            <option key="1" value="weapon">
+            <option key="2" value="weapon">
               Weapon
             </option>
-            <option key="2" value="potion">
+            <option key="3" value="potion">
               Potion
             </option>
           </select>
+
+          <label htmlFor="class">Class: </label>
+          <select onChange={this.onClassSelection} value={this.state.class}>
+            <option key="1" value="mage">
+              Mage
+            </option>
+            <option key="2" value="warrior">
+              Warrior
+            </option>
+            <option key="3" value="rouge">
+              Rouge
+            </option>
+          </select>
+
           <button type="submit">Submit</button>
         </form>
       </div>
