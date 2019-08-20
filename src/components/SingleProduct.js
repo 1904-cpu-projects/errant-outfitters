@@ -29,7 +29,7 @@ function SingleProduct({ product }) {
               : ''}
           </p>
           <p>
-            Cost: {product.cost} Golds
+            Cost: {product.cost} Gold
             <br />
             In Stock: {stocked} <br />
             Stock Count: {product.stock}
