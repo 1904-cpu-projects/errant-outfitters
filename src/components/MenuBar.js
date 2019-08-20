@@ -46,6 +46,21 @@ function MenuBar() {
           <option key="6" value="/outStock">
             Out of Stock
           </option>
+          <option key="7" value="/warrior">
+            Product Class: Warrior
+          </option>
+          <option key="8" value="/mage">
+            Product Class: Mage
+          </option>
+          <option key="9" value="/rouge">
+            Product Class: Rouge
+          </option>
+          <option key="10" value="/pnameA">
+            Product Name Ascending
+          </option>
+          <option key="11" value="/pnameD">
+            Product Name Descending
+          </option>
         </select>
       </div>
     </div>
