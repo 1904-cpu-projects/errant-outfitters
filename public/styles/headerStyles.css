@@ -15,6 +15,8 @@
 #login-box {
   background-color: #6F8198;
   padding: 10px;
+  margin: 10px;
+  border-radius: 15px
 }
 #cart-header {
   padding: 50px;
