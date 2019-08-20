@@ -1,0 +1,21 @@
+.detailedProducts {
+  display: flex;
+  flex-direction: column;
+  background-color: #A6A6A7
+}
+#productTile {
+  display: flex;
+  flex-direction: column;
+  width: 10vw;
+  align-items: center;
+  margin: auto
+}
+#reviewProduct {
+  background-color: #6F8198
+}
+.admin-tools {
+  display: flex;
+  flex-direction: column;
+  background-color: #94DED6;
+  align-items: space-between
+}

@@ -57,7 +57,7 @@ class CreateProduct extends React.Component {
     return (
       <div className="create-product-form">
         <h1>Add a new product to the set</h1>
-        <form onSubmit={this.onSubmit}>
+        <form id='add-product-input' onSubmit={this.onSubmit}>
           <label htmlFor="name">Name: </label>
           <input
             onChange={this.onHandle}

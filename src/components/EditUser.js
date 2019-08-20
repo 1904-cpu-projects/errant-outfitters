@@ -33,7 +33,8 @@ class EditUser extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="editUser">
+        <h3>Please update your info</h3>
         <form onSubmit={this.onSubmit}>
           <label htmlFor="firstName">First Name: </label>
           <input

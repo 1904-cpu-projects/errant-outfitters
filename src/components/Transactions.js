@@ -52,7 +52,7 @@ export default class Transactions extends React.Component {
     const { transactions } = this.state;
     if (this.state.loadingSuccess === null) {
       return (
-        <div>
+        <div className='transactions'>
           <p>
             You have no transactions.
             <br />
@@ -63,7 +63,7 @@ export default class Transactions extends React.Component {
       );
     }
     return (
-      <div>
+      <div className='transactions'>
         {transactions.map((item, idx) => (
           <SingleTransaction key={idx} item={item} />
         ))}

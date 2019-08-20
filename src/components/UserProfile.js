@@ -11,20 +11,21 @@ class UserProfile extends React.Component {
   render() {
     const { user, cart } = this.props;
     return (
-      <div>
+      <div id='userProfile'>
         <h3>
           User profile for {user.firstName} {user.lastName}
         </h3>
-        <div>
-          First Name: {user.firstName}
-          Last Name: {user.lastName}
-          email:{user.email}
+        <div id='userInfo'>
+          First Name: {user.firstName}<br/>
+          Last Name: {user.lastName}<br/>
+          Class: {user.class}<br/>
+          Email:{user.email}<br/>
         </div>
         <Link to="/edit-user">Edit Profile Info</Link>
-        <div>
+        <div className='admin-tools'>
           {user.isAdmin ? <a href="/edit-user">Edit Current Users</a> : ''}
         </div>
-        <div>
+        <div className='admin-tools'>
           {user.isAdmin ? <Link to="/create-product">Create Product</Link> : ''}
         </div>
         <UserCart cart={cart} />
@@ -32,7 +33,7 @@ class UserProfile extends React.Component {
           <h1>Authored Reviews</h1>
           <Reviews user={user} />
         </div>
-        <div>
+        <div className='transactions'>
           <h2>Your past Transactions</h2>
           <Transactions />
         </div>

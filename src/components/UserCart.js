@@ -87,7 +87,8 @@ class UserCart extends React.Component {
           <div className="cart-checkout">
             <h3>
               Subtotal ({cart.length})<br />
-              total: {this.state.total} GOLDS!!!!
+              Total: {this.state.total} gold coins<br/><br/>
+              ~Credit card also accepted~
             </h3>
             <Link to="/checkout">
               <button>Proceed to Checkout</button>

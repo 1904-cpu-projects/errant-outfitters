@@ -55,50 +55,61 @@ class DetailProduct extends React.Component {
     if (!detailProduct) return null;
     else {
       return (
-        <div>
-          <img
-            src={detailProduct.image}
-            className={'product-image'}
-            alt="Product Image"
-          />
-          <button
-            onClick={() => handleBuy(createItem, matchId, updatedQuantity())}
-          >
-            Buy this stuff!
-          </button>
-          <select onChange={e => updatedQuantity(true, e.target.value)}>
-            {populateQuantityOptions(detailProduct.stock)}
-          </select>
-
-          <h1>{detailProduct.name}</h1>
-          <div>{detailProduct.description}</div>
-          <div>
-            INSTOCK | {detailProduct.instock ? 'YES' : 'NO'} | Available:{' '}
-            {detailProduct.stock}
+        <div className='detailedProducts'>
+          <div id='productTile'>
+            <img
+              src={detailProduct.image}
+              className={'product-image'}
+              alt="Product Image"
+            />
+            <button
+              onClick={() => handleBuy(createItem, matchId, updatedQuantity())}
+            >
+              Buy this stuff!
+            </button>
+            <select onChange={e => updatedQuantity(true, e.target.value)}>
+              {populateQuantityOptions(detailProduct.stock)}
+            </select>
           </div>
-          <footer>
-            <h4>Reviews for the {detailProduct.name}</h4>
-            <Reviews product={detailProduct} productId={matchId} />
-          </footer>
-          <h4>Like this product? Consider logging in and writing a review</h4>
-          {user.id ? <CreateReview product={detailProduct} /> : ''}
-          <div>
-            {user.isAdmin ? (
-              <Link to={`/products/${detailProduct.id}/edit`}>
-                Edit Product Info
-              </Link>
-            ) : (
-              ''
-            )}
+          <div id='productDetails'>
+            <h1>{detailProduct.name}</h1>
+            <div>{detailProduct.description}</div>
+            <br/>
+            <div>
+              Available:{' '}
+              {detailProduct.stock}
+            </div>
+            </div>
+          <div id='reviewProduct'>
+            <footer>
+              <h4>Reviews for the {detailProduct.name}</h4>
+              <Reviews product={detailProduct} productId={matchId} />
+            </footer>
+            <h4>Like this product? Consider logging in and writing a review</h4>
+            {user.id ? <CreateReview product={detailProduct} /> : ''}
           </div>
-          <div>
-            {user.isAdmin ? (
-              <button onClick={() => deleteProduct(detailProduct)}>
-                Delete Product
-              </button>
-            ) : (
-              ''
-            )}
+          <div className='admin-tools'>
+            <div>
+              {user.isAdmin ? (
+                <div>
+                  <h3>Admin Tools</h3>
+                  <Link to={`/products/${detailProduct.id}/edit`}>
+                    Edit Product Info
+                  </Link>
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
+            <div>
+              {user.isAdmin ? (
+                <button onClick={() => deleteProduct(detailProduct)}>
+                  Delete Product
+                </button>
+              ) : (
+                ''
+              )}
+            </div>
           </div>
         </div>
       );
