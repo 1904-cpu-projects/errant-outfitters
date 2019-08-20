@@ -83,7 +83,9 @@ class DetailProduct extends React.Component {
           <div id='reviewProduct'>
             <footer>
               <h4>Reviews for the {detailProduct.name}</h4>
-              <Reviews product={detailProduct} productId={matchId} />
+              <div id='singleReview'>
+                <Reviews product={detailProduct}  productId={matchId} />
+              </div>
             </footer>
             <h4>Like this product? Consider logging in and writing a review</h4>
             {user.id ? <CreateReview product={detailProduct} /> : ''}
