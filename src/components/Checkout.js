@@ -21,7 +21,7 @@ class Checkout extends React.Component {
   componentDidMount() {
     const { cart } = this.props;
     this.calcTotal(cart);
-    // this.setState({ stripe: process.env.STRIPE_API });
+    this.setState({ stripe: process.env.STRIPE_API });
   }
 
   calcTotal(cart) {
@@ -38,8 +38,8 @@ class Checkout extends React.Component {
     this.setState({ transactionComplete: true, transactions: [...data] });
   }
   render() {
-    console.log('STRIPE', this.state.stripe);
-    if (process.env.STRIPE_API === null) return null;
+    console.log('STRIPE', process.env.STRIPE_API);
+    // if (process.env.STRIPE_API === null) return null;
     console.log('STRIPE', process.env.STRIPE_API);
 
     if (!this.state.transactionComplete) {

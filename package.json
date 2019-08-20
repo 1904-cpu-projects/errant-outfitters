@@ -7,7 +7,7 @@
     "seed": "node server/db/seed.js",
     "postinstall": "npm run webpack",
     "start": "node server/db/seed.js & node server/index.js",
-    "webpack": "webpack",
+    "webpack": "webpack --env.NODE_ENV=local --env.production --progress",
     "webpack:dev": "npm run webpack -- --watch --mode=development",
     "start:dev": "npm run webpack:dev & nodemon server/index.js --ignore public --ignore src",
     "test": "node server/db/seed.js & jest",
