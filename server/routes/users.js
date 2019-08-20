@@ -31,7 +31,7 @@ router.post('/', async (req, res, next) => {
       class: req.body.class,
       password: req.body.password,
     });
-    req.session.userId = newItem.id;
+    req.session.userId = newItem.id; // eslint-disable-line require-atomic-updates
     res.status(201).send(newItem);
   } catch (err) {
     next(err);
