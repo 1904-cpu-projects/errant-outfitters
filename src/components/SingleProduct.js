@@ -7,7 +7,6 @@ function SingleProduct({ product }) {
   if (product.inStock) {
     stocked = 'Yes';
   }
-  console.log('SINGLE PRODUCT', product);
   return (
     <div key={product.id} className="product-card">
       <Link to={`/products/${product.id}`}>
