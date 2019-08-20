@@ -11,6 +11,12 @@ export function Products({ products, match }) {
     ? (displayFilter = products.productList.filter(p => p.inStock))
     : match.params.filterBar === 'outStock'
     ? (displayFilter = products.productList.filter(p => !p.inStock))
+    : match.params.filterBar === 'warrior'
+    ? (displayFilter = products.productList.filter(p => p.class === 'warrior'))
+    : match.params.filterBar === 'mage'
+    ? (displayFilter = products.productList.filter(p => p.class === 'mage'))
+    : match.params.filterBar === 'rouge'
+    ? (displayFilter = products.productList.filter(p => p.class === 'rouge'))
     : match.params.filterBar === 'costA'
     ? (displayFilter = products.productList
         .filter(p => p.cost)
@@ -27,6 +33,14 @@ export function Products({ products, match }) {
     ? (displayFilter = products.productList
         .filter(p => p.stock)
         .sort((a, b) => (a.stock > b.stock ? 1 : -1)))
+    : match.params.filterBar === 'pnameA'
+    ? (displayFilter = products.productList
+        .filter(p => p.name)
+        .sort((a, b) => (a.name > b.name ? 1 : -1)))
+    : match.params.filterBar === 'pnameD'
+    ? (displayFilter = products.productList
+        .filter(p => p.name)
+        .sort((a, b) => (a.name < b.name ? 1 : -1)))
     : (displayFilter = match.params.filterBar
         ? products.productList.filter(
             p => p.catagory === match.params.filterBar,

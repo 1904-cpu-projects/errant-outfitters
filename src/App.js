@@ -10,7 +10,7 @@ import Home from './components/Home';
 import Header from './components/Header';
 import ErrorList from './components/ErrorList';
 import DetailProduct from './components/DetailedProduct';
-import { CreateUserForm } from './components/CreateUserForm';
+import CreateUserForm from './components/CreateUserForm';
 import UserProfile from './components/UserProfile';
 import EditProduct from './components/EditProduct';
 import UserCart from './components/UserCart';
