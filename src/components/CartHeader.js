@@ -1,12 +1,16 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React from 'react';
 
-// numberItems needs to just be a number
-// pull in from redux store CartStore I think
-export function CartHeader({cart}) {
+import { Link } from 'react-router-dom';
+
+export function CartHeader({ cart }) {
   const cartItems = cart ? cart.length : 0;
-  return(
-    <div>
-      Cart | {cartItems}
+  return (
+    <div className='cart-header'>
+      <Link to='/myCart'>
+        <img id='cart-icon' src='/img/cart.png'></img>
+        <h4 id="cart-button">Cart:{cartItems}</h4>
+      </Link>
     </div>
   );
 }

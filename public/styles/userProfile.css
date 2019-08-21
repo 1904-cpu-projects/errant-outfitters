@@ -1,0 +1,38 @@
+#userProfile {
+  background-color: #6F8198;
+}
+.user-cart {
+  background-color: #A6A6A7
+}
+.reviewDiv {
+  border-bottom: 2px;
+  border-color: black
+}
+#userInfo {
+  padding:5px
+}
+#editUser{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #A6A6A7
+}
+#createUser{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #A6A6A7
+}
+.transactions{
+  background-color: #A6A6A7
+}
+.create-product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #A6A6A7
+}
+#add-product-input {
+  width: 25vw;
+  max-width: 300px;
+}

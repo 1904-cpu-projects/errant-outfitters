@@ -1,10 +1,11 @@
-import React from "react";
-import { listReviews, deleteReview } from "../actions/reviewActions";
-import { connect } from "react-redux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { listReviewsThunk, deleteReviewThunk } from '../actions/reviewActions';
+import { connect } from 'react-redux';
 
 let filteredReviews;
 
-class Reviews extends React.Component {
+export class Reviews extends React.Component {
   componentDidMount() {
     this.props.listReviews();
   }
@@ -12,14 +13,15 @@ class Reviews extends React.Component {
   render() {
     const { reviews } = this.props.reviews;
 
-    // if (!this.props.user.id === undefined) return null;
+    //This is the product path
     if (this.props.productId) {
       filteredReviews = reviews.filter(
-        review => review.productId === this.props.productId
+        review => review.productId === this.props.productId,
       );
+      //this is the user path
     } else {
       filteredReviews = reviews.filter(
-        review => review.userId === this.props.user.id
+        review => review.userId === this.props.user.id,
       );
     }
     return (
@@ -30,15 +32,16 @@ class Reviews extends React.Component {
               <div className="reviewDiv" key={review.id}>
                 <h4>{review.title}</h4>
                 <h5>{review.body}</h5>
-                {this.props.user ? (
+                {this.props.user.id ? (
                   <button
+                    className="review-delete"
                     type="submit"
                     onClick={() => this.props.deleteReview(review)}
                   >
                     Delete Review
                   </button>
                 ) : (
-                  ""
+                  ''
                 )}
               </div>
             ))}
@@ -49,18 +52,34 @@ class Reviews extends React.Component {
   }
 }
 
+Reviews.defaultProps = {
+  reviews: {},
+  user: {},
+  productId: '',
+  listReviews: PropTypes.func,
+  deleteReview: PropTypes.func,
+};
+
+Reviews.propTypes = {
+  listReviews: PropTypes.func,
+  deleteReview: PropTypes.func,
+  reviews: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  productId: PropTypes.string,
+  user: PropTypes.object,
+};
+
 const mapStateToProps = state => ({
-  reviews: state.reviews
+  reviews: state.reviews,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    listReviews: () => dispatch(listReviews()),
-    deleteReview: review => dispatch(deleteReview(review))
+    listReviews: () => dispatch(listReviewsThunk()),
+    deleteReview: review => dispatch(deleteReviewThunk(review)),
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Reviews);

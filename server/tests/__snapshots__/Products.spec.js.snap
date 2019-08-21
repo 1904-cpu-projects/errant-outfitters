@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Products/> renders the Product component  1`] = `
+<div
+  className="products-list"
+>
+  <SingleProduct
+    description=""
+    image=""
+    name=""
+    product={
+      Object {
+        "key1": "value1",
+      }
+    }
+  />
+  <SingleProduct
+    description=""
+    image=""
+    name=""
+    product={
+      Object {
+        "key2": "value2",
+      }
+    }
+  />
+  <SingleProduct
+    description=""
+    image=""
+    name=""
+    product={
+      Object {
+        "key3": "value3",
+      }
+    }
+  />
+</div>
+`;

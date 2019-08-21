@@ -1,8 +1,8 @@
-const router = require("express").Router();
-const { User, Product, Review } = require("../db/index.js");
+const router = require('express').Router();
+const { Review } = require('../db/index.js');
 
 //All reviews
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     res.send(await Review.findAll());
   } catch (err) {
@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
 });
 
 //Single review
-router.get("/:id", async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     res.send(await Review.findByPk(req.params.id));
   } catch (err) {
@@ -20,12 +20,12 @@ router.get("/:id", async (req, res, next) => {
 });
 
 //All reviews for a product
-router.get("/:productId", async (req, res, next) => {
+router.get('/:productId', async (req, res, next) => {
   try {
     const productReviews = Review.findAll({
       where: {
-        productId: req.params.productId
-      }
+        productId: req.params.productId,
+      },
     });
     res.send(productReviews);
   } catch (err) {
@@ -33,10 +33,13 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
     const newReview = await Review.create({
-      ...req.body
+      title: req.body.title,
+      body: req.body.body,
+      productId: req.body.productId,
+      userId: req.body.userId,
     });
     res.status(201).send(newReview);
   } catch (e) {
@@ -44,28 +47,33 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
     const article = await Review.findOne({
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     });
-    await article.update({ ...req.body });
+    await article.update({
+      title: req.body.title,
+      body: req.body.body,
+      productId: req.body.productId,
+      userId: req.body.userId,
+    });
     res.status(201).send(article);
   } catch (err) {
     next(err);
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
     await Review.destroy({
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     });
-    res.status(204).send("Review removed");
+    res.status(204).send('Review removed');
   } catch (err) {
     next(err);
   }

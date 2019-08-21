@@ -15,9 +15,23 @@ form {
   max-width: 125px;
 }
 button {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 button:hover {
-  background-color: dodgerBlue;
+  background-color: #6F8198;
+  color: white;
+}
+a.active,
+a:hover {
+  background-color: #6F8198;
+  color: white;
+  border-radius: 20px;
+}
+a {
+  padding: 10px;
+  color: black;
+  text-decoration: none
+}
+#msg {
   color: white;
 }

@@ -1,0 +1,9 @@
+#menu-bar {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+}
+.ul-drop {
+  text-decoration: none;
+  background-color: #333437;
+}

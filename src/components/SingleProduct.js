@@ -1,23 +1,68 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-export function SingleProduct({ product }) {
-  let stocked = "No";
+function SingleProduct({ product }) {
+  let stocked = 'No';
   if (product.inStock) {
-    stocked = "Yes";
+    stocked = 'Yes';
   }
-
   return (
     <div key={product.id} className="product-card">
-      <img className="product-image" src={product.image} alt="Product Image" />
-      <div className="product-container">
+      <Link to={`/products/${product.id}`}>
+        <img
+          className="product-image"
+          src={
+            product.image ? product.image : '/img/products/default-product.jpg'
+          }
+          alt="Product Image"
+        />
+      </Link>
+      <div key={product.id} className="product-container">
         <h3>
           <b> {product.name} </b>
         </h3>
-        <p> {product.description.slice(0, 50) + "..."} </p>
+        <center>
+          <p>
+            {product.description
+              ? product.description.slice(0, 80) + '...'
+              : ''}
+          </p>
+          <p>
+            Cost: {product.cost} Gold
+            <br />
+            In Stock: {stocked} <br />
+            Stock Count: {product.stock}
+            <br />
+            Recommended Class:{' '}
+            {product.class.charAt(0).toUpperCase() + product.class.slice(1)}
+          </p>
+        </center>
       </div>
-      <h4> In Stock: {stocked} </h4>
-      <Link to={`/products/${product.id}`}>Details!!!</Link>
+      <Link to={`/products/${product.id}`}>
+        <button>Details</button>
+      </Link>
     </div>
   );
 }
+
+SingleProduct.defaultProps = {
+  image: '',
+  product: {},
+  description: '',
+  name: '',
+};
+
+SingleProduct.propTypes = {
+  description: PropTypes.string,
+  name: PropTypes.string,
+  image: PropTypes.string,
+  product: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.number,
+  ]),
+};
+
+export default SingleProduct;

@@ -1,31 +1,31 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { CartHeader } from './CartHeader';
+import UserHeader from './UserHeader';
 
-// Will probably end up putting these in their own folder
-// But for now I think this will suffice
-import { CartHeader } from "./CartHeader";
-import { UserHeader } from "./UserHeader";
-
-function Header({ user, cart }) {
+function Header({ cart }) {
   return (
     <div className="header">
-      <a href="/">
+      <Link to="/">
         <img src="/img/eoLogo.jpeg" />
-      </a>
-      <h1>Errant Outfitters Adventure Shop (This is a stub)</h1>
+      </Link>
+      <Link to="/">
+        <img id="eoTitle" src="/img/eoTitle.png"/>
+      </Link>
       <CartHeader cart={cart} />
-      <UserHeader user={user} cart={cart} />
+      <UserHeader />
     </div>
   );
 }
 
-// For the moment this is what I can think of
-// May add or take away as needed
+Header.propTypes = {
+  cart: PropTypes.array,
+};
 
-// Uncomment when redux stores are made
 const mapStateToProps = state => ({
-  user: state.user,
-  cart: state.cart
+  cart: state.cart.items,
 });
 
 export default connect(mapStateToProps)(Header);

@@ -1,15 +1,16 @@
-import React from "react";
-import { connect } from "react-redux";
-import { postReview } from "../actions/reviewActions";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { postReviewThunk } from '../actions/reviewActions';
 
 class CreateReview extends React.Component {
   constructor() {
     super();
     this.state = {
-      title: "",
-      body: "",
-      productId: "",
-      userId: ""
+      title: '',
+      body: '',
+      productId: '',
+      userId: '',
     };
     this.onHandle = this.onHandle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -19,7 +20,7 @@ class CreateReview extends React.Component {
     this.setState({
       [event.target.name]: event.target.value,
       productId: this.props.product.id,
-      userId: this.props.user.id
+      userId: this.props.user.id,
     });
   }
 
@@ -27,10 +28,10 @@ class CreateReview extends React.Component {
     event.preventDefault();
     this.props.postReview(this.state);
     this.setState({
-      title: "",
-      body: "",
-      productId: "",
-      userId: ""
+      title: '',
+      body: '',
+      productId: '',
+      userId: '',
     });
   }
 
@@ -60,16 +61,31 @@ class CreateReview extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    postReview: stuff => dispatch(postReview(stuff))
+    postReview: stuff => dispatch(postReviewThunk(stuff)),
   };
+};
+
+CreateReview.defaultProps = {
+  product: {},
+  user: {},
+};
+
+CreateReview.propTypes = {
+  product: PropTypes.object,
+  postReview: PropTypes.func,
+  user: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string,
+  ]),
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CreateReview);
