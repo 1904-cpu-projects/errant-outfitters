@@ -140,6 +140,16 @@
   },
   {
     "class": "warrior",
+    "catagory": "weapon",
+    "name": "Holy Hand Grenade",
+    "description": "Instructions: Pull pin, count to three, throw.",
+    "cost": "1000",
+    "image": "/img/products/holyGrenade.png",
+    "inStock": true,
+    "stock": 1
+  },
+  {
+    "class": "warrior",
     "catagory": "armor",
     "name": "Fortress Plate",
     "description": "This dwarf-forged armor features layers of overlapping plates molded to deflect projectiles—especially those from firearms.",

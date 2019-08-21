@@ -41,7 +41,7 @@ class CreateUserForm extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div id='createUser'>
         <form className="CreateUserForm" onSubmit={e => this.onSubmit(e)}>
           <label htmlFor="firstName">First Name: </label>
           <input

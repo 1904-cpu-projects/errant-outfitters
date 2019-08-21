@@ -1,5 +1,5 @@
 .products-list {
-  background-color: #6f8198;
+  background-color: #58585B;
   display: flex;
   flex-grow: 2;
   flex-direction: row;
@@ -11,12 +11,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #b9bbbe;
+  background-color: #A6A6A7;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px;
   width: 20vw;
   margin: 5px auto;
+  margin-top: 10px;
   align-content: center;
   justify-content: center;
 }

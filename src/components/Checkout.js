@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import { connect } from 'react-redux';
 
-import StripCard from './StripeCard';
+import StripeCard from './StripeCard';
 import { getCart } from '../storeReducers/cartReducer';
 import { listProductsThunk } from '../actions/productActions';
 
@@ -41,17 +41,17 @@ class Checkout extends React.Component {
     if (!this.state.transactionComplete) {
       return (
         <div className="checkout">
-          <p>Would you like to complete the purchase?</p>
-          <div>
-            <StripeProvider
-              apiKey={'pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy'}
-            >
-              <Elements>
-                <StripCard updateCart={this.updateCart} />
-              </Elements>
-            </StripeProvider>
+          <div id='payment-box'>
+            <p>Would you like to complete the purchase?</p>
+              <StripeProvider
+                apiKey={'pk_test_BUXU0xV4Pn0VSZn5JkeJcDUT005a8CjBCy'}
+              >
+                <Elements>
+                  <StripeCard updateCart={this.updateCart} />
+                </Elements>
+              </StripeProvider>
           </div>
-          <div>
+          <div id='payment-details'>
             <h2>Your total for this purchase is ${this.state.total}</h2>
             <p>
               You don&apos;t even need to worry about shipping information
@@ -63,7 +63,7 @@ class Checkout extends React.Component {
       );
     } else {
       return (
-        <div>
+        <div className='checkout'>
           <h2>Your transaction is complete!</h2>
           <div>
             Total cost: {this.state.transactions[0].totalCost}
