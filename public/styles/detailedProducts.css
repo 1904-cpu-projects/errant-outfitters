@@ -19,3 +19,13 @@
   background-color: #94DED6;
   align-items: space-between
 }
+#productDetails {
+  padding-left: 30px
+}
+#reviewProduct {
+  padding-left: 30px
+}
+#singleReview {
+  border: 5px;
+  border-color: black
+}

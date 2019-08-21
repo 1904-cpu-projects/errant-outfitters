@@ -12,28 +12,32 @@ class UserProfile extends React.Component {
     const { user, cart } = this.props;
     return (
       <div id='userProfile'>
-        <h3>
-          User profile for {user.firstName} {user.lastName}
-        </h3>
-        <div id='userInfo'>
-          First Name: {user.firstName}<br/>
-          Last Name: {user.lastName}<br/>
-          Class: {user.class}<br/>
-          Email:{user.email}<br/>
+        <div id='pad-left'>
+          <h3>
+            User profile for {user.firstName}  {user.lastName}
+          </h3>
+          <div id='userInfo'>
+            First Name: {user.firstName}<br/>
+            Last Name: {user.lastName}<br/>
+            Class: {user.class}<br/>
+            Email:{user.email}<br/>
+          </div>
+          <Link to="/edit-user">Edit Profile Info</Link>
+          <div className='admin-tools'>
+            {user.isAdmin ? <a href="/edit-user">Edit Current Users</a> : ''}
+          </div>
+          <div className='admin-tools'>
+            {user.isAdmin ? <Link to="/create-product">Create Product</Link> : ''}
+          </div>
         </div>
-        <Link to="/edit-user">Edit Profile Info</Link>
-        <div className='admin-tools'>
-          {user.isAdmin ? <a href="/edit-user">Edit Current Users</a> : ''}
+        <div id='pad-left'>
+          <UserCart cart={cart} />
         </div>
-        <div className='admin-tools'>
-          {user.isAdmin ? <Link to="/create-product">Create Product</Link> : ''}
-        </div>
-        <UserCart cart={cart} />
-        <div>
+        <div id='pad-left'>
           <h1>Authored Reviews</h1>
           <Reviews user={user} />
         </div>
-        <div className='transactions'>
+        <div className='pad-left'>
           <h2>Your past Transactions</h2>
           <Transactions />
         </div>
