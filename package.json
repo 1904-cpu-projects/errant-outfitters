@@ -79,7 +79,7 @@
     "react-test-renderer": "^16.9.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "sequelize": "^5.10.0",
+    "sequelize": "^5.15.1",
     "supertest": "^4.0.2",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5"
@@ -95,7 +95,7 @@
     "passport-google-oauth": "^2.0.0",
     "pg": "^7.11.0",
     "react-stripe-elements": "^4.0.1",
-    "sequelize": "^5.10.0",
+    "sequelize": "^5.15.1",
     "stripe": "^7.8.0",
     "style-loader": "^0.23.1"
   }
