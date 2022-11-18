@@ -82,7 +82,7 @@
     "sequelize": "^5.10.0",
     "supertest": "^4.0.2",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "connect-session-sequelize": "^6.0.0",
